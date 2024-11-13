@@ -1,0 +1,23 @@
+.titlebar-right .actions-container
+li:has([aria-label="Toggle Panel (⌘J)"]),
+.titlebar-right .actions-container
+li:has([aria-label="Toggle Primary Side Bar (⌘B)"]),
+.titlebar-right .actions-container
+li:has([aria-label="Toggle Secondary Side Bar (⌥⌘B)"]),
+.titlebar-right .actions-container
+li:has([aria-label="Customize Layout..."]) {
+    display: none !important;
+}
+
+.editor-group-container .tabs-and-actions-container .editor-actions .actions-container
+li:has([aria-label^="Split Editor Right (⌘\\)"][aria-label$="[⌥] Split Editor Down"]) {
+    display: none !important;
+}
+
+body > div > .quick-input-widget {
+    top: 30% !important;
+}
+
+.titlebar .titlebar-center .command-center.hide {
+    visibility: visible !important;
+}
