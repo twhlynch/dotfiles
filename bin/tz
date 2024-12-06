@@ -1,0 +1,28 @@
+#!/bin/bash
+
+print_time() {
+    local timezone=$1
+    local label=$2
+    local highlight=$3
+
+    local RESET="\033[0m"
+
+    echo -e "${highlight}$label${RESET} $(TZ=$timezone date +'%I:%M\033[90m%p %d %b')${RESET}"
+}
+
+print_time "UTC-12" "NZST" ""
+print_time "UTC-11" "AEST" "\033[34m"
+print_time "UTC-10" "AEDT" "\033[34m"
+print_time "UTC-9" "JST " ""
+print_time "UTC-8" "CST " ""
+print_time "UTC-8" "SIN " ""
+print_time "UTC-5:30" "IST " ""
+print_time "UTC-4" "UAE " ""
+print_time "UTC-3" "MSK " ""
+print_time "UTC-1" "CET " "\033[34m"
+print_time "UTC" "UTC " "\033[35m"
+print_time "UTC+3" "BZ  " ""
+print_time "UTC+5" "EST " "\033[34m"
+print_time "UTC+6" "CST " ""
+print_time "UTC+7" "MST " ""
+print_time "UTC+8" "PST " ""

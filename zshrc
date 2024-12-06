@@ -73,6 +73,7 @@ alias tx='tmux'
 alias .z='cd ~ && nvim .zshrc'
 alias .c='cd ~ && nvim .config'
 alias .d='cd ~ && nvim dotfiles'
+alias dots='cd ~/dotfiles && code .'
 
 alias ls='eza --group-directories-first'
 alias la='ls -la'

@@ -57,6 +57,7 @@
     "workbench.startupEditor": "none",
     "git.enableSmartCommit": true,
     "cSpell.userWords": [
+        "airjump",
         "ARRAYSIZE",
         "boids",
         "boto",
@@ -190,5 +191,15 @@
     },
     "vscode_custom_css.imports": [
         "file:///Users/twhlynch/dotfiles/vscode/vscode.css"
-    ]
+    ],
+    "cSpell.diagnosticLevel": "Hint",
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }

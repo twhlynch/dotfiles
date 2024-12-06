@@ -56,7 +56,7 @@ mkdir -p $HOME/bin
 
 # symlink bin scripts
 if [ -d "bin" ]; then
-  for name in pid; do
+  for name in pid tz; do
     if [ ! -d "bin/$name" ]; then
       target="$HOME/bin/$name"
       backup $target
