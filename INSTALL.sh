@@ -31,6 +31,7 @@ brew install --cask wine-stable
 brew install --cask font-hack-nerd-font
 brew install --cask font-jetbrains-mono-nerd-font
 brew install --cask font-meslo-lg-nerd-font
+brew install --cask ghostty
 
 # node
 brew install node

@@ -1,0 +1,25 @@
+font-family = "Geist Mono"
+font-size = 16
+font-feature = -liga
+
+theme = vesper
+selection-background = 505050
+selection-foreground = 050505
+background-opacity = 0.80
+background-blur-radius = 32
+
+window-decoration = false
+window-padding-x = 8
+window-padding-y = 8
+macos-window-shadow = false
+
+macos-icon = custom-style
+macos-icon-frame = chrome
+macos-icon-ghost-color = 00ffff
+macos-icon-screen-color = 000000
+
+macos-option-as-alt = left
+keybind = cmd+backspace=text:\x15
+
+confirm-close-surface = false
+quit-after-last-window-closed = true
