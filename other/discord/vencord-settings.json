@@ -3,10 +3,11 @@
         "autoUpdate": true,
         "autoUpdateNotification": true,
         "useQuickCss": true,
-        "themeLinks": [],
-        "enabledThemes": [
-            "DiscordNight.theme.css"
+        "themeLinks": [
+            "https://raw.githubusercontent.com/KillYoy/DiscordNight/master/DiscordNight.css",
+            "https://raw.githubusercontent.com/twhlynch/dotfiles/master/other/discord/discord.css"
         ],
+        "enabledThemes": [],
         "enableReactDevtools": false,
         "frameless": false,
         "transparent": false,
@@ -69,7 +70,15 @@
                 "enabled": false
             },
             "BetterFolders": {
-                "enabled": false
+                "enabled": false,
+                "sidebar": true,
+                "showFolderIcon": 1,
+                "keepIcons": false,
+                "closeAllHomeButton": false,
+                "closeAllFolders": false,
+                "forceOpen": false,
+                "sidebarAnim": true,
+                "closeOthers": false
             },
             "BetterGifAltText": {
                 "enabled": false
@@ -90,10 +99,13 @@
                 "enabled": false
             },
             "BetterSettings": {
-                "enabled": false
+                "enabled": false,
+                "disableFade": true,
+                "organizeMenu": true,
+                "eagerLoad": true
             },
             "BetterUploadButton": {
-                "enabled": false
+                "enabled": true
             },
             "BiggerStreamPreview": {
                 "enabled": false
@@ -102,7 +114,7 @@
                 "enabled": false
             },
             "CallTimer": {
-                "enabled": false
+                "enabled": true
             },
             "ClearURLs": {
                 "enabled": false
@@ -114,7 +126,10 @@
                 "enabled": false
             },
             "ConsoleJanitor": {
-                "enabled": false
+                "enabled": true,
+                "disableLoggers": false,
+                "disableSpotifyLogger": true,
+                "whitelistedLoggers": "GatewaySocket; Routing/Utils"
             },
             "ConsoleShortcuts": {
                 "enabled": false
@@ -140,7 +155,8 @@
             "Dearrow": {
                 "enabled": false,
                 "hideButton": false,
-                "replaceElements": 0
+                "replaceElements": 0,
+                "dearrowByDefault": true
             },
             "Decor": {
                 "enabled": false
@@ -155,7 +171,8 @@
                 "enabled": true
             },
             "Experiments": {
-                "enabled": false
+                "enabled": true,
+                "toolbarDevMenu": true
             },
             "F8Break": {
                 "enabled": false
@@ -171,7 +188,7 @@
                 "enabled": true
             },
             "FavoriteGifSearch": {
-                "enabled": false
+                "enabled": true
             },
             "FixCodeblockGap": {
                 "enabled": false
@@ -269,7 +286,8 @@
                 "inlineEdits": true
             },
             "MessageTags": {
-                "enabled": false
+                "enabled": false,
+                "clyde": true
             },
             "MoreCommands": {
                 "enabled": false
@@ -486,7 +504,8 @@
                 "memberList": true,
                 "voiceUsers": true,
                 "reactorsList": true,
-                "colorChatMessages": false
+                "colorChatMessages": false,
+                "pollResults": true
             },
             "SecretRingToneEnabler": {
                 "enabled": false
@@ -663,7 +682,7 @@
                 "enabled": false
             },
             "NoMaskedUrlPaste": {
-                "enabled": false
+                "enabled": true
             },
             "AlwaysExpandRoles": {
                 "enabled": true
@@ -672,7 +691,8 @@
                 "enabled": true
             },
             "AccountPanelServerProfile": {
-                "enabled": false
+                "enabled": true,
+                "prioritizeServerProfile": false
             },
             "CopyFileContents": {
                 "enabled": false
@@ -708,7 +728,7 @@
             "authenticated": false,
             "url": "https://api.vencord.dev/",
             "settingsSync": false,
-            "settingsSyncVersion": 1729694925749
+            "settingsSyncVersion": 1736139530350
         }
     },
     "quickCss": ""

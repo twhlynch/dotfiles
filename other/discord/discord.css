@@ -1,0 +1,51 @@
+/**
+ * @name Darker DiscordNight
+ * @version 0.9.5.8
+ * @description personal overrides for KillYoy's theme
+ * @source https://github.com/twhlynch/dotfiles/other/discord
+ * @updateUrl https://raw.githubusercontent.com/twhlynch/dotfiles/master/other/discord/discord.css
+ * @website 
+ * @donate 
+ * @patreon 
+ * @invite 
+ * @author twhlynch
+ * @authorId 
+ * @authorLink 
+*/
+
+:root {
+    --Channel-Invite-Edit-Buttons: flex;
+
+    --Chatbox-Gift-Button: flex;
+    --Chatbox-GIF-Button: flex;
+    --Chatbox-Stickers-Button: flex;
+
+    --Chat-Super-Reaction-Button: flex;
+
+    --Context-Menu-Emoji-Toolbar: flex;
+
+    --Super-Reaction-Animations: flex;
+
+    --Friends-List-Searchbar: flex;
+}
+
+:root, .theme-dark {
+    --bd-blue: #0e54b0;
+    --bd-blue-hover: #0049a8;
+    --bd-blue-active: #00327e;
+
+    --primary-600: #050505;
+    --primary-645: #101010;
+    --primary-630: #141414;
+    --primary-700: #191919;
+
+    --primary-dark-600-rgb: 7,7,7;
+    --primary-dark-660-rgb: 11,11,11;
+
+    --background-primary: #050505;
+    --background-secondary: #101010;
+    --background-tertiary: #141414;
+    --bg-base-tertiary: #050505;
+
+    --activity-card-background: #101010;
+}
