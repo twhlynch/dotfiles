@@ -49,3 +49,21 @@
 
     --activity-card-background: #101010;
 }
+
+div:has(>video):not([aria-label="Media Viewer Modal"] *), 
+div:has(>[data-safe-src]):not([aria-label="Media Viewer Modal"] *), 
+[data-type="sticker"]:not([aria-label="Media Viewer Modal"] *) {
+    opacity: 0.6;
+    &:hover {
+        opacity: 1;
+        transition: opacity 0.3s linear;
+    }
+}
+
+[id^="message-accessories-"] > article > div > div:has([id^="message-accessories-"]) {
+    padding-block: 0 !important;
+
+    div > div > div > div > h3[aria-labelledby^="message-username-"] {
+        margin-top: 0 !important;
+    }
+}
