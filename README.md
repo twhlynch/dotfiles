@@ -1,6 +1,6 @@
 # MacOS dotfiles
 
-Run `SETUP.sh` to setup symlinks.
+Run `SETUP.sh` to setup config symlinks.
 Run `INSTALL.sh` to install brew and many packages.
 
 > `chmod +x FILE.sh`
@@ -18,6 +18,7 @@ The things that will be configured by the setup script are as follows:
 
 **.config**
 - alacritty
+- ghostty
 - nvim
 - ohmyposh
 
@@ -29,6 +30,7 @@ The things that will be configured by the setup script are as follows:
 
 **custom bins**
 - pid script
+- tz script
 
 **installs**
 - homebrew
@@ -58,3 +60,4 @@ The things that will be configured by the setup script are as follows:
 - nvm
 - node 16 & 18
 - xcode tools
+- ghostty
