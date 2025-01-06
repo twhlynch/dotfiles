@@ -65,6 +65,12 @@ if [ -d "bin" ]; then
   done
 fi
 
+# apple defaults
+defaults write com.apple.dock autohide-delay -int 0
+defaults write com.apple.dock autohide-time-modifier -float 0.5
+# arc browser icon
+defaults write company.thebrowser.Browser currentAppIconName hologram
+
 # reload
 exec zsh
 
