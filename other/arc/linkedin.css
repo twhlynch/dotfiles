@@ -1,0 +1,47 @@
+.artdeco-card:has(.feed-identity-module__anchored-widget--premium-upsell),
+.global-nav__primary-item:has(.premium-upsell-link),
+.global-nav__primary-item:has(.global-nav__primary-link-text[title="For Business"]),
+.scaffold-finite-scroll__content > div:has([aria-label="Promoted"]),
+.ad-banner-container, .ad-banner,
+#feed-news-module.news-module--with-game,
+.premium-upsell-link--extra-long,
+.text-align-left:has(> .artdeco-button--premium),
+.pe-profile-top-card-form__upsell-wrapper,
+.artdeco-carousel__item-container > .pvs-premium-upsell__container,
+.pvs-premium-upsell__container,
+iframe[title="Advertisement"],
+[data-view-name="premium-upsell-card"],
+[data-view-name="premium-nav-upsell-text"],
+[aria-label="For Business"],
+div:has(> div + div > div > div[data-view-name^="game-card"]),
+div.artdeco-card:has(> div > div > div > div > div > div > div > a[aria-label$="Promoted"]),
+div.artdeco-card:has(> div > div > div > div > div > div > div > a[aria-label$="promoted"])
+{
+    display: none !important;
+}
+
+:root, *
+{
+    --premium-override: transparent;
+    --color-premium-button-background: var(--premium-override);
+    --color-premium-button-label: var(--premium-override);
+    --color-premium-button-background-hover: var(--premium-override);
+    --color-premium-button-label-hover: var(--premium-override);
+    --color-premium-button-background-active: var(--premium-override);
+    --color-premium-button-label-active: var(--premium-override);
+    --premium-color-brand: var(--premium-override);
+    --premium-color-action: var(--premium-override);
+    --premium-color-action-hover: var(--premium-override);
+    --premium-color-action-active: var(--premium-override);
+    --premium-color-text: var(--premium-override);
+    --premium-color-text-active: var(--premium-override);
+    --premium-color-icon: var(--premium-override);
+    --premium-color-icon-active: var(--premium-override);
+    --premium-color-plan-1: var(--premium-override);
+    --premium-color-plan-2: var(--premium-override);
+    --premium-color-plan-3: var(--premium-override);
+    --premium-color-plan-4: var(--premium-override);
+    --premium-color-plan-5: var(--premium-override);
+    --premium-color-plan-6: var(--premium-override);
+    --premium-color-inbug: var(--premium-override);
+}
