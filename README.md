@@ -32,6 +32,10 @@ The things that will be configured by the setup script are as follows:
 - pid script
 - tz script
 
+**other**
+- discord Vencord config and custom css
+- arc boost / userscript custom css
+
 **installs**
 - homebrew
 - git
