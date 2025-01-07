@@ -66,6 +66,7 @@ alias :q='exit'
 alias :wq='exit'
 alias :Q='exit'
 alias q='exit'
+alias qq='exit'
 
 alias t='tmux'
 alias tx='tmux'
@@ -78,6 +79,7 @@ alias dots='cd ~/dotfiles && code .'
 alias ls='eza --group-directories-first'
 alias la='ls -la'
 alias lst='ls -T'
+alias tree='ls -T'
 
 alias cat='bat --paging=never'
 
