@@ -50,6 +50,7 @@
     --activity-card-background: #101010;
 }
 
+/* fade out media until hover */
 div:has(>video):not([aria-label="Media Viewer Modal"] *), 
 div:has(>[data-safe-src]):not([aria-label="Media Viewer Modal"] *), 
 [data-type="sticker"]:not([aria-label="Media Viewer Modal"] *) {
@@ -60,10 +61,65 @@ div:has(>[data-safe-src]):not([aria-label="Media Viewer Modal"] *),
     }
 }
 
+/* revamp message previews */
 [id^="message-accessories-"] > article > div > div:has([id^="message-accessories-"]) {
     padding-block: 0 !important;
 
     div > div > div > div > h3[aria-labelledby^="message-username-"] {
         margin-top: 0 !important;
+    }
+}
+/* madness */
+[id^="message-accessories-"]:has(> article > div > div [id^="message-accessories-"]) {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 5px !important;
+
+    article {
+        max-height: 240px;
+        overflow-y: scroll;
+
+        *:not([class^="file_"] *) {
+            font-size: 96% !important;
+            line-height: 1.4 !important;
+        }
+        [class^="file_"] {
+            font-size: 120% !important;
+        }
+        
+        video, img {
+            max-width: 200px !important;
+            max-height: 150px !important;
+        }
+        > div > div {
+            padding: 0 !important;
+        }
+        div:has(> div > img[class^="avatar_"]) {
+            padding-left: calc(var(--custom-message-margin-left-content-cozy) * 0.8) !important;
+        }
+        img[class^="avatar_"] {
+            left: calc(var(--custom-message-margin-horizontal) / 2) !important;
+        }
+        [id^="message-content-"] {
+            max-width: 200px !important;
+        }
+        [class^="embedAuthor_"] {
+            > img, > span > span > span:not(.channelMention) {
+                display: none;
+            }
+        }
+        .vc-platform-indicator {
+            display: none !important;
+        }
+        h3[aria-labelledby^="message-username-"] {
+            margin-bottom: 0 !important;
+        }
+        [id^="message-reactions-"] {
+            display: none !important;
+        }
+    }
+    article div:has(video) {
+        width: fit-content !important;
     }
 }
