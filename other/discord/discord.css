@@ -88,7 +88,7 @@ div:has(>[data-safe-src]):not([aria-label="Media Viewer Modal"] *),
             font-size: 120% !important;
         }
         
-        video, img {
+        video, img, [data-role="img"], [class^="imageContent_"] {
             max-width: 200px !important;
             max-height: 150px !important;
         }
