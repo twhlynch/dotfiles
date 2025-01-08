@@ -118,6 +118,9 @@ div:has(>[data-safe-src]):not([aria-label="Media Viewer Modal"] *),
         [id^="message-reactions-"] {
             display: none !important;
         }
+        [id^="message-accessories-"] {
+            max-width: 210px !important;
+        }
     }
     article div:has(video) {
         width: fit-content !important;
