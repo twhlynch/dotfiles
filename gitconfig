@@ -14,3 +14,5 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
+[alias]
+	change-commits = "!f() { VAR_OLD=$1; OLD=$2; VAR_NEW=$3; NEW=$4; shift 4; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR_OLD`\\\" = '$OLD' ]]; then export $VAR_NEW='$NEW'; fi\" $@; }; f"
