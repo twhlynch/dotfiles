@@ -435,7 +435,7 @@
             },
             "PermissionsViewer": {
                 "enabled": true,
-                "permissionsSortOrder": 0,
+                "permissionsSortOrder": 1,
                 "defaultPermissionsDropdownState": false
             },
             "petpet": {
@@ -446,8 +446,49 @@
             },
             "PinDMs": {
                 "enabled": true,
-                "dmSectioncollapsed": false,
-                "pinOrder": 0
+                "pinOrder": 0,
+                "dmSectionCollapsed": false,
+                "userBasedCategoryList": {
+                    "532761004078006272": [],
+                    "649165311257608192": [
+                        {
+                            "id": "3z5m9foxgxc",
+                            "name": "important",
+                            "color": 3447003,
+                            "collapsed": false,
+                            "channels": [
+                                "1022495240696909874",
+                                "651638141693853717",
+                                "673455475957956610"
+                            ]
+                        },
+                        {
+                            "id": "u1jw1on7ft",
+                            "name": "pinned",
+                            "color": 2123412,
+                            "collapsed": false,
+                            "channels": [
+                                "1083266291223244800",
+                                "1041921552805011527",
+                                "1132016141733208185",
+                                "1013804697649434706",
+                                "1218037726658428979",
+                                "1232468180228636682",
+                                "1020937261027696651",
+                                "1288729012113506306",
+                                "1316164092616118303",
+                                "1021863754801090663",
+                                "1224429253387354373",
+                                "1026028744814628864",
+                                "1261882655813668894",
+                                "1085662724320677908",
+                                "1221857193461153834",
+                                "1038925481669578823"
+                            ]
+                        }
+                    ]
+                },
+                "canCollapseDmSection": false
             },
             "PlainFolderIcon": {
                 "enabled": false
@@ -466,7 +507,7 @@
                 "enabled": true
             },
             "QuickReply": {
-                "enabled": false
+                "enabled": true
             },
             "ReactErrorDecoder": {
                 "enabled": false
@@ -611,7 +652,8 @@
                 "enabled": false
             },
             "UnlockedAvatarZoom": {
-                "enabled": true
+                "enabled": true,
+                "zoomMultiplier": 4
             },
             "UnsuppressEmbeds": {
                 "enabled": true
@@ -716,6 +758,15 @@
             },
             "FixImagesQuality": {
                 "enabled": false
+            },
+            "FullUserInChatbox": {
+                "enabled": true
+            },
+            "IrcColors": {
+                "enabled": false
+            },
+            "BadgeAPI": {
+                "enabled": true
             }
         },
         "notifications": {
@@ -728,7 +779,7 @@
             "authenticated": false,
             "url": "https://api.vencord.dev/",
             "settingsSync": false,
-            "settingsSyncVersion": 1736139530350
+            "settingsSyncVersion": 1738246428736
         }
     },
     "quickCss": ""
