@@ -202,5 +202,7 @@
     "[jsonc]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "editor.fontFamily": "'Hack Nerd Font', Menlo, Monaco, 'Courier New', monospace"
+    "editor.fontFamily": "'Hack Nerd Font', Menlo, Monaco, 'Courier New', monospace",
+    "editor.tabSize": 3,
+    "editor.insertSpaces": false
 }
