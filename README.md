@@ -45,14 +45,19 @@ The things that will be configured by the setup script are as follows:
 - tmux
 - bat
 - eza
+- tldr
 - thefuck
 - neovim
 - neofetch
 - lazygit
+- gh
 - ninja
+- btop
+- clang-format
 - zig
 - python 3.12
 - php
+- vlc
 - oh my posh
 - android studio
 - vs code
@@ -65,3 +70,4 @@ The things that will be configured by the setup script are as follows:
 - node 16 & 18
 - xcode tools
 - ghostty
+- raycast
