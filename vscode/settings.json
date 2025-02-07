@@ -204,5 +204,6 @@
     },
     "editor.fontFamily": "'Hack Nerd Font', Menlo, Monaco, 'Courier New', monospace",
     "editor.tabSize": 3,
-    "editor.insertSpaces": false
+    "editor.insertSpaces": false,
+    "editor.accessibilitySupport": "off"
 }
