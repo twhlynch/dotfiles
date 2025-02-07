@@ -91,6 +91,8 @@ alias mkdir='mkdir -p'
 alias ka='killall'
 alias k='kill -9'
 
+alias neofetch='neofetch --ascii ~/.config/neofetch/ascii.txt'
+
 alias ..='cd ..'
 
 alias path='echo -e ${PATH//:/\\n}'
