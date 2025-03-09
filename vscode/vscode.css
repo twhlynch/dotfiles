@@ -1,12 +1,10 @@
-.titlebar-right .actions-container
-li:has([aria-label="Toggle Panel (⌘J)"]),
-.titlebar-right .actions-container
-li:has([aria-label="Toggle Primary Side Bar (⌘B)"]),
-.titlebar-right .actions-container
-li:has([aria-label="Toggle Secondary Side Bar (⌥⌘B)"]),
-.titlebar-right .actions-container
-li:has([aria-label="Customize Layout..."]) {
-    display: none !important;
+.titlebar-right .actions-container li {
+    &:has([aria-label="Toggle Panel (⌘J)"]),
+    &:has([aria-label="Toggle Primary Side Bar (⌘B)"]),
+    &:has([aria-label="Toggle Secondary Side Bar (⌥⌘B)"]),
+    &:has([aria-label="Customize Layout..."]) {
+        display: none !important;
+    }
 }
 
 .editor-group-container .tabs-and-actions-container .editor-actions .actions-container
@@ -20,4 +18,9 @@ body > div > .quick-input-widget {
 
 .titlebar .titlebar-center .command-center.hide {
     visibility: visible !important;
+}
+
+/* remove gitlens gate */
+gl-feature-gate.graph-app__gate {
+    display: none !important;
 }

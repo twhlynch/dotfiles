@@ -25,13 +25,13 @@
         "statusBar.debuggingBackground": "#000",
         "statusBarItem.hoverBackground": "#111",
         "notificationCenterHeader.background": "#111",
-        "scrollbarSlider.background": "#222",
+        "scrollbarSlider.background": "#222c",
         "scrollbar.shadow": "#0a0a0a",
         "editor.selectionBackground": "#333",
         "editorHoverWidget.background": "#111",
         "minimap.selectionHighlight": "#9993",
-        "scrollbarSlider.activeBackground": "#444",
-        "scrollbarSlider.hoverBackground": "#333",
+        "scrollbarSlider.activeBackground": "#444c",
+        "scrollbarSlider.hoverBackground": "#333c",
         "banner.background": "#111",
         "quickInput.background": "#111",
         "input.background": "#111"
@@ -99,6 +99,7 @@
         "mainmenu",
         "mcpp",
         "mdat",
+        "modestbranding",
         "msaa",
         "Mult",
         "Multiview",
@@ -181,9 +182,6 @@
     },
     "cmake.showOptionsMovedNotification": false,
     "diffEditor.ignoreTrimWhitespace": false,
-    "zig.initialSetupDone": true,
-    "zig.path": "/Users/twhlynch/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zig_install/zig",
-    "zig.zls.path": "/Users/twhlynch/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
     "workbench.activityBar.location": "top",
     "database-client.autoSync": true,
     "editor.codeActionsOnSave": {
@@ -205,5 +203,15 @@
     "editor.fontFamily": "'Hack Nerd Font', Menlo, Monaco, 'Courier New', monospace",
     "editor.tabSize": 3,
     "editor.insertSpaces": false,
-    "editor.accessibilitySupport": "off"
+    "editor.accessibilitySupport": "off",
+    "[css]": {
+        "editor.suggest.insertMode": "replace",
+        "cSpell.fixSpellingWithRenameProvider": false
+    },
+    "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor",
+        "{hexdiff}:/**/*.*": "hexEditor.hexedit",
+        "*.svg": "default"
+    },
+    "zig.zls.enabled": "on"
 }
