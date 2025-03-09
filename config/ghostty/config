@@ -12,6 +12,7 @@ window-decoration = false
 window-padding-x = 8
 window-padding-y = 8
 macos-window-shadow = false
+window-padding-balance = true
 
 macos-icon = custom-style
 macos-icon-frame = chrome
