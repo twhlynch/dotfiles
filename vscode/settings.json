@@ -213,5 +213,13 @@
         "{hexdiff}:/**/*.*": "hexEditor.hexedit",
         "*.svg": "default"
     },
-    "zig.zls.enabled": "on"
+    "zig.zls.enabled": "on",
+    "cmake.showConfigureWithDebuggerNotification": false,
+    "cmake.automaticReconfigure": false,
+    "cmake.configureOnOpen": false,
+    "cmake.configureOnEdit": false,
+    "cmake.saveBeforeBuild": false,
+    "cmake.enableAutomaticKitScan": false,
+    "cmake.clearOutputBeforeBuild": false,
+    "cmake.buildBeforeRun": false
 }
