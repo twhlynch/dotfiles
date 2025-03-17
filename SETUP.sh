@@ -43,7 +43,7 @@ fi
 # symlink specific .config files
 if [ -d "config" ]; then
   for name in zed/keymap.json zed/settings.json; do
-    if [ -d "config/$name" ]; then
+    if [ ! -d "config/$name" ]; then
       target="$HOME/.config/$name"
       backup $target
       symlink $PWD/config/$name $target
