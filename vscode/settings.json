@@ -93,6 +93,7 @@
         "levelnodefinish",
         "levelnodegravity",
         "levelnodegroup",
+        "levelnodeparticleemitter",
         "levelnodesign",
         "levelnodestart",
         "levelnodestatic",
@@ -221,5 +222,6 @@
     "cmake.saveBeforeBuild": false,
     "cmake.enableAutomaticKitScan": false,
     "cmake.clearOutputBeforeBuild": false,
-    "cmake.buildBeforeRun": false
+    "cmake.buildBeforeRun": false,
+    "@azure.argTenant": ""
 }
