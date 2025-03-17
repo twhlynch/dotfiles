@@ -26,6 +26,8 @@ for name in zshrc zprofile tmux.conf gitconfig; do
     target="$HOME/.$name"
     backup $target
     symlink $PWD/$name $target
+  else
+    echo "-----> $name not found"
   fi
 done
 
@@ -36,6 +38,8 @@ if [ -d "config" ]; then
       target="$HOME/.config/$name"
       backup $target
       symlink $PWD/config/$name $target
+    else
+      echo "-----> $name not found"
     fi
   done
 fi
@@ -47,6 +51,8 @@ if [ -d "config" ]; then
       target="$HOME/.config/$name"
       backup $target
       symlink $PWD/config/$name $target
+    else
+      echo "-----> $name not found"
     fi
   done
 fi
@@ -58,6 +64,8 @@ if [ -d "vscode" ]; then
       target="$HOME/Library/Application Support/Code/User/$name"
       backup $target
       symlink $PWD/vscode/$name $target
+    else
+      echo "-----> $name not found"
     fi
   done
 fi
@@ -72,6 +80,8 @@ if [ -d "bin" ]; then
       target="$HOME/bin/$name"
       backup $target
       symlink $PWD/bin/$name $target
+    else
+      echo "-----> $name not found"
     fi
   done
 fi
