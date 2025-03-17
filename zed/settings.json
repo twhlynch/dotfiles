@@ -1,0 +1,15 @@
+{
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "icon_theme": "Catppuccin Mocha",
+  "base_keymap": "VSCode",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "vim_mode": false,
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "theme": "VScode Dark Plus"
+}

@@ -40,6 +40,17 @@ if [ -d "config" ]; then
   done
 fi
 
+# symlink specific .config files
+if [ -d "config" ]; then
+  for name in zed/keymap.json zed/settings.json; do
+    if [ -d "config/$name" ]; then
+      target="$HOME/.config/$name"
+      backup $target
+      symlink $PWD/config/$name $target
+    fi
+  done
+fi
+
 # symlink vscode config
 if [ -d "vscode" ]; then
   for name in settings.json keybindings.json; do

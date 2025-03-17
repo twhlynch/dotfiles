@@ -1,0 +1,10 @@
+[
+  {
+    "bindings": {
+      "cmd-[": "pane::GoBack",
+      "cmd-]": "pane::GoForward",
+      "ctrl-r": "projects::OpenRecent",
+      "ctrl-cmd-shift-®": "workspace::Reload"
+    }
+  }
+]
