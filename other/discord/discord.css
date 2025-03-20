@@ -126,3 +126,18 @@ div:has(>[data-safe-src]):not([aria-label="Media Viewer Modal"] *),
         width: fit-content !important;
     }
 }
+
+/* idnex */
+main[class^="chatContent_"]::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: min(50%, 500px);
+    height: 100%;
+    background-image: url("https://github.com/twhlynch/dotfiles/blob/fd893cd8ba65faa08fc4a074ea3bd9b05e9d74ed/vscode/background.png?raw=true");
+    background-size: contain;
+    background-position: bottom right;
+    pointer-events: none;
+    background-repeat: no-repeat;
+}
