@@ -37,7 +37,6 @@
         "input.background": "#111"
     },
     "editor.inlineSuggest.enabled": true,
-    "workbench.iconTheme": "vscode-icons",
     "github.copilot.enable": {
         "*": true,
         "plaintext": true,
@@ -223,5 +222,7 @@
     "cmake.enableAutomaticKitScan": false,
     "cmake.clearOutputBeforeBuild": false,
     "cmake.buildBeforeRun": false,
-    "@azure.argTenant": ""
+    "@azure.argTenant": "",
+    "tabnine.codeLensEnabled": false,
+    "workbench.iconTheme": "vscode-icons"
 }
