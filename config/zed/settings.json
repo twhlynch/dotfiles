@@ -11,5 +11,8 @@
   "vim_mode": false,
   "ui_font_size": 16,
   "buffer_font_size": 16,
-  "theme": "VScode Dark Plus"
+  "theme": "VScode Dark Plus",
+  "edit_prediction": {
+    "mode": "subtle"
+  }
 }
