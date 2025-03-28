@@ -97,6 +97,22 @@ alias ..='cd ..'
 
 alias path='echo -e ${PATH//:/\\n}'
 
+function commit() {
+    git add . 
+    git commit -m "$*"
+    git push
+}
+
+function pyvenv() {
+    if [ ! -d "bin" ]; then
+        python3 -m venv .
+    fi
+    if [ ! -f "requirements.txt" ]; then
+        bin/pip freeze > requirements.txt
+    fi
+    bin/pip install -r requirements.txt
+}
+
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
