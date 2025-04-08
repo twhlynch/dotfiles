@@ -25,3 +25,7 @@ keybind = cmd+t=toggle_quick_terminal
 
 confirm-close-surface = false
 quit-after-last-window-closed = true
+
+custom-shader = ./shaders/tft.glsl
+custom-shader = ./shaders/crt.glsl
+custom-shader = ./shaders/bloom.glsl
