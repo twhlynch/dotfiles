@@ -81,7 +81,7 @@ alias la='ls -la'
 alias lst='ls -T'
 alias tree='ls -T'
 
-alias cat='bat --paging=never'
+alias cat='bat --paging=never -pp'
 
 alias f='fzf'
 alias fp='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
