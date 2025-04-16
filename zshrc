@@ -104,6 +104,12 @@ function commit() {
 }
 
 function pyvenv() {
+    echo """
+/bin
+/include
+/lib
+/share
+pyvenv.cfg""" >> .gitignore
     if [ ! -d "bin" ]; then
         python3 -m venv .
     fi
