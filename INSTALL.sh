@@ -7,6 +7,7 @@ fi
 brew tap homebrew/cask-fonts
 
 # brew installs
+brew install ffmpeg
 brew install git
 brew install git-lfs
 brew install zoxide
@@ -28,6 +29,7 @@ brew install python@3.12
 brew install php
 brew install vlc
 brew install oh-my-posh
+brew install ripgrep
 brew install --cask android-studio
 brew install --cask visual-studio-code
 brew install --cask ngrok
