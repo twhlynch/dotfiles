@@ -148,5 +148,21 @@
     "cmake.buildBeforeRun": false,
     "@azure.argTenant": "",
     "tabnine.codeLensEnabled": false,
-    "workbench.iconTheme": "vscode-icons"
+    "workbench.iconTheme": "vscode-icons",
+    "window.titleBarStyle": "custom",
+    "mssql.connectionGroups": [
+        {
+        "name": "ROOT",
+        "id": "A520B7DD-654F-427C-A873-6D56A84F6435"
+        }
+    ],
+    "mssql.connections": [],
+    "yaml.schemas": {
+        "file:///Users/twhlynch/.vscode/extensions/atlassian.atlascode-3.8.0/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "atlascode.jira.lastCreateSiteAndProject": {
+        "siteId": "",
+        "projectKey": ""
+    },
+    "atlascode.jira.todoIssues.enabled": false
 }
