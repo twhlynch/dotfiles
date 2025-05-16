@@ -30,6 +30,7 @@ brew install php
 brew install vlc
 brew install oh-my-posh
 brew install ripgrep
+brew install deno
 brew install --cask android-studio
 brew install --cask visual-studio-code
 brew install --cask ngrok
