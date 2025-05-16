@@ -6,51 +6,51 @@
     "workbench.colorCustomizations": {
         "selection.background": "#333",
         "toolbar.hoverBackground": "#333",
-        "toolbar.activeBackground": "#111",
+        "toolbar.activeBackground": "#0c0c0c",
         "button.background": "#222",
         "button.hoverBackground": "#333",
-        "sideBar.background": "#111",
-        "editor.background": "#111",
-        "tab.hoverBackground": "#111",
+        "sideBar.background": "#0c0c0c",
+        "editor.background": "#0c0c0c",
+        "tab.hoverBackground": "#0c0c0c",
         "tab.inactiveBackground": "#000",
-        "tab.activeBackground": "#111",
-        "panel.background": "#111",
-        "commandCenter.background": "#111",
-        "commandCenter.activeBackground": "#111",
-        "statusBar.background": "#111",
-        "titleBar.activeBackground": "#111",
+        "tab.activeBackground": "#0c0c0c",
+        "panel.background": "#0c0c0c",
+        "commandCenter.background": "#0c0c0c",
+        "commandCenter.activeBackground": "#0c0c0c",
+        "statusBar.background": "#0c0c0c",
+        "titleBar.activeBackground": "#0c0c0c",
         "titleBar.inactiveBackground": "#000",
-        "notifications.background": "#111",
+        "notifications.background": "#0c0c0c",
         "statusBar.noFolderBackground": "#000",
         "statusBar.debuggingBackground": "#000",
-        "statusBarItem.hoverBackground": "#111",
-        "notificationCenterHeader.background": "#111",
+        "statusBarItem.hoverBackground": "#0c0c0c",
+        "notificationCenterHeader.background": "#0c0c0c",
         "scrollbarSlider.background": "#222c",
-        "scrollbar.shadow": "#0a0a0a",
+        "scrollbar.shadow": "#0c0c0c",
         "editor.selectionBackground": "#333",
-        "editorHoverWidget.background": "#111",
+        "editorHoverWidget.background": "#0c0c0c",
         "minimap.selectionHighlight": "#9993",
         "scrollbarSlider.activeBackground": "#444c",
         "scrollbarSlider.hoverBackground": "#333c",
-        "banner.background": "#111",
-        "quickInput.background": "#111",
-        "input.background": "#111"
+        "banner.background": "#0c0c0c",
+        "quickInput.background": "#0c0c0c",
+        "input.background": "#0c0c0c"
     },
     "editor.tokenColorCustomizations": {
-      "textMateRules": [
-        {
-          "name": "comment",
-          "scope": [
-            "comment",
-            "punctuation.definition.comment",
-            "meta.diff.header"
-          ],
-          "settings": {
-            "fontStyle": "italic",
-            "foreground": "#7a6483"
-          }
-        }
-      ]
+        "textMateRules": [
+            {
+                "name": "comment",
+                "scope": [
+                    "comment",
+                    "punctuation.definition.comment",
+                    "meta.diff.header"
+                ],
+                "settings": {
+                    "fontStyle": "italic",
+                    "foreground": "#7a6483"
+                }
+            }
+        ]
     },
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
@@ -74,17 +74,32 @@
         }
     ],
     "github.copilot.editor.enableAutoCompletions": true,
-    "background.customImages": [
-        "file:///Users/twhlynch/dotfiles/vscode/background.png"
-    ],
-    "background.useFront": true,
-    "background.fullscreen": {
-        "images": [],
-        "opacity": 0.91,
-        "size": "100px 143px",
-        "position": "bottom right",
-        "interval": 0
+    // "background.customImages": [
+    //     "file:///Users/twhlynch/dotfiles/vscode/background.png"
+    // ],
+    // "background.useFront": true,
+    // "background.editor": {
+    //     "images": ["file:///Users/twhlynch/dotfiles/vscode/halftones.svg"],
+    //     "style": {
+    //         "background-position": "bottom center",
+    //         "background-size": "100% auto",
+    //         "opacity": 0.02
+    //     }
+    // },
+    "background.panel": {
+        "images": ["file:///Users/twhlynch/dotfiles/vscode/halftones.svg"],
+        "style": {
+            "background-position": "bottom center",
+            "background-size": "100% auto",
+            "opacity": 1
+        }
     },
+    // "background.fullscreen": {
+    //     "images": ["file:///Users/twhlynch/dotfiles/vscode/halftones.svg"],
+    //     "opacity": 0.05,
+    //     "size": "contain",
+    //     "position": "bottom center"
+    // },
     "github.copilot.preferredAccount": "twhlynch-rmit",
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
