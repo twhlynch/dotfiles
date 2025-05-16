@@ -3,12 +3,14 @@ font-size = 16
 font-feature = -liga
 
 theme = vesper
-selection-background = 505050
+background = 101010
+selection-background = 303030
 selection-foreground = 050505
-background-opacity = 0.80
-background-blur-radius = 32
+background-opacity = 0.50
+background-blur-radius = 8
 
-window-decoration = false
+macos-titlebar-style = transparent
+# window-decoration = false
 window-padding-x = 8
 window-padding-y = 8
 macos-window-shadow = false
