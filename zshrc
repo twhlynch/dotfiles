@@ -97,27 +97,14 @@ alias ..='cd ..'
 
 alias path='echo -e ${PATH//:/\\n}'
 
+alias pyvenv='python3 -m venv .venv'
+
 function commit() {
     git add . 
     git commit -m "$*"
     git push
 }
 
-function pyvenv() {
-    echo """
-/bin
-/include
-/lib
-/share
-pyvenv.cfg""" >> .gitignore
-    if [ ! -d "bin" ]; then
-        python3 -m venv .
-    fi
-    if [ ! -f "requirements.txt" ]; then
-        bin/pip freeze > requirements.txt
-    fi
-    bin/pip install -r requirements.txt
-}
 
 # Shell integrations
 eval "$(fzf --zsh)"
