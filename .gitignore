@@ -1,1 +1,6 @@
 .DS_Store
+
+# other nvim configs
+config/nvim/lua/*/
+config/nvim/*-lazy-lock.json
+!config/nvim/lua/twhlynch/
