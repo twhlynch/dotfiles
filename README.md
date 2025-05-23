@@ -7,28 +7,19 @@ Run `INSTALL.sh` to install brew and many packages.
 
 > vscode custom css and bg are not symlinked, just referenced, so make sure to clone `dotfiles` into `~`.
 
-## More than just config
-
-The things that will be configured by the setup script are as follows:
-
-**dots**
+**configs**
 - tmux
 - zshrc & zprofile
 - gitconfig & git lfs
-
-**.config**
 - alacritty
 - ghostty
+- neofetch
 - nvim
 - ohmyposh
+- zed
+- vscode
 
-**vscode**
-- settings
-- keybindings
-- custom css
-- custom background
-
-**custom bins**
+**custom scripts**
 - pid script
 - tz script
 
