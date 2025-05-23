@@ -105,6 +105,19 @@ function commit() {
     git push
 }
 
+function nvm() {
+    export NVM_DIR="$HOME/.nvm"
+
+    if ! command -v nvm_ls >/dev/null 2>&1; then
+        echo "Loading nvm"
+        source "$NVM_DIR/nvm.sh"  # This loads nvm
+        source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+        nvm
+    else
+        command nvm "$@"
+    fi
+}
 
 # Shell integrations
 eval "$(fzf --zsh)"
