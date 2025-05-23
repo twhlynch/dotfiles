@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
+	vim.cmd("so $MYVIMRC")
 end)
 
 keymap.set({ "n", "v" }, "<leader>y", [["+y]])

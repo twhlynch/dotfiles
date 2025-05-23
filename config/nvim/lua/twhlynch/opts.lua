@@ -20,3 +20,5 @@ opt.signcolumn = "yes"
 opt.updatetime = 50
 opt.foldopen = "mark,percent,quickfix,search,tag,undo"
 opt.ignorecase = true
+opt.listchars = "tab:⤏ ,trail:~,extends:,precedes: "
+opt.list = true
