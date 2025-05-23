@@ -114,7 +114,8 @@
                 "enabled": false
             },
             "CallTimer": {
-                "enabled": true
+                "enabled": true,
+                "format": "stopwatch"
             },
             "ClearURLs": {
                 "enabled": false
@@ -211,9 +212,6 @@
             },
             "GreetStickerPicker": {
                 "enabled": true
-            },
-            "HideAttachments": {
-                "enabled": false
             },
             "iLoveSpam": {
                 "enabled": true
@@ -384,7 +382,9 @@
                 "enabled": true
             },
             "NoReplyMention": {
-                "enabled": false
+                "enabled": false,
+                "userList": "1234567890123445,1234567890123445",
+                "shouldPingListed": true
             },
             "NoScreensharePreview": {
                 "enabled": false
@@ -483,10 +483,16 @@
                                 "1261882655813668894",
                                 "1085662724320677908",
                                 "1221857193461153834",
-                                "1038925481669578823"
+                                "1038925481669578823",
+                                "1350990489574440991",
+                                "1375326085126033471",
+                                "1351338611458572372",
+                                "1361925532450553947"
                             ]
                         }
-                    ]
+                    ],
+                    "1342288329840005271": [],
+                    "1342291582954635397": []
                 },
                 "canCollapseDmSection": false
             },
@@ -507,7 +513,8 @@
                 "enabled": true
             },
             "QuickReply": {
-                "enabled": true
+                "enabled": true,
+                "shouldMention": 2
             },
             "ReactErrorDecoder": {
                 "enabled": false
@@ -521,7 +528,8 @@
                 "groups": true,
                 "servers": true,
                 "friends": true,
-                "friendRequestCancels": true
+                "friendRequestCancels": true,
+                "notices": false
             },
             "ReplaceGoogleSearch": {
                 "enabled": false
@@ -767,6 +775,9 @@
             },
             "BadgeAPI": {
                 "enabled": true
+            },
+            "HideMedia": {
+                "enabled": false
             }
         },
         "notifications": {
@@ -779,8 +790,9 @@
             "authenticated": false,
             "url": "https://api.vencord.dev/",
             "settingsSync": false,
-            "settingsSyncVersion": 1738246428736
-        }
+            "settingsSyncVersion": 1748028998432
+        },
+        "eagerPatches": false
     },
     "quickCss": ""
 }

@@ -13,6 +13,8 @@
  * @authorLink 
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 :root {
     --Channel-Invite-Edit-Buttons: flex;
 
@@ -27,6 +29,8 @@
     --Super-Reaction-Animations: flex;
 
     --Friends-List-Searchbar: flex;
+
+    --font-primary: "Inter", "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
 
 :root, .theme-dark {
@@ -133,11 +137,39 @@ main[class^="chatContent_"]::after {
     position: absolute;
     bottom: 0;
     right: 0;
-    width: min(50%, 500px);
+    width: 100% !important;
+    opacity: 0.15;
     height: 100%;
-    background-image: url("https://github.com/twhlynch/dotfiles/blob/fd893cd8ba65faa08fc4a074ea3bd9b05e9d74ed/vscode/background.png?raw=true");
+    background-image: url("https://raw.githubusercontent.com/twhlynch/halftones/refs/heads/main/example.svg");
     background-size: contain;
     background-position: bottom right;
     pointer-events: none;
     background-repeat: no-repeat;
+}
+
+/* hide member list when small */
+@media screen and (max-width: 800px) {
+    div:has(> aside[class^="membersWrap_"]) {
+        display: none !important;
+    }
+}
+
+/* list outliner thing */
+[id^="message-content-"]:has(li > span:hover) {
+    overflow: visible !important;
+}
+[id^="message-content-"] li > span:hover {
+    position: relative !important;
+}
+[id^="message-content-"] li > span:hover::after {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    content: "" !important;
+    outline: 2px solid red !important;
+    border-radius: 12px !important;
+    border: 3px solid transparent !important;
+    top: -3px !important;
+    left: -3px !important;
+    pointer-events: none !important;
 }
