@@ -38,6 +38,7 @@ return {
                 "html",
                 "clangd",
                 "cmake",
+                "emmet_ls",
                 "glsl_analyzer",
             },
             handlers = {
@@ -113,6 +114,22 @@ return {
                     lspconfig.cmake.setup {
                         capabilities = capabilities,
                         root_dir = lspconfig.util.root_pattern("CMakeLists.txt", ".git"),
+                    }
+                end,
+
+                ["emmet_ls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.emmet_ls.setup {
+                        capabilities = capabilities,
+                        filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+                        init_options = {
+                        html = {
+                            options = {
+                            -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+                                ["bem.enabled"] = true,
+                            },
+                        },
+                        }
                     }
                 end,
             }

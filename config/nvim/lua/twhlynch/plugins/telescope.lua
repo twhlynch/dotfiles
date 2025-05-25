@@ -18,7 +18,7 @@ return {
         vim.keymap.set('n', '<leader>f', builtin.find_files, { silent = true })
         vim.keymap.set("n", "<leader>g", builtin.live_grep, { silent = true })
         vim.keymap.set("n", "<leader>r", ":Telescope oldfiles<CR>", { silent = true })
-        vim.keymap.set('n', '<leader>h', builtin.help_tags, { desc = 'Telescope help tags' })
+        vim.keymap.set('n', '<leader>hh', builtin.help_tags, { desc = 'Telescope help tags' })
         vim.keymap.set('n', '<leader>c', builtin.commands, { desc = 'Telescope help tags' })
         vim.keymap.set('n', '<leader>co', builtin.colorscheme, { desc = 'Telescope help tags' })
         vim.keymap.set('n', '<leader>lt', builtin.treesitter, { desc = 'List functions' })

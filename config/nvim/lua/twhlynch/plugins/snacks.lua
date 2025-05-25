@@ -10,18 +10,7 @@ return {
     lazygit = { enabled = true },
     git = { enabled = true },
     image = { enabled = true },
-
     bigfile = { enabled = true },
-    -- explorer = { enabled = true },
-    -- indent = { enabled = true },
-    -- input = { enabled = true },
-    -- picker = { enabled = true },
-    -- notifier = { enabled = true },
-    -- quickfirollle = { enabled = true },
-    -- scope = { enabled = true },
-    scroll = { enabled = true },
-    -- statuscolumn = { enabled = true },
-    -- words = { enabled = true },
   },
   keys = {
     { "<leader>bg", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
