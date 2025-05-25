@@ -9,7 +9,10 @@ return {
     -- refer to the configuration section below
     lazygit = { enabled = true },
     git = { enabled = true },
-    image = { enabled = true },
+    image = {
+      enabled = true,
+      math = { enabled = true },
+    },
     bigfile = { enabled = true },
   },
   keys = {
