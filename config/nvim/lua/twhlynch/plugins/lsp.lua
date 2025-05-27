@@ -40,6 +40,7 @@ return {
                 "cmake",
                 "emmet_ls",
                 "glsl_analyzer",
+                "jdtls"
             },
             handlers = {
                 function(server_name)

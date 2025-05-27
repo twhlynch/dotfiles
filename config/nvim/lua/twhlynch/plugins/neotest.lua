@@ -1,0 +1,42 @@
+return {
+  -- {
+  --   "nvim-neotest/neotest",
+  --   dependencies = {
+  --     "nvim-neotest/nvim-nio",
+  --     "nvim-lua/plenary.nvim",
+  --     "antoinemadec/FixCursorHold.nvim",
+  --     "nvim-treesitter/nvim-treesitter",
+  --     "mfussenegger/nvim-jdtls",
+  --     "mfussenegger/nvim-dap", -- for the debugger
+  --     "rcarriga/nvim-dap-ui", -- recommended
+  --     "theHamsta/nvim-dap-virtual-text", -- recommended
+  --     "rcasia/neotest-java",
+  --   },
+  --   config = function()
+  --       require("neotest").setup({
+  --           adapters = {
+  --               require("neotest-java")({}),
+  --           },
+  --       })
+  --
+  --       vim.keymap.set("n", "<leader>tr", function()
+  --           require("neotest").run.run({
+  --               suite = false,
+  --               testify = true,
+  --           })
+  --       end, { desc = "Debug: Running Nearest Test" })
+  --
+  --       vim.keymap.set("n", "<leader>ta", function()
+  --           require("neotest").run.run({
+  --               suite = true,
+  --               testify = true,
+  --           })
+  --       end, { desc = "Debug: Running Test Suite" })
+  --
+  --       vim.keymap.set("n", "<leader>to", function()
+  --           require("neotest").output.open()
+  --       end, { desc = "Debug: Open test output" })
+  --
+  --   end
+  -- },
+}
