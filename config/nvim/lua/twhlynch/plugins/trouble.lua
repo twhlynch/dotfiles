@@ -9,6 +9,6 @@ return {
 			require("trouble").setup({
 				icons = true,
 			})
-		end
+		end,
 	},
 }

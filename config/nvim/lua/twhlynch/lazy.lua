@@ -11,17 +11,14 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup(
-	{
-		{ import = "twhlynch.plugins" }
+require("lazy").setup({
+	{ import = "twhlynch.plugins" },
+}, {
+	checker = {
+		enabled = true,
+		notify = false,
 	},
-	{
-		checker = {
-			enabled = true,
-			notify = false,
-		},
-		change_detection = {
-			enabled = false,
-		},
-	}
-)
+	change_detection = {
+		enabled = false,
+	},
+})

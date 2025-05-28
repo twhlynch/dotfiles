@@ -9,6 +9,9 @@ end)
 keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set("n", "<leader>F", vim.lsp.buf.format)
+-- keymap.set("n", "<leader>F", vim.lsp.buf.format)
+keymap.set("n", "<leader>F", function()
+	require("conform").format({ lsp_format = "fallback" })
+end)
 
-vim.keymap.set("n", "<leader>cell", "<cmd>CellularAutomaton make_it_rain<CR>")
+keymap.set("n", "<leader>cell", "<cmd>CellularAutomaton make_it_rain<CR>")

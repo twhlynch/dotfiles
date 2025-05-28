@@ -3,7 +3,8 @@ return {
 	-- event = "VeryLazy",
 	-- config = function()
 	-- 	require("fidget").setup({})
-
+	--
 	-- 	vim.notify = require("fidget").notify
 	-- end,
 }
+
