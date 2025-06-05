@@ -520,7 +520,7 @@
                 "enabled": false
             },
             "ReadAllNotificationsButton": {
-                "enabled": true
+                "enabled": false
             },
             "RelationshipNotifier": {
                 "enabled": true,
@@ -778,6 +778,9 @@
             },
             "HideMedia": {
                 "enabled": false
+            },
+            "DisableDeepLinks": {
+                "enabled": true
             }
         },
         "notifications": {
@@ -790,7 +793,7 @@
             "authenticated": false,
             "url": "https://api.vencord.dev/",
             "settingsSync": false,
-            "settingsSyncVersion": 1748028998432
+            "settingsSyncVersion": 1748614713606
         },
         "eagerPatches": false
     },
