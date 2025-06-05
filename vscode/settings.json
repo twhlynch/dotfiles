@@ -1,8 +1,4 @@
 {
-    "[python]": {
-        "editor.formatOnType": true
-    },
-    "tabnine.experimentalAutoImports": true,
     "workbench.colorCustomizations": {
         "selection.background": "#333",
         "toolbar.hoverBackground": "#333",
@@ -52,40 +48,6 @@
             }
         ]
     },
-    "editor.inlineSuggest.enabled": true,
-    "github.copilot.enable": {
-        "*": true,
-        "plaintext": true,
-        "markdown": true,
-        "scminput": false
-    },
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
-    "git.confirmSync": false,
-    "workbench.startupEditor": "none",
-    "git.enableSmartCommit": true,
-    "explorer.confirmPasteNative": false,
-    "security.workspace.trust.untrustedFiles": "open",
-    "java.configuration.runtimes": [
-        {
-            "name": "JavaSE-17",
-            "path": "/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home",
-            "default": true
-        }
-    ],
-    "github.copilot.editor.enableAutoCompletions": true,
-    // "background.customImages": [
-    //     "file:///Users/twhlynch/dotfiles/vscode/background.png"
-    // ],
-    // "background.useFront": true,
-    // "background.editor": {
-    //     "images": ["file:///Users/twhlynch/dotfiles/vscode/halftones.svg"],
-    //     "style": {
-    //         "background-position": "bottom center",
-    //         "background-size": "100% auto",
-    //         "opacity": 0.02
-    //     }
-    // },
     "background.panel": {
         "images": ["file:///Users/twhlynch/dotfiles/vscode/halftones.svg"],
         "style": {
@@ -94,49 +56,40 @@
             "opacity": 1
         }
     },
-    // "background.fullscreen": {
-    //     "images": ["file:///Users/twhlynch/dotfiles/vscode/halftones.svg"],
-    //     "opacity": 0.05,
-    //     "size": "contain",
-    //     "position": "bottom center"
-    // },
-    "github.copilot.preferredAccount": "twhlynch-rmit",
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "cmake.showOptionsMovedNotification": false,
-    "diffEditor.ignoreTrimWhitespace": false,
-    "workbench.activityBar.location": "top",
-    "database-client.autoSync": true,
-    "editor.codeActionsOnSave": {
-
-    },
     "vscode_custom_css.imports": [
         "file:///Users/twhlynch/dotfiles/vscode/vscode.css"
     ],
-    "cSpell.diagnosticLevel": "Hint",
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
+    "workbench.iconTheme": "vscode-icons",
+    "window.titleBarStyle": "custom",
     "editor.fontFamily": "'Hack Nerd Font', Menlo, Monaco, 'Courier New', monospace",
+    "cSpell.diagnosticLevel": "Hint",
+
     "editor.tabSize": 4,
     "editor.insertSpaces": false,
     "editor.accessibilitySupport": "off",
-    "[css]": {
-        "editor.suggest.insertMode": "replace",
-        "cSpell.fixSpellingWithRenameProvider": false
+    "editor.codeActionsOnSave": {},
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmPasteNative": false,
+    "workbench.startupEditor": "none",
+    "workbench.activityBar.location": "top",
+    "security.workspace.trust.untrustedFiles": "open",
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+
+    "tabnine.experimentalAutoImports": true,
+    "tabnine.codeLensEnabled": false,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "github.copilot.preferredAccount": "twhlynch-rmit",
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": false
     },
-    "workbench.editorAssociations": {
-        "*.copilotmd": "vscode.markdown.preview.editor",
-        "{hexdiff}:/**/*.*": "hexEditor.hexedit",
-        "*.svg": "default"
-    },
+
     "zig.zls.enabled": "on",
     "cmake.showConfigureWithDebuggerNotification": false,
     "cmake.automaticReconfigure": false,
@@ -146,23 +99,33 @@
     "cmake.enableAutomaticKitScan": false,
     "cmake.clearOutputBeforeBuild": false,
     "cmake.buildBeforeRun": false,
-    "@azure.argTenant": "",
-    "tabnine.codeLensEnabled": false,
-    "workbench.iconTheme": "vscode-icons",
-    "window.titleBarStyle": "custom",
-    "mssql.connectionGroups": [
+    "cmake.showOptionsMovedNotification": false,
+    "database-client.autoSync": true,
+    "java.configuration.runtimes": [
         {
-        "name": "ROOT",
-        "id": "A520B7DD-654F-427C-A873-6D56A84F6435"
+            "name": "JavaSE-17",
+            "path": "/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home",
+            "default": true
         }
     ],
-    "mssql.connections": [],
-    "yaml.schemas": {
-        "file:///Users/twhlynch/.vscode/extensions/atlassian.atlascode-3.8.0/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "atlascode.jira.lastCreateSiteAndProject": {
-        "siteId": "",
-        "projectKey": ""
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "atlascode.jira.todoIssues.enabled": false
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+        "editor.suggest.insertMode": "replace",
+        "cSpell.fixSpellingWithRenameProvider": false
+    },
+    "[python]": {
+        "editor.formatOnType": true
+    }
 }
