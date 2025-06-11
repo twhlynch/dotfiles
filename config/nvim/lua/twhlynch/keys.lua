@@ -15,3 +15,6 @@ keymap.set("n", "<leader>F", function()
 end)
 
 keymap.set("n", "<leader>cell", "<cmd>CellularAutomaton make_it_rain<CR>")
+
+vim.keymap.set("n", "<A-j>", "ddp", { noremap = true, silent = true })
+vim.keymap.set("n", "<A-k>", "ddkkp", { noremap = true, silent = true })
