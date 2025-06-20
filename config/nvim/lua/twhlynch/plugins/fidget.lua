@@ -7,4 +7,3 @@ return {
 	-- 	vim.notify = require("fidget").notify
 	-- end,
 }
-
