@@ -1,8 +1,8 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
@@ -12,10 +12,6 @@ return {
 	},
 
 	config = function()
-		vim.diagnostic.config({
-			float = { border = "rounded" },
-		})
-
 		local cmp = require("cmp")
 		local cmp_lsp = require("cmp_nvim_lsp")
 		local capabilities = vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities(), cmp_lsp.default_capabilities())
@@ -212,7 +208,9 @@ return {
 					vim.lsp.buf.definition()
 				end, opts)
 				vim.keymap.set("n", "K", function()
-					vim.lsp.buf.hover()
+					vim.lsp.buf.hover({
+						border = "rounded",
+					})
 				end, opts)
 				vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 				vim.keymap.set("n", "<leader>la", function()
