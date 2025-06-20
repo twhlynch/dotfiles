@@ -127,5 +127,6 @@
     },
     "[python]": {
         "editor.formatOnType": true
-    }
+    },
+    "python.languageServer": "Default"
 }
