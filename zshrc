@@ -77,6 +77,8 @@ alias .d='cd ~ && nvim dotfiles'
 alias .v='cd ~/dotfiles/config/nvim && nvim .'
 alias dots='cd ~/dotfiles && code .'
 
+alias v='nvim'
+
 alias ls='eza --group-directories-first'
 alias la='ls -la'
 alias lst='ls -T'
