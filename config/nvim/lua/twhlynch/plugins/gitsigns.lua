@@ -74,6 +74,6 @@ return {
 				map("n", "<leader>hd", gitsigns.diffthis)
 			end,
 		})
+		require("scrollbar.handlers.gitsigns").setup()
 	end,
 }
-
