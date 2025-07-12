@@ -12,6 +12,7 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 export PATH="$HOME/bin:$PATH"
+export PATH="/Applications/CMake.app/Contents/bin:$PATH"
 
 # zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
@@ -72,22 +73,23 @@ alias t='tmux'
 alias tx='tmux'
 
 alias .z='cd ~ && nvim .zshrc'
-alias .c='cd ~ && nvim .config'
-alias .d='cd ~ && nvim dotfiles'
+alias .c='cd ~/.config && nvim .'
+alias .d='cd ~/dotfiles && nvim .'
 alias .v='cd ~/dotfiles/config/nvim && nvim .'
 alias dots='cd ~/dotfiles && code .'
 
 alias v='nvim'
 
 alias ls='eza --group-directories-first'
+alias l='ls'
 alias la='ls -la'
-alias lst='ls -T'
-alias tree='ls -T'
+alias tree='ls --tree --git-ignore'
 
 alias cat='bat --paging=never -pp'
 
 alias f='fzf'
 alias fp='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
+alias hl='rg --passthru'
 
 alias mkdir='mkdir -p'
 
@@ -97,13 +99,19 @@ alias k='kill -9'
 alias neofetch='neofetch --ascii ~/.config/neofetch/ascii.txt'
 
 alias ..='cd ..'
+alias ...='cd ../..'
 
 alias path='echo -e ${PATH//:/\\n}'
 
 alias pyvenv='python3 -m venv .venv'
+alias pyserver='python3 -m http.server'
+
+function mk() {
+	mkdir -p $1 && cd $1
+}
 
 function commit() {
-    git add . 
+    git add .
     git commit -m "$*"
     git push
 }
