@@ -16,8 +16,8 @@ end)
 
 keymap.set("n", "<leader>cell", "<cmd>CellularAutomaton make_it_rain<CR>")
 
-vim.keymap.set("n", "<A-j>", "ddp", { noremap = true, silent = true })
-vim.keymap.set("n", "<A-k>", "ddkkp", { noremap = true, silent = true })
+keymap.set("n", "<A-j>", "ddp", { noremap = true, silent = true })
+keymap.set("n", "<A-k>", "ddkkp", { noremap = true, silent = true })
 
 -- h l to open close folds from Origami (https://github.com/chrisgrieser/nvim-origami/blob/main/lua/origami/features/fold-keymaps.lua)
 
@@ -51,9 +51,12 @@ local function l()
 	end
 end
 
-vim.keymap.set("n", "h", function()
+keymap.set("n", "h", function()
 	h()
 end, { desc = "Origami h" })
-vim.keymap.set("n", "l", function()
+keymap.set("n", "l", function()
 	l()
 end, { desc = "Origami l" })
+
+vim.api.nvim_create_user_command('W', 'w', { nargs = 0 })
+vim.api.nvim_create_user_command('Q', 'q', { nargs = 0 })
