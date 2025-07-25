@@ -87,10 +87,21 @@ if [ -d "bin" ]; then
 fi
 
 # apple defaults
+# Dock
 defaults write com.apple.dock autohide-delay -int 0
 defaults write com.apple.dock autohide-time-modifier -float 0.5
+defaults write com.apple.dock tilesize -int 40
+defaults write com.apple.dock show-process-indicators -int 1
+defaults write com.apple.dock show-recents -int 0
+defaults write com.apple.dock orientation -string bottom
+defaults write com.apple.dock mineffect -string scale
+defaults write com.apple.dock magnification -int 0
+# WindowManager
+defaults write com.apple.WindowManager EnableTiledWindowMargins -int 0
 # arc browser icon
 defaults write company.thebrowser.Browser currentAppIconName hologram
+
+killall Dock
 
 # reload
 exec zsh

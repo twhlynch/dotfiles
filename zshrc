@@ -92,6 +92,7 @@ alias fp='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}
 alias hl='rg --passthru'
 
 alias mkdir='mkdir -p'
+alias cp='cp -r'
 
 alias ka='killall'
 alias k='kill -9'
@@ -100,6 +101,19 @@ alias neofetch='neofetch --ascii ~/.config/neofetch/ascii.txt'
 
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
+alias ........='cd ../../../../../../..'
+alias .........='cd ../../../../../../../..'
+alias ..........='cd ../../../../../../../../..'
+alias ...........='cd ../../../../../../../../../..'
+function ..n() {
+	for (( i = 0; i < $1; i++ )) do
+		cd ..
+	done
+}
 
 alias path='echo -e ${PATH//:/\\n}'
 
@@ -111,23 +125,31 @@ function mk() {
 }
 
 function commit() {
-    git add .
-    git commit -m "$*"
-    git push
+	git add .
+	git commit -m "$*"
+	git push
 }
 
 function nvm() {
-    export NVM_DIR="$HOME/.nvm"
+	export NVM_DIR="$HOME/.nvm"
 
-    if ! command -v nvm_ls >/dev/null 2>&1; then
-        echo "Loading nvm"
-        source "$NVM_DIR/nvm.sh"  # This loads nvm
-        source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+	if ! command -v nvm_ls >/dev/null 2>&1; then
+		echo "Loading nvm"
+		source "$NVM_DIR/nvm.sh"  # This loads nvm
+		source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-        nvm
-    else
-        command nvm "$@"
-    fi
+		nvm
+	else
+		command nvm "$@"
+	fi
+}
+
+function mvn-init() {
+	mvn archetype:generate \
+		-DgroupId=com.twhlynch.$1 \
+		-DartifactId=$1 \
+		-DarchetypeArtifactId=maven-archetype-quickstart \
+		-DinteractiveMode=false
 }
 
 # Shell integrations
