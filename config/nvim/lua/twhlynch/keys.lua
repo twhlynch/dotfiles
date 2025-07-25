@@ -9,6 +9,8 @@ end)
 keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 keymap.set("n", "<leader>Y", [["+Y]])
 
+keymap.set("n", "<leader>A", "ggVG")
+
 -- keymap.set("n", "<leader>F", vim.lsp.buf.format)
 keymap.set("n", "<leader>F", function()
 	require("conform").format({ lsp_format = "fallback" })
