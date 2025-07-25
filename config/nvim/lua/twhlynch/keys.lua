@@ -98,3 +98,6 @@ i<!DOCTYPE html>
 </html>
 <Esc>13kf>la]]
 )
+
+keymap.set("n", "tt", "<cmd>b#<CR>")
+
