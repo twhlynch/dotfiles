@@ -79,4 +79,8 @@ function lib.format()
 	print("Formatted")
 end
 
+function lib.open_oil()
+	require("oil").open()
+end
+
 return lib

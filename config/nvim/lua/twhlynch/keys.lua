@@ -27,6 +27,8 @@ set({ "n" }, "<leader>cell", "<cmd>CellularAutomaton make_it_rain<CR>", desc("Ma
 set({ "n" }, "<leader>j", lib.jump_pair, desc("Jump file pair"))
 set({ "n" }, "<leader>F", lib.format, desc("Format current buffer"))
 set({ "n" }, "<leader>z", lib.toggle_wrap, desc("Toggle wrapping"))
+set({ "n", "x" }, "<leader>e", lib.open_oil, desc("Open File Explorer"))
+set({ "n" }, "<leader>u", vim.cmd.UndotreeToggle, desc("Toggle Undotree"))
 
 command("W", "w")
 command("Q", "q")
