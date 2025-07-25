@@ -14,6 +14,16 @@ keymap.set("n", "<leader>F", function()
 	require("conform").format({ lsp_format = "fallback" })
 end)
 
+keymap.set("n", "<leader>z", function()
+	if vim.wo.wrap then
+		vim.wo.wrap = false
+		print("Line wrapping is OFF")
+	else
+		vim.wo.wrap = true
+		print("Line wrapping is ON")
+	end
+end)
+
 keymap.set("n", "<leader>cell", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 keymap.set("n", "<A-j>", "ddp", { noremap = true, silent = true })
