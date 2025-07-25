@@ -38,7 +38,7 @@ return {
 
 		local opts = { noremap = true, silent = true }
 		vim.keymap.set("n", "<leader>pv", ":Neotree toggle<CR>", opts)
-		vim.keymap.set("n", "<leader>pc", ":Neotree toggle buffers<CR>", opts)
+		vim.keymap.set("n", "<leader>pb", ":Neotree toggle buffers<CR>", opts)
 		vim.keymap.set("n", "<leader>pm", ":Neotree toggle git_status<CR>", opts)
 	end,
 }
