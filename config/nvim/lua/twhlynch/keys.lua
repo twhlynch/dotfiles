@@ -1,130 +1,32 @@
+local lib = require("twhlynch.lib") -- functions
+
 vim.g.mapleader = " "
 
-local keymap = vim.keymap
+local set = vim.keymap.set
+local api = vim.api
 
-keymap.set("n", "<leader><leader>", function()
-	vim.cmd("so $MYVIMRC")
-end)
-
-keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-keymap.set("n", "<leader>Y", [["+Y]])
-
-keymap.set("n", "<leader>A", "ggVG")
-
--- keymap.set("n", "<leader>F", vim.lsp.buf.format)
-keymap.set("n", "<leader>F", function()
-	require("conform").format({ lsp_format = "fallback" })
-end)
-
-keymap.set("n", "<leader>z", function()
-	if vim.wo.wrap then
-		vim.wo.wrap = false
-		print("Line wrapping is OFF")
-	else
-		vim.wo.wrap = true
-		print("Line wrapping is ON")
-	end
-end)
-
-keymap.set("n", "<leader>cell", "<cmd>CellularAutomaton make_it_rain<CR>")
-
-keymap.set("n", "<A-j>", "ddp", { noremap = true, silent = true })
-keymap.set("n", "<A-k>", "ddkkp", { noremap = true, silent = true })
-
-keymap.set("v", "<", "<gv")
-keymap.set("v", ">", ">gv")
-
--- h l to open close folds from Origami (https://github.com/chrisgrieser/nvim-origami/blob/main/lua/origami/features/fold-keymaps.lua)
-
-local function normal(cmdStr)
-	vim.cmd.normal({ cmdStr, bang = true })
+local function desc(description)
+	return { noremap = true, silent = true, desc = description }
 end
 
--- `h` closes folds when at the beginning of a line.
-local function h()
-	local count = vim.v.count1 -- saved as `normal` affects it
-	for _ = 1, count, 1 do
-		local col = vim.api.nvim_win_get_cursor(0)[2]
-		if col == 0 then
-			local wasFolded = pcall(normal, "zc")
-			if not wasFolded then
-				normal("h")
-			end
-		else
-			normal("h")
-		end
-	end
+local function command(cmd, does)
+	api.nvim_create_user_command(cmd, does, { nargs = 0 })
 end
 
--- `l` on a folded line opens the fold.
-local function l()
-	local count = vim.v.count1 -- count needs to be saved due to `normal` affecting it
-	for _ = 1, count, 1 do
-		local isOnFold = vim.fn.foldclosed(".") > -1
-		local action = isOnFold and "zo" or "l"
-		pcall(normal, action)
-	end
-end
+set({ "n", "v" }, "<leader>y", [["+y]], desc("Yank to system clipboard"))
+set({ "n" }, "<leader>Y", [["+Y]], desc("Yank line to system clipboard"))
+set({ "n", "v" }, "<leader>A", "ggVG", desc("Select all"))
+set({ "n", "v" }, "<A-j>", "ddp", desc("Move line down"))
+set({ "n", "v" }, "<A-k>", "ddkkp", desc("Move line up"))
+set({ "v" }, "<", "<gv", desc("Unindent and stay in visual"))
+set({ "v" }, ">", ">gv", desc("Indent and stay in visual"))
+set({ "n" }, "tt", "<cmd>b#<CR>", desc("Jump to last buffer"))
+set({ "n" }, "h", lib.h, desc("Origami h"))
+set({ "n" }, "l", lib.l, desc("Origami l"))
+set({ "n" }, "<leader>cell", "<cmd>CellularAutomaton make_it_rain<CR>", desc("Make it rain"))
+set({ "n" }, "<leader>j", lib.jump_pair, desc("Jump file pair"))
+set({ "n" }, "<leader>F", lib.format, desc("Format current buffer"))
+set({ "n" }, "<leader>z", lib.toggle_wrap, desc("Toggle wrapping"))
 
-keymap.set("n", "h", function()
-	h()
-end, { desc = "Origami h" })
-keymap.set("n", "l", function()
-	l()
-end, { desc = "Origami l" })
-
-vim.api.nvim_create_user_command("W", "w", { nargs = 0 })
-vim.api.nvim_create_user_command("Q", "q", { nargs = 0 })
-
-keymap.set(
-	"n",
-	"<leader>html",
-	[[
-i<!DOCTYPE html>
-<html lang="en">
-<head>
-<title> </title>
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="favicon.png">
-
-<link rel="stylesheet" href="style.css">
-<script src="main.js" defer></script>
-</head>
-<body>
-
-</body>
-</html>
-<Esc>13kf>la]]
-)
-
-keymap.set("n", "tt", "<cmd>b#<CR>")
-
-keymap.set("n", "<leader>j", function()
-	local ext = vim.fn.expand("%:e")
-
-	local source_exts = { "c", "cpp", "frag" }
-	local header_exts = { "h", "hpp", "vert" }
-
-	local target_exts = nil
-	if vim.tbl_contains(header_exts, ext) then
-		target_exts = source_exts
-	elseif vim.tbl_contains(source_exts, ext) then
-		target_exts = header_exts
-	else
-		print("Not a recognized file pair.")
-		return
-	end
-
-	local base_name = vim.fn.expand("%:r")
-	for _, target_ext in ipairs(target_exts) do
-		local target_file = base_name .. "." .. target_ext
-		if vim.fn.filereadable(target_file) == 1 then
-			vim.cmd("edit " .. target_file)
-			return
-		end
-	end
-
-	print("Corresponding file not found.")
-end, { desc = "Jump pair" })
+command("W", "w")
+command("Q", "q")
