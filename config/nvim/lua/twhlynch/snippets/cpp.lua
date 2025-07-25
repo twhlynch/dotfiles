@@ -13,7 +13,7 @@ end
 
 return {
 	s(
-		{ trig = "header" },
+		"header",
 		fmta(
 			[[
     #ifndef <>
