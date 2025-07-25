@@ -73,8 +73,8 @@ keymap.set("n", "l", function()
 	l()
 end, { desc = "Origami l" })
 
-vim.api.nvim_create_user_command('W', 'w', { nargs = 0 })
-vim.api.nvim_create_user_command('Q', 'q', { nargs = 0 })
+vim.api.nvim_create_user_command("W", "w", { nargs = 0 })
+vim.api.nvim_create_user_command("Q", "q", { nargs = 0 })
 
 keymap.set(
 	"n",
