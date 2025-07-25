@@ -31,6 +31,9 @@ keymap.set("n", "<leader>cell", "<cmd>CellularAutomaton make_it_rain<CR>")
 keymap.set("n", "<A-j>", "ddp", { noremap = true, silent = true })
 keymap.set("n", "<A-k>", "ddkkp", { noremap = true, silent = true })
 
+keymap.set("v", "<", "<gv")
+keymap.set("v", ">", ">gv")
+
 -- h l to open close folds from Origami (https://github.com/chrisgrieser/nvim-origami/blob/main/lua/origami/features/fold-keymaps.lua)
 
 local function normal(cmdStr)
