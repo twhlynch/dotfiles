@@ -12,6 +12,7 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/dotfiles/bin:$PATH"
 export PATH="/Applications/CMake.app/Contents/bin:$PATH"
 
 # zsh plugins
