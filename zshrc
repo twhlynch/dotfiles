@@ -131,12 +131,45 @@ function mk() {
 	mkdir -p $1 && cd $1
 }
 
+# from dxrcy
+# github util
+GH='https://github.com'
+GH_MAIN='twhlynch'
+GHU="$GH/$GH_MAIN"
+
+alias gcl='git-clone-cd'
+alias ghu='gh-url'
+function gh-url() {
+	url="$1"
+	case "$url" in
+		'') return 1 ;;
+		@*) echo "$GH/${url:1}" ;;
+		:*) echo "$GHU/${url:1}" ;;
+		 *) echo "$url" ;;
+	esac
+}
+function git-clone-cd() {
+	url="$(gh-url $1)" || { git clone ; return $?; }
+	shift
+	git clone "$url" $* || return $?
+	target="$1"
+	if [ -z "$target" ]; then
+		target="$(echo "$url" \
+			| sed 's|/$||' \
+			| sed 's|\.git$||' \
+			| sed 's|^.*/||'\
+		)"
+	fi
+	cd "./$target"
+}
+
 function commit() {
 	git add .
 	git commit -m "$*"
 	git push
 }
 
+# lazy load slow af nvm
 function nvm() {
 	export NVM_DIR="$HOME/.nvm"
 
