@@ -141,6 +141,8 @@ function mk() {
 	mkdir -p $1 && cd $1
 }
 
+alias lg='lazygit'
+
 # from dxrcy
 # github util
 GH='https://github.com'
