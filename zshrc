@@ -32,7 +32,18 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 # Keybindings
 bindkey -e
 bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
+bindkey -v # vi mode
+export KEYTIMEOUT=1 # Remove timeout for <Esc>
+bindkey -v '^?' backward-delete-char # Fix backspace
+bindkey -M viins '\e\x7F' backward-kill-word # alt+backspace delete word
+# Use narrow cursor for insert mode, block cursor for normal mode
+zle-keymap-select() {
+	if [ "$KEYMAP" = "vicmd" ]
+		then echo -ne "\e[1 q"
+		else echo -ne "\e[5 q"
+	fi
+}; zle -N zle-keymap-select
+precmd() { echo -ne "\e[5 q" } # Narrow cursor on new prompt
 
 # History
 HISTSIZE=5000
