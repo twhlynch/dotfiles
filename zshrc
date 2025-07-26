@@ -30,8 +30,6 @@ zinit cdreplay -q
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
 # Keybindings
-bindkey -e
-bindkey '^p' history-search-backward
 bindkey -v # vi mode
 export KEYTIMEOUT=1 # Remove timeout for <Esc>
 bindkey -v '^?' backward-delete-char # Fix backspace
