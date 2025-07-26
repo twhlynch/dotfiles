@@ -33,7 +33,19 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 bindkey -v # vi mode
 export KEYTIMEOUT=1 # Remove timeout for <Esc>
 bindkey -v '^?' backward-delete-char # Fix backspace
-bindkey -M viins '\e\x7F' backward-kill-word # alt+backspace delete word
+# Alt+Backspace delete word
+bindkey -M viins '\e\x7F' backward-kill-word
+bindkey -M vicmd '\e\x7F' backward-kill-word
+# Alt+Left/Right to jump words in insert mode
+bindkey -M viins '^[b' backward-word
+bindkey -M viins '^[f' forward-word
+bindkey -M vicmd '^[b' backward-word
+bindkey -M vicmd '^[f' forward-word
+# Cmd+Left/Right to jump to start or end of line
+bindkey -M viins '^A' beginning-of-line
+bindkey -M viins '^E' end-of-line
+bindkey -s -M vicmd '^A' '^'
+bindkey -s -M vicmd '^E' '$'
 # Use narrow cursor for insert mode, block cursor for normal mode
 zle-keymap-select() {
 	if [ "$KEYMAP" = "vicmd" ]
