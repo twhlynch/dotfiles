@@ -75,6 +75,28 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls $realpath'
 
+# fzf style
+export FZF_DEFAULT_OPTS="
+	--height=99%
+	--layout=reverse
+	--pointer='█'
+	--scrollbar='▌'
+	--highlight-line
+	--color=hl:#f3be7c
+	--color=bg:-1
+	--color=gutter:-1
+	--color=bg+:#252530
+	--color=fg+:#aeaed1
+	--color=hl+:#f3be7c
+	--color=border:#606079
+	--color=prompt:#bb9dbd
+	--color=query:#aeaed1:bold
+	--color=pointer:#aeaed1
+	--color=scrollbar:#aeaed1
+	--color=info:#f3be7c
+	--color=spinner:#7fa563
+	"
+
 # Aliases
 alias c='clear'
 alias cl='clear'
