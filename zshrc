@@ -241,6 +241,16 @@ function mvn-init() {
 		-DinteractiveMode=false
 }
 
+function compile-commands() {
+	if [[ -z $1 ]]; then
+		echo "compile-commands path/to/PROJECT.xcodeproj build"
+		return
+	fi
+
+	xcodebuild -project $1 | \
+	xcpretty -r json-compilation-database --output $2/compile_commands.json
+}
+
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
