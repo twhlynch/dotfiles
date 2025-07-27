@@ -33,7 +33,7 @@ done
 
 # symlink .config folders
 if [ -d "config" ]; then
-  for name in alacritty nvim ohmyposh ghostty neofetch; do
+  for name in alacritty nvim ohmyposh ghostty neofetch lazygit; do
     if [ -d "config/$name" ]; then
       target="$HOME/.config/$name"
       backup $target
