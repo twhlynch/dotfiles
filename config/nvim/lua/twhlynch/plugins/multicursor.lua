@@ -18,7 +18,7 @@ return {
 		-- Add or skip adding a new cursor by matching word/selection
 		set({ "n", "x" }, "<leader>n", function()
 			mc.matchAddCursor(1)
-		end)
+		end, { desc = "New cursor at next occurance" })
 		-- set({ "n", "x" }, "<leader>N", function()
 		-- 	mc.matchAddCursor(-1)
 		-- end)

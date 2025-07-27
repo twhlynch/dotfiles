@@ -60,18 +60,20 @@ return {
 				end
 
 				-- Actions
-				map("n", "<leader>hs", gitsigns.stage_hunk)
-				map("n", "<leader>hr", gitsigns.reset_hunk)
+				map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "Stage hunk", noremap = true })
+				map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "Reset hunk", noremap = true })
 
 				map("v", "<leader>hs", function()
 					gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-				end)
+				end, { desc = "Stage hunk", noremap = true })
 
 				map("v", "<leader>hr", function()
 					gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-				end)
+				end, { desc = "Reset hunk", noremap = true })
 
-				map("n", "<leader>hd", gitsigns.diffthis)
+				map("n", "<leader>hd", gitsigns.diffthis, { desc = "Diff file", noremap = true })
+				map("n", '<leader>hp', gitsigns.preview_hunk, { desc = "Preview hunk", noremap = true })
+				map("n", "<leader>hi", gitsigns.preview_hunk_inline, { desc = "Preview hunk inline", noremap = true })
 			end,
 		})
 		require("scrollbar.handlers.gitsigns").setup()

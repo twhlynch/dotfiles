@@ -1,7 +1,7 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "v3.x",
-	keys = { "<leader>pv" },
+	keys = { "<leader>pv", "<leader>pm", "<leader>pb" },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
@@ -36,9 +36,8 @@ return {
 			},
 		})
 
-		local opts = { noremap = true, silent = true }
-		vim.keymap.set("n", "<leader>pv", ":Neotree toggle<CR>", opts)
-		vim.keymap.set("n", "<leader>pb", ":Neotree toggle buffers<CR>", opts)
-		vim.keymap.set("n", "<leader>pm", ":Neotree toggle git_status<CR>", opts)
+		vim.keymap.set("n", "<leader>pv", ":Neotree toggle<CR>", { desc = "File tree", noremap = true, silent = true })
+		vim.keymap.set("n", "<leader>pb", ":Neotree toggle buffers<CR>", { desc = "Buffer tree", noremap = true, silent = true })
+		vim.keymap.set("n", "<leader>pm", ":Neotree toggle git_status<CR>", { desc = "Diff tree", noremap = true, silent = true })
 	end,
 }
