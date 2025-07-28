@@ -73,7 +73,7 @@ return {
 
 				map("n", "<leader>hd", gitsigns.diffthis, { desc = "Diff file", noremap = true })
 				map("n", '<leader>hp', gitsigns.preview_hunk, { desc = "Preview hunk", noremap = true })
-				map("n", "<leader>hi", gitsigns.preview_hunk_inline, { desc = "Preview hunk inline", noremap = true })
+				-- map("n", "<leader>hi", gitsigns.preview_hunk_inline, { desc = "Preview hunk inline", noremap = true })
 			end,
 		})
 		require("scrollbar.handlers.gitsigns").setup()
