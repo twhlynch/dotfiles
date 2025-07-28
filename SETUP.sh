@@ -33,7 +33,7 @@ done
 
 # symlink .config folders
 if [ -d "config" ]; then
-  for name in alacritty nvim ohmyposh ghostty neofetch lazygit; do
+  for name in alacritty nvim ohmyposh ghostty neofetch lazygit bat; do
     if [ -d "config/$name" ]; then
       target="$HOME/.config/$name"
       backup $target
@@ -43,6 +43,9 @@ if [ -d "config" ]; then
     fi
   done
 fi
+
+# update bat theme
+bat cache --build
 
 # symlink specific .config files
 if [ -d "config" ]; then
