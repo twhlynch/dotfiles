@@ -47,7 +47,7 @@ if [ -d "config" ]; then
 fi
 
 # update bat theme
-bat cache --build
+bat cache --build > /dev/null
 echo "-----> Rebuilt bat cache"
 
 # ensure folders exist
@@ -67,7 +67,7 @@ if [ -d "config" ]; then
 fi
 
 # ensure vscode config folder exists
-mkdir -p $HOME/Library/Application Support/Code/User
+mkdir -p $HOME/Library/Application\ Support/Code/User
 
 # symlink vscode config
 if [ -d "vscode" ]; then
