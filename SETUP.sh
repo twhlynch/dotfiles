@@ -1,7 +1,6 @@
 #!/bin/zsh
 
-# functions from lewagon dots
-backup() {
+function backup() {
   target=$1
   if [ -e "$target" ]; then
     if [ ! -L "$target" ]; then
@@ -11,7 +10,7 @@ backup() {
   fi
 }
 
-symlink() {
+function symlink() {
   file=$1
   link=$2
   if [ ! -e "$link" ]; then
@@ -19,6 +18,9 @@ symlink() {
     ln -s $file $link
   fi
 }
+
+# ensure .config exists
+mkdir -p $HOME/.config
 
 # symlink main config files from $name to ~/.$name
 for name in zshrc zprofile tmux.conf gitconfig; do
@@ -46,6 +48,10 @@ fi
 
 # update bat theme
 bat cache --build
+echo "-----> Rebuilt bat cache"
+
+# ensure folders exist
+mkdir -p $HOME/.config/zed
 
 # symlink specific .config files
 if [ -d "config" ]; then
@@ -60,6 +66,9 @@ if [ -d "config" ]; then
   done
 fi
 
+# ensure vscode config folder exists
+mkdir -p $HOME/Library/Application Support/Code/User
+
 # symlink vscode config
 if [ -d "vscode" ]; then
   for name in settings.json keybindings.json; do
@@ -73,7 +82,7 @@ if [ -d "vscode" ]; then
   done
 fi
 
-# make custom bin if it doesn't exist
+# ensure bin folder exist
 mkdir -p $HOME/bin
 
 # symlink bin scripts
@@ -105,6 +114,8 @@ defaults write com.apple.WindowManager EnableTiledWindowMargins -int 0
 defaults write company.thebrowser.Browser currentAppIconName hologram
 
 killall Dock
+
+echo "-----> Setup macos defaults"
 
 # reload
 exec zsh
