@@ -82,6 +82,23 @@ if [ -d "vscode" ]; then
   done
 fi
 
+# ensure xcode config folder exists
+mkdir -p $HOME/Library/Developer/Xcode/UserData
+mkdir -p $HOME/Library/Developer/Xcode/UserData/FontAndColorThemes
+
+# symlink xcode config
+if [ -d "xcode" ]; then
+  for name in FontAndColorThemes/Vague.xccolortheme; do
+    if [ ! -d "xcode/$name" ]; then
+      target="$HOME/Library/Developer/Xcode/UserData/$name"
+      backup $target
+      symlink $PWD/xcode/$name $target
+    else
+      echo "-----> $name not found"
+    fi
+  done
+fi
+
 # ensure bin folder exist
 mkdir -p $HOME/bin
 
