@@ -77,6 +77,7 @@
     "git.confirmSync": false,
     "git.enableSmartCommit": true,
     "diffEditor.ignoreTrimWhitespace": false,
+    "update.showReleaseNotes": false
 
     "tabnine.experimentalAutoImports": true,
     "tabnine.codeLensEnabled": false,
