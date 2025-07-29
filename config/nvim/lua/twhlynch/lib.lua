@@ -83,4 +83,33 @@ function lib.open_oil()
 	require("oil").open()
 end
 
+local function desc(description)
+	return { noremap = true, silent = true, desc = description }
+end
+
+-- vscode like surround in visual mode
+
+local function surround(pref, suf, trigger)
+	vim.keymap.set({ "v" }, "s" .. trigger, "<esc>`<i" .. pref .. "<esc>`>la" .. suf .. "<esc>gvll", desc("Surround with " .. pref .. " " .. suf))
+end
+
+function lib.setup_surround(table)
+	for _, v in ipairs(table) do
+		local pref, suf, trig1, trig2 = v[1], v[2], v[3], v[4]
+		local p, s = pref:sub(1, 1), suf:sub(1, 1)
+
+		if trig1 ~= nil then
+			surround(pref, suf, trig1)
+		end
+		if trig2 ~= nil then
+			surround(pref, suf, trig2)
+		end
+
+		surround(pref, suf, p)
+		if p ~= s then
+			surround(pref, suf, s)
+		end
+	end
+end
+
 return lib

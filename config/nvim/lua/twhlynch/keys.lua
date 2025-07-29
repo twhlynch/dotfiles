@@ -36,6 +36,20 @@ set({ "n" }, "<leader>z", lib.toggle_wrap, desc("Toggle wrapping"))
 set({ "n", "x" }, "<leader>e", lib.open_oil, desc("Open File Explorer"))
 set({ "n" }, "<leader>u", vim.cmd.UndotreeToggle, desc("Toggle Undotree"))
 
+-- vscode like surround in visual mode
+lib.setup_surround({
+	{ '"', '"' },
+	{ "'", "'" },
+	{ "`", "`" },
+	{ "(", ")", "9", "0" },
+	{ "[", "]" },
+	{ "{", "}" },
+	{ "<", ">" },
+	{ "|", "|" },
+	{ "*", "*" },
+	{ "_", "_" },
+})
+
 -- mistypes
 command("W", "w")
 command("Q", "q")
