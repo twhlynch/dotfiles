@@ -99,6 +99,21 @@ if [ -d "xcode" ]; then
   done
 fi
 
+# ensure LaunchAgents folder exists
+mkdir $HOME/Library/LaunchAgents
+# symlink macos key remaps
+if [ -d "LaunchAgents" ]; then
+  for name in 'com.local.KeyRemapping.plist'; do
+    if [ ! -d "LaunchAgents/$name" ]; then
+      target="$HOME/Library/LaunchAgents/$name"
+      backup $target
+      symlink $PWD/LaunchAgents/$name $target
+    else
+      echo "-----> $name not found"
+    fi
+  done
+fi
+
 # ensure bin folder exist
 mkdir -p $HOME/bin
 
