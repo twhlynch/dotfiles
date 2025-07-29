@@ -124,6 +124,8 @@ if [ -d "bin" ]; then
       target="$HOME/bin/$name"
       backup $target
       symlink $PWD/bin/$name $target
+      chmod +x "$target"
+      chmod +x "$PWD/bin/$name"
     else
       echo "-----> $name not found"
     fi
