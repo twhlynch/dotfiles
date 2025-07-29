@@ -59,6 +59,23 @@ return {
 					vim.keymap.set(mode, l, r, opts)
 				end
 
+				-- Navigation
+				map("n", "]h", function()
+					if vim.wo.diff then
+						vim.cmd.normal({ "]h", bang = true })
+					else
+						gitsigns.nav_hunk("next")
+					end
+				end)
+
+				map("n", "[h", function()
+					if vim.wo.diff then
+						vim.cmd.normal({ "[h", bang = true })
+					else
+						gitsigns.nav_hunk("prev")
+					end
+				end)
+
 				-- Actions
 				map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "Stage hunk", noremap = true })
 				map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "Reset hunk", noremap = true })
