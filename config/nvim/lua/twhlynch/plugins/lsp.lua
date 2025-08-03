@@ -106,6 +106,7 @@ return {
 							"--header-insertion=iwyu",
 							"--suggest-missing-includes",
 						},
+						filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "h", "hpp", "hh", "m", "mm", "hh", "cc", "cxx", "hxx" },
 						root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
 					})
 				end,
