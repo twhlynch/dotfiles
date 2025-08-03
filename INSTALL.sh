@@ -4,41 +4,23 @@ if! command -v brew &> /dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+# fonts
 brew tap homebrew/cask-fonts
-
-# brew installs
-brew install ffmpeg
-brew install git
-brew install git-lfs
-brew install zoxide
-brew install fzf
-brew install tmux
-brew install bat
-brew install eza
-brew install tldr
-brew install thefuck
-brew install neovim
-brew install neofetch
-brew install lazygit
-brew install gh
-brew install ninja
-brew install btop
-brew install clang-format
-brew install zig
-brew install python@3.12
-brew install php
-brew install vlc
-brew install oh-my-posh
-brew install ripgrep
-brew install deno
-brew install --cask android-studio
-brew install --cask visual-studio-code
-brew install --cask ngrok
-brew install --cask temurin
-brew install --cask wine-stable
 brew install --cask font-hack-nerd-font
 brew install --cask font-jetbrains-mono-nerd-font
 brew install --cask font-meslo-lg-nerd-font
+
+# brew installs
+brew install ffmpeg git git-lfs neovim tmux zoxide fzf bat eza lazygit gh ninja btop clang-format zig python3 oh-my-posh ripgrep deno doxygen docker pnpm maven cargo stylua shfmt patchelf automake autoconf-archive gcc ncurses clang-tidy git-filter-repo neofetch tldr thefuck
+
+brew install texlive texlive-latex-extra ghostscript pdflatex basictex imagemagick
+sudo tlmgr install amsmath amssymb amsfonts amscd mathtools preview standalone varwidth needspace mdframed lipsum
+
+brew install --cask android-studio
+brew install --cask visual-studio-code
+brew install --cask temurin
+brew install --cask wine-stable
+
 brew install --cask ghostty
 brew install --cask raycast
 
@@ -51,3 +33,4 @@ nvm install node
 
 # xcode
 xcode-select --install
+sudo gem install xcpretty
