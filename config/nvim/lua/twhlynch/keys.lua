@@ -13,12 +13,7 @@ local function command(cmd, does)
 	api.nvim_create_user_command(cmd, does, { nargs = 0 })
 end
 
-set({ "n" }, "<leader>o", ":so<CR>", desc("Source current file"))
-set({ "n" }, "<leader>w", ":write<CR>", desc("Write current file"))
-set({ "n" }, "<leader>q", ":quit<CR>", desc("Quit"))
 set({ "n", "v", "x" }, "<leader>y", '"+y', desc("Yank to system clipboard"))
-set({ "n", "v", "x" }, "<leader>d", '"+d', desc("Delete to system clipboard"))
-set({ "n" }, "<leader>Y", '"+Y', desc("Yank line to system clipboard"))
 set({ "n" }, "<leader>A", "ggVG", desc("Select all"))
 set({ "n" }, "<A-j>", "ddp", desc("Move line down"))
 set({ "n" }, "<A-k>", "ddkkp", desc("Move line up"))
