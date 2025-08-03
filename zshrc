@@ -251,3 +251,8 @@ function compile-commands() {
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(thefuck --alias)"
+
+
+# BEGIN opam configuration
+[[ ! -r '/Users/twhlynch/.opam/opam-init/init.zsh' ]] || source '/Users/twhlynch/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+# END opam configuration

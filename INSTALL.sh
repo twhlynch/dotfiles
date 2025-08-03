@@ -11,7 +11,7 @@ brew install --cask font-jetbrains-mono-nerd-font
 brew install --cask font-meslo-lg-nerd-font
 
 # brew installs
-brew install ffmpeg git git-lfs neovim tmux zoxide fzf bat eza lazygit gh ninja btop clang-format zig python3 oh-my-posh ripgrep deno doxygen docker pnpm maven cargo stylua shfmt patchelf automake autoconf-archive gcc ncurses clang-tidy git-filter-repo neofetch tldr thefuck
+brew install ffmpeg git git-lfs neovim tmux zoxide fzf bat eza lazygit gh ninja btop clang-format zig python3 oh-my-posh ripgrep deno doxygen docker pnpm maven cargo stylua shfmt patchelf automake autoconf-archive gcc ncurses clang-tidy git-filter-repo neofetch tldr thefuck opam rlwrap
 
 brew install texlive texlive-latex-extra ghostscript pdflatex basictex imagemagick
 sudo tlmgr install amsmath amssymb amsfonts amscd mathtools preview standalone varwidth needspace mdframed lipsum
