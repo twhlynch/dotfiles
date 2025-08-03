@@ -32,6 +32,16 @@ return {
 						end
 					end,
 				},
+				-- {
+				-- 	event = "WinScrolled",
+				-- 	handler = function()
+				-- 		if vim.bo.filetype == "neo-tree" or vim.bo.filetype == "oil" then
+				-- 			vim.cmd([[setlocal mousescroll=ver:1,hor:0]])
+				-- 		else
+				-- 			vim.cmd([[setlocal mousescroll=ver:1,hor:1]])
+				-- 		end
+				-- 	end,
+				-- }
 			},
 		})
 

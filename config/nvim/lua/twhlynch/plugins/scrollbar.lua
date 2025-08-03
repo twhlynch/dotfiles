@@ -7,6 +7,13 @@ return {
 				"nowrite",
 				"nofile",
 			},
+			handlers = {
+				cursor = true,
+				diagnostic = true,
+				gitsigns = true,
+				handle = true,
+				-- search = true,
+			},
 		})
 	end,
 }
