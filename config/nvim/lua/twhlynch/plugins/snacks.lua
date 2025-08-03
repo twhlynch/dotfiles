@@ -5,29 +5,21 @@ return {
 	opts = {
 		lazygit = { enabled = true },
 		git = { enabled = true },
+		bigfile = { enabled = true },
 		picker = { enabled = true },
 		image = {
 			enabled = true,
 			math = { enabled = true },
 		},
-		bigfile = { enabled = true },
+		notifier = {
+			enabled = true,
+			timeout = 5000,
+		},
 	},
 	keys = {
-		{
-			"<leader>bg",
-			function()
-				Snacks.gitbrowse()
-			end,
-			desc = "Git Browse",
-			mode = { "n", "v" },
-		},
-		{
-			"<leader>lg",
-			function()
-				Snacks.lazygit()
-			end,
-			desc = "Lazygit",
-		},
+		{ "<leader>bg", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
+		{ "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
+
 		{ "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
 		{ "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
 		{ "<leader>u", function() Snacks.picker.undo() end, desc = "Undo History" },
