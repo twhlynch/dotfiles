@@ -33,6 +33,7 @@ return {
 				"emmet_ls",
 				"glsl_analyzer",
 				"jdtls",
+				"texlab",
 			},
 			handlers = {
 				function(server_name)
