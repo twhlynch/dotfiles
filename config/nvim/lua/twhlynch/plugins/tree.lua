@@ -19,15 +19,14 @@ return {
 				filtered_items = {
 					hide_dotfiles = false,
 					hide_gitignored = false,
-					hide_hidden = true, -- only works on Windows for hidden files/directories
-					hide_by_name = { "node_modules" },
+					hide_hidden = false,
+					hide_by_name = {},
 				},
 			},
 			event_handlers = {
 				{
 					event = "vim_buffer_enter",
 					handler = function()
-						-- removes disables "set number" in neotree window
 						if vim.bo.filetype == "neo-tree" then
 							vim.cmd([[setlocal fillchars=eob:\ ]])
 						end

@@ -41,7 +41,6 @@ return {
 			end)
 		end)
 
-		-- Customize how cursors look.
 		local hl = vim.api.nvim_set_hl
 		hl(0, "MultiCursorCursor", { reverse = true })
 		hl(0, "MultiCursorVisual", { link = "Visual" })

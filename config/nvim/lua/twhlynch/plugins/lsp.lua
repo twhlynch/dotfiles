@@ -189,14 +189,13 @@ return {
 				{ name = "path" },
 				{ name = "cmdline" },
 				{ name = "buffer" },
-				-- { name = "copilot", group_index = 2 },
 			}, {}),
 		})
 
 		local autocmd = vim.api.nvim_create_autocmd
 		autocmd({ "BufEnter", "BufWinEnter" }, {
 			pattern = { "*.vert", "*.frag" },
-			callback = function(e)
+			callback = function(_)
 				vim.cmd("set filetype=glsl")
 			end,
 		})
