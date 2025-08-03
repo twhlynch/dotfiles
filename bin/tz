@@ -1,13 +1,15 @@
 #!/bin/bash
 
+export INFO='get various timezones times now'
+
 print_time() {
-    local timezone=$1
-    local label=$2
-    local highlight=$3
+	local timezone=$1
+	local label=$2
+	local highlight=$3
 
-    local RESET="\033[0m"
+	local RESET="\033[0m"
 
-    echo -e "${highlight}$label${RESET} $(TZ=$timezone date +'%I:%M\033[90m%p %d %b')${RESET}"
+	echo -e "${highlight}$label${RESET} $(TZ=$timezone date +'%I:%M\033[90m%p %d %b')${RESET}"
 }
 
 print_time "UTC-12" "NZST" ""
