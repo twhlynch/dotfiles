@@ -205,8 +205,11 @@ return {
 		autocmd("LspAttach", {
 			callback = function(e)
 				local opts = { buffer = e.buf }
-				vim.keymap.set("n", "gd", function()
+				vim.keymap.set("n", "Gd", function()
 					vim.lsp.buf.definition()
+				end, opts)
+				vim.keymap.set("n", "Gr", function()
+					vim.lsp.buf.references()
 				end, opts)
 				vim.keymap.set("n", "K", function()
 					vim.lsp.buf.hover({
