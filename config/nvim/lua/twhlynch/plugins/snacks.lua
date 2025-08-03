@@ -5,6 +5,7 @@ return {
 	opts = {
 		lazygit = { enabled = true },
 		git = { enabled = true },
+		picker = { enabled = true },
 		image = {
 			enabled = true,
 			math = { enabled = true },
@@ -27,5 +28,6 @@ return {
 			end,
 			desc = "Lazygit",
 		},
+		{ "<leader>u", function() Snacks.picker.undo() end, desc = "Undo History" },
 	},
 }

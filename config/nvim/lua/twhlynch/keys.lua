@@ -34,7 +34,6 @@ set({ "n" }, "<leader>jp", lib.jump_pair, desc("Jump file pair"))
 set({ "n" }, "<leader>lf", lib.format, desc("Format current buffer"))
 set({ "n" }, "<leader>z", lib.toggle_wrap, desc("Toggle wrapping"))
 set({ "n", "x" }, "<leader>e", lib.open_oil, desc("Open File Explorer"))
-set({ "n" }, "<leader>u", vim.cmd.UndotreeToggle, desc("Toggle Undotree"))
 set({ "n" }, "<leader>X", ":!chmod +x %<CR><CR>:set filetype=sh<CR>", desc("Chmod +x and set .sh"))
 
 -- vscode like surround in visual mode
