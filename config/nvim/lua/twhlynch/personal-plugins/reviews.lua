@@ -3,7 +3,7 @@ local M = {}
 local all_comments = {}
 local last_fetch_time = 0
 local REFRESH_INTERVAL = 1800 -- 30 minutes
-local DEBUG = false
+local DEBUG = true
 
 local ns = vim.api.nvim_create_namespace("pr_review_comments")
 vim.api.nvim_set_hl(0, "ReviewCommentVirtualText", { fg = "#7E98E8", bg = "NONE", italic = true })
@@ -90,31 +90,37 @@ function M.get_pr_review_comments()
 		job_async({ "git", "rev-parse", "--abbrev-ref", "HEAD" }, function(current_branch)
 			current_branch = vim.trim(current_branch)
 
-			-- get latest open pr from current branch
-			debug("get pr")
-			job_async({ "gh", "pr", "list", "--head", current_branch, "--state", "open", "--json", "number", "-q", ".[0].number" }, function(pr_number)
-				pr_number = vim.trim(pr_number)
-				if pr_number == "" then -- no pr found
-					return
-				end
+			-- check internet
+			debug("check internet")
+			job_async({ " ping", "-c", "1", "8.8.8.8" }, function(_)
+				-- spacer :3
 
-				-- get upstream repo name
-				debug("get upstream name")
-				job_async({ "gh", "repo", "view", "--json", "owner,name", "-q", '"\\(.owner.login)/\\(.name)"' }, function(repo_name)
-					repo_name = vim.trim(repo_name)
-					if repo_name == "" then
-						vim.notify("Could not determine repository name.", vim.log.levels.ERROR)
+				-- get latest open pr from current branch
+				debug("get pr")
+				job_async({ "gh", "pr", "list", "--head", current_branch, "--state", "open", "--json", "number", "-q", ".[0].number" }, function(pr_number)
+					pr_number = vim.trim(pr_number)
+					if pr_number == "" then -- no pr found
 						return
 					end
 
-					-- get review comments
-					debug("get comments")
-					local api_path = string.format("repos/%s/pulls/%s/comments", repo_name, pr_number)
-					job_async({ "gh", "api", api_path, "--jq", "[.[] | {author: .user.login, path: .path, line: .original_line, body: .body}]" }, process_comments_response, handle_error)
-				end, handle_error) -- repo name
-			end, handle_error) -- latest pr
-		end, handle_error) -- branch
-	end, nil) -- is repo
+					-- get upstream repo name
+					debug("get upstream name")
+					job_async({ "gh", "repo", "view", "--json", "owner,name", "-q", '"\\(.owner.login)/\\(.name)"' }, function(repo_name)
+						repo_name = vim.trim(repo_name)
+						if repo_name == "" then
+							vim.notify("Could not determine repository name.", vim.log.levels.ERROR)
+							return
+						end
+
+						-- get review comments
+						debug("get comments")
+						local api_path = string.format("repos/%s/pulls/%s/comments", repo_name, pr_number)
+						job_async({ "gh", "api", api_path, "--jq", "[.[] | {author: .user.login, path: .path, line: .original_line, body: .body}]" }, process_comments_response, handle_error)
+					end, handle_error) -- repo name
+				end, handle_error) -- latest pr
+			end, nil) -- fail silently if no wifi
+		end, nil) -- branch (fails if no commits)
+	end, nil) -- is repo (fails if no repo)
 end
 
 function M.show_comments_in_buffer()
