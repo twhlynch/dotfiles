@@ -193,16 +193,6 @@ function git-clone-cd() {
 	cd "./$target"
 }
 
-function tag() {
-	if [[ -z $1 ]]; then
-		echo "tag tag_name"
-		return
-	fi
-
-	git tag -a $1 $(git rev-parse HEAD)
-	echo "Tagged \"$(git log -1 --pretty=%B)\" ($(git log -1 --pretty=%h))"
-}
-
 function commit() {
 	git add .
 	git commit -m "$*"
