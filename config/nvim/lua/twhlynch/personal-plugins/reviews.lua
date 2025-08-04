@@ -3,7 +3,7 @@ local M = {}
 local all_comments = {}
 local last_fetch_time = 0
 local REFRESH_INTERVAL = 1800 -- 30 minutes
-local DEBUG = true
+local DEBUG = false
 
 local ns = vim.api.nvim_create_namespace("pr_review_comments")
 vim.api.nvim_set_hl(0, "ReviewCommentVirtualText", { fg = "#7E98E8", bg = "NONE", italic = true })
