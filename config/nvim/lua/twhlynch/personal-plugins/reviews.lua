@@ -92,7 +92,7 @@ function M.get_pr_review_comments()
 
 			-- check internet
 			debug("check internet")
-			job_async({ " ping", "-c", "1", "8.8.8.8" }, function(_)
+			job_async({ "ping", "-c", "1", "8.8.8.8" }, function(_)
 				-- spacer :3
 
 				-- get latest open pr from current branch
