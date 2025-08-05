@@ -10,6 +10,12 @@ return {
 		image = {
 			enabled = true,
 			math = { enabled = true },
+			convert = {
+				notify = false,
+				magick = {
+					vector = { "-density", 192, "-background", "none", "{src}[0]" },
+				},
+			},
 		},
 		notifier = {
 			enabled = true,
