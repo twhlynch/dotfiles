@@ -34,6 +34,7 @@ return {
 				"glsl_analyzer",
 				"jdtls",
 				"texlab",
+				"ocamllsp"
 			},
 			handlers = {
 				function(server_name)
@@ -132,6 +133,15 @@ return {
 								},
 							},
 						},
+					})
+				end,
+
+				["ocamllsp"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.ocamllsp.setup({
+						filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
+						root_dir = lspconfig.util.root_pattern("*.opam", "esy.json", "package.json", ".git", "dune-project", "dune-workspace", "main.ml"),
+						capabilities = capabilities,
 					})
 				end,
 			},
