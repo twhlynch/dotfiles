@@ -90,24 +90,26 @@ end
 -- vscode like surround in visual mode
 
 local function surround(pref, suf, trigger)
-	vim.keymap.set({ "v" }, "s" .. trigger, "<esc>`<i" .. pref .. "<esc>`>la" .. suf .. "<esc>gvll", desc("Surround with " .. pref .. " " .. suf))
+	local mov_right = string.rep("l", #pref)
+	local adjust_selection = string.rep("l", #pref + #suf)
+	vim.keymap.set({ "v" }, "s" .. trigger, "<esc>`<i" .. pref .. "<esc>`>" .. mov_right .. "a" .. suf .. "<esc>gv" .. adjust_selection, desc("Surround with " .. pref .. " " .. suf))
 end
 
-function lib.setup_surround(table)
-	for _, v in ipairs(table) do
-		local pref, suf, trig1, trig2 = v[1], v[2], v[3], v[4]
-		local p, s = pref:sub(1, 1), suf:sub(1, 1)
+function lib.setup_surround(tbl)
+	for _, surr in ipairs(tbl) do
+		local pref = table.remove(surr, 1)
+		local suf = table.remove(surr, 1)
 
-		if trig1 ~= nil then
-			surround(pref, suf, trig1)
-		end
-		if trig2 ~= nil then
-			surround(pref, suf, trig2)
+		for _, trigger in ipairs(surr) do
+			surround(pref, suf, trigger)
 		end
 
-		surround(pref, suf, p)
-		if p ~= s then
-			surround(pref, suf, s)
+		if #surr == 0 then
+			local p, s = pref:sub(1, 1), suf:sub(1, 1)
+			surround(pref, suf, p)
+			if p ~= s then
+				surround(pref, suf, s)
+			end
 		end
 	end
 end
