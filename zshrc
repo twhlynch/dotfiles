@@ -247,3 +247,6 @@ eval "$(thefuck --alias)"
 # BEGIN opam configuration
 [[ ! -r '/Users/twhlynch/.opam/opam-init/init.zsh' ]] || source '/Users/twhlynch/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
+
+# auto open tmux in session or create session
+tmux a > /dev/null 2>&1 && tmux > /dev/null 2>&1
