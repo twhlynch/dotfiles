@@ -30,6 +30,7 @@ return {
 		{ "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
 		{ "<leader>u", function() Snacks.picker.undo() end, desc = "Undo History" },
 		{ "<leader>f", function() Snacks.picker.files() end, desc = "Find Files" },
+		{ "<leader>s", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
 		{ "<leader>r", function() Snacks.picker.recent() end, desc = "Recent" },
 		{ "<leader>F", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
 		{ "<leader>hh", function() Snacks.picker.help() end, desc = "Help Pages" },
