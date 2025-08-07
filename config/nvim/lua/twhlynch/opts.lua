@@ -23,4 +23,5 @@ opt.ignorecase = true
 opt.listchars = "tab:⤏ ,trail:~,extends:,precedes: "
 opt.list = true
 opt.winborder = "rounded"
+opt.splitright = true
 vim.g.tex_flavor = "latex"
