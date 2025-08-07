@@ -8,6 +8,8 @@
   "cmp-path": { "branch": "main", "commit": "c6635aae33a50d6010bf1aa756ac2398a2d54c32" },
   "cmp-tw2css": { "branch": "main", "commit": "1abe0eebcb57fcbd5538d054f0db61f4e4a1302b" },
   "conform.nvim": { "branch": "master", "commit": "8132ec733eed3bf415b97b76797ca41b59f51d7d" },
+  "fff.nvim": { "branch": "main", "commit": "3fd35a40faa8d51db96bd5d9c7c389c7ecd5e1fa" },
+  "fishtank.nvim": { "branch": "main", "commit": "f67f8d755c16761458536cf8dfe6f4bea0b8ad38" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "gitsigns.nvim": { "branch": "main", "commit": "88205953bd748322b49b26e1dfb0389932520dc9" },
   "harpoon": { "branch": "harpoon2", "commit": "ed1f853847ffd04b2b61c314865665e1dadf22c7" },
