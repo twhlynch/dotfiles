@@ -106,6 +106,7 @@ alias qq='exit'
 
 alias t='tmux'
 alias tx='tmux'
+alias ta='tmux a'
 
 alias .z='cd ~ && nvim .zshrc'
 alias .c='cd ~/.config && nvim .'
