@@ -138,7 +138,7 @@ alias tree='ls --tree --git-ignore'
 
 alias cat='bat --paging=never -pp'
 
-alias f='fzf'
+alias f='cd "$(find . -type d -maxdepth 1 -not -path "." | sed s/.\\/// | fzf)"'
 alias fp='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
 alias hl='rg --passthru'
 
