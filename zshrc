@@ -43,14 +43,18 @@ bindkey -M viins '^A' beginning-of-line
 bindkey -M viins '^E' end-of-line
 bindkey -s -M vicmd '^A' '^'
 bindkey -s -M vicmd '^E' '$'
-# Use narrow cursor for insert mode, block cursor for normal mode
+# use bar cursor for insert mode, block cursor for normal mode
+_bar_cursor() { echo -ne "\e[5 q" }
+_block_cursor() { echo -ne "\e[1 q" }
 zle-keymap-select() {
 	if [ "$KEYMAP" = "vicmd" ]
-		then echo -ne "\e[1 q"
-		else echo -ne "\e[5 q"
+		then _block_cursor
+		else _bar_cursor
 	fi
-}; zle -N zle-keymap-select
-precmd() { echo -ne "\e[5 q" } # Narrow cursor on new prompt
+}
+zle -N zle-keymap-select
+_bar_cursor # bar cursor on startup
+precmd_functions+=(_bar_cursor) # bar cursor on new prompt
 
 # History
 HISTSIZE=5000
