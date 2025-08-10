@@ -123,7 +123,6 @@ alias .z='cd ~ && nvim .zshrc'
 alias .c='cd ~/.config && nvim .'
 alias .d='cd ~/dotfiles && nvim .'
 alias .v='cd ~/dotfiles/config/nvim && nvim .'
-alias dots='cd ~/dotfiles && code .'
 
 alias v='nvim'
 
