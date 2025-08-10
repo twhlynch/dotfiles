@@ -27,6 +27,7 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
 # Keybindings
 bindkey -v # vi mode
+bindkey -ar ":" # remove command mode
 export KEYTIMEOUT=1 # Remove timeout for <Esc>
 bindkey -v '^?' backward-delete-char # Fix backspace
 # Alt+Backspace delete word
