@@ -1,14 +1,24 @@
 return {
 	{ "eandrju/cellular-automaton.nvim" },
 	{
-		"nullromo/fishtank.nvim",
+		-- "nullromo/fishtank.nvim",
+		"twhlynch/fishtank.nvim", -- until my pr is merged
 		opts = {
 			screensaver = {
 				enabled = true,
 				timeout = 1000 * 60, -- 1 minute
 				sprite = {
-					right = "><>",
-					left = "<><",
+					right = ">< °>",
+					left = "<° ><",
+					-- -- fish collection --
+					--    ><^, ⋗  ⋖ ⹁^><
+					--     >< ^>  <^ ><
+					--      >< ⋗  ⋖ ><
+					--       ><>  <><
+					--     >< *>  <* ><
+					--     >< °>  <° ><
+					--  ><((((•>  <•))))><
+					--   ><(((*>  <*)))><
 				},
 			},
 		},
