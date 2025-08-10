@@ -94,6 +94,17 @@ export FZF_DEFAULT_OPTS="
 	"
 
 # Aliases
+alias ,='abandon'
+alias ,,='abandon-exit'
+
+function abandon() {
+	eval $* & disown
+}
+function abandon-exit() {
+	abandon $*
+	exit
+}
+
 alias c='clear'
 alias cl='clear'
 alias cls='clear'
