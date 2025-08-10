@@ -264,4 +264,4 @@ eval "$(thefuck --alias)"
 # END opam configuration
 
 # auto open tmux in session or create session
-tmux a > /dev/null 2>&1 && tmux > /dev/null 2>&1
+tmux a > /dev/null 2>&1 || tmux > /dev/null 2>&1
