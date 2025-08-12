@@ -3,6 +3,7 @@ local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
 local f = ls.function_node
+local rep = require("luasnip.extras").rep
 local fmta = require("luasnip.extras.fmt").fmta
 
 local function header_guard()
@@ -26,6 +27,38 @@ return {
 				f(header_guard),
 				i(1),
 				f(header_guard),
+			}
+		)
+	),
+	s("w", t("World::GetSharedInstance()")),
+	s("W", t("World* world = World::GetSharedInstance();")),
+	s("log", t("RNDebug();")),
+	s("str", t('RNSTR("")')),
+	s(
+		"traverse",
+		fmta(
+			[[
+	Traverse([&](SceneNode *node) {
+		<>
+	});
+	]],
+			{
+				i(1),
+			}
+		)
+	),
+	s(
+		"enumerate",
+		fmta(
+			[[
+	Enumerate<<<>>>([&](<> *element, size_t index, bool &stop) {
+		<>
+	});
+	]],
+			{
+				i(1, "Type"),
+				rep(1),
+				i(2),
 			}
 		)
 	),
