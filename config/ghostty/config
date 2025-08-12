@@ -27,7 +27,7 @@ resize-overlay = never
 
 macos-option-as-alt = left
 keybind = cmd+backspace=text:\x15
-keybind = cmd+t=toggle_quick_terminal
+keybind = global:cmd+grave_accent=toggle_quick_terminal
 
 confirm-close-surface = false
 quit-after-last-window-closed = true
