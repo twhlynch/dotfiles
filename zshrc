@@ -120,6 +120,9 @@ alias :Q='exit'
 alias q='exit'
 alias qq='exit'
 
+alias :w='echo dumbass'
+alias lf:w='echo dumbass'
+
 alias t='tmux'
 alias tx='tmux'
 alias ta='tmux a'
