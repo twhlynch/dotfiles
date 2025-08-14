@@ -114,6 +114,8 @@ alias c='clear'
 alias cl='clear'
 alias cls='clear'
 
+alias zr='unalias -a; source ~/.zshrc'
+
 alias :q='exit'
 alias :wq='exit'
 alias :Q='exit'
