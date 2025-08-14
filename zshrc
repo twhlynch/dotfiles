@@ -180,6 +180,14 @@ function mk() {
 
 alias lg='lazygit'
 
+function crun() {
+	version=$1
+	shift
+	name="${1%.*}"
+	echo "g++ -std=c++$version -o \"$name\" $@ && ./$name"
+	g++ -std=c++$version -o "$name" $@ && "./$name"
+}
+
 # from dxrcy
 # github util
 GH='https://github.com'
