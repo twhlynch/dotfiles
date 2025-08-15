@@ -10,17 +10,21 @@ brew install --cask font-hack-nerd-font
 brew install --cask font-jetbrains-mono-nerd-font
 brew install --cask font-meslo-lg-nerd-font
 
-# brew installs
-brew install ffmpeg git git-lfs neovim tmux zoxide fzf bat eza lazygit gh ninja btop clang-format zig python3 oh-my-posh ripgrep deno doxygen docker pnpm maven cargo stylua shfmt patchelf automake autoconf-archive gcc ncurses clang-tidy git-filter-repo neofetch tldr thefuck opam rlwrap
+# installs
+brew install ffmpeg git git-lfs neovim tmux zoxide fzf bat eza lazygit gh ninja btop clang-format zig oh-my-posh ripgrep deno doxygen docker pnpm maven cargo stylua shfmt patchelf automake autoconf-archive gcc ncurses clang-tidy git-filter-repo neofetch tldr thefuck opam rlwrap
 
+# python
+brew install python3 python3.9 python3.10 python3.12 python3.13
+
+# latex
 brew install texlive texlive-latex-extra ghostscript pdflatex basictex imagemagick
 sudo tlmgr install amsmath amssymb amsfonts amscd mathtools preview standalone varwidth needspace mdframed lipsum
 
+# apps
 brew install --cask android-studio
 brew install --cask visual-studio-code
 brew install --cask temurin
 brew install --cask wine-stable
-
 brew install --cask ghostty
 brew install --cask raycast
 

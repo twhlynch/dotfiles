@@ -8,16 +8,22 @@ Run `INSTALL.sh` to install brew and many packages.
 > vscode custom css and bg are not symlinked, just referenced, so make sure to clone `dotfiles` into `~`.
 
 **configs**
+- zsh
 - tmux
-- zshrc & zprofile
-- gitconfig & git lfs
-- alacritty
 - ghostty
-- neofetch
-- nvim
 - ohmyposh
+- gitconfig & git lfs
+- neovim
+- lazygit
+- neofetch
+- bat
+- alacritty
 - zed
 - vscode
+- xcode
+- MacOS Dock, WindowManager
+- MacOS Key Remapping
+- Arc browser icon
 
 **custom scripts**
 - pid script
@@ -28,37 +34,36 @@ Run `INSTALL.sh` to install brew and many packages.
 - arc boost / userscript custom css
 
 **installs**
+- xcode-select, xcpretty
 - homebrew
-- git
-- git lfs
-- zoxide
-- fzf
-- tmux
-- bat
-- eza
-- tldr
-- thefuck
-- neovim
-- neofetch
-- lazygit
-- gh
-- ninja
-- btop
-- clang-format
-- zig
-- python 3.12
-- php
-- vlc
-- oh my posh
-- android studio
-- vs code
-- ngrok
-- temurin
-- wine
-- 3 nerd fonts
-- node
-- nvm
-- node 16 & 18
-- xcode tools
+- 3 nerd fonts (hack, jetbrains mono, meslo lg)
+- git, git-lfs, gh, git-filter-repo, lazygit
+- neovim, tmux
+- zoxide, fzf, bat, eza, btop
+- node js 16 & 18, nvm
 - ghostty
 - raycast
+- android studio
+- vscode
+- temurin (java)
+- wine-stable
+- ffmpeg
+- ninja
+- zig
+- python3 (.9, .10, .12, .13)
+- oh-my-posh
+- ripgrep
+- deno
+- doxygen
+- docker
+- pnpm
+- maven
+- cargo
+- shfmt, stylua, clang-format, clang-tidy
+- patchelf, automake, autoconf-archive, gcc, ncurses
+- neofetch
+- tldr, thefuck
+- opam
+- rlwrap
+- imagemagick, texlive, ghostscript, pdflatex, basictex, texlive-latex-extra
+- a bunch of tlmgr latex packages
