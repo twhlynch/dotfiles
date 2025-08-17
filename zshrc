@@ -176,6 +176,24 @@ alias path='echo -e ${PATH//:/\\n}'
 alias pyvenv='python3 -m venv .venv'
 alias pyserver='python3 -m http.server'
 
+function py() {
+	if command -v python &>/dev/null; then # try current venv
+		python $@
+	elif [[ -d "./.venv/" ]]; then # try activate .venv
+		source ./.venv/bin/activate
+		if command -v python &>/dev/null; then
+			python $@
+		else
+			echo "Could not find python"
+			return
+		fi
+	elif command -v python3 &>/dev/null; then # try python3
+		python3 $@
+	else
+		echo "Could not find python"
+	fi
+}
+
 function mk() {
 	mkdir -p $1 && cd $1
 }
