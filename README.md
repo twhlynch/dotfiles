@@ -25,10 +25,6 @@ Run `INSTALL.sh` to install brew and many packages.
 - MacOS Key Remapping
 - Arc browser icon
 
-**custom scripts**
-- pid script
-- tz script
-
 **other**
 - discord Vencord config and custom css
 - arc boost / userscript custom css

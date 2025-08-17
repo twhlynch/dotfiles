@@ -114,23 +114,8 @@ if [ -d "LaunchAgents" ]; then
   done
 fi
 
-# ensure bin folder exist
+# ensure bin folder exist (useful for placing random bins into)
 mkdir -p $HOME/bin
-
-# symlink bin scripts
-if [ -d "bin" ]; then
-  for name in pid tz; do
-    if [ ! -d "bin/$name" ]; then
-      target="$HOME/bin/$name"
-      backup $target
-      symlink $PWD/bin/$name $target
-      chmod +x "$target"
-      chmod +x "$PWD/bin/$name"
-    else
-      echo "-----> $name not found"
-    fi
-  done
-fi
 
 # apple defaults
 # Dock

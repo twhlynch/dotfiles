@@ -284,6 +284,58 @@ function compile-commands() {
 	xcpretty -r json-compilation-database --output $2/compile_commands.json
 }
 
+function pid() {
+	if [ $# -eq 0 ]; then
+		echo "Usage: $0 <process_name>"
+		return
+	fi
+
+	ps aux | grep "$1" | grep -v "grep" | awk -v this="$0" '{
+		if ($12 != this) {
+			print "\033[1;32mPID:\033[0m " $2, \
+				"\033[1;31mCPU:\033[0m " $3, \
+				"\033[1;35mMEM:\033[0m " $4, \
+				"\033[1;36mTIME:\033[0m " $10, \
+				"\033[1;34mPATH:\033[0m " $11, \
+				$12, \
+				$13
+		}
+	}'
+}
+
+function print_time() {
+	local timezone=$1
+	local label=$2
+	local highlight=$3
+
+	local RESET="\033[0m"
+
+	echo -e "${highlight}$label${RESET} $(TZ=$timezone date +'%I:%M\033[90m%p %d %b')${RESET}"
+}
+
+function tz() {
+	print_time "UTC-12" "NZST" ""
+	print_time "UTC-11" "AEST" "\033[34m"
+	print_time "UTC-10" "AEDT" "\033[34m"
+	print_time "UTC-9" "JST " ""
+	print_time "UTC-8" "CST " ""
+	print_time "UTC-8" "SIN " ""
+	print_time "UTC-5:30" "IST " ""
+	print_time "UTC-4" "UAE " ""
+	print_time "UTC-3" "MSK " ""
+	print_time "UTC-1" "CET " "\033[34m"
+	print_time "UTC" "UTC " "\033[35m"
+	print_time "UTC+3" "BZ  " ""
+	print_time "UTC+5" "EST " "\033[34m"
+	print_time "UTC+6" "CST " ""
+	print_time "UTC+7" "MST " ""
+	print_time "UTC+8" "PST " ""
+}
+
+function decolor() {
+	sed "s/\x1b\[[^m]*m//g"
+}
+
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
