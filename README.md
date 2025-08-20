@@ -36,6 +36,7 @@ Run `INSTALL.sh` to install brew and many packages.
 - git, git-lfs, gh, git-filter-repo, lazygit
 - neovim, tmux
 - zoxide, fzf, bat, eza, btop
+- coreutils
 - node js 16 & 18, nvm
 - ghostty
 - raycast
