@@ -23,3 +23,12 @@ gui:
       - "#d8647e"
     defaultFgColor:
       - "#cdcdcd"
+
+git:
+  disableForcePushing: true
+
+  paging:
+    pager: delta --dark --paging=never
+
+os:
+  editPreset: 'nvim'
