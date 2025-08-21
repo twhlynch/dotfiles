@@ -30,19 +30,19 @@ return {
 					func = nil,
 				},
 				exchange = {
-					prefix = nil,
+					prefix = "Gox",
 					reindent_linewise = true,
 				},
 				multiply = {
-					prefix = nil,
+					prefix = "Gom",
 					func = nil,
 				},
 				replace = {
-					prefix = nil,
+					prefix = "Gor",
 					reindent_linewise = true,
 				},
 				sort = {
-					prefix = nil,
+					prefix = "Gos",
 					func = nil,
 				},
 			})
