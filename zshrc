@@ -347,4 +347,4 @@ eval "$(thefuck --alias)"
 # END opam configuration
 
 # auto open tmux in session or create session
-[ "$TERM_PROGRAM" = "ghostty" ] && [[ $(tput lines) != 11 ]] && (tmux a > /dev/null 2>&1 || tmux > /dev/null 2>&1)
+[ "$TERM_PROGRAM" = "ghostty" ] && [[ $(tput lines) > 15 ]] && (tmux a > /dev/null 2>&1 || tmux > /dev/null 2>&1)
