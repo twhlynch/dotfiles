@@ -13,6 +13,18 @@ return {
 				gitsigns = true,
 				handle = true,
 				-- search = true,
+				--
+			},
+			marks = {
+				GitAdd = {
+					highlight = "Added",
+				},
+				GitChange = {
+					highlight = "Changed",
+				},
+				GitDelete = {
+					highlight = "Removed",
+				},
 			},
 		})
 	end,
