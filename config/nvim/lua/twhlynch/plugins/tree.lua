@@ -22,6 +22,9 @@ return {
 					hide_hidden = false,
 					hide_by_name = {},
 				},
+				follow_current_file = {
+					enabled = true,
+				},
 			},
 			event_handlers = {
 				{
