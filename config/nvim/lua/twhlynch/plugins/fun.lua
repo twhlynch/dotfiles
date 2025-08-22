@@ -4,22 +4,22 @@ return {
 		-- "nullromo/fishtank.nvim",
 		"twhlynch/fishtank.nvim", -- until my pr is merged
 		opts = {
+			sprite = {
+				right = ">< °>",
+				left = "<° ><",
+				-- -- fish collection --
+				--    ><^, ⋗  ⋖ ⹁^><
+				--     >< ^>  <^ ><
+				--      >< ⋗  ⋖ ><
+				--       ><>  <><
+				--     >< *>  <* ><
+				--     >< °>  <° ><
+				--  ><((((•>  <•))))><
+				--   ><(((*>  <*)))><
+			},
 			screensaver = {
 				enabled = true,
 				timeout = 1000 * 60, -- 1 minute
-				sprite = {
-					right = ">< °>",
-					left = "<° ><",
-					-- -- fish collection --
-					--    ><^, ⋗  ⋖ ⹁^><
-					--     >< ^>  <^ ><
-					--      >< ⋗  ⋖ ><
-					--       ><>  <><
-					--     >< *>  <* ><
-					--     >< °>  <° ><
-					--  ><((((•>  <•))))><
-					--   ><(((*>  <*)))><
-				},
 			},
 		},
 		config = function(_, opts)
