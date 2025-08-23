@@ -33,3 +33,14 @@ oil_git.setup({
 	},
 	debug = DEBUG,
 })
+
+-- formatting reminder
+local reminder = require("twhlynch.personal-plugins.reminder")
+
+reminder.setup({
+	-- notify = function(str)
+	-- 	vim.notify(str, vim.log.levels.WARN)
+	-- end,
+	notify = print, -- output function
+	debug = DEBUG,
+})
