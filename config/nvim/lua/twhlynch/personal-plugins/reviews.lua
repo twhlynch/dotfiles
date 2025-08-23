@@ -2,20 +2,24 @@ local M = {}
 
 local all_comments = {}
 local last_fetch_time = 0
-local REFRESH_INTERVAL = 1800 -- 30 minutes
-local DEBUG = false
+local options = {
+	interval = 1800, -- 30 minutes
+	debug = false,
+	highlight = nil, -- can be a hex string e.g. "#7E98E8"
+	integrations = {
+		scrollbar = false,
+	},
+}
+local ns = nil
 
-local ns = vim.api.nvim_create_namespace("pr_review_comments")
-vim.api.nvim_set_hl(0, "ReviewCommentVirtualText", { fg = "#7E98E8", bg = "NONE", italic = true })
-
-local function debug(str)
-	if DEBUG then
+function M.debug(str)
+	if options.debug then
 		vim.notify("Debug: " .. str, vim.log.levels.INFO)
 	end
 end
 
 -- helper to run shell commands
-local function job_async(cmd, on_success, on_error)
+function M.job_async(cmd, on_success, on_error)
 	local stdout_lines = {}
 	local stderr_lines = {}
 
@@ -79,41 +83,41 @@ function M.get_pr_review_comments()
 	end
 
 	-- check if in a git repo
-	debug("get is repo")
-	job_async({ "git", "rev-parse", "--is-inside-work-tree" }, function(is_repo)
+	M.debug("get is repo")
+	M.job_async({ "git", "rev-parse", "--is-inside-work-tree" }, function(is_repo)
 		if vim.trim(is_repo) ~= "true" then
 			return
 		end
 
 		-- get current branch
-		debug("get current branch")
-		job_async({ "git", "rev-parse", "--abbrev-ref", "HEAD" }, function(current_branch)
+		M.debug("get current branch")
+		M.job_async({ "git", "rev-parse", "--abbrev-ref", "HEAD" }, function(current_branch)
 			current_branch = vim.trim(current_branch)
 
 			-- check internet
-			debug("check internet")
-			job_async({ "ping", "-c", "1", "8.8.8.8" }, function(_)
+			M.debug("check internet")
+			M.job_async({ "ping", "-c", "1", "8.8.8.8" }, function(_)
 				-- spacer :3
 
 				-- check remote exists
-				debug("check remote")
-				job_async({ "git", "remote", "-v" }, function(remote_info)
+				M.debug("check remote")
+				M.job_async({ "git", "remote", "-v" }, function(remote_info)
 					remote_info = vim.trim(remote_info)
 					if remote_info == "" then -- no remote
 						return
 					end
 
 					-- get latest open pr from current branch
-					debug("get pr")
-					job_async({ "gh", "pr", "list", "--head", current_branch, "--state", "open", "--json", "number", "-q", ".[0].number" }, function(pr_number)
+					M.debug("get pr")
+					M.job_async({ "gh", "pr", "list", "--head", current_branch, "--state", "open", "--json", "number", "-q", ".[0].number" }, function(pr_number)
 						pr_number = vim.trim(pr_number)
 						if pr_number == "" then -- no pr found
 							return
 						end
 
 						-- get upstream repo name
-						debug("get upstream name")
-						job_async({ "gh", "repo", "view", "--json", "owner,name", "-q", '"\\(.owner.login)/\\(.name)"' }, function(repo_name)
+						M.debug("get upstream name")
+						M.job_async({ "gh", "repo", "view", "--json", "owner,name", "-q", '"\\(.owner.login)/\\(.name)"' }, function(repo_name)
 							repo_name = vim.trim(repo_name)
 							if repo_name == "" then
 								vim.notify("Could not determine repository name.", vim.log.levels.ERROR)
@@ -121,9 +125,9 @@ function M.get_pr_review_comments()
 							end
 
 							-- get review comments
-							debug("get comments")
+							M.debug("get comments")
 							local api_path = string.format("repos/%s/pulls/%s/comments", repo_name, pr_number)
-							job_async({ "gh", "api", api_path, "--jq", "[.[] | {author: .user.login, path: .path, line: .original_line, body: .body}]" }, process_comments_response, handle_error)
+							M.job_async({ "gh", "api", api_path, "--jq", "[.[] | {author: .user.login, path: .path, line: .original_line, body: .body}]" }, process_comments_response, handle_error)
 						end, handle_error) -- repo name
 					end, handle_error) -- latest pr
 				end, nil) -- has remote (fails if local only)
@@ -143,7 +147,7 @@ function M.show_comments_in_buffer()
 			local prefix = i > 1 and " | " or " " -- multiple comments
 			table.insert(virt_text, {
 				prefix .. comment.author .. ": " .. comment.body,
-				"ReviewCommentVirtualText",
+				options.highlight ~= nil and "PRReviewCommentText" or "DiagnosticHint",
 			})
 		end
 		vim.api.nvim_buf_set_extmark(vim.api.nvim_get_current_buf(), ns, line, 0, {
@@ -202,32 +206,52 @@ function M.get_comments_for_buffer(reqbufnr)
 
 	for _, comment in ipairs(comments_for_file) do
 		local line = comment.line - 1 -- neovim lines are 0 indexed
-		table.insert(review_marks, { author = comment.author, body = comment.body, line = line, text = "@", type = "Hint", level = 1 })
+		table.insert(review_marks, {
+			author = comment.author,
+			body = comment.body,
+			line = line,
+			text = "@",
+			type = options.highlight ~= nil and "PRReviewCommentText" or "DiagnosticHint",
+			level = 1,
+		})
 	end
 
 	return review_marks
 end
 
 function M.auto_refresh_comments()
-	if (os.time() - last_fetch_time) >= REFRESH_INTERVAL then
+	if (os.time() - last_fetch_time) >= options.interval then
 		M.get_pr_review_comments()
 	end
 end
 
-require("scrollbar.handlers").register("ReviewComments", M.get_comments_for_buffer)
-M.auto_refresh_comments()
+function M.setup(opts)
+	options = vim.tbl_deep_extend("keep", opts or {}, options)
 
-vim.api.nvim_create_autocmd({ "BufReadPost", "BufEnter", "BufWritePost", "FocusGained" }, {
-	group = vim.api.nvim_create_augroup("PRReviewCommentsGroup", { clear = false }),
-	callback = function()
-		local buftype = vim.bo.buftype
-		if buftype == "terminal" or buftype == "nowrite" or buftype == "nofile" then
-			return
-		end
+	-- setup
+	ns = vim.api.nvim_create_namespace("pr_review_comments")
+	if options.highlight ~= nil then
+		vim.api.nvim_set_hl(0, "PRReviewCommentText", { fg = options.highlight, bg = "NONE", italic = true })
+	end
+	vim.api.nvim_create_autocmd({ "BufReadPost", "BufEnter", "BufWritePost", "FocusGained" }, {
+		group = vim.api.nvim_create_augroup("PRReviewCommentsGroup", { clear = false }),
+		callback = function()
+			local buftype = vim.bo.buftype
+			if buftype == "terminal" or buftype == "nowrite" or buftype == "nofile" then
+				return
+			end
 
-		M.auto_refresh_comments()
-		M.show_comments_in_buffer()
-	end,
-})
+			M.auto_refresh_comments()
+			M.show_comments_in_buffer()
+		end,
+	})
+
+	-- integrations
+	if options.integrations.scrollbar then
+		require("scrollbar.handlers").register("ReviewComments", M.get_comments_for_buffer)
+	end
+
+	M.auto_refresh_comments()
+end
 
 return M
