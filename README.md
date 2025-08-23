@@ -37,6 +37,7 @@ Run `INSTALL.sh` to install brew and many packages.
 - neovim, tmux
 - zoxide, fzf, bat, eza, btop
 - coreutils
+- terminal-notifier
 - node js 16 & 18, nvm
 - ghostty
 - raycast

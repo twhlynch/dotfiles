@@ -99,8 +99,9 @@ export FZF_DEFAULT_OPTS="
 	"
 
 # Aliases
-alias ,='abandon'
-alias ,,='abandon-exit'
+alias ,a='abandon'
+alias ,e='abandon-exit'
+alias ,n='abandon-exit-notify'
 
 function abandon() {
 	eval $* & disown
@@ -108,6 +109,13 @@ function abandon() {
 function abandon-exit() {
 	abandon $*
 	exit
+}
+function notify() {
+	$*
+	terminal-notifier -title "Task complete" -message "$*" -sound Blow
+}
+function abandon-exit-notify() {
+	abandon-exit notify $*
 }
 
 alias c='clear'

@@ -11,7 +11,7 @@ brew install --cask font-jetbrains-mono-nerd-font
 brew install --cask font-meslo-lg-nerd-font
 
 # installs
-brew install ffmpeg git git-lfs neovim tmux zoxide fzf bat eza lazygit gh ninja btop clang-format zig oh-my-posh ripgrep deno doxygen docker pnpm maven cargo stylua shfmt patchelf automake autoconf-archive gcc ncurses clang-tidy git-filter-repo neofetch tldr thefuck opam rlwrap coreutils
+brew install ffmpeg git git-lfs neovim tmux zoxide fzf bat eza lazygit gh ninja btop clang-format zig oh-my-posh ripgrep deno doxygen docker pnpm maven cargo stylua shfmt patchelf automake autoconf-archive gcc ncurses clang-tidy git-filter-repo neofetch tldr thefuck opam rlwrap coreutils terminal-notifier
 
 # python
 brew install python3 python3.9 python3.10 python3.12 python3.13
