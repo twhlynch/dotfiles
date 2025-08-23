@@ -3,10 +3,6 @@ local DEBUG = false
 -- PR Review Comments
 local reviews = require("twhlynch.personal-plugins.reviews")
 
--- <leader>R<key> for refreshing
-vim.keymap.set("n", "<leader>Rc", function()
-	reviews.get_pr_review_comments()
-end, { desc = "Refresh PR Review Comments" })
 reviews.setup({
 	interval = 1800, -- 30 minutes
 	debug = DEBUG,
@@ -16,9 +12,9 @@ reviews.setup({
 	},
 })
 
-vim.keymap.set("n", "<leader>K", function() -- match lsp hover cos im lazy
+vim.keymap.set({ "n" }, "<leader>K", function() -- match lsp hover cos im lazy
 	reviews.get_current_line_comments()
-end, { desc = "Show line PR Review Comments" })
+end, { noremap = true, silent = true, desc = "Show line PR Review Comments" })
 
 -- oil git integration
 local oil_git = require("twhlynch.personal-plugins.oil-git")
@@ -44,3 +40,27 @@ reminder.setup({
 	notify = print, -- output function
 	debug = DEBUG,
 })
+
+-- h and l open and close folds
+local origami = require("twhlynch.personal-plugins.origami")
+
+origami.setup({
+	debug = DEBUG,
+})
+
+-- jump file pairs
+local pear = require("twhlynch.personal-plugins.pear")
+
+pear.setup({
+	source_exts = { "c", "cpp", "frag" },
+	header_exts = { "h", "hpp", "vert" },
+	debug = DEBUG,
+})
+
+vim.keymap.set({ "n" }, "<leader>jp", pear.jump_pair, { noremap = true, silent = true, desc = "Jump file pair" })
+
+-- refreshing
+vim.keymap.set({ "n" }, "<leader>RR", function()
+	reviews.get_pr_review_comments()
+	oil_git.update_git_status()
+end, { noremap = true, silent = true, desc = "Refresh Custom Plugins" })
