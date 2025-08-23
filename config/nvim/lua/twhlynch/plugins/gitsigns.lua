@@ -90,7 +90,11 @@ return {
 				map("n", "<leader>hd", gitsigns.diffthis, { desc = "Diff file", noremap = true })
 				map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "Preview hunk", noremap = true })
 
-				map({"n", "v"}, "<leader>ht", gitsigns.toggle_linehl, { desc = "Toggle Diff Highlight", noremap = true })
+				map({ "n", "v" }, "<leader>ht", function()
+					gitsigns.toggle_linehl()
+					local state = gitsigns.toggle_numhl()
+					print("gitsigns hl: " .. (state and "on" or "off"))
+				end, { desc = "Toggle Diff Highlight", noremap = true })
 			end,
 		})
 		require("scrollbar.handlers.gitsigns").setup()
