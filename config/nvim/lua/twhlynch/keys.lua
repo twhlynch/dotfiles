@@ -14,7 +14,7 @@ local function command(cmd, does)
 end
 
 set({ "n", "v", "x" }, "<leader>y", '"+y', desc("Yank to system clipboard"))
-set({ "n", "v", "x" }, "<leader>w", '<C-w>', desc("Window commands"))
+set({ "n", "v", "x" }, "<leader>w", "<C-w>", desc("Window commands"))
 set({ "n" }, "<leader>A", "ggVG", desc("Select all"))
 set({ "n" }, "<A-j>", "ddp", desc("Move line down"))
 set({ "n" }, "<A-k>", "ddkkp", desc("Move line up"))
