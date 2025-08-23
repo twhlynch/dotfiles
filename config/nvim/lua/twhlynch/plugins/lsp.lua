@@ -24,6 +24,8 @@ return {
 				"bashls",
 				"marksman",
 				"pyright",
+				"basedpyright",
+				"ruff",
 				"rust_analyzer",
 				"eslint",
 				"cssls",
@@ -34,7 +36,7 @@ return {
 				"glsl_analyzer",
 				"jdtls",
 				"texlab",
-				"ocamllsp"
+				"ocamllsp",
 			},
 			handlers = {
 				function(server_name)
@@ -64,7 +66,7 @@ return {
 					})
 				end,
 
-				["pyright"] = function()
+				["basedpyright"] = function()
 					local lspconfig = require("lspconfig")
 					lspconfig.pyright.setup({
 						capabilities = capabilities,
