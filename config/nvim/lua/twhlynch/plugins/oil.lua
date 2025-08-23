@@ -79,20 +79,4 @@ return {
 			})
 		end,
 	},
-	{
-		"benomahony/oil-git.nvim",
-		dependencies = { "stevearc/oil.nvim" },
-		config = function()
-			require("oil-git").setup({
-				highlights = {
-					OilGitAdded = { fg = "#7fa563" },
-					OilGitModified = { fg = "#f3be7c" },
-					OilGitDeleted = { fg = "#d8647e" },
-					OilGitRenamed = { fg = "#cba6f7" },
-					OilGitUntracked = { fg = "#7e98e8" },
-					OilGitIgnored = { fg = "#606079" },
-				},
-			})
-		end,
-	},
 }

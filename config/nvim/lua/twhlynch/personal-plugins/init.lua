@@ -19,3 +19,17 @@ reviews.setup({
 vim.keymap.set("n", "<leader>K", function() -- match lsp hover cos im lazy
 	reviews.get_current_line_comments()
 end, { desc = "Show line PR Review Comments" })
+
+-- oil git integration
+local oil_git = require("twhlynch.personal-plugins.oil-git")
+
+oil_git.setup({
+	highlight = {
+		OilGitAdded = { fg = "#7fa563" },
+		OilGitModified = { fg = "#f3be7c" },
+		OilGitDeleted = { fg = "#d8647e" },
+		OilGitRenamed = { fg = "#cba6f7" },
+		OilGitUntracked = { fg = "#c48282" },
+	},
+	debug = DEBUG,
+})
