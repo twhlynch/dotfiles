@@ -1,4 +1,6 @@
 local opt = vim.opt
+local global = vim.g
+
 opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 opt.number = true
 opt.relativenumber = true
@@ -24,4 +26,5 @@ opt.listchars = "tab:⤏ ,trail:~,extends:,precedes: "
 opt.list = true
 opt.winborder = "rounded"
 opt.splitright = true
-vim.g.tex_flavor = "latex"
+
+global.tex_flavor = "latex"
