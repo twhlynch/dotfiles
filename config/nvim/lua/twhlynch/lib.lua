@@ -61,4 +61,9 @@ function lib.setup_surround(tbl)
 	end
 end
 
+function lib.toggle_search_hl()
+	vim.o.hlsearch = not vim.o.hlsearch
+	print("hlsearch: " .. (vim.o.hlsearch and "on" or "off"))
+end
+
 return lib
