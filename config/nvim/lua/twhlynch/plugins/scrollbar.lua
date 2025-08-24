@@ -13,7 +13,6 @@ return {
 				gitsigns = true,
 				handle = true,
 				-- search = true,
-				--
 			},
 			marks = {
 				GitAdd = {
