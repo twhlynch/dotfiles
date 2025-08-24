@@ -61,6 +61,23 @@ vim.keymap.set({ "n" }, "<leader>jp", function()
 	pear.jump_pair()
 end, { noremap = true, silent = true, desc = "Jump file pair" })
 
+local regions = require("twhlynch.personal-plugins.regions")
+
+regions.setup({
+	region_markers = {
+		"MARK: ",
+		"#region ",
+	},
+	debug = DEBUG,
+})
+
+vim.keymap.set({ "n" }, "]r", function()
+	regions.goto_next_region()
+end, { noremap = true, silent = true, desc = "Next region" })
+vim.keymap.set({ "n" }, "[r", function()
+	regions.goto_prev_region()
+end, { noremap = true, silent = true, desc = "Previous region" })
+
 -- refreshing
 vim.keymap.set({ "n" }, "<leader>RR", function()
 	reviews.get_pr_review_comments()
