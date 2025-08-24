@@ -52,8 +52,8 @@ origami.setup({
 local pear = require("twhlynch.personal-plugins.pear")
 
 pear.setup({
-	source_exts = { "c", "cpp", "frag" },
-	header_exts = { "h", "hpp", "vert" },
+	source_exts = { "c", "cpp", "frag", "html" },
+	header_exts = { "h", "hpp", "vert", "js", "css" },
 	debug = DEBUG,
 })
 
