@@ -23,7 +23,10 @@ return {
 				local curWidth = 0
 
 				-- get folded line
-				for i, chunk in ipairs(virtText) do
+				local prevChunk = nil
+				for i = 1, #virtText do
+					local chunk = virtText[i]
+					prevChunk = chunk
 					local chunkText = chunk[1]
 					local hlGroup = chunk[2]
 					local chunkWidth = vim.fn.strdisplaywidth(chunkText)
@@ -47,9 +50,10 @@ return {
 					curWidth = curWidth + chunkWidth
 				end
 
-				-- add { for llvm style formatting
+				-- add { for llvm style formatting -- TODO: add [ and (
 				local secondVirtText = ctx.get_fold_virt_text(lnum + 1)
-				if secondVirtText then
+				prevChunk = vim.trim(prevChunk[1])
+				if secondVirtText and prevChunk:sub(prevChunk:len(), prevChunk:len()) ~= "{" then
 					local i = 0
 					if vim.trim(secondVirtText[1][1]):sub(1, 1) == "{" then
 						i = 1
