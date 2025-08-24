@@ -1,0 +1,19 @@
+.sidebar-item[href$="/discussion"]
+{
+  position: relative;
+  .sbi-content { color: #0000; }
+  &::after {
+    position: absolute;
+    content: attr(href); /* defaults to the url */
+  }
+  
+  &[href*="25101"]::after { content: "Computing Theory"; }
+  &[href*="25496"]::after { content: "Essentials of Computing"; }
+  &[href*="25332"]::after { content: "Artificial Intelligence"; }
+  &[href*="22296"]::after { content: "Algorithms & Analysis"; }
+
+  /*
+  &[href*="_____"]::after { content: "_____"; }
+  *        ^^^^^ ID from url          ^^^^^ name override
+  */
+}

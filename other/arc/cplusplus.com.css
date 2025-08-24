@@ -1,0 +1,11 @@
+html { background-color: #000; }
+body { background-color: #fff; }
+html, body {
+  min-height: fit-content;
+}
+img {
+  opacity: 0.7;
+}
+#I_bottom {
+  margin-top: 1300px !important;
+}

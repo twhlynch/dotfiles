@@ -1,0 +1,13 @@
+html
+{
+  background-color: #121212;
+}
+#cpp-head-first
+{
+  padding-block: 10px !important;
+}
+#cpp-head-search #p-search *
+{
+  color: white !important;
+  opacity: 0.8;
+}
