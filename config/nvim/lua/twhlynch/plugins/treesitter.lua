@@ -63,6 +63,7 @@ return {
 						local max_filesize = 1 * 1024 * 1024 -- 1MB
 						local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
 						if ok and stats and stats.size > max_filesize then
+							-- stylua: ignore
 							vim.notify("File larger than 100KB treesitter disabled for performance", vim.log.levels.WARN, { title = "Treesitter" })
 							return true
 						end
@@ -84,7 +85,6 @@ return {
 			vim.treesitter.language.register("templ", "templ")
 		end,
 	},
-
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		after = "nvim-treesitter",

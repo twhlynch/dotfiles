@@ -48,8 +48,12 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>pv", ":Neotree toggle<CR>", { desc = "File tree", noremap = true, silent = true })
-		vim.keymap.set("n", "<leader>pb", ":Neotree toggle buffers<CR>", { desc = "Buffer tree", noremap = true, silent = true })
-		vim.keymap.set("n", "<leader>pm", ":Neotree toggle git_status<CR>", { desc = "Diff tree", noremap = true, silent = true })
+		local function desc(description)
+			return { noremap = true, silent = true, desc = description }
+		end
+
+		vim.keymap.set("n", "<leader>pv", ":Neotree toggle<CR>",desc("File tree"))
+		vim.keymap.set("n", "<leader>pb", ":Neotree toggle buffers<CR>",desc("Buffer tree"))
+		vim.keymap.set("n", "<leader>pm", ":Neotree toggle git_status<CR>", desc("Diff tree"))
 	end,
 }

@@ -21,6 +21,7 @@ return {
 			local function new_git_status()
 				return setmetatable({}, {
 					__index = function(self, key)
+						-- stylua: ignore
 						local ignore_proc = vim.system({ "git", "ls-files", "--ignored", "--exclude-standard", "--others", "--directory" }, {
 							cwd = key,
 							text = true,
@@ -77,6 +78,20 @@ return {
 					end,
 				},
 			})
+
+			-- open preview automatically at size
+			vim.keymap.set({ "n", "v", "x" }, "<leader>e", function()
+				if string.sub(vim.api.nvim_buf_get_name(0), 1, 3) == "oil" then
+					pcall(vim.api.nvim_command, "bprevious")
+					return
+				end
+				require("oil").open(nil, nil, function()
+					local width = vim.api.nvim_win_get_width(0)
+					require("oil").open_preview(nil, function()
+						vim.api.nvim_command("vertical resize" .. width * 0.7)
+					end)
+				end)
+			end, { noremap = true, silent = true, desc = "Open File Explorer" })
 		end,
 	},
 }

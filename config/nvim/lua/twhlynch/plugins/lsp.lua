@@ -14,6 +14,7 @@ return {
 	config = function()
 		local cmp = require("cmp")
 		local cmp_lsp = require("cmp_nvim_lsp")
+		-- stylua: ignore
 		local capabilities = vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities(), cmp_lsp.default_capabilities())
 
 		require("mason").setup()
@@ -109,6 +110,7 @@ return {
 							"--header-insertion=iwyu",
 							"--suggest-missing-includes",
 						},
+						-- stylua: ignore
 						filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "h", "hpp", "hh", "m", "mm", "hh", "cc", "cxx", "hxx" },
 						root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
 					})
@@ -126,6 +128,7 @@ return {
 					local lspconfig = require("lspconfig")
 					lspconfig.emmet_ls.setup({
 						capabilities = capabilities,
+						-- stylua: ignore
 						filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
 						init_options = {
 							html = {
@@ -142,6 +145,7 @@ return {
 					local lspconfig = require("lspconfig")
 					lspconfig.ocamllsp.setup({
 						filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
+						-- stylua: ignore
 						root_dir = lspconfig.util.root_pattern("*.opam", "esy.json", "package.json", ".git", "dune-project", "dune-workspace", "main.ml"),
 						capabilities = capabilities,
 					})
@@ -208,7 +212,7 @@ return {
 
 		local autocmd = vim.api.nvim_create_autocmd
 		autocmd({ "BufEnter", "BufWinEnter" }, {
-			pattern = { "*.vert", "*.frag" },
+			pattern = { "*.vert", "*.frag", "*.hlsl" },
 			callback = function(_)
 				vim.cmd("set filetype=glsl")
 			end,

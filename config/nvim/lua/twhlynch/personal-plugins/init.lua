@@ -1,25 +1,25 @@
 local DEBUG = false
 
--- PR Review Comments
-local reviews = require("twhlynch.personal-plugins.reviews")
+local function load_plugin(name, opts)
+	opts.debug = opts.debug or DEBUG
 
-reviews.setup({
+	local plugin = require("twhlynch.personal-plugins." .. name)
+	plugin.setup(opts)
+
+	return plugin
+end
+
+-- PR Review Comments
+local reviews = load_plugin("reviews", {
 	interval = 1800, -- 30 minutes
-	debug = DEBUG,
 	highlight = "#7E98E8",
 	integrations = {
 		scrollbar = false,
 	},
 })
 
-vim.keymap.set({ "n" }, "<leader>K", function() -- match lsp hover cos im lazy
-	reviews.get_current_line_comments()
-end, { noremap = true, silent = true, desc = "Show line PR Review Comments" })
-
 -- oil git integration
-local oil_git = require("twhlynch.personal-plugins.oil-git")
-
-oil_git.setup({
+local oil_git = load_plugin("oil-git", {
 	highlight = {
 		OilGitAdded = { fg = "#7fa563" },
 		OilGitModified = { fg = "#f3be7c" },
@@ -27,59 +27,34 @@ oil_git.setup({
 		OilGitRenamed = { fg = "#cba6f7" },
 		OilGitUntracked = { fg = "#c48282" },
 	},
-	debug = DEBUG,
 })
 
 -- formatting reminder
-local reminder = require("twhlynch.personal-plugins.reminder")
-
-reminder.setup({
-	-- notify = function(str)
-	-- 	vim.notify(str, vim.log.levels.WARN)
-	-- end,
-	notify = print, -- output function
-	debug = DEBUG,
-})
+local reminder = load_plugin("reminder", { notify = print })
 
 -- h and l open and close folds
-local origami = require("twhlynch.personal-plugins.origami")
-
-origami.setup({
-	debug = DEBUG,
-})
+local origami = load_plugin("origami", {})
 
 -- jump file pairs
-local pear = require("twhlynch.personal-plugins.pear")
-
-pear.setup({
+local pear = load_plugin("pear", {
 	source_exts = { "c", "cpp", "frag", "html" },
 	header_exts = { "h", "hpp", "vert", "js", "css" },
-	debug = DEBUG,
 })
 
-vim.keymap.set({ "n" }, "<leader>jp", function()
-	pear.jump_pair()
-end, { noremap = true, silent = true, desc = "Jump file pair" })
+local regions = load_plugin("regions", { region_markers = { "MARK: ", "#region " } })
 
-local regions = require("twhlynch.personal-plugins.regions")
+local set = vim.keymap.set
+local function desc(description)
+	return { noremap = true, silent = true, desc = description }
+end
 
-regions.setup({
-	region_markers = {
-		"MARK: ",
-		"#region ",
-	},
-	debug = DEBUG,
-})
-
-vim.keymap.set({ "n" }, "]r", function()
-	regions.goto_next_region()
-end, { noremap = true, silent = true, desc = "Next region" })
-vim.keymap.set({ "n" }, "[r", function()
-	regions.goto_prev_region()
-end, { noremap = true, silent = true, desc = "Previous region" })
+set({ "n" }, "<leader>K", reviews.get_current_line_comments, desc("Show line PR Review Comments"))
+set({ "n" }, "<leader>jp", pear.jump_pair, desc("Jump file pair"))
+set({ "n" }, "]r", regions.goto_next_region, desc("Next region"))
+set({ "n" }, "[r", regions.goto_prev_region, desc("Previous region"))
 
 -- refreshing
-vim.keymap.set({ "n" }, "<leader>RR", function()
+set({ "n" }, "<leader>RR", function()
 	reviews.get_pr_review_comments()
 	oil_git.update_git_status()
-end, { noremap = true, silent = true, desc = "Refresh Custom Plugins" })
+end, desc("Refresh Custom Plugins"))

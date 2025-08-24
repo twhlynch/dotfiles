@@ -57,6 +57,7 @@ return {
 					local i = 0
 					if vim.trim(secondVirtText[1][1]):sub(1, 1) == "{" then
 						i = 1
+					-- stylua: ignore
 					elseif #secondVirtText >= 2 and vim.trim(secondVirtText[1][1]):len() == 0 and vim.trim(secondVirtText[2][1]):sub(1, 1) == "{" then
 						i = 2
 					end

@@ -21,5 +21,9 @@ return {
 				lsp_format = "fallback",
 			},
 		})
+		vim.keymap.set({ "n" }, "<leader>lf", function()
+			require("conform").format()
+			print("Formatted")
+		end, { noremap = true, silent = true, desc = "Format current buffer" })
 	end,
 }

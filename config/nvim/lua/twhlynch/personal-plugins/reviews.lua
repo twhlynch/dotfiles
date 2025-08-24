@@ -109,6 +109,7 @@ function M.get_pr_review_comments()
 
 					-- get latest open pr from current branch
 					M.debug("get pr")
+					-- stylua: ignore
 					M.job_async({ "gh", "pr", "list", "--head", current_branch, "--state", "open", "--json", "number", "-q", ".[0].number" }, function(pr_number)
 						pr_number = vim.trim(pr_number)
 						if pr_number == "" then -- no pr found
@@ -117,6 +118,7 @@ function M.get_pr_review_comments()
 
 						-- get upstream repo name
 						M.debug("get upstream name")
+						-- stylua: ignore
 						M.job_async({ "gh", "repo", "view", "--json", "owner,name", "-q", '"\\(.owner.login)/\\(.name)"' }, function(repo_name)
 							repo_name = vim.trim(repo_name)
 							if repo_name == "" then
@@ -127,6 +129,7 @@ function M.get_pr_review_comments()
 							-- get review comments
 							M.debug("get comments")
 							local api_path = string.format("repos/%s/pulls/%s/comments", repo_name, pr_number)
+							-- stylua: ignore
 							M.job_async({ "gh", "api", api_path, "--jq", "[.[] | {author: .user.login, path: .path, line: .original_line, body: .body}]" }, process_comments_response, handle_error)
 						end, handle_error) -- repo name
 					end, handle_error) -- latest pr
