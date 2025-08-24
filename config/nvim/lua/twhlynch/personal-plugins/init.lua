@@ -57,7 +57,9 @@ pear.setup({
 	debug = DEBUG,
 })
 
-vim.keymap.set({ "n" }, "<leader>jp", pear.jump_pair, { noremap = true, silent = true, desc = "Jump file pair" })
+vim.keymap.set({ "n" }, "<leader>jp", function()
+	pear.jump_pair()
+end, { noremap = true, silent = true, desc = "Jump file pair" })
 
 -- refreshing
 vim.keymap.set({ "n" }, "<leader>RR", function()
