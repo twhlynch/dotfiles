@@ -100,7 +100,7 @@ if [ -d "xcode" ]; then
 fi
 
 # ensure LaunchAgents folder exists
-mkdir $HOME/Library/LaunchAgents
+mkdir -p $HOME/Library/LaunchAgents
 # symlink macos key remaps
 if [ -d "LaunchAgents" ]; then
   for name in 'com.local.KeyRemapping.plist'; do
@@ -108,6 +108,21 @@ if [ -d "LaunchAgents" ]; then
       target="$HOME/Library/LaunchAgents/$name"
       backup $target
       symlink $PWD/LaunchAgents/$name $target
+    else
+      echo "-----> $name not found"
+    fi
+  done
+fi
+
+# ensure Services folder exists
+mkdir -p $HOME/Library/Services
+# symlink macos automations
+if [ -d "Services" ]; then
+  for name in 'nvim.workflow'; do
+    if [ -d "Services/$name" ]; then
+      target="$HOME/Library/Services/$name"
+      backup $target
+      symlink $PWD/Services/$name $target
     else
       echo "-----> $name not found"
     fi
