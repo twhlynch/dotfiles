@@ -16,6 +16,8 @@ set({ "n", "v", "x" }, "<leader>y", '"+y', desc("Yank to system clipboard"))
 set({ "n", "v", "x" }, "<leader>w", "<C-w>", desc("Window commands"))
 set({ "n" }, "<leader>A", "ggVG", desc("Select all"))
 set({ "n" }, "<leader>X", ":!chmod +x %<CR><CR>:set filetype=sh<CR>", desc("Chmod +x and set .sh"))
+set({ "n" }, "g/", "*", desc("Next current word"))
+set({ "x" }, "/", "<esc>/\\%V", desc("Search in selection"))
 -- moving lines
 set({ "n" }, "<A-j>", "ddp", desc("Move line down"))
 set({ "n" }, "<A-k>", "ddkkp", desc("Move line up"))
