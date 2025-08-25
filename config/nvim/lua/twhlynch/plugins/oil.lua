@@ -81,13 +81,15 @@ return {
 
 			-- open preview automatically at size
 			vim.keymap.set({ "n", "v", "x" }, "<leader>e", function()
+				local oil = require("oil")
 				if string.sub(vim.api.nvim_buf_get_name(0), 1, 3) == "oil" then
-					pcall(vim.api.nvim_command, "bprevious")
+					-- pcall(vim.api.nvim_command, "bprevious")
+					oil.close()
 					return
 				end
-				require("oil").open(nil, nil, function()
+				oil.open(nil, nil, function()
 					local width = vim.api.nvim_win_get_width(0)
-					require("oil").open_preview(nil, function()
+					oil.open_preview(nil, function()
 						vim.api.nvim_command("vertical resize" .. width * 0.7)
 					end)
 				end)
