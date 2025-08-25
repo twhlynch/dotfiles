@@ -6,7 +6,12 @@ return {
 		lazygit = { enabled = true },
 		git = { enabled = true },
 		bigfile = { enabled = true },
-		picker = { enabled = true },
+		picker = {
+			enabled = true,
+			matcher = {
+				frecency = true,
+			},
+		},
 		image = {
 			enabled = true,
 			math = { enabled = true },
@@ -25,6 +30,7 @@ return {
 	keys = {
 		-- stylua: ignore start
 		{ "<leader>bg", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
+		{ "<leader>gb", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } }, -- idk i cant decide
 		{ "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
 
 		{ "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
