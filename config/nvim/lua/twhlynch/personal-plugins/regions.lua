@@ -9,7 +9,24 @@ local options = {
 	debug = false,
 }
 
+local cache = {}
+local changed = true
+local last_changedtick = nil
+
 function M.get_regions(bufnr)
+	local changedtick = vim.b.changedtick
+	if changedtick ~= last_changedtick then
+		changed = true
+		last_changedtick = changedtick
+	end
+	if not changed then
+		if options.debug then
+			vim.notify("Used region cache")
+		end
+		return cache
+	end
+	changed = false
+
 	local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
 
 	local regions = {}
@@ -38,6 +55,7 @@ function M.get_regions(bufnr)
 		end
 	end
 
+	cache = regions
 	return regions
 end
 
@@ -69,6 +87,13 @@ function M.setup(opts)
 	options = vim.tbl_deep_extend("keep", opts or {}, options)
 
 	require("scrollbar.handlers").register("Regions", M.get_regions)
+
+	vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter" }, {
+		group = vim.api.nvim_create_augroup("RegionsRefresh", { clear = true }),
+		callback = function(_)
+			changed = true
+		end,
+	})
 end
 
 return M
