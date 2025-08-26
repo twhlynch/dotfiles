@@ -28,3 +28,9 @@ opt.winborder = "rounded"
 opt.splitright = true
 
 global.tex_flavor = "latex"
+
+vim.filetype.add({
+	extension = {
+		mdx = "markdown",
+	},
+})
