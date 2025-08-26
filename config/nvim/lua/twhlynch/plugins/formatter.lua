@@ -14,16 +14,19 @@ return {
 				javascript = { "prettier" },
 				typescript = { "prettier" },
 				json = { "prettier" },
+				jsonc = { "prettier" },
 				html = { "prettier" },
 				css = { "prettier" },
+				astro = { "prettier" },
 			},
 			default_format_opts = {
 				lsp_format = "fallback",
 			},
 		})
 		vim.keymap.set({ "n" }, "<leader>lf", function()
-			require("conform").format()
-			print("Formatted")
+			require("conform").format(nil, function(error, did_edit)
+				print((did_edit and "" or "Already ") .. "Formatted")
+			end)
 		end, { noremap = true, silent = true, desc = "Format current buffer" })
 	end,
 }
