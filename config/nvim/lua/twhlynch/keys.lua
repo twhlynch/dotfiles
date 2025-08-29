@@ -30,8 +30,8 @@ set({ "v" }, "<", "<gv", desc("Unindent and stay in visual"))
 set({ "v" }, ">", ">gv", desc("Indent and stay in visual"))
 -- jumping
 set({ "n" }, "<leader>jo", "<cmd>b#<CR>", desc("Jump to last buffer"))
-set({ "n" }, "<leader>j[", "<cmd>bp<CR>", desc("Jump to previous buffer"))
-set({ "n" }, "<leader>j]", "<cmd>bn<CR>", desc("Jump to next buffer"))
+set({ "n" }, "<leader>jl", "<cmd>bp<CR>", desc("Jump to previous buffer"))
+set({ "n" }, "<leader>jr", "<cmd>bn<CR>", desc("Jump to next buffer"))
 -- toggles
 set({ "n" }, "<leader>z", function()
 	vim.wo.wrap = not vim.wo.wrap
