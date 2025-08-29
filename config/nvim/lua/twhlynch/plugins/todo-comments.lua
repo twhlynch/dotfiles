@@ -9,8 +9,8 @@ return {
 				pattern = [[.*<((KEYWORDS).*)\s*:]],
 			},
 			search = {
-				pattern = [[\b(KEYWORDS)(\(.*\))?:]]
-			}
+				pattern = [[\b(KEYWORDS)(\(.*\))?:]],
+			},
 		})
 	end,
 }
