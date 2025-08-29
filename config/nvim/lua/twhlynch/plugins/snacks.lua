@@ -39,7 +39,7 @@ return {
 		{ "<leader>f", function() Snacks.picker.files() end, desc = "Find Files" },
 		{ "<leader>s", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
 		{ "<leader>r", function() Snacks.picker.recent() end, desc = "Recent" },
-		{ "<leader>F", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+		-- { "<leader>F", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
 		{ "<leader>g/", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
 		{ "<leader>hh", function() Snacks.picker.help() end, desc = "Help Pages" },
 		{ "<leader>d", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
