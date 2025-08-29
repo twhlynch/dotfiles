@@ -43,6 +43,7 @@ local pear = load_plugin("pear", {
 })
 
 local regions = load_plugin("regions", { region_markers = { "MARK: ", "#region " } })
+local marks = load_plugin("marks")
 
 local set = vim.keymap.set
 local function desc(description)
