@@ -1,6 +1,7 @@
 local DEBUG = false
 
 local function load_plugin(name, opts)
+	opts = opts or {}
 	opts.debug = opts.debug or DEBUG
 
 	local plugin = require("twhlynch.personal-plugins." .. name)
