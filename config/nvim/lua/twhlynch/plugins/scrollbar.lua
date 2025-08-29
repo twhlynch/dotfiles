@@ -6,6 +6,7 @@ return {
 				"terminal",
 				"nowrite",
 				"nofile",
+				"prompt",
 			},
 			handlers = {
 				cursor = true,
