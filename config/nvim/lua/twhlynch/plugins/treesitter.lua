@@ -106,10 +106,17 @@ return {
 			-- width - 1 to keep scrollbar visible
 			local render = require("treesitter-context.render")
 			local old_open = render.open
-			render.open = function(winid, ...)
-				old_open(winid, ...)
-				local width = vim.api.nvim_win_get_width(winid)
-				vim.api.nvim_win_set_width(winid, width - 1)
+			render.open = function(main_winid, ...)
+				old_open(main_winid, ...)
+
+				local width = vim.api.nvim_win_get_width(main_winid)
+				local gutter_width = vim.fn.getwininfo(main_winid)[1].textoff
+
+				for _, winid in ipairs(vim.api.nvim_list_wins()) do
+					if vim.w[winid] and vim.w[winid]["treesitter_context"] then
+						vim.api.nvim_win_set_width(winid, width - gutter_width - 1)
+					end
+				end
 			end
 		end,
 	},
