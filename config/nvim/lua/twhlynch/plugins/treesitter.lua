@@ -102,6 +102,15 @@ return {
 				zindex = 20,
 				on_attach = nil,
 			})
+
+			-- width - 1 to keep scrollbar visible
+			local render = require("treesitter-context.render")
+			local old_open = render.open
+			render.open = function(winid, ...)
+				old_open(winid, ...)
+				local width = vim.api.nvim_win_get_width(winid)
+				vim.api.nvim_win_set_width(winid, width - 1)
+			end
 		end,
 	},
 }
