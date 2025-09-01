@@ -44,7 +44,13 @@ local pear = load_plugin("pear", {
 	header_exts = { "h", "hpp", "vert", "js", "css" },
 })
 
-local regions = load_plugin("regions", { region_markers = { "MARK: ", "#region " } })
+local regions = load_plugin("regions", {
+	region_markers = {
+		"MARK: ",
+		"#region ",
+		"\\section{",
+	},
+})
 local marks = load_plugin("marks")
 
 local fff = load_plugin("fff")
