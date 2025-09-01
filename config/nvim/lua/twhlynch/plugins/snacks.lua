@@ -51,4 +51,24 @@ return {
 		{ "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
 		-- stylua: ignore end
 	},
+	-- init = function()
+	-- 	vim.api.nvim_create_autocmd("User", {
+	-- 		pattern = "VeryLazy",
+	-- 		callback = function()
+	-- 			local old_attach = Snacks.image.buf.attach
+	-- 			Snacks.image.buf.attach = function(buf, ...)
+	-- 				local max_lines = vim.api.nvim_buf_line_count(buf)
+	-- 				local line_count = math.min(3, max_lines)
+	-- 				local lines = vim.api.nvim_buf_get_lines(buf, 0, line_count, false)
+	-- 				for _, line in ipairs(lines) do
+	-- 					if string.find(line, "snacks: noimage", 1, true) then
+	-- 						return
+	-- 					end
+	-- 				end
+	--
+	-- 				return old_attach(buf, ...)
+	-- 			end
+	-- 		end,
+	-- 	})
+	-- end,
 }
