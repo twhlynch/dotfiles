@@ -5,7 +5,9 @@ local function load_plugin(name, opts)
 	opts.debug = opts.debug or DEBUG
 
 	local plugin = require("twhlynch.personal-plugins." .. name)
-	plugin.setup(opts)
+	if plugin.setup then
+		plugin.setup(opts)
+	end
 
 	return plugin
 end
@@ -45,6 +47,8 @@ local pear = load_plugin("pear", {
 local regions = load_plugin("regions", { region_markers = { "MARK: ", "#region " } })
 local marks = load_plugin("marks")
 
+local fff = load_plugin("fff")
+
 local set = vim.keymap.set
 local function desc(description)
 	return { noremap = true, silent = true, desc = description }
@@ -54,6 +58,7 @@ set({ "n" }, "<leader>K", reviews.get_current_line_comments, desc("Show line PR 
 set({ "n" }, "<leader>jp", pear.jump_pair, desc("Jump file pair"))
 set({ "n" }, "]r", regions.goto_next_region, desc("Next region"))
 set({ "n" }, "[r", regions.goto_prev_region, desc("Previous region"))
+set({ "n" }, "<leader><leader>", fff.fff, desc("FFF"))
 
 -- refreshing
 set({ "n" }, "<leader>RR", function()
