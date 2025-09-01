@@ -12,8 +12,6 @@ local function command(cmd, does)
 end
 
 -- useful
-set({ "i" }, "jj", "<Esc>")
-set({ "i" }, "jk", "<Esc>")
 set({ "n", "v", "x" }, "<leader>y", '"+y', desc("Yank to system clipboard"))
 set({ "n", "v", "x" }, "<leader>w", "<C-w>", desc("Window commands"))
 set({ "n" }, "<leader>A", "ggVG", desc("Select all"))
