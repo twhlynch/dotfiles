@@ -23,6 +23,9 @@ set({ "n" }, "<A-j>", "ddp", desc("Move line down"))
 set({ "n" }, "<A-k>", "ddkkp", desc("Move line up"))
 set({ "v" }, "<A-j>", ":m '>+1<CR>gv=gv", desc("Move line down"))
 set({ "v" }, "<A-k>", ":m '<-2<CR>gv=gv", desc("Move line up"))
+-- center search
+set({ "n", "v" }, "<A-n>", "nzz", desc("Center next match"))
+set({ "n", "v" }, "<A-N>", "Nzz", desc("Center previous match"))
 -- indenting
 set({ "v" }, "<", "<gv", desc("Unindent and stay in visual"))
 set({ "v" }, ">", ">gv", desc("Indent and stay in visual"))
