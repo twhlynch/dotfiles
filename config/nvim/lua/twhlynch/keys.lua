@@ -47,47 +47,35 @@ set({ "n" }, "<leader>hl", function()
 	vim.o.hlsearch = not vim.o.hlsearch
 	print("Search highlighting is " .. (vim.o.hlsearch and "ON" or "OFF"))
 end, desc("Toggle search highlight"))
+-- surround visual selection
+local function surround(triggers, pref, suff)
+	if suff == nil then
+		suff = pref
+	end
+	local cmd = ":<C-u>normal!`>a" .. suff .. "<Esc>`<i" .. pref .. "<Esc>"
 
--- vscode like surround in visual mode
-local function surround(pref, suf, trigger)
-	local mov_right = string.rep("l", #pref)
-	local adjust_selection = string.rep("l", #pref + #suf)
-	-- stylua: ignore
-	vim.keymap.set({ "v" }, "s" .. trigger, "<esc>`<i" .. pref .. "<esc>`>" .. mov_right .. "a" .. suf .. "<esc>gv" .. adjust_selection, desc("Surround with " .. pref .. " " .. suf))
-end
-
-local function setup_surround(tbl)
-	for _, surr in ipairs(tbl) do
-		local pref = table.remove(surr, 1)
-		local suf = table.remove(surr, 1)
-
-		for _, trigger in ipairs(surr) do
-			surround(pref, suf, trigger)
-		end
-
-		if #surr == 0 then
-			local p, s = pref:sub(1, 1), suf:sub(1, 1)
-			surround(pref, suf, p)
-			if p ~= s then
-				surround(pref, suf, s)
+	for _, trigger in ipairs(triggers) do
+		set({ "v", "x" }, "s" .. trigger, function()
+			if vim.fn.mode() == "" then -- visual block
+				return cmd .. "`<<C-v>`>" .. string.rep("l", #suff)
+			else
+				return cmd .. "`<v`>" .. string.rep("l", #pref + #suff)
 			end
-		end
+		end, { noremap = true, silent = true, desc = "Surround selection with " .. pref .. " " .. suff, expr = true })
 	end
 end
-
-setup_surround({
-	{ '"', '"' },
-	{ "'", "'" },
-	{ "`", "`" },
-	{ "(", ")", "(", ")", "9", "0" },
-	{ "[", "]" },
-	{ "{", "}" },
-	{ "<", ">" },
-	{ "|", "|" },
-	{ "*", "*" },
-	{ "_", "_" },
-	{ "$$ ", " $$", "$", "4" },
-})
+surround({ "'" }, "'", "'")
+surround({ '"' }, '"', '"')
+surround({ "`" }, "`", "`")
+surround({ "(", ")", "9", "0" }, "(", ")")
+surround({ "[", "]" }, "[", "]")
+surround({ "{", "}" }, "{", "}")
+surround({ "<", ">" }, "<", ">")
+surround({ "|" }, "|")
+surround({ "*" }, "*")
+surround({ "_" }, "_")
+surround({ "%" }, "%")
+surround({ "$", "4" }, "$$ ", " $$")
 
 -- mistypes
 command("W", "w")
