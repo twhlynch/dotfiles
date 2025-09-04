@@ -183,7 +183,7 @@ function fetch() { # animated fetch, thanks pewds
 			echo "$ascii"
 
 			# Wait a little, but also check if user pressed a key
-			read -t ${1:-0.1} -n 1 key && { tput cnorm; stop=1; break; }
+			read -t ${1:-0.05} -n 1 key && { tput cnorm; stop=1; break; }
 		done
 		[[ "$stop" -eq 1 ]] && break
 	done
