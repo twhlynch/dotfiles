@@ -163,7 +163,6 @@ alias k='kill -9'
 
 alias neofetch='neofetch --ascii ~/.config/neofetch/ascii.txt'
 
-alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
@@ -173,10 +172,16 @@ alias ........='cd ../../../../../../..'
 alias .........='cd ../../../../../../../..'
 alias ..........='cd ../../../../../../../../..'
 alias ...........='cd ../../../../../../../../../..'
-function ..n() {
-	for (( i = 0; i < $1; i++ )) do
-		cd ..
+function ..() {
+	local count=$1
+	[[ -z $count ]] && count=1
+	
+	local cmd=""
+	for (( i = 0; i < count; i++ )) do
+		cmd+="../"
 	done
+	
+	cd "${cmd[@]}"
 }
 
 alias path='echo -e ${PATH//:/\\n}'
