@@ -1,7 +1,6 @@
 vim.g.mapleader = " "
 
 local set = vim.keymap.set
-local api = vim.api
 
 local function desc(description)
 	return { noremap = true, silent = true, desc = description }
