@@ -18,11 +18,16 @@ set({ "n" }, "<leader>A", "ggVG", desc("Select all"))
 set({ "n" }, "<leader>X", ":!chmod +x %<CR><CR>:set filetype=sh<CR>", desc("Chmod +x and set .sh"))
 set({ "n" }, "g/", "*", desc("Next current word"))
 set({ "x" }, "/", "<esc>/\\%V", desc("Search in selection"))
+-- big move
+set({ "n" }, "H", "^")
+set({ "n" }, "L", "$")
 -- moving lines
 set({ "n" }, "<A-j>", "ddp", desc("Move line down"))
 set({ "n" }, "<A-k>", "ddkkp", desc("Move line up"))
 set({ "v" }, "<A-j>", ":m '>+1<CR>gv=gv", desc("Move line down"))
 set({ "v" }, "<A-k>", ":m '<-2<CR>gv=gv", desc("Move line up"))
+-- duplicate and comment
+set("n", "yc", "yygccp", desc("Duplicate and comment out line"))
 -- center search
 set({ "n", "v" }, "<A-n>", "nzz", desc("Center next match"))
 set({ "n", "v" }, "<A-N>", "Nzz", desc("Center previous match"))
