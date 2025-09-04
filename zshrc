@@ -163,6 +163,32 @@ alias k='kill -9'
 
 alias neofetch='neofetch --ascii ~/.config/neofetch/ascii.txt'
 
+function fetch() { # animated fetch, thanks pewds
+	res=$(fastfetch -l " " --logo-type data-raw --pipe false --logo-padding-left 44)
+	cols=$("$res" | wc -l)
+
+	clear
+	tput cup 1 1
+	echo "$res"
+
+	tput civis
+	trap 'tput cnorm; stop=1; break;' INT TERM
+
+	stop=0
+
+	while true; do
+		for frame in ~/.config/fastfetch/frames/*.txt; do
+			tput cup 1 1
+			ascii=$(cat "$frame")
+			echo "$ascii"
+
+			# Wait a little, but also check if user pressed a key
+			read -t ${1:-0.1} -n 1 key && { tput cnorm; stop=1; break; }
+		done
+		[[ "$stop" -eq 1 ]] && break
+	done
+}
+
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
