@@ -7,9 +7,12 @@ local function desc(description)
 	return { noremap = true, silent = true, desc = description }
 end
 
-local function command(cmd, does)
-	api.nvim_create_user_command(cmd, does, { nargs = 0 })
-end
+-- mistypes
+vim.cmd([[cabbrev W w]])
+vim.cmd([[cabbrev Q q]])
+vim.cmd([[cabbrev Wq wq]])
+vim.cmd([[cabbrev WQ wq]])
+vim.cmd([[cabbrev wQ wq]])
 
 -- useful
 set({ "n", "v", "x" }, "<leader>y", '"+y', desc("Yank to system clipboard"))
@@ -78,7 +81,3 @@ surround({ "*" }, "*")
 surround({ "_" }, "_")
 surround({ "%" }, "%")
 surround({ "$", "4" }, "$$ ", " $$")
-
--- mistypes
-command("W", "w")
-command("Q", "q")
