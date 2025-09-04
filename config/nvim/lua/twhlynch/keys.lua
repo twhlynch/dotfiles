@@ -22,10 +22,12 @@ set({ "x" }, "/", "<esc>/\\%V", desc("Search in selection"))
 set({ "n" }, "H", "^")
 set({ "n" }, "L", "$")
 -- moving lines
-set({ "n" }, "<A-j>", "ddp", desc("Move line down"))
-set({ "n" }, "<A-k>", "ddkkp", desc("Move line up"))
-set({ "v" }, "<A-j>", ":m '>+1<CR>gv=gv", desc("Move line down"))
-set({ "v" }, "<A-k>", ":m '<-2<CR>gv=gv", desc("Move line up"))
+set("i", "<A-j>", "<Esc>:m .+1<cr>==gi", desc("Move line down"))
+set("i", "<A-k>", "<Esc>:m .-2<cr>==gi", desc("Move line up"))
+set({ "n" }, "<A-j>", ":m .+1<cr>==", desc("Move line down"))
+set({ "n" }, "<A-k>", ":m .-2<cr>==", desc("Move line up"))
+set({ "x" }, "<A-j>", ":m '>+1<CR>gv=gv", desc("Move lines down"))
+set({ "x" }, "<A-k>", ":m '<-2<CR>gv=gv", desc("Move lines up"))
 -- duplicate and comment
 set("n", "yc", "yygccp", desc("Duplicate and comment out line"))
 -- center search
