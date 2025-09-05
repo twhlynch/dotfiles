@@ -104,6 +104,27 @@ return {
 						end,
 						extmark_opts = { priority = 200 },
 					},
+					ansi_color = {
+						pattern = function()
+							return "%[[34]8;2;%d%d?%d?;%d%d?%d?;%d%d?%d?m%f[%W]" -- [38;2;134;17;200m
+						end,
+						group = function(_, _, data)
+							local ansi = data.full_match
+
+							local index = string.find(ansi, ";", 8)
+							local index_2 = string.find(ansi, ";", index + 2)
+							local index_3 = string.find(ansi, "m", index_2 + 2)
+
+							local r = math.min(tonumber(ansi:sub(7, index - 1)) or 0, 255)
+							local g = math.min(tonumber(ansi:sub(index + 1, index_2 - 1)) or 0, 255)
+							local b = math.min(tonumber(ansi:sub(index_2 + 1, index_3 - 1)) or 0, 255)
+
+							local hex = string.format("#%02X%02X%02X", r, g, b)
+
+							return hipatterns.compute_hex_color_group(hex, "bg")
+						end,
+						extmark_opts = { priority = 200 },
+					},
 				},
 			})
 		end,
