@@ -25,10 +25,10 @@ gui:
       - "#cdcdcd"
 
 git:
-  disableForcePushing: true
-
   paging:
     pager: delta --dark --paging=never
+
+  disableForcePushing: true
 
 os:
   editPreset: 'nvim'

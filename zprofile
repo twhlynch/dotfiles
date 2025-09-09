@@ -8,5 +8,8 @@ PATH="/Applications/CMake.app/Contents/bin:${PATH}"
 
 export PATH
 
+# config
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # editor
 export EDITOR=nvim

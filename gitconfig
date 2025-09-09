@@ -18,3 +18,23 @@
 	change-commits = "!CHANGE_COMMITS_ALIAS_FUNC() { VAR_OLD=$1; OLD=$2; VAR_NEW=$3; NEW=$4; shift 4; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR_OLD`\\\" = '$OLD' ]]; then export $VAR_NEW='$NEW'; fi\" $@; }; CHANGE_COMMITS_ALIAS_FUNC"
 	undo = "git reset HEAD~"
 	new = "!NEW_ALIAS_FUNC() { git checkout -b $3 $1; git push -u $2 $3; }; NEW_ALIAS_FUNC"
+[core]
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	dark = true
+	syntax-theme = Vague
+#	file-decoration-style = "#7e98e8" ul
+#	file-style = "#7e98e8"
+#	grep-file-style = "#bb9dbd"
+#	grep-line-number-style = "#7fa563"
+#	hunk-header-decoration-style = "#7e98e8" box
+#	hunk-header-file-style = "#7e98e8"
+#	hunk-header-line-number-style = "#7e98e8"
+#	inline-hint-style = "#7e98e8"
+	plus-style = syntax "#2A3125"
+	minus-style = syntax "#42242A"
+[merge]
+	conflictStyle = zdiff3
