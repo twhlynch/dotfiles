@@ -9,6 +9,7 @@ return {
 				go = { "gofmt" },
 				cpp = { "clang-format" },
 				c = { "clang-format" },
+				cmake = { "gersemi" },
 				bash = { "shfmt" },
 				zig = { "zigfmt" },
 				javascript = { "prettier" },
@@ -18,6 +19,8 @@ return {
 				html = { "prettier" },
 				css = { "prettier" },
 				astro = { "prettier" },
+				vue = { "prettier" },
+				svg = { "prettier" },
 			},
 			default_format_opts = {
 				lsp_format = "fallback",
