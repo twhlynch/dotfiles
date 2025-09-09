@@ -3,10 +3,14 @@ return {
 	config = function()
 		require("vague").setup({
 			transparent = true,
-			on_highlights = function(highlights, _)
+			on_highlights = function(highlights, colors)
 				highlights.Visual.fg = nil
 				highlights.TreesitterContext = nil
 				highlights.TreesitterContextLineNumber.bg = nil
+
+				highlights["@lsp.typemod.method.readonly.cpp"] = {
+					fg = "#bb7070",
+				}
 			end,
 		})
 		vim.cmd("colorscheme vague")
