@@ -12,6 +12,11 @@ return {
 	},
 
 	config = function()
+		-- eventually ill move to .11 lsp...
+		-- vim.lsp.enable({ -- IT FUCKED UP MY OTHER LSP SETUP NOOOO
+		-- 	"swipl",
+		-- })
+
 		local cmp = require("cmp")
 		local cmp_lsp = require("cmp_nvim_lsp")
 		-- stylua: ignore
