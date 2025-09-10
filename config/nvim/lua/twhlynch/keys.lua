@@ -31,7 +31,7 @@ set({ "n" }, "<A-k>", ":m .-2<cr>==", desc("Move line up"))
 set({ "x" }, "<A-j>", ":m '>+1<CR>gv=gv", desc("Move lines down"))
 set({ "x" }, "<A-k>", ":m '<-2<CR>gv=gv", desc("Move lines up"))
 -- duplicate and comment
-set("n", "yc", "yygccp", desc("Duplicate and comment out line"))
+set({ "n" }, "yc", "yygccp", desc("Duplicate and comment out line"))
 -- center search
 set({ "n", "v" }, "<A-n>", "nzz", desc("Center next match"))
 set({ "n", "v" }, "<A-N>", "Nzz", desc("Center previous match"))
