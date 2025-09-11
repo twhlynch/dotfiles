@@ -151,6 +151,8 @@ killall Dock
 
 echo "-----> Setup macos defaults"
 
+touch ~/.hushlogin
+
 # reload
 exec zsh
 
