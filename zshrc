@@ -73,26 +73,34 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls $realpath'
 
 # fzf style
-export FZF_DEFAULT_OPTS="
-	--height=99%
-	--layout=reverse
-	--pointer='█'
-	--scrollbar='▌'
-	--highlight-line
-	--color=hl:#f3be7c
-	--color=bg:-1
-	--color=gutter:-1
-	--color=bg+:#252530
-	--color=fg+:#aeaed1
-	--color=hl+:#f3be7c
-	--color=border:#606079
-	--color=prompt:#bb9dbd
-	--color=query:#aeaed1:bold
-	--color=pointer:#aeaed1
-	--color=scrollbar:#aeaed1
-	--color=info:#f3be7c
-	--color=spinner:#7fa563
-	"
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+  --color=fg:-1,fg+:#d0d0d0,bg:-1,bg+:#262626
+  --color=hl:#f3be7c,hl+:#e0a363,info:#f3be7c,marker:#7e98e8
+  --color=prompt:#bb9dbd,spinner:#7fa563,pointer:#aeaed1,header:#87afaf
+  --color=border:#606079,scrollbar:#aeaed1,label:#aeaeae,query:#aeaed1
+  --border="rounded" --border-label="" --preview-window="border-rounded" --prompt="> "
+  --marker=">" --pointer="█" --separator="─" --scrollbar="▌"
+  --layout="reverse"'
+
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'test -f {} && bat -n --color=always --paging=never -pp {} || tree -C {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'
+  --color=info:#d8647e
+  --border-label='Files'"
+
+export FZF_CTRL_R_OPTS="
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'CTRL-Y to copy'
+  --color=info:#7e98e8
+  --border-label='History'"
+
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'tree -C {}'
+  --color=info:#7fa563
+  --border-label='cd'"
 
 # Aliases
 alias ,a='abandon'
