@@ -53,7 +53,7 @@ _bar_cursor # bar cursor on startup
 precmd_functions+=(_bar_cursor) # bar cursor on new prompt
 
 # History
-HISTSIZE=5000
+HISTSIZE=10000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
