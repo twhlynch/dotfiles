@@ -1,7 +1,3 @@
-if [[ -f "/opt/homebrew/bin/brew" ]] then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 if [ ! -d "$ZINIT_HOME" ]; then
