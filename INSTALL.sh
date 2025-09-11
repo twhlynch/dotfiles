@@ -5,7 +5,6 @@ if! command -v brew &> /dev/null; then
 fi
 
 # fonts
-brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
 brew install --cask font-jetbrains-mono-nerd-font
 brew install --cask font-meslo-lg-nerd-font
@@ -14,7 +13,7 @@ brew install --cask font-meslo-lg-nerd-font
 brew install ffmpeg git git-lfs neovim tmux zoxide fzf bat eza lazygit gh ninja btop clang-format zig oh-my-posh ripgrep deno doxygen docker pnpm maven cargo stylua shfmt patchelf automake autoconf-archive gcc ncurses clang-tidy git-filter-repo neofetch tldr thefuck opam rlwrap coreutils terminal-notifier fastfetch delta
 
 # python
-brew install python3 python3.9 python3.10 python3.12 python3.13
+brew install python@3.9 python@3.11 python@3.10 python@3.12 python@3.13
 
 # latex
 brew install texlive texlive-latex-extra ghostscript pdflatex basictex imagemagick
