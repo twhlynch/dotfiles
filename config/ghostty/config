@@ -4,8 +4,6 @@ font-family = "Geist Mono"
 font-size = 14
 font-feature = -liga
 
-# theme = vesper
-# background = 101010
 # selection-background = 303030
 # selection-foreground = 050505
 background-opacity = 0.50
@@ -58,7 +56,8 @@ palette = 13=#c9b1ca
 palette = 14=#bebeda
 palette = 15=#d7d7d7
 
-background = #141415
+# background = #141415
+background = #050505
 foreground = #cdcdcd
 cursor-color = #cdcdcd
 selection-background = #252530
