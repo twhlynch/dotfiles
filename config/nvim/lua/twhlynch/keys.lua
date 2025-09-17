@@ -17,8 +17,6 @@ vim.cmd([[cabbrev wQ wq]])
 set({ "n", "v", "x" }, "<leader>y", '"+y', desc("Yank to system clipboard"))
 set({ "n", "v", "x" }, "<leader>w", "<C-w>", desc("Window commands"))
 set({ "n" }, "<leader>A", "ggVG", desc("Select all"))
-set({ "n" }, "<leader>X", ":!chmod +x %<CR><CR>:set filetype=sh<CR>", desc("Chmod +x and set .sh"))
-set({ "n" }, "g/", "*", desc("Next current word"))
 set({ "x" }, "/", "<esc>/\\%V", desc("Search in selection"))
 -- big move
 set({ "n" }, "H", "^")
@@ -30,8 +28,6 @@ set({ "n" }, "<A-j>", ":m .+1<cr>==", desc("Move line down"))
 set({ "n" }, "<A-k>", ":m .-2<cr>==", desc("Move line up"))
 set({ "x" }, "<A-j>", ":m '>+1<CR>gv=gv", desc("Move lines down"))
 set({ "x" }, "<A-k>", ":m '<-2<CR>gv=gv", desc("Move lines up"))
--- duplicate and comment
-set({ "n" }, "yc", "yygccp", desc("Duplicate and comment out line"))
 -- center search
 set({ "n", "v" }, "<A-n>", "nzz", desc("Center next match"))
 set({ "n", "v" }, "<A-N>", "Nzz", desc("Center previous match"))
@@ -40,8 +36,6 @@ set({ "v" }, "<", "<gv", desc("Unindent and stay in visual"))
 set({ "v" }, ">", ">gv", desc("Indent and stay in visual"))
 -- jumping
 set({ "n" }, "<leader>jo", "<cmd>b#<CR>", desc("Jump to last buffer"))
-set({ "n" }, "<leader>jl", "<cmd>bp<CR>", desc("Jump to previous buffer"))
-set({ "n" }, "<leader>jr", "<cmd>bn<CR>", desc("Jump to next buffer"))
 -- toggles
 set({ "n" }, "<leader>z", function()
 	vim.wo.wrap = not vim.wo.wrap
@@ -51,6 +45,10 @@ set({ "n" }, "<leader>hl", function()
 	vim.o.hlsearch = not vim.o.hlsearch
 	print("Search highlighting is " .. (vim.o.hlsearch and "ON" or "OFF"))
 end, desc("Toggle search highlight"))
+-- macros
+set({ "n" }, "<leader>mm", "<cmd>%s/\\r//<cr>", desc("Remove trailing ^M"))
+set({ "n" }, "<leader>mx", ":!chmod +x %<CR><CR>:set filetype=sh<CR>", desc("Chmod +x and set .sh"))
+set({ "n" }, "<leader>mc", "yygccp", desc("Duplicate and comment out line"))
 -- surround visual selection
 local function surround(triggers, pref, suff)
 	if suff == nil then
