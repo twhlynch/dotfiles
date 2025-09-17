@@ -294,6 +294,12 @@ function dl() {
 	done
 }
 
+function prompt() {
+	local input="$*"
+	[[ -z $prompt ]] && prompt="ping!"
+	echo "$input" | shortcuts run "prompt" | cat
+}
+
 function commit() {
 	git add .
 	git commit -m "$*"
