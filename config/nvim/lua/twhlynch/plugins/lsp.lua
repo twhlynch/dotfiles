@@ -159,7 +159,7 @@ return {
 				["volar"] = function()
 					local lspconfig = require("lspconfig")
 					lspconfig.volar.setup({
-						filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+						filetypes = { "vue" },
 						init_options = {
 							vue = {
 								hybridMode = true,
@@ -173,16 +173,15 @@ return {
 					local lspconfig = require("lspconfig")
 					lspconfig.ts_ls.setup({
 						capabilities = capabilities,
-						init_options = {
-							plugins = {
-								{
-									name = "@vue/typescript-plugin",
-									location = "/usr/local/lib/node_modules/@vue/language-server",
-									languages = { "vue" },
-								},
-							},
-						},
-						filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+						filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
+					})
+				end,
+
+				["vtsls"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.ts_ls.setup({
+						capabilities = capabilities,
+						filetypes = { "vue" },
 					})
 				end,
 			},
