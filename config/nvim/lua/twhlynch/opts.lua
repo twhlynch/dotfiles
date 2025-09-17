@@ -26,6 +26,7 @@ opt.listchars = "tab:⤏ ,trail:~,extends:,precedes: "
 opt.list = true
 opt.winborder = "rounded"
 opt.splitright = true
+opt.fixendofline = false
 opt.fixeol = false
 
 global.tex_flavor = "latex"
