@@ -67,9 +67,9 @@ set({ "n" }, "<leader>jp", pear.jump_pair, desc("Jump file pair"))
 set({ "n" }, "]r", regions.goto_next_region, desc("Next region"))
 set({ "n" }, "[r", regions.goto_prev_region, desc("Previous region"))
 set({ "n" }, "<leader>lq", ai.ask, desc("Ask about error"))
-set({ "x" }, "<leader>lq", function()
-	ai.ask(true)
-end, desc("Ask about error"))
+set({ "x" }, "<leader>lq", ai.visual_ask, desc("Ask about error"))
+set({ "n" }, "<leader>lQ", ai.complex_ask, desc("Ask about error in detail"))
+set({ "x" }, "<leader>lQ", ai.complex_visual_ask, desc("Ask about error in detail"))
 set({ "n" }, "<leader><leader>", fff.fff, desc("FFF"))
 
 -- refreshing

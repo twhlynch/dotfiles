@@ -1,7 +1,8 @@
 local M = {}
 
 local options = {
-	prompt = [[
+	prompt = {
+		template = [[
 In __FILE__:
 ```
 __LINES__
@@ -12,11 +13,21 @@ Errors:
 __ERRORS__
 ```
 
+__PROMPT__
+
+]],
+		simple = [[
 Fix the code. Keep your solution short and respond with ONLY fixed lines, not surrounding code.
 If there is no error provided, figure out the issue anyway.
 Specify the correct language in the markdown codeblock.
 You MUST respond with only 1 codeblock and nothing else.
 ]],
+		complex = [[
+Respond with an explaination of the code, then an explaination of the error.
+Then an explaination of how to fix the error with the full solution in code.
+If there is no error provided, find issues in the code and fix them.
+]],
+	},
 }
 
 -- helper to run shell commands
@@ -99,14 +110,14 @@ function M.popup(content)
 	vim.api.nvim_set_current_win(win_id)
 end
 
-function M.ask(visual)
+function M.ask(visual, complex)
 	local bufnr = vim.api.nvim_get_current_buf()
 
 	-- __FILE__
 	local filename = vim.fn.expand("%:t")
 	local lines, errors = {}, {}
 
-	if visual then
+	if visual then -- visual selection
 		local start_pos = vim.fn.getpos("'<")
 		local end_pos = vim.fn.getpos("'>")
 		local start_line, end_line = start_pos[2] - 1, end_pos[2]
@@ -121,39 +132,65 @@ function M.ask(visual)
 			end
 		end
 	else
-		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+		if complex then -- all lines
+			-- __LINES__
+			lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
 
-		-- __LINES__
-		lines = vim.api.nvim_buf_get_lines(bufnr, line - 5, line + 5, false)
-
-		-- __ERRORS__
-		local diagnostics = vim.diagnostic.get(bufnr, { lnum = line - 1 })
-
-		-- prioritise same column
-		for _, diag in pairs(diagnostics) do
-			if diag.col <= col and diag.end_col >= col then
-				table.insert(errors, diag.message)
+			-- __ERRORS__
+			for lnum = 0, #lines - 1 do
+				for _, diag in ipairs(vim.diagnostic.get(bufnr, { lnum = lnum })) do
+					table.insert(errors, diag.message)
+				end
 			end
-		end
+		else -- +-5 lines
+			-- __LINES__
+			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 
-		-- fallback to all
-		if #errors == 0 and #diagnostics ~= 0 then
+			lines = vim.api.nvim_buf_get_lines(bufnr, line - 5, line + 5, false)
+
+			-- __ERRORS__
+			local diagnostics = vim.diagnostic.get(bufnr, { lnum = line - 1 })
+
+			-- prioritise same column
 			for _, diag in pairs(diagnostics) do
-				table.insert(errors, diag.message)
+				if diag.col <= col and diag.end_col >= col then
+					table.insert(errors, diag.message)
+				end
+			end
+
+			-- fallback to all
+			if #errors == 0 and #diagnostics ~= 0 then
+				for _, diag in pairs(diagnostics) do
+					table.insert(errors, diag.message)
+				end
 			end
 		end
 	end
 
-	local prompt = options.prompt
+	local prompt = options.prompt.template
+	prompt = string.gsub(prompt, "__PROMPT__", complex and options.prompt.complex or options.prompt.simple)
 	prompt = string.gsub(prompt, "__FILE__", filename)
 	prompt = string.gsub(prompt, "__LINES__", table.concat(lines, "\n"))
 	prompt = string.gsub(prompt, "__ERRORS__", table.concat(errors, "\n"))
 
+	vim.notify(prompt)
 	local escaped = "prompt " .. vim.fn.shellescape(prompt)
 	M.job_async({ "zsh", "-ic", escaped }, function(response)
 		local cleaned = vim.trim(response:gsub("^[^\n]*\n", ""))
 		M.popup(cleaned)
 	end, vim.notify)
+end
+
+function M.visual_ask()
+	M.ask(true)
+end
+
+function M.complex_ask()
+	M.ask(false, true)
+end
+
+function M.complex_visual_ask()
+	M.ask(true, true)
 end
 
 function M.setup(opts)
