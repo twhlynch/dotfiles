@@ -1,5 +1,8 @@
 -- less bad rewrite of https://github.com/benomahony/oil-git.nvim
+local U = require("twhlynch.personal-plugins.util")
+
 local M = {}
+
 local git_status = {}
 
 local options = {
@@ -17,35 +20,6 @@ function M.debug(str)
 	if options.debug then
 		vim.notify("Debug: " .. str, vim.log.levels.INFO)
 	end
-end
-
--- helper to run shell commands
-function M.job_async(cmd, on_success, on_error)
-	local stdout_lines = {}
-	local stderr_lines = {}
-
-	vim.fn.jobstart(cmd, {
-		on_stdout = function(_, data, _)
-			for _, line in ipairs(data) do
-				table.insert(stdout_lines, line)
-			end
-		end,
-		on_stderr = function(_, data, _)
-			for _, line in ipairs(data) do
-				table.insert(stderr_lines, line)
-			end
-		end,
-		on_exit = function(_, code, _)
-			if code == 0 then
-				on_success(table.concat(stdout_lines, "\n"))
-			else
-				if on_error then
-					on_error(table.concat(stderr_lines, "\n") .. " (Exit code: " .. code .. ")")
-				end
-			end
-		end,
-		rpc = false,
-	})
 end
 
 function M.update_git_status()
@@ -68,7 +42,7 @@ function M.update_git_status()
 	local git_root = vim.fn.fnamemodify(git_dir, ":p:h:h")
 
 	M.debug("Update git status")
-	M.job_async({ "git", "-C", git_root, "status", "--porcelain" }, function(status)
+	U.job_async({ "git", "-C", git_root, "status", "--porcelain" }, function(status)
 		git_status = M.parse_git_status(status, git_root)
 
 		M.apply_git_highlights()

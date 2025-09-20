@@ -1,3 +1,5 @@
+local U = require("twhlynch.personal-plugins.util")
+
 local M = {}
 
 local options = {
@@ -29,35 +31,6 @@ If there is no error provided, find issues in the code and fix them.
 ]],
 	},
 }
-
--- helper to run shell commands
-function M.job_async(cmd, on_success, on_error)
-	local stdout_lines = {}
-	local stderr_lines = {}
-
-	vim.fn.jobstart(cmd, {
-		on_stdout = function(_, data, _)
-			for _, line in ipairs(data) do
-				table.insert(stdout_lines, line)
-			end
-		end,
-		on_stderr = function(_, data, _)
-			for _, line in ipairs(data) do
-				table.insert(stderr_lines, line)
-			end
-		end,
-		on_exit = function(_, code, _)
-			if code == 0 then
-				on_success(table.concat(stdout_lines, "\n"))
-			else
-				if on_error then
-					on_error(table.concat(stderr_lines, "\n") .. " (Exit code: " .. code .. ")")
-				end
-			end
-		end,
-		rpc = false,
-	})
-end
 
 -- create response window
 function M.popup(content)
@@ -175,7 +148,7 @@ function M.ask(visual, complex)
 
 	vim.notify(prompt)
 	local escaped = "prompt " .. vim.fn.shellescape(prompt)
-	M.job_async({ "zsh", "-ic", escaped }, function(response)
+	U.job_async({ "zsh", "-ic", escaped }, function(response)
 		local cleaned = vim.trim(response:gsub("^[^\n]*\n", ""))
 		M.popup(cleaned)
 	end, vim.notify)

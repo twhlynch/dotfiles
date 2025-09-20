@@ -1,4 +1,6 @@
 -- some code from https://github.com/jcyrio/nvim_ai_command_finder
+local U = require("twhlynch.personal-plugins.util")
+
 local M = {}
 
 local options = {
@@ -9,35 +11,6 @@ USER: __PROMPT__
 ]],
 	},
 }
-
--- helper to run shell commands
-function M.job_async(cmd, on_success, on_error)
-	local stdout_lines = {}
-	local stderr_lines = {}
-
-	vim.fn.jobstart(cmd, {
-		on_stdout = function(_, data, _)
-			for _, line in ipairs(data) do
-				table.insert(stdout_lines, line)
-			end
-		end,
-		on_stderr = function(_, data, _)
-			for _, line in ipairs(data) do
-				table.insert(stderr_lines, line)
-			end
-		end,
-		on_exit = function(_, code, _)
-			if code == 0 then
-				on_success(table.concat(stdout_lines, "\n"))
-			else
-				if on_error then
-					on_error(table.concat(stderr_lines, "\n") .. " (Exit code: " .. code .. ")")
-				end
-			end
-		end,
-		rpc = false,
-	})
-end
 
 -- trim, un-code-block, get first line
 function M.sanitize_cmd(s)
@@ -56,7 +29,7 @@ function M.gen_command(request, callback)
 	prompt = string.gsub(prompt, "__PROMPT__", request)
 
 	local escaped = "prompt " .. vim.fn.shellescape(prompt)
-	M.job_async({ "zsh", "-ic", escaped }, function(response)
+	U.job_async({ "zsh", "-ic", escaped }, function(response)
 		local cleaned = vim.trim(response:gsub("^[^\n]*\n", ""))
 		callback(cleaned)
 	end, vim.notify)

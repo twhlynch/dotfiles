@@ -1,3 +1,5 @@
+local U = require("twhlynch.personal-plugins.util")
+
 local M = {}
 
 local all_comments = {}
@@ -16,35 +18,6 @@ function M.debug(str)
 	if options.debug then
 		vim.notify("Debug: " .. str, vim.log.levels.INFO)
 	end
-end
-
--- helper to run shell commands
-function M.job_async(cmd, on_success, on_error)
-	local stdout_lines = {}
-	local stderr_lines = {}
-
-	vim.fn.jobstart(cmd, {
-		on_stdout = function(_, data, _)
-			for _, line in ipairs(data) do
-				table.insert(stdout_lines, line)
-			end
-		end,
-		on_stderr = function(_, data, _)
-			for _, line in ipairs(data) do
-				table.insert(stderr_lines, line)
-			end
-		end,
-		on_exit = function(_, code, _)
-			if code == 0 then
-				on_success(table.concat(stdout_lines, "\n"))
-			else
-				if on_error then
-					on_error(table.concat(stderr_lines, "\n") .. " (Exit code: " .. code .. ")")
-				end
-			end
-		end,
-		rpc = false,
-	})
 end
 
 function M.get_pr_review_comments()
@@ -84,24 +57,24 @@ function M.get_pr_review_comments()
 
 	-- check if in a git repo
 	M.debug("get is repo")
-	M.job_async({ "git", "rev-parse", "--is-inside-work-tree" }, function(is_repo)
+	U.job_async({ "git", "rev-parse", "--is-inside-work-tree" }, function(is_repo)
 		if vim.trim(is_repo) ~= "true" then
 			return
 		end
 
 		-- get current branch
 		M.debug("get current branch")
-		M.job_async({ "git", "rev-parse", "--abbrev-ref", "HEAD" }, function(current_branch)
+		U.job_async({ "git", "rev-parse", "--abbrev-ref", "HEAD" }, function(current_branch)
 			current_branch = vim.trim(current_branch)
 
 			-- check internet
 			M.debug("check internet")
-			M.job_async({ "ping", "-c", "1", "8.8.8.8" }, function(_)
+			U.job_async({ "ping", "-c", "1", "8.8.8.8" }, function(_)
 				-- spacer :3
 
 				-- check remote exists
 				M.debug("check remote")
-				M.job_async({ "git", "remote", "-v" }, function(remote_info)
+				U.job_async({ "git", "remote", "-v" }, function(remote_info)
 					remote_info = vim.trim(remote_info)
 					if remote_info == "" then -- no remote
 						return
@@ -110,7 +83,7 @@ function M.get_pr_review_comments()
 					-- get latest open pr from current branch
 					M.debug("get pr")
 					-- stylua: ignore
-					M.job_async({ "gh", "pr", "list", "--head", current_branch, "--state", "open", "--json", "number", "-q", ".[0].number" }, function(pr_number)
+					U.job_async({ "gh", "pr", "list", "--head", current_branch, "--state", "open", "--json", "number", "-q", ".[0].number" }, function(pr_number)
 						pr_number = vim.trim(pr_number)
 						if pr_number == "" then -- no pr found
 							return
@@ -119,7 +92,7 @@ function M.get_pr_review_comments()
 						-- get upstream repo name
 						M.debug("get upstream name")
 						-- stylua: ignore
-						M.job_async({ "gh", "repo", "view", "--json", "owner,name", "-q", '"\\(.owner.login)/\\(.name)"' }, function(repo_name)
+						U.job_async({ "gh", "repo", "view", "--json", "owner,name", "-q", '"\\(.owner.login)/\\(.name)"' }, function(repo_name)
 							repo_name = vim.trim(repo_name)
 							if repo_name == "" then
 								vim.notify("Could not determine repository name.", vim.log.levels.ERROR)
@@ -130,7 +103,7 @@ function M.get_pr_review_comments()
 							M.debug("get comments")
 							local api_path = string.format("repos/%s/pulls/%s/comments", repo_name, pr_number)
 							-- stylua: ignore
-							M.job_async({ "gh", "api", api_path, "--jq", "[.[] | {author: .user.login, path: .path, line: .original_line, body: .body}]" }, process_comments_response, handle_error)
+							U.job_async({ "gh", "api", api_path, "--jq", "[.[] | {author: .user.login, path: .path, line: .original_line, body: .body}]" }, process_comments_response, handle_error)
 						end, handle_error) -- repo name
 					end, handle_error) -- latest pr
 				end, nil) -- has remote (fails if local only)

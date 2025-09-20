@@ -1,4 +1,6 @@
 -- plugin template
+local U = require("twhlynch.personal-plugins.util")
+
 local M = {}
 
 local options = {}
