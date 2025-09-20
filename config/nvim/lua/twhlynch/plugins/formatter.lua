@@ -11,6 +11,7 @@ return {
 				c = { "clang-format" },
 				cmake = { "gersemi" },
 				bash = { "shfmt" },
+				zsh = { "beautysh", "--tab" },
 				zig = { "zigfmt" },
 				javascript = { "prettier" },
 				typescript = { "prettier" },
@@ -24,6 +25,11 @@ return {
 			},
 			default_format_opts = {
 				lsp_format = "fallback",
+			},
+			formatters = {
+				beautysh = {
+					append_args = { "--tab" },
+				},
 			},
 		})
 		vim.keymap.set({ "n" }, "<leader>lf", function()
