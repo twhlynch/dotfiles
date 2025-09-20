@@ -315,6 +315,32 @@ function prompt() {
 	echo "$input" | shortcuts run "prompt" | cat
 }
 
+function blur() {
+	config_file="$HOME/.config/ghostty/config"
+
+	[[ ! -f "$config_file" ]] && exit 1
+
+	current_blur="$(grep "^background-blur-radius = \d*$" "$config_file" | sed "s/background-blur-radius = //")"
+	default_blur="$(grep "^# background-blur-radius = \d*$" "$config_file" | sed "s/# background-blur-radius = //")"
+	[[ -z "$current_blur" ]] && exit 1
+	[[ -z "$default_blur" ]] && exit 1
+
+	new_blur="$1"
+	if [ -z "$new_blur" ]; then
+		if [ "$current_blur" -eq "$default_blur" ]; then
+			new_blur="0"
+		else
+			new_blur="$default_blur"
+		fi
+	fi
+
+	sed -i "" "s/^background-blur-radius = [0-9]*\$/background-blur-radius = $new_blur/" "$config_file"
+
+	echo "blur: $current_blur -> $new_blur"
+
+	osascript "$HOME/dotfiles/other/applescript/reload_ghostty_config.scpt" &>/dev/null
+}
+
 function commit() {
 	git add .
 	git commit -m "$*"

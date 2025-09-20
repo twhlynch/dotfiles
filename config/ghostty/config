@@ -7,6 +7,7 @@ font-feature = -liga
 # selection-background = 303030
 # selection-foreground = 050505
 background-opacity = 0.50
+# background-blur-radius = 8
 background-blur-radius = 8
 
 macos-titlebar-style = transparent
