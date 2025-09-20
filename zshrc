@@ -311,7 +311,7 @@ function dl() {
 
 function prompt() {
 	local input="$*"
-	[[ -z $prompt ]] && prompt="ping!"
+	[[ -z $input ]] && input="ping!"
 	echo "$input" | shortcuts run "prompt" | cat
 }
 
