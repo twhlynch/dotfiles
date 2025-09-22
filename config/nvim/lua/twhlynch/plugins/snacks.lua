@@ -45,6 +45,8 @@ return {
 		{ "<leader>d", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
 		{ "<leader>bb", function() Snacks.picker.buffers() end, desc = "Buffers" },
 		{ "<leader>t", function() Snacks.picker.todo_comments() end, desc = "Todo" },
+		{ "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
+		{ "<leader>gl", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
 
 		{ "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
 		{ "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
