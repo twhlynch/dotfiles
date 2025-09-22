@@ -58,6 +58,8 @@ local fff = load_plugin("fff")
 -- local ai_fix = load_plugin("ai-fix")
 local ai_macro = load_plugin("ai-macro")
 
+-- local history = load_plugin("history")
+
 local set = vim.keymap.set
 local function desc(description)
 	return { noremap = true, silent = true, desc = description }
@@ -67,6 +69,7 @@ set({ "n" }, "<leader>K", reviews.get_current_line_comments, desc("Show line PR 
 set({ "n" }, "<leader>jp", pear.jump_pair, desc("Jump file pair"))
 set({ "n" }, "]r", regions.goto_next_region, desc("Next region"))
 set({ "n" }, "[r", regions.goto_prev_region, desc("Previous region"))
+-- set({ "n" }, "<leader>hb", history.get_blames, desc("Show line blame history"))
 -- set({ "n" }, "<leader>lq", ai_fix.ask, desc("Ask about error"))
 -- set({ "x" }, "<leader>lq", ai_fix.visual_ask, desc("Ask about error"))
 -- set({ "n" }, "<leader>lQ", ai_fix.complex_ask, desc("Ask about error in detail"))
