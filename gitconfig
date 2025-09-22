@@ -26,16 +26,16 @@
 	navigate = true
 	dark = true
 	syntax-theme = Vague
-#	file-decoration-style = "#7e98e8" ul
-#	file-style = "#7e98e8"
-#	grep-file-style = "#bb9dbd"
-#	grep-line-number-style = "#7fa563"
-#	hunk-header-decoration-style = "#7e98e8" box
-#	hunk-header-file-style = "#7e98e8"
-#	hunk-header-line-number-style = "#7e98e8"
-#	inline-hint-style = "#7e98e8"
 	plus-style = syntax "#2A3125"
+	plus-emph-style = syntax "#3f5330"
+	plus-non-emph-style = syntax "#2A3125"
+	plus-empty-line-marker-style = syntax "#2A3125"
+	line-numbers-plus-style = "#7fa563"
 	minus-style = syntax "#42242A"
+	minus-emph-style = syntax "#7e1f34"
+	minus-non-emph-style = syntax "#42242A"
+	minus-empty-line-marker-style = syntax "#42242A"
+	line-numbers-zero-style = "#d8647e"
 [merge]
 	conflictStyle = zdiff3
 [init]
