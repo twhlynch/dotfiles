@@ -6,7 +6,7 @@ local M = {}
 local options = {
 	prompt = {
 		template = [[
-SYSTEM: You are a Neovim expert. Convert requests to Neovim commands. Only output the command without explanation.
+SYSTEM: You are a Vim and Neovim expert. Convert requests to real Neovim commands or macros. Only output the command without explanation. Do not hallucinate. Do not make up commands.
 USER: __PROMPT__
 ]],
 	},

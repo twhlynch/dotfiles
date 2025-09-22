@@ -55,7 +55,7 @@ local marks = load_plugin("marks")
 
 local fff = load_plugin("fff")
 
-local ai_fix = load_plugin("ai-fix")
+-- local ai_fix = load_plugin("ai-fix")
 local ai_macro = load_plugin("ai-macro")
 
 local set = vim.keymap.set
@@ -67,10 +67,10 @@ set({ "n" }, "<leader>K", reviews.get_current_line_comments, desc("Show line PR 
 set({ "n" }, "<leader>jp", pear.jump_pair, desc("Jump file pair"))
 set({ "n" }, "]r", regions.goto_next_region, desc("Next region"))
 set({ "n" }, "[r", regions.goto_prev_region, desc("Previous region"))
-set({ "n" }, "<leader>lq", ai_fix.ask, desc("Ask about error"))
-set({ "x" }, "<leader>lq", ai_fix.visual_ask, desc("Ask about error"))
-set({ "n" }, "<leader>lQ", ai_fix.complex_ask, desc("Ask about error in detail"))
-set({ "x" }, "<leader>lQ", ai_fix.complex_visual_ask, desc("Ask about error in detail"))
+-- set({ "n" }, "<leader>lq", ai_fix.ask, desc("Ask about error"))
+-- set({ "x" }, "<leader>lq", ai_fix.visual_ask, desc("Ask about error"))
+-- set({ "n" }, "<leader>lQ", ai_fix.complex_ask, desc("Ask about error in detail"))
+-- set({ "x" }, "<leader>lQ", ai_fix.complex_visual_ask, desc("Ask about error in detail"))
 set({ "n", "x" }, "<leader>q", ai_macro.ask, desc("Ask to run a macro"))
 set({ "n" }, "<leader><leader>", fff.fff, desc("FFF"))
 
