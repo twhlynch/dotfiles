@@ -23,6 +23,7 @@
 [interactive]
 	diffFilter = delta --color-only
 [delta]
+	true-color = always
 	navigate = true
 	dark = true
 	syntax-theme = Vague
