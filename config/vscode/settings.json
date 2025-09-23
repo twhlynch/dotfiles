@@ -49,7 +49,7 @@
         ]
     },
     "background.panel": {
-        "images": ["file:///Users/twhlynch/dotfiles/vscode/halftones.svg"],
+        "images": ["file:///Users/twhlynch/dotfiles/config/vscode/halftones.svg"],
         "style": {
             "background-position": "bottom center",
             "background-size": "100% auto",
@@ -57,7 +57,7 @@
         }
     },
     "vscode_custom_css.imports": [
-        "file:///Users/twhlynch/dotfiles/vscode/vscode.css"
+        "file:///Users/twhlynch/dotfiles/config/vscode/vscode.css"
     ],
     "workbench.iconTheme": "vscode-icons",
     "window.titleBarStyle": "custom",

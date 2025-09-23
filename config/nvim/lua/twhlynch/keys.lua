@@ -47,7 +47,7 @@ set({ "n" }, "<leader>hl", function()
 end, desc("Toggle search highlight"))
 -- macros
 set({ "n" }, "<leader>mm", "<cmd>%s/\\r//<cr>", desc("Remove trailing ^M"))
-set({ "n" }, "<leader>mx", ":!chmod +x %<CR><CR>:set filetype=sh<CR>", desc("Chmod +x and set .sh"))
+set({ "n" }, "<leader>mx", ":!chmod +x %<CR><CR>", desc("chmod +x"))
 set({ "n" }, "<leader>mc", "yygccp", desc("Duplicate and comment out line"))
 -- surround visual selection
 local function surround(triggers, pref, suff)

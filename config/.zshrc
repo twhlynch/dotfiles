@@ -22,7 +22,7 @@ autoload -Uz compinit && compinit
 zinit cdreplay -q
 
 # oh-my-posh initialization
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
 
 # Keybindings
 bindkey -v # vi mode
