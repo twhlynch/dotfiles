@@ -13,6 +13,9 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
+# autocd
+setopt AUTOCD
+
 # completions
 autoload -Uz compinit && compinit
 
