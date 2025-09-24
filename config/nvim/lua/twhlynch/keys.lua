@@ -45,6 +45,17 @@ set({ "n" }, "<leader>hl", function()
 	vim.o.hlsearch = not vim.o.hlsearch
 	print("Search highlighting is " .. (vim.o.hlsearch and "ON" or "OFF"))
 end, desc("Toggle search highlight"))
+-- next prevs
+set({ "n" }, "]e", function()
+	vim.diagnostic.goto_next({
+		severity = vim.diagnostic.severity.ERROR,
+	})
+end, desc("Jump to the next error in the current buffer"))
+set({ "n" }, "[e", function()
+	vim.diagnostic.goto_prev({
+		severity = vim.diagnostic.severity.ERROR,
+	})
+end, desc("Jump to the previous error in the current buffer"))
 -- macros
 set({ "n" }, "<leader>mm", "<cmd>%s/\\r//<cr>", desc("Remove trailing ^M"))
 set({ "n" }, "<leader>mx", ":!chmod +x %<CR><CR>", desc("chmod +x"))
