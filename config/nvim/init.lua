@@ -1,2 +1,2 @@
 require("twhlynch")
-vim.lsp.set_log_level("off")
+-- vim.lsp.set_log_level("off")
