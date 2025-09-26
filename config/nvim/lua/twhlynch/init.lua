@@ -1,5 +1,6 @@
 -- config
 require("twhlynch.keys")
+require("twhlynch.autocmds")
 require("twhlynch.opts")
 require("twhlynch.diagnostic")
 -- plugins
