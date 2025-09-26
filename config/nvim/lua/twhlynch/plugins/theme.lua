@@ -14,6 +14,7 @@ return {
 			end,
 		})
 		vim.cmd("colorscheme vague")
+		vim.cmd(":hi BlinkCmpMenu guibg=NONE")
 		vim.cmd(":hi statusline guibg=NONE")
 	end,
 }

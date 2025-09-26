@@ -1,191 +1,56 @@
+-- https://github.com/neovim/nvim-lspconfig/tree/master/lsp
+local lsp_list = {
+	-- lua
+	"lua_ls",
+	-- bash
+	"bashls",
+	-- markdown
+	"marksman",
+	-- python
+	"basedpyright",
+	"ruff",
+	-- rust
+	"rust_analyzer",
+	-- c, cpp, etc
+	"clangd",
+	"cmake",
+	-- shaders
+	"glsl_analyzer",
+	-- java
+	"jdtls",
+	-- latex
+	"texlab",
+	-- ocaml
+	"ocamllsp",
+	-- web
+	"eslint",
+	"cssls",
+	"html",
+	"emmet_ls",
+	"ts_ls",
+	"vtsls",
+	"vue_ls",
+	"astro",
+}
+
 return {
-	"neovim/nvim-lspconfig",
+	"mason-org/mason-lspconfig.nvim",
 	dependencies = {
-		"mason-org/mason.nvim",
-		"mason-org/mason-lspconfig.nvim",
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-cmdline",
-		"jcha0713/cmp-tw2css",
-		"hrsh7th/nvim-cmp",
+		{ "mason-org/mason.nvim", opts = {} },
+		"neovim/nvim-lspconfig",
 	},
 
-	config = function()
-		-- eventually ill move to .11 lsp...
-		-- vim.lsp.enable({ -- IT FUCKED UP MY OTHER LSP SETUP NOOOO
-		-- 	"swipl",
-		-- })
+	opts = {
+		automatic_enable = true,
+		ensure_installed = lsp_list,
+	},
 
-		local cmp = require("cmp")
-		local cmp_lsp = require("cmp_nvim_lsp")
-		-- stylua: ignore
-		local capabilities = vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities(), cmp_lsp.default_capabilities())
-
+	config = function(opts)
 		require("mason").setup()
-		require("mason-lspconfig").setup({
-			automatic_installation = false,
-			ensure_installed = {
-				"lua_ls",
-				"bashls",
-				"marksman",
-				"pyright",
-				"basedpyright",
-				"ruff",
-				"rust_analyzer",
-				"eslint",
-				"cssls",
-				"html",
-				"clangd",
-				"cmake",
-				"emmet_ls",
-				"glsl_analyzer",
-				"jdtls",
-				"texlab",
-				"ocamllsp",
-			},
-			handlers = {
-				function(server_name)
-					require("lspconfig")[server_name].setup({
-						capabilities = capabilities,
-					})
-				end,
-				["lua_ls"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.lua_ls.setup({
-						capabilities = capabilities,
-						settings = {
-							Lua = {
-								runtime = { version = "Lua 5.1" },
-								diagnostics = {
-									globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
-								},
-								format = {
-									enable = true,
-									defaultConfig = {
-										indent_style = "tab",
-										indent_size = "4",
-									},
-								},
-							},
-						},
-					})
-				end,
+		require("mason-lspconfig").setup(opts)
+		vim.lsp.enable(lsp_list)
+		vim.lsp.enable("swipl")
 
-				["basedpyright"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.pyright.setup({
-						capabilities = capabilities,
-						settings = {
-							python = {
-								analysis = {
-									typeCheckingMode = "off",
-									autoImportCompletions = true,
-									useLibraryCodeForTypes = true,
-								},
-							},
-						},
-					})
-				end,
-
-				["rust_analyzer"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.rust_analyzer.setup({
-						capabilities = capabilities,
-						settings = {
-							["rust-analyzer"] = {
-								checkOnSave = {
-									command = "clippy",
-								},
-							},
-						},
-					})
-				end,
-
-				["clangd"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.clangd.setup({
-						capabilities = capabilities,
-						cmd = {
-							"clangd",
-							"--background-index",
-							"--clang-tidy",
-							"--cross-file-rename",
-							"--completion-style=detailed",
-							"--header-insertion=iwyu",
-							"--suggest-missing-includes",
-						},
-						-- stylua: ignore
-						filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "h", "hpp", "hh", "m", "mm", "hh", "cc", "cxx", "hxx" },
-						root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
-					})
-				end,
-
-				["cmake"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.cmake.setup({
-						capabilities = capabilities,
-						root_dir = lspconfig.util.root_pattern("CMakeLists.txt", ".git"),
-					})
-				end,
-
-				["emmet_ls"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.emmet_ls.setup({
-						capabilities = capabilities,
-						-- stylua: ignore
-						filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
-						init_options = {
-							html = {
-								options = {
-									-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-									["bem.enabled"] = true,
-								},
-							},
-						},
-					})
-				end,
-
-				["ocamllsp"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.ocamllsp.setup({
-						filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
-						-- stylua: ignore
-						root_dir = lspconfig.util.root_pattern("*.opam", "esy.json", "package.json", ".git", "dune-project", "dune-workspace", "main.ml"),
-						capabilities = capabilities,
-					})
-				end,
-
-				["volar"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.volar.setup({
-						filetypes = { "vue" },
-						init_options = {
-							vue = {
-								hybridMode = true,
-							},
-						},
-						capabilities = capabilities,
-					})
-				end,
-
-				["ts_ls"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.ts_ls.setup({
-						capabilities = capabilities,
-						filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
-					})
-				end,
-
-				["vtsls"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.ts_ls.setup({
-						capabilities = capabilities,
-						filetypes = { "vue" },
-					})
-				end,
-			},
-		})
 		local l = vim.lsp
 		l.handlers["textDocument/hover"] = function(_, result, ctx, config)
 			config = config or { border = "rounded", focusable = true }
@@ -203,48 +68,6 @@ return {
 			return l.util.open_floating_preview(markdown_lines, "markdown", config)
 		end
 
-		local cmp_select = { behavior = cmp.SelectBehavior.Select }
-		vim.api.nvim_set_hl(0, "CmpNormal", {})
-		cmp.setup({
-			snippet = {
-				expand = function(args)
-					require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-				end,
-			},
-			mapping = cmp.mapping.preset.insert({
-				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-				["<C-y>"] = cmp.mapping.confirm({ select = true }),
-				["<C-a>"] = cmp.mapping.confirm({ select = true }),
-				["<C-e>"] = vim.NIL,
-			}),
-
-			window = {
-				completion = {
-					scrollbar = false,
-					border = "rounded",
-					winhighlight = "Normal:CmpNormal",
-				},
-				documentation = {
-					scrollbar = false,
-					border = "rounded",
-					winhighlight = "Normal:CmpNormal",
-				},
-			},
-			sources = cmp.config.sources({
-				{
-					name = "nvim_lsp",
-					entry_filter = function(entry, ctx)
-						return require("cmp").lsp.CompletionItemKind.Snippet ~= entry:get_kind()
-					end,
-				},
-				{ name = "luasnip" },
-				{ name = "path" },
-				{ name = "cmdline" },
-				{ name = "buffer" },
-			}, {}),
-		})
-
 		local autocmd = vim.api.nvim_create_autocmd
 		autocmd({ "BufEnter", "BufWinEnter" }, {
 			pattern = { "*.vert", "*.frag", "*.hlsl" },
@@ -252,21 +75,27 @@ return {
 				vim.cmd("set filetype=glsl")
 			end,
 		})
+		autocmd({ "BufEnter", "BufWinEnter" }, {
+			pattern = { "*.mdx" },
+			callback = function(_)
+				vim.cmd("set filetype=markdown")
+			end,
+		})
 
 		autocmd("LspAttach", {
 			callback = function(e)
-				local opts = { buffer = e.buf }
+				local keyopts = { buffer = e.buf }
 				vim.keymap.set("n", "Gd", function()
 					vim.lsp.buf.definition()
-				end, opts)
+				end, keyopts)
 				vim.keymap.set("n", "Gr", function()
 					vim.lsp.buf.references()
-				end, opts)
+				end, keyopts)
 				vim.keymap.set("n", "K", function()
 					vim.lsp.buf.hover({
 						border = "rounded",
 					})
-				end, opts)
+				end, keyopts)
 				-- vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 				vim.keymap.set("n", "<leader>la", function()
 					vim.lsp.buf.code_action()
@@ -277,12 +106,6 @@ return {
 				vim.keymap.set("n", "<leader>lk", function()
 					vim.diagnostic.open_float()
 				end, { buffer = e.buf, desc = "Open float" })
-				vim.keymap.set("n", "<leader>ln", function()
-					vim.diagnostic.goto_next()
-				end, { buffer = e.buf, desc = "Goto next" })
-				vim.keymap.set("n", "<leader>lp", function()
-					vim.diagnostic.goto_prev()
-				end, { buffer = e.buf, desc = "Goto previous" })
 			end,
 		})
 	end,
