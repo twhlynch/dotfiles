@@ -107,9 +107,7 @@ function M.clear_highlights()
 		return
 	end
 
-	for name, _ in pairs(options.highlight) do
-		vim.fn.clearmatches() -- FIXME: why does this loop?
-	end
+	vim.fn.clearmatches()
 end
 
 function M.apply_git_highlights()
@@ -159,12 +157,7 @@ function M.setup(opts)
 		callback = M.apply_git_highlights,
 	})
 
-	vim.api.nvim_create_autocmd({ "BufHidden" }, {
-		group = group,
-		callback = M.clear_highlights,
-	})
-
-	vim.api.nvim_create_autocmd({ "BufWritePost", "TermClose", "VimEnter" }, {
+	vim.api.nvim_create_autocmd({ "BufWritePost", "TermClose", "VimEnter", "VimResume", "BufEnter" }, {
 		group = group,
 		callback = M.update_git_status,
 	})
