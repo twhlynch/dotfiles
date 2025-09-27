@@ -131,7 +131,7 @@ killall Dock
 bat cache --build > /dev/null
 
 # reload ghostty
-osascript "$HOME/dotfiles/other/applescript/reload_ghostty_config.scpt" &>/dev/null
+osascript "$HOME/.config/ghostty/reload_ghostty_config.scpt" &>/dev/null
 
 # reload zsh
 unalias -a; source ~/.zshrc
