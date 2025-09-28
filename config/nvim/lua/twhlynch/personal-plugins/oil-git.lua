@@ -152,6 +152,11 @@ function M.setup(opts)
 
 	local group = vim.api.nvim_create_augroup("OilGitStatus", { clear = true })
 
+	vim.api.nvim_create_autocmd({ "BufHidden" }, {
+		group = group,
+		callback = M.clear_highlights,
+	})
+
 	vim.api.nvim_create_autocmd({ "BufEnter" }, {
 		group = group,
 		callback = M.apply_git_highlights,
