@@ -185,7 +185,7 @@ function blur() {
 
 	echo "blur: $current_blur -> $new_blur"
 
-	osascript "$HOME/dotfiles/other/applescript/reload_ghostty_config.scpt" &>/dev/null
+	osascript "$HOME/.config/ghostty/reload_ghostty_config.scpt" &>/dev/null
 }
 
 # lazy load slow af nvm
