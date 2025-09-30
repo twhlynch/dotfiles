@@ -35,16 +35,6 @@ return {
 						end
 					end,
 				},
-				-- {
-				-- 	event = "WinScrolled",
-				-- 	handler = function()
-				-- 		if vim.bo.filetype == "neo-tree" or vim.bo.filetype == "oil" then
-				-- 			vim.cmd([[setlocal mousescroll=ver:1,hor:0]])
-				-- 		else
-				-- 			vim.cmd([[setlocal mousescroll=ver:1,hor:1]])
-				-- 		end
-				-- 	end,
-				-- }
 			},
 		})
 
@@ -53,6 +43,7 @@ return {
 		end
 
 		vim.keymap.set("n", "<leader>pv", ":Neotree toggle<CR>",desc("File tree"))
+		vim.keymap.set("n", "<leader>pp", ":Neotree close<CR>",desc("Close tree"))
 		vim.keymap.set("n", "<leader>pb", ":Neotree toggle buffers<CR>",desc("Buffer tree"))
 		vim.keymap.set("n", "<leader>pm", ":Neotree toggle git_status<CR>", desc("Diff tree"))
 	end,
