@@ -83,3 +83,6 @@ alias lg='lazygit'
 # git clone
 alias gcl='git-clone-cd'
 alias ghu='gh-url'
+
+# nice
+alias \$=""
