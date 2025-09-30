@@ -220,12 +220,18 @@ function mvn-init() {
 # clangd lsp
 function compile-commands() {
 	if [[ -z $1 ]]; then
-		echo "compile-commands path/to/PROJECT.xcodeproj build"
+		echo "compile-commands path/to/PROJECT.xcodeproj build_output"
 		return
 	fi
 
-	xcodebuild -project $1 | \
+	filename=$(basename "$1")
+	project_name="${filename%.*}"
+	dirname=$(dirname "$1")
+
+	xcodebuild -project "$1" -scheme "$project_name" -derivedDataPath "$dirname/build" | \
 		xcpretty -r json-compilation-database --output $2/compile_commands.json
+
+	echo "$dirname/build/$project_name/Debug/$project_name.app"
 }
 
 # get process ids
