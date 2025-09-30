@@ -19,7 +19,9 @@ local lsp_list = {
 	-- java
 	"jdtls",
 	-- latex
+	"ltex_plus",
 	"texlab",
+	"tinymist",
 	-- ocaml
 	"ocamllsp",
 	-- web
@@ -31,6 +33,26 @@ local lsp_list = {
 	"vtsls",
 	"vue_ls",
 	"astro",
+	"mdx-analyzer",
+	-- configs
+	"yamlls",
+}
+
+local mason_tools = {
+	-- c, cpp, etc
+	"clang-format",
+	"gersemi", -- cmake
+	-- ocaml
+	"ocamlformat",
+	-- web
+	"prettier",
+	-- shell
+	"shfmt", --bash
+	"beautysh", -- zsh
+	-- lua
+	"stylua",
+	-- latex
+	"bibtex-tidy",
 }
 
 return {
@@ -46,8 +68,45 @@ return {
 	},
 
 	config = function(opts)
-		require("mason").setup()
-		require("mason-lspconfig").setup(opts)
+		local mason = require("mason")
+		local registry = require("mason-registry")
+		local lspconfig = require("mason-lspconfig")
+
+		mason.setup()
+		lspconfig.setup(opts)
+
+		local installed = {}
+		local mapping = lspconfig.get_mappings()
+
+		for _, name in ipairs(lsp_list) do
+			local mapped = mapping.lspconfig_to_mason[name] or nil
+			if mapped then
+				table.insert(mason_tools, mapped)
+			end
+		end
+
+		for _, name in ipairs(mason_tools) do
+			local mapped = mapping.lspconfig_to_mason[name] or name
+			local package = registry.get_package(mapped)
+			if package then
+				if not installed[package] then
+					installed[package] = true
+					if not package:is_installed() then
+						vim.notify("Installing Mason package: " .. package.name, vim.log.levels.INFO)
+						package:once("install:success", function()
+							vim.notify("Installed Mason package: " .. package.name, vim.log.levels.INFO)
+						end)
+						package:once("install:failed", function()
+							vim.notify("Failed to install Mason package: " .. name, vim.log.levels.ERROR)
+						end)
+						package:install()
+					end
+				end
+			else
+				vim.notify("Invalid Mason package: " .. name, vim.log.levels.ERROR)
+			end
+		end
+
 		vim.lsp.enable(lsp_list)
 		vim.lsp.enable("swipl")
 
