@@ -57,7 +57,7 @@ opt.ignorecase = true
 opt.smartcase = true
 
 -- characters for space, tab, and overflow
-opt.listchars = "tab:⤏ ,trail:~,extends:,precedes:"
+opt.listchars = "tab:⤏ ,trail:~,extends:,precedes:" -- ,lead:·
 opt.list = true
 
 -- wounded borders
