@@ -15,6 +15,7 @@ vim.cmd([[cabbrev wQ wq]])
 
 -- useful
 set({ "n", "v", "x" }, "<leader>y", '"+y', desc("Yank to system clipboard"))
+set({ "n", "v", "x" }, "<A-p>", '"0p', desc("Paste last yanked register"))
 set({ "n", "v", "x" }, "<leader>w", "<C-w>", desc("Window commands"))
 set({ "n" }, "<leader>A", "ggVG", desc("Select all"))
 set({ "x" }, "/", "<esc>/\\%V", desc("Search in selection"))
