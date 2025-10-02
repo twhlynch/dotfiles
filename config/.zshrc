@@ -146,7 +146,11 @@ source "$HOME/dotfiles/config/zsh/aliases.zsh"
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-eval "$(thefuck --alias)"
+# lazily evaluate (0.05s load time wtf)
+function fuck() {
+	eval "eval \$\(thefuck --alias\)"
+	fuck
+}
 
 # BEGIN opam configuration
 [[ ! -r '/Users/twhlynch/.opam/opam-init/init.zsh' ]] || source '/Users/twhlynch/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
