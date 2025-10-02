@@ -38,28 +38,40 @@ local lsp_list = {
 	"yamlls",
 }
 
-local mason_tools = {
-	-- c, cpp, etc
-	"clang-format",
-	"gersemi", -- cmake
-	-- ocaml
-	"ocamlformat",
+local formatters = {
+	lua = { "stylua" },
+	python = { "black" },
+	rust = { "rustfmt" },
+	-- go = { "gofumpt" },
+	cpp = { "clang-format" },
+	c = { "clang-format" },
+	cmake = { "gersemi" },
+	bash = { "shfmt" },
+	zsh = { "beautysh" },
+	ocaml = { "ocamlformat" },
+	tex = { "bibtex-tidy" },
 	-- web
-	"prettier",
-	-- shell
-	"shfmt", --bash
-	"beautysh", -- zsh
-	-- lua
-	"stylua",
-	-- latex
-	"bibtex-tidy",
+	javascript = { "prettier" },
+	typescript = { "prettier" },
+	json = { "prettier" },
+	jsonc = { "prettier" },
+	html = { "prettier" },
+	css = { "prettier" },
+	astro = { "prettier" },
+	vue = { "prettier" },
+	svg = { "prettier" },
+}
+
+local mason_tools = {
+	-- lsp, dap, linter, formatter
 }
 
 return {
 	"mason-org/mason-lspconfig.nvim",
 	dependencies = {
-		{ "mason-org/mason.nvim", opts = {} },
-		"neovim/nvim-lspconfig",
+		{ "mason-org/mason.nvim", opts = {} }, -- tools
+		"neovim/nvim-lspconfig", -- lsp config data
+		"stevearc/conform.nvim", -- formatter
 	},
 
 	opts = {
@@ -71,6 +83,7 @@ return {
 		local mason = require("mason")
 		local registry = require("mason-registry")
 		local lspconfig = require("mason-lspconfig")
+		local conform = require("conform")
 
 		mason.setup()
 		lspconfig.setup(opts)
@@ -78,10 +91,19 @@ return {
 		local installed = {}
 		local mapping = lspconfig.get_mappings()
 
+		-- add lsps to tools list
 		for _, name in ipairs(lsp_list) do
 			local mapped = mapping.lspconfig_to_mason[name] or nil
 			if mapped then
 				table.insert(mason_tools, mapped)
+			end
+		end
+
+		-- add formatters to tools list
+		for _, value in pairs(formatters) do
+			local name = value[1]
+			if name then
+				table.insert(mason_tools, name)
 			end
 		end
 
@@ -110,7 +132,26 @@ return {
 		vim.lsp.enable(lsp_list)
 		vim.lsp.enable("swipl")
 
+		-- formatting
+		conform.setup({
+			formatters_by_ft = formatters,
+			default_format_opts = {
+				lsp_format = "fallback",
+			},
+			formatters = {
+				beautysh = {
+					append_args = { "--tab" },
+				},
+			},
+		})
 
+		vim.keymap.set({ "n" }, "<leader>lf", function()
+			conform.format(nil, function(error, did_edit)
+				print((did_edit and "" or "Already ") .. "Formatted")
+			end)
+		end, { noremap = true, silent = true, desc = "Format current buffer" })
+
+		-- filetype autocmds
 		local autocmd = vim.api.nvim_create_autocmd
 		autocmd({ "BufEnter", "BufWinEnter" }, {
 			pattern = { "*.vert", "*.frag", "*.hlsl" },
