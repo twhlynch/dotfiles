@@ -41,6 +41,14 @@ return {
 			end)
 		end)
 
+		set("x", "<A-s>", mc.splitCursors, { desc = "Split cursors within selection" })
+		set({ "x", "n" }, "<A-d>", mc.matchAllAddCursors, { desc = "Duplicate cursor on every occurrance of word" })
+		set("x", "I", mc.insertVisual, { desc = "Insert cursor at every line in selection" })
+		set({ "x", "n" }, "g<c-a>", mc.sequenceIncrement, { desc = "Sequence increment" })
+		set({ "x", "n" }, "g<c-x>", mc.sequenceDecrement, { desc = "Sequence decrement" })
+		set("n", "ga", mc.addCursorOperator, { desc = "Add cursors across motion range" })
+		set({ "x", "n" }, "gs", mc.operator, { desc = "Add cursors at motion across motion" })
+
 		local hl = vim.api.nvim_set_hl
 		hl(0, "MultiCursorCursor", { reverse = true })
 		hl(0, "MultiCursorVisual", { link = "Visual" })
