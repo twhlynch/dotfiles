@@ -1,5 +1,11 @@
 return {
 	"j-hui/fidget.nvim",
 	event = "VeryLazy",
-	opts = {},
+	opts = {
+		notification = {
+			window = {
+				winblend = 0,
+			},
+		},
+	},
 }
