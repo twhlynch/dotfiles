@@ -93,7 +93,7 @@ return {
 
 		-- add lsps to tools list
 		for _, name in ipairs(lsp_list) do
-			local mapped = mapping.lspconfig_to_mason[name] or nil
+			local mapped = mapping.lspconfig_to_package[name] or nil
 			if mapped then
 				table.insert(mason_tools, mapped)
 			end
@@ -108,7 +108,7 @@ return {
 		end
 
 		for _, name in ipairs(mason_tools) do
-			local mapped = mapping.lspconfig_to_mason[name] or name
+			local mapped = mapping.lspconfig_to_package[name] or name
 			local package = registry.get_package(mapped)
 			if package then
 				if not installed[package] then

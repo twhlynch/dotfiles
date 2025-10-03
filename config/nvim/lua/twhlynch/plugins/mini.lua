@@ -1,27 +1,27 @@
 return {
 	{
-		"echasnovski/mini.ai",
+		"nvim-mini/mini.ai",
 		version = false,
 		config = function()
 			require("mini.ai").setup()
 		end,
 	},
 	{
-		"echasnovski/mini.cursorword",
+		"nvim-mini/mini.cursorword",
 		version = false,
 		config = function()
 			require("mini.cursorword").setup()
 		end,
 	},
 	-- {
-	-- 	"echasnovski/mini.comment",
+	-- 	"nvim-mini/mini.comment",
 	-- 	version = false,
 	-- 	config = function()
 	-- 		require("mini.comment").setup()
 	-- 	end,
 	-- },
 	{
-		"echasnovski/mini.operators",
+		"nvim-mini/mini.operators",
 		version = false,
 		config = function()
 			require("mini.operators").setup({
@@ -49,7 +49,7 @@ return {
 		end,
 	},
 	{
-		"echasnovski/mini.surround",
+		"nvim-mini/mini.surround",
 		version = false,
 		config = function()
 			require("mini.surround").setup({
@@ -77,7 +77,7 @@ return {
 		end,
 	},
 	{
-		"echasnovski/mini.hipatterns",
+		"nvim-mini/mini.hipatterns",
 		version = false,
 		config = function()
 			local hipatterns = require("mini.hipatterns")
