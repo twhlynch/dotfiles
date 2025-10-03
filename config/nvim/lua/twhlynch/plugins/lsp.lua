@@ -151,30 +151,10 @@ return {
 			end)
 		end, { noremap = true, silent = true, desc = "Format current buffer" })
 
-		-- filetype autocmds
 		local autocmd = vim.api.nvim_create_autocmd
-		autocmd({ "BufEnter", "BufWinEnter" }, {
-			pattern = { "*.vert", "*.frag", "*.hlsl" },
-			callback = function(_)
-				vim.cmd("set filetype=glsl")
-			end,
-		})
-		autocmd({ "BufEnter", "BufWinEnter" }, {
-			pattern = { "*.mdx" },
-			callback = function(_)
-				vim.cmd("set filetype=markdown")
-			end,
-		})
-
 		autocmd("LspAttach", {
 			callback = function(e)
 				local keyopts = { buffer = e.buf }
-				vim.keymap.set("n", "Gd", function()
-					vim.lsp.buf.definition()
-				end, keyopts)
-				vim.keymap.set("n", "Gr", function()
-					vim.lsp.buf.references()
-				end, keyopts)
 				vim.keymap.set("n", "K", function()
 					vim.lsp.buf.hover({
 						border = "rounded",
