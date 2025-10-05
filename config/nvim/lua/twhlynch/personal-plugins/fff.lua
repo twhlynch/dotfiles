@@ -133,6 +133,8 @@ function M.fff()
 		if not setup_success then
 			vim.notify("Failed to initialize file picker", vim.log.levels.ERROR)
 		end
+		-- refresh to show results on first open
+		file_picker.search_files("", 100, 4, M.state.current_file_cache, false)
 	end
 	Snacks.picker({
 		title = "FFFiles",
