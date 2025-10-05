@@ -1,7 +1,10 @@
 return {
 	"petertriho/nvim-scrollbar",
 	config = function()
-		require("scrollbar").setup({
+		local scrollbar = require("scrollbar")
+		scrollbar.setup({
+			max_lines = 10000,
+			throttle_ms = 300,
 			excluded_buftypes = {
 				"terminal",
 				"nowrite",
@@ -27,5 +30,11 @@ return {
 				},
 			},
 		})
+
+		-- so laggy
+		local old_render = scrollbar.render
+		scrollbar.render = function()
+			vim.schedule(old_render)
+		end
 	end,
 }
