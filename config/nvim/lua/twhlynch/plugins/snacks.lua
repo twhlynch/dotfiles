@@ -13,7 +13,7 @@ return {
 			},
 		},
 		image = {
-			enabled = true,
+			enabled = false,
 			math = { enabled = true },
 			convert = {
 				notify = false,
