@@ -73,17 +73,29 @@ function M.is_buffer_formatted(original_buffer, callback)
 	end)
 end
 
+local ignored_buffers = {}
+function M.ignore_buffer()
+	ignored_buffers[vim.api.nvim_get_current_buf()] = not ignored_buffers[vim.api.nvim_get_current_buf()]
+end
+
+local enabled = true
+function M.ignore()
+	enabled = not enabled
+end
+
 function M.setup(opts)
 	options = vim.tbl_deep_extend("keep", opts or {}, options)
 
 	vim.api.nvim_create_autocmd("BufWritePre", {
 		group = vim.api.nvim_create_augroup("FormatReminder", { clear = true }),
 		callback = function(args)
-			M.is_buffer_formatted(args.buf, function(formatted)
-				if not formatted then
-					options.notify("Did you forget to format?")
-				end
-			end)
+			if enabled and not ignored_buffers[vim.api.nvim_get_current_buf()] then
+				M.is_buffer_formatted(args.buf, function(formatted)
+					if not formatted then
+						options.notify("Did you forget to format?")
+					end
+				end)
+			end
 		end,
 	})
 
