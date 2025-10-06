@@ -3,9 +3,10 @@ return {
 	dependencies = {
 		"nvim-mini/mini.hipatterns", -- for hipatterns
 		"stevearc/oil.nvim", -- for oil_git
-		"petertriho/nvim-scrollbar", -- for regions, and scrollbar_marks
+		"petertriho/nvim-scrollbar", -- for regions, scrollbar_marks, and scrollbar_todo
 		"neovim/nvim-lspconfig", -- for copy_lspconfig
 		"stevearc/conform.nvim", -- for reminder
+		"folke/todo-comments.nvim", -- for scrollbar_todo
 	},
 	lazy = false,
 	opts = {
@@ -78,6 +79,9 @@ return {
 				rgb = "rgba?%(%d%d?%d?, ?%d%d?%d?, ?%d%d?%d?,? ?%d?%.?%d%)", -- rgb or rgba css color
 				ansi = "%[[34]8;2;%d%d?%d?;%d%d?%d?;%d%d?%d?m%f[%W]", -- r;g;b ansi code for fg or bg
 			},
+		},
+		scrollbar_todo = {
+			enabled = true,
 		},
 	},
 	keys = {
