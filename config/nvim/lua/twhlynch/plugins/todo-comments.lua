@@ -2,18 +2,18 @@ return {
 	"folke/todo-comments.nvim",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = { "nvim-lua/plenary.nvim" },
-	config = function()
-		local todo_comments = require("todo-comments")
-		todo_comments.setup({
-			highlight = {
-				pattern = [[.*<((KEYWORDS).*)\s*:]],
-			},
-			search = {
-				pattern = [[\b(KEYWORDS)(\(.*\))?:]],
-			},
-		})
-
-		vim.keymap.set("n", "]c", todo_comments.jump_next, { desc = "Next todo comment" })
-		vim.keymap.set("n", "[c", todo_comments.jump_prev, { desc = "Previous todo comment" })
-	end,
+	opts = {
+		highlight = {
+			pattern = [[.*<((KEYWORDS).*)\s*:]],
+		},
+		search = {
+			pattern = [[\b(KEYWORDS)(\(.*\))?:]],
+		},
+	},
+	keys = {
+		-- stylua: ignore start
+		{ "]c", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
+		{ "[c", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
+		-- stylua: ignore end
+	},
 }
