@@ -3,57 +3,28 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		config = function()
-			---@diagnostic disable-next-line: missing-fields
 			require("nvim-treesitter.configs").setup({
-				-- A list of parser names, or "all"
+				-- stylua: ignore start
 				ensure_installed = {
-					"vimdoc",
-					"javascript",
-					"typescript",
-					"jsdoc",
-					"tsx",
-					"yaml",
-					"html",
-					"css",
-					"markdown",
-					"markdown_inline",
-					"graphql",
-					"bash",
-					"vim",
-					"dockerfile",
-					"gitignore",
-					"query",
-					"c",
-					"rust",
-					"java",
-					"go",
-					"perl",
-					"python",
-					"ruby",
-					"lua",
-					"php",
-					"dart",
-					"cpp",
-					"asm",
-					"proto",
-					"jsonc",
-					"toml",
-					"git_config",
-					"gitattributes",
-					"vue",
-					"regex",
-					"sql",
-					"glsl",
-					"c_sharp",
-					"csv",
+					"vimdoc", "javascript", "typescript",
+					"jsdoc", "tsx", "yaml", "html",
+					"css", "markdown", "markdown_inline", "graphql",
+					"bash", "vim", "dockerfile", "gitignore",
+					"query", "c", "rust", "java",
+					"go", "perl", "python", "ruby",
+					"lua", "php", "dart", "cpp",
+					"asm", "proto", "jsonc", "toml",
+					"git_config", "gitattributes", "vue", "regex",
+					"sql", "glsl", "c_sharp", "csv",
 					"diff",
 				},
+				-- stylua: ignore end
 				sync_install = false,
 				auto_install = true,
 				indent = { enable = false },
 				highlight = {
 					enable = true,
-					disable = function(lang, buf)
+					disable = function(_, buf)
 						local max_filesize = 1 * 1024 * 1024 -- 1MB
 						local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
 						if ok and stats and stats.size > max_filesize then
