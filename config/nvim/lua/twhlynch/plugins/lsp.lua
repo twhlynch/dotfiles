@@ -133,7 +133,7 @@ return {
 		vim.lsp.enable(lsp_list)
 		vim.lsp.enable("swipl")
 		-- ltex_plus doesnt configure correctly
-		package.path = package.path .. ";" .. vim.fn.stdpath('config') .. "/lsp/?.lua"
+		package.path = package.path .. ";" .. vim.fn.stdpath("config") .. "/lsp/?.lua"
 		vim.lsp.config("ltex_plus", require("ltex_plus"))
 
 		-- formatting

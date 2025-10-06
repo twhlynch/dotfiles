@@ -24,7 +24,7 @@ return {
 		".git",
 		"dune-project",
 		"dune-workspace",
-		"main.ml"
+		"main.ml",
 	},
 	get_language_id = get_language_id,
 }

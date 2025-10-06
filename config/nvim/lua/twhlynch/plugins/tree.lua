@@ -42,9 +42,9 @@ return {
 			return { noremap = true, silent = true, desc = description }
 		end
 
-		vim.keymap.set("n", "<leader>pv", ":Neotree toggle<CR>",desc("File tree"))
-		vim.keymap.set("n", "<leader>pp", ":Neotree close<CR>",desc("Close tree"))
-		vim.keymap.set("n", "<leader>pb", ":Neotree toggle buffers<CR>",desc("Buffer tree"))
+		vim.keymap.set("n", "<leader>pv", ":Neotree toggle<CR>", desc("File tree"))
+		vim.keymap.set("n", "<leader>pp", ":Neotree close<CR>", desc("Close tree"))
+		vim.keymap.set("n", "<leader>pb", ":Neotree toggle buffers<CR>", desc("Buffer tree"))
 		vim.keymap.set("n", "<leader>pm", ":Neotree toggle git_status<CR>", desc("Diff tree"))
 	end,
 }
