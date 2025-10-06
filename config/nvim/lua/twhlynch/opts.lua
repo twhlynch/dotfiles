@@ -66,9 +66,10 @@ opt.winborder = "rounded"
 -- window splits are to the right
 opt.splitright = true
 
--- dont autofix eol (doesnt seem to work)
+-- dont autofix eol (doesnt seem to work) // FIXME: :rage:
 opt.fixendofline = false
 opt.fixeol = false
+opt.endoffile = false
 
 -- use latex
 global.tex_flavor = "latex"
