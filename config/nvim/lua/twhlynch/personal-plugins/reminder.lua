@@ -13,10 +13,13 @@ local function highlight_unformatted_lines(bufnr, before, after)
 
 	local before_text = table.concat(before, "\n")
 	local after_text = table.concat(after, "\n")
+	if before_text:sub(#before_text, #before_text) == "\n" and after_text:sub(#after_text, #after_text) ~= "\n" then
+		after_text = after_text .. "\n"
+	end
 
 	local hunks = vim.diff(before_text, after_text, { result_type = "indices" })
 	if not hunks or #hunks == 0 then
-		return
+		return false
 	end
 
 	for _, hunk in ipairs(hunks) do
@@ -32,6 +35,8 @@ local function highlight_unformatted_lines(bufnr, before, after)
 			hl_eol = true,
 		})
 	end
+
+	return true
 end
 
 function M.is_buffer_formatted(original_buffer, callback)
@@ -57,7 +62,9 @@ function M.is_buffer_formatted(original_buffer, callback)
 		local formatted = not did_edit
 
 		if not formatted then
-			highlight_unformatted_lines(original_buffer, original_content, formatted_content)
+			if not highlight_unformatted_lines(original_buffer, original_content, formatted_content) then
+				formatted = true
+			end
 		else
 			vim.api.nvim_buf_clear_namespace(original_buffer, ns_id, 0, -1)
 		end
@@ -82,9 +89,9 @@ function M.setup(opts)
 
 	local conform = require("conform")
 	local old_format = conform.format
-	conform.format = function(opts, ...)
-		vim.api.nvim_buf_clear_namespace((opts or {}).bufnr or 0, ns_id, 0, -1)
-		old_format(opts, ...)
+	conform.format = function(o, ...)
+		vim.api.nvim_buf_clear_namespace((o or {}).bufnr or 0, ns_id, 0, -1)
+		old_format(o, ...)
 	end
 end
 
