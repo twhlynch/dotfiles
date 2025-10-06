@@ -76,11 +76,13 @@ end
 local ignored_buffers = {}
 function M.ignore_buffer()
 	ignored_buffers[vim.api.nvim_get_current_buf()] = not ignored_buffers[vim.api.nvim_get_current_buf()]
+	vim.api.nvim_buf_clear_namespace(0, ns_id, 0, -1)
 end
 
 local enabled = true
-function M.ignore()
+function M.toggle()
 	enabled = not enabled
+	vim.api.nvim_buf_clear_namespace(0, ns_id, 0, -1)
 end
 
 function M.setup(opts)
