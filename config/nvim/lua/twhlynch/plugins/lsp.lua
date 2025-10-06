@@ -2,6 +2,7 @@
 local lsp_list = {
 	-- lua
 	"lua_ls",
+	"selene",
 	-- bash
 	"bashls",
 	-- markdown
