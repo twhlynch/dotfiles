@@ -79,6 +79,13 @@ function M.setup(opts)
 			end)
 		end,
 	})
+
+	local conform = require("conform")
+	local old_format = conform.format
+	conform.format = function(opts, ...)
+		vim.api.nvim_buf_clear_namespace((opts or {}).bufnr or 0, ns_id, 0, -1)
+		old_format(opts, ...)
+	end
 end
 
 return M
