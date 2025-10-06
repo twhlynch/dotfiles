@@ -62,32 +62,3 @@ set({ "n" }, "<leader>mm", "<cmd>%s/\\r//<cr>", desc("Remove trailing ^M"))
 set({ "n" }, "<leader>mx", ":!chmod +x %<CR><CR>", desc("chmod +x"))
 set({ "n" }, "<leader>mc", "yygccp", desc("Duplicate and comment out line"))
 set({ "x" }, "<leader>mr", ":<esc>:%s/\\%V[^A-Za-z0-9]/ /g<CR>", desc("Clean selection for type"))
--- surround visual selection
-local function surround(triggers, pref, suff)
-	if suff == nil then
-		suff = pref
-	end
-	local cmd = ":<C-u>normal!`>a" .. suff .. "<Esc>`<i" .. pref .. "<Esc>"
-
-	for _, trigger in ipairs(triggers) do
-		set({ "v", "x" }, "s" .. trigger, function()
-			if vim.fn.mode() == "" then -- visual block
-				return cmd .. "`<<C-v>`>" .. string.rep("l", #suff)
-			else
-				return cmd .. "`<v`>" .. string.rep("l", #pref + #suff)
-			end
-		end, { noremap = true, silent = true, desc = "Surround selection with " .. pref .. " " .. suff, expr = true })
-	end
-end
-surround({ "'" }, "'", "'")
-surround({ '"' }, '"', '"')
-surround({ "`" }, "`", "`")
-surround({ "(", ")", "9", "0" }, "(", ")")
-surround({ "[", "]" }, "[", "]")
-surround({ "{", "}" }, "{", "}")
-surround({ "<", ">" }, "<", ">")
-surround({ "|" }, "|")
-surround({ "*" }, "*")
-surround({ "_" }, "_")
-surround({ "%" }, "%")
-surround({ "$", "4" }, "$$ ", " $$")
