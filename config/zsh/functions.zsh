@@ -217,6 +217,11 @@ function mvn-init() {
 		-DinteractiveMode=false
 }
 
+# java home
+function java-use() {
+	export JAVA_HOME=`/usr/libexec/java_home -v $1`
+}
+
 # clangd lsp
 function compile-commands() {
 	if [[ -z $1 ]]; then
