@@ -132,9 +132,21 @@ return {
 
 		vim.lsp.enable(lsp_list)
 		vim.lsp.enable("swipl")
-		-- ltex_plus doesnt configure correctly
-		package.path = package.path .. ";" .. vim.fn.stdpath("config") .. "/lsp/?.lua"
-		vim.lsp.config("ltex_plus", require("ltex_plus"))
+		-- idk what im doing wrong. manually set /lsp configs
+		local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
+		package.path = package.path .. ";" .. lsp_dir .. "/?.lua"
+		for _, file in ipairs(vim.fn.readdir(lsp_dir)) do
+			-- remove .lua
+			local name = file:match("^(.*)%.lua$")
+			if name then
+				local ok, config = pcall(require, name)
+				if ok then
+					vim.lsp.config(name, config)
+				else
+					vim.notify("Failed to load LSP config: " .. name .. "\n" .. config, vim.log.levels.ERROR)
+				end
+			end
+		end
 
 		-- formatting
 		conform.setup({
@@ -158,22 +170,12 @@ return {
 		local autocmd = vim.api.nvim_create_autocmd
 		autocmd("LspAttach", {
 			callback = function(e)
-				local keyopts = { buffer = e.buf }
-				vim.keymap.set("n", "K", function()
-					vim.lsp.buf.hover({
-						border = "rounded",
-					})
-				end, keyopts)
-				-- vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
-				vim.keymap.set("n", "<leader>la", function()
-					vim.lsp.buf.code_action()
-				end, { buffer = e.buf, desc = "Code action" })
-				vim.keymap.set("n", "<leader>lr", function()
-					vim.lsp.buf.rename()
-				end, { buffer = e.buf, desc = "Rename symbol" })
-				vim.keymap.set("n", "<leader>lk", function()
-					vim.diagnostic.open_float()
-				end, { buffer = e.buf, desc = "Open float" })
+				-- stylua: ignore start
+				vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = "rounded", }) end, { buffer = e.buf, desc = "Hover" })
+				vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = e.buf, desc = "Code action" })
+				vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = e.buf, desc = "Rename symbol" })
+				vim.keymap.set("n", "<leader>lk", vim.diagnostic.open_float, { buffer = e.buf, desc = "Open float" })
+				-- stylua: ignore end
 			end,
 		})
 	end,
