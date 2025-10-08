@@ -32,7 +32,6 @@ return {
 		{ "<leader>bg", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
 		{ "<leader>gb", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } }, -- idk i cant decide
 		{ "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
-
 		{ "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
 		{ "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
 		{ "<leader>u", function() Snacks.picker.undo() end, desc = "Undo History" },
@@ -49,7 +48,6 @@ return {
 		{ "<leader>gc", function() Snacks.picker.git_log() end, desc = "Git Log" },
 		{ "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
 		{ "<leader>lS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
-
 		{ "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
 		{ "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
 		{ "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },

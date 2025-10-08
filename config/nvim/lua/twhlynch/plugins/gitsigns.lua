@@ -65,7 +65,7 @@ return {
 					else
 						gitsigns.nav_hunk("next")
 					end
-				end)
+				end, { desc = "Next hunk", noremap = true })
 
 				map("n", "[h", function()
 					if vim.wo.diff then
@@ -73,7 +73,7 @@ return {
 					else
 						gitsigns.nav_hunk("prev")
 					end
-				end)
+				end, { desc = "Previous hunk", noremap = true })
 
 				-- Actions
 				map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "Stage hunk", noremap = true })

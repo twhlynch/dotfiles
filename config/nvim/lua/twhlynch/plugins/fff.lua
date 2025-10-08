@@ -3,12 +3,8 @@ return {
 	build = "cargo build --release",
 	opts = {},
 	keys = {
-		{
-			"<leader>S",
-			function()
-				require("fff").find_files()
-			end,
-			desc = "Open file picker",
-		},
+		-- stylua: ignore start
+		{ "<leader>S", function() require("fff").find_files() end, desc = "Open file picker", },
+		-- stylua: ignore stop
 	},
 }
