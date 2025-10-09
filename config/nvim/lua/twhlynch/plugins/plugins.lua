@@ -83,6 +83,10 @@ return {
 		scrollbar_todo = {
 			enabled = true,
 		},
+		nolint = {
+			enabled = true,
+			key = "gcs",
+		},
 	},
 	keys = {
 	---@diagnostic disable: undefined-global
