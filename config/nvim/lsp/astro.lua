@@ -1,4 +1,3 @@
--- Astro depends on typescript. Stolen from nvim-lspconfig
 local function get_typescript_server_path(root_dir)
 	local project_root = vim.fs.dirname(vim.fs.find("node_modules", { path = root_dir, upward = true })[1])
 	return project_root and vim.fs.joinpath(project_root, "node_modules", "typescript", "lib") or ""
