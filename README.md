@@ -1,7 +1,7 @@
 # MacOS dotfiles
 
-Run `SETUP.sh` to setup config symlinks.
-Run `INSTALL.sh` to install brew and many packages.
+Run `config.sh` to setup config symlinks.
+Run `installs.sh` to install brew and many packages.
 
 > `chmod +x FILE.sh`
 
