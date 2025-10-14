@@ -25,10 +25,15 @@ opt.smartindent = true
 opt.wrap = false
 -- when wrapping do it by words
 opt.linebreak = true
+-- indent wrapped lines to match
+vim.o.breakindent = true
 
 -- default dont highlight search term
 opt.hlsearch = false
 opt.incsearch = true
+
+-- use already opened buffers
+vim.o.switchbuf = "usetab"
 
 -- no swapfile
 opt.swapfile = false
@@ -77,8 +82,9 @@ opt.list = true
 -- wounded borders
 opt.winborder = "rounded"
 
--- window splits are to the right
+-- window splits are to the right and bottom
 opt.splitright = true
+vim.o.splitbelow = true
 
 -- dont autofix eol
 opt.fixendofline = false
@@ -88,6 +94,7 @@ opt.endoffile = false
 -- use latex
 global.tex_flavor = "latex"
 
+-- filetype overrides
 vim.filetype.add({
 	extension = {
 		mdx = "markdown",
