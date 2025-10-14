@@ -55,26 +55,6 @@ zle -N zle-keymap-select
 _bar_cursor # bar cursor on startup
 precmd_functions+=(_bar_cursor) # bar cursor on new prompt
 
-# preexec() {
-# 	[[ -n $__PREEXEC_RUNNING ]] && return
-# 	__PREEXEC_RUNNING=1
-# 	if ! preexec_implicit_grep $1; then
-# 		unset __PREEXEC_RUNNING
-# 		kill -INT $$
-# 	fi
-# 	unset __PREEXEC_RUNNING
-# }
-#
-# preexec_implicit_grep() {
-# 	case $1 in
-# 		*\|\ *\"*\"*) ;;
-# 		*) return 0 ;;
-# 	esac
-#
-# 	eval $(echo "$1" | sed 's/| "\([^"]*\)"/| grep "\1"/g')
-# 	return 1
-# }
-
 # History
 HISTSIZE=10000
 HISTFILE=~/.zsh_history

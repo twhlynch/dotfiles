@@ -37,19 +37,6 @@ return {
 					additional_vim_regex_highlighting = { "markdown" },
 				},
 			})
-			--
-			-- local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-			--
-			-- parser_config.leap = {
-			-- 	install_info = {
-			-- 		url = "~/Documents/Personal/tree-sitter-lc3",
-			-- 		-- url = "https://github.com/twhlynch/tree-sitter-leap.git",
-			-- 		files = { "src/parser.c" },
-			-- 		-- branch = "main",
-			-- 	},
-			-- }
-			--
-			-- vim.treesitter.language.register("leap", "leap")
 		end,
 	},
 	{
