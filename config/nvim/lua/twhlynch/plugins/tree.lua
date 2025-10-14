@@ -31,8 +31,6 @@ return {
 					if vim.bo.filetype == "neo-tree" then
 						-- remove empty line ~
 						vim.cmd([[setlocal fillchars=eob:\ ]])
-						-- no horizontal scrolling
-						vim.cmd([[setlocal wrap]])
 					end
 				end,
 			},
