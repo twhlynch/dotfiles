@@ -90,6 +90,20 @@ if [ -d "config/LaunchAgents" ]; then
 	done
 fi
 
+# ensure LaunchDaemons folder exists
+mkdir -p "/Library/LaunchDaemons"
+
+# symlink macos file limit override
+if [ -d "config/LaunchDaemons" ]; then
+	for name in 'limit.maxfiles.plist'; do
+		if [ -f "config/LaunchDaemons/$name" ]; then
+			symlink "$PWD/config/LaunchDaemons/$name" "/Library/LaunchDaemons/$name"
+		else
+			echo "-----> $name not found"
+		fi
+	done
+fi
+
 # ensure Services folder exists
 mkdir -p "$HOME/Library/Services"
 

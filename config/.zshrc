@@ -136,5 +136,8 @@ function fuck() {
 [[ ! -r '/Users/twhlynch/.opam/opam-init/init.zsh' ]] || source '/Users/twhlynch/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
 
+# fix new macos file default being fucked
+ulimit -n 2048
+
 # auto open tmux in session or create session
 [ "$TERM_PROGRAM" = "ghostty" ] && [[ $(tput lines) > 15 ]] && (tmux a > /dev/null 2>&1 || tmux > /dev/null 2>&1)
