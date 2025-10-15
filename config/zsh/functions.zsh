@@ -147,7 +147,7 @@ function dl() {
 	local count=$1
 	[[ -z $count ]] && count=1
 
-	ls ~/Downloads -1 -s newest --absolute=on | tail -n $count | tr -d "'" |
+	eza ~/Downloads -1 -s newest --absolute=on | tail -n $count | tr -d "'" |
 	while IFS= read -r file; do
 		echo "$file"
 		cp "$file" .
