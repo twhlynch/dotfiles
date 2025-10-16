@@ -1,5 +1,6 @@
 return {
-	"twhlynch/nvim-plugins",
+	-- "twhlynch/nvim-plugins",
+	dir = "~/Documents/Personal/nvim-plugins",
 	dependencies = {
 		"nvim-mini/mini.hipatterns", -- for hipatterns
 		"stevearc/oil.nvim", -- for oil_git
@@ -93,7 +94,6 @@ return {
 	-- stylua: ignore start
 	{ "h", function() Plugins.origami.h() end, desc = "Origami h", },
 	{ "l", function() Plugins.origami.l() end, desc = "Origami l", },
-	{ "<leader>jp", function() Plugins.pear.jump_pair() end, desc = "Jump file pair", },
 	{ "<leader>jp", function() Plugins.pear.jump_pair() end, desc = "Jump file pair", },
 	{ "]r", function() Plugins.regions.goto_next_region() end, desc = "Next region", },
 	{ "[r", function() Plugins.regions.goto_prev_region() end, desc = "Previous region", },
