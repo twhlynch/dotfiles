@@ -5,29 +5,6 @@ return {
 		local mc = require("multicursor-nvim")
 		mc.setup()
 
-		local set = vim.keymap.set
-
-		-- Add or skip cursor above/below the main cursor.
-		set({ "n", "x" }, "<c-k>", function()
-			mc.lineAddCursor(-1)
-		end)
-		set({ "n", "x" }, "<c-j>", function()
-			mc.lineAddCursor(1)
-		end)
-
-		-- Add or skip adding a new cursor by matching word/selection
-		set({ "n", "x" }, "<leader>n", function()
-			mc.matchAddCursor(1)
-		end, { desc = "New cursor at next occurance" })
-		set({ "n", "x" }, "<leader>N", function()
-			mc.matchAddCursor(-1)
-		end)
-
-		-- Add and remove cursors with control + left click.
-		set("n", "<c-leftmouse>", mc.handleMouse)
-		set("n", "<c-leftdrag>", mc.handleMouseDrag)
-		set("n", "<c-leftrelease>", mc.handleMouseRelease)
-
 		-- Mappings defined in a keymap layer only apply when there are
 		-- multiple cursors. This lets you have overlapping mappings.
 		mc.addKeymapLayer(function(layerSet)
@@ -40,6 +17,22 @@ return {
 				end
 			end)
 		end)
+
+		local set = vim.keymap.set
+
+		-- stylua: ignore start
+		-- Add or skip cursor above/below the main cursor.
+		set({ "n", "x" }, "<c-k>", function() mc.lineAddCursor(-1) end)
+		set({ "n", "x" }, "<c-j>", function() mc.lineAddCursor(1) end)
+		-- Add or skip adding a new cursor by matching word/selection
+		set({ "n", "x" }, "<leader>n", function() mc.matchAddCursor(1) end, { desc = "New cursor at next occurance" })
+		set({ "n", "x" }, "<leader>N", function() mc.matchAddCursor(-1) end)
+		-- stylua: ignore end
+
+		-- Add and remove cursors with control + left click.
+		set("n", "<c-leftmouse>", mc.handleMouse)
+		set("n", "<c-leftdrag>", mc.handleMouseDrag)
+		set("n", "<c-leftrelease>", mc.handleMouseRelease)
 
 		set("x", "<A-s>", mc.splitCursors, { desc = "Split cursors within selection" })
 		set({ "x", "n" }, "<A-d>", mc.matchAllAddCursors, { desc = "Duplicate cursor on every occurrance of word" })
