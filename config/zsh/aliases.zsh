@@ -50,7 +50,6 @@ alias hl='rg --passthru'
 # annoying
 alias mkdir='mkdir -p'
 alias cp='cp -r'
-alias mv='mv -r'
 
 # kill
 alias ka='killall'
