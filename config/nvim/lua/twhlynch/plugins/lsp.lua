@@ -30,7 +30,6 @@ local lsp_list = {
 	"cssls",
 	"html",
 	"emmet_ls",
-	"ts_ls",
 	"vtsls",
 	"vue_ls",
 	"astro",
