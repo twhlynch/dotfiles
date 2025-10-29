@@ -9,7 +9,6 @@ return {
 		"htmlangular",
 		"htmldjango",
 		"javascriptreact",
-		"javascript",
 		"less",
 		"pug",
 		"sass",
