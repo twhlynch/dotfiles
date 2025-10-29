@@ -4,10 +4,8 @@ return {
 		"clangd",
 		"--clang-tidy",
 		"--background-index",
-		"--cross-file-rename",
 		"--completion-style=detailed",
 		"--header-insertion=iwyu",
-		"--suggest-missing-includes",
 	},
 	filetypes = {
 		"c",
