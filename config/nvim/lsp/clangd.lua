@@ -6,6 +6,7 @@ return {
 		"--background-index",
 		"--completion-style=detailed",
 		"--header-insertion=iwyu",
+		"--header-insertion-decorators",
 	},
 	filetypes = {
 		"c",
