@@ -1,6 +1,9 @@
 return {
 	"vague2k/vague.nvim",
 	config = function()
+		for _, group in pairs(vim.fn.getcompletion("@lsp", "highlight")) do
+			vim.api.nvim_set_hl(0, group, {})
+		end
 		require("vague").setup({
 			transparent = true,
 			on_highlights = function(highlights, colors)
