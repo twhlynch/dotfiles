@@ -94,6 +94,10 @@ opt.endoffile = false
 -- use latex
 global.tex_flavor = "latex"
 
+-- opt in to .nvim.lua with prompt
+vim.o.exrc = true
+vim.o.secure = true
+
 -- filetype overrides
 vim.filetype.add({
 	extension = {
