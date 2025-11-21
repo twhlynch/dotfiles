@@ -7,6 +7,7 @@ fi
 PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:${PATH}"
 PATH="${HOME}/bin:${PATH}"
 PATH="/Applications/CMake.app/Contents/bin:${PATH}"
+PATH="${HOME}/Library/Android/sdk/platform-tools:${PATH}"
 
 export PATH
 
