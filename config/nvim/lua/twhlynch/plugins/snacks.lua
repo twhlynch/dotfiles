@@ -6,6 +6,8 @@ return {
 		lazygit = { enabled = true },
 		git = { enabled = true },
 		bigfile = { enabled = true },
+		bufdelete = { enabled = true },
+		gh = { enabled = true },
 		picker = {
 			enabled = true,
 			matcher = {
@@ -48,6 +50,10 @@ return {
 		{ "<leader>gc", function() Snacks.picker.git_log() end, desc = "Git Log" },
 		{ "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
 		{ "<leader>lS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+		{ "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete buffer" },
+		{ "<leader>gp", function() Snacks.picker.gh_pr() end, desc = "Open Pull Requests" },
+		{ "<leader>gi", function() Snacks.picker.gh_issue() end, desc = "Open Issues" },
+		{ "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "All Issues" },
 		{ "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
 		{ "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
 		{ "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
