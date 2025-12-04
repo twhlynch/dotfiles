@@ -23,7 +23,7 @@ mkdir -p "$HOME/.config"
 
 # symlink simple configs
 if [ -d "config" ]; then
-	for name in .hushlogin .zshrc .zprofile .tmux.conf .gitconfig alacritty nvim ohmyposh ghostty neofetch lazygit bat fastfetch; do
+	for name in .hushlogin .zshrc .zprofile .tmux.conf .gitconfig alacritty nvim ohmyposh ghostty neofetch lazygit bat fastfetch nushell; do
 		if [ -d "config/$name" ]; then
 			symlink "$PWD/config/$name" "$HOME/.config/$name"
 		elif [ -f "config/$name" ]; then
