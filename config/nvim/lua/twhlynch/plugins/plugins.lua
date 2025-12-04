@@ -75,10 +75,12 @@ return {
 			hex = true,
 			rgb = true,
 			ansi = true,
+			env = true,
 			patterns = {
 				hex = "0?[#x]%x%x%x%x?%x?%x?%x?%x?%f[%W]", -- 3 - 8 length hex. # or 0x
 				rgb = "rgba?%(%d%d?%d?, ?%d%d?%d?, ?%d%d?%d?,? ?%d?%.?%d%)", -- rgb or rgba css color
 				ansi = "%[[34]8;2;%d%d?%d?;%d%d?%d?;%d%d?%d?m%f[%W]", -- r;g;b ansi code for fg or bg
+				env = '".-"', -- env values
 			},
 		},
 		scrollbar_todo = {
