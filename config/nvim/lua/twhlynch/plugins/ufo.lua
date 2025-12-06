@@ -1,85 +1,96 @@
 local function fold_virt_text_handler(virtText, lnum, endLnum, width, truncate, ctx)
 	local newVirtText = {}
+
 	local suffix = (" 󰁂 %d "):format(endLnum - lnum)
-	local sufWidth = vim.fn.strdisplaywidth(suffix)
-	local targetWidth = width - sufWidth
+	local suffixWidth = vim.fn.strdisplaywidth(suffix)
+	local targetWidth = width - suffixWidth
 	local curWidth = 0
 
-	-- get folded line
-	local prevChunk = nil
-	for i = 1, #virtText do
-		local chunk = virtText[i]
-		prevChunk = chunk
-		local chunkText = chunk[1]
-		local hlGroup = chunk[2]
-		local chunkWidth = vim.fn.strdisplaywidth(chunkText)
-		-- replace leading whitespace
-		if i == 1 and vim.trim(chunkText):len() == 0 then
-			chunkText = string.rep("─", chunkWidth - 1) .. " "
-			hlGroup = "LineNr"
+	local function add_chunk(text, hl)
+		table.insert(newVirtText, { text, hl })
+		curWidth = curWidth + vim.fn.strdisplaywidth(text)
+	end
+
+	local function add_truncated_chunk(text, hl)
+		text = truncate(text, targetWidth - curWidth)
+		add_chunk(text, hl)
+		if curWidth < targetWidth then
+			suffix = suffix .. (" "):rep(targetWidth - curWidth)
 		end
-		if targetWidth > curWidth + chunkWidth then
-			table.insert(newVirtText, { chunkText, hlGroup })
+	end
+
+	-- replace whitespace with line
+	for i, chunk in ipairs(virtText) do
+		local text, hl = chunk[1], chunk[2]
+		local widthText = vim.fn.strdisplaywidth(text)
+
+		if i == 1 and vim.trim(text):len() == 0 then
+			text = string.rep("─", widthText - 1) .. " "
+			hl = "LineNr"
+		end
+
+		if curWidth + widthText < targetWidth then
+			add_chunk(text, hl)
 		else
-			chunkText = truncate(chunkText, targetWidth - curWidth)
-			table.insert(newVirtText, { chunkText, hlGroup })
-			chunkWidth = vim.fn.strdisplaywidth(chunkText)
-			-- str width returned from truncate() may less than 2nd argument, need padding
-			if curWidth + chunkWidth < targetWidth then
-				suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
-			end
+			add_truncated_chunk(text, hl)
 			break
 		end
-		curWidth = curWidth + chunkWidth
 	end
 
-	-- add { for llvm style formatting -- TODO: add [ and (
-	local secondVirtText = ctx.get_fold_virt_text(lnum + 1)
-	prevChunk = vim.trim(prevChunk[1])
-	if secondVirtText and prevChunk:sub(prevChunk:len(), prevChunk:len()) ~= "{" then
-		local i = 0
-		if vim.trim(secondVirtText[1][1]):sub(1, 1) == "{" then
-			i = 1
-			-- stylua: ignore
-		elseif #secondVirtText >= 2 and vim.trim(secondVirtText[1][1]):len() == 0 and vim.trim(secondVirtText[2][1]):sub(1, 1) == "{" then
-			i = 2
+	-- add fold symbol
+	local function add_symbol()
+		local prevChunk = virtText[#virtText]
+		local prevText = prevChunk and vim.trim(prevChunk[1]) or ""
+		local secondVirtText = ctx.get_fold_virt_text(lnum + 1)
+		if not secondVirtText then
+			return
 		end
-		if i ~= 0 then
-			local chunk = secondVirtText[i]
-			local hlGroup = chunk[2]
-			if targetWidth > curWidth + 2 then
-				table.insert(newVirtText, { " {", hlGroup })
-				curWidth = curWidth + 2
-			end
+
+		if prevText:sub(-1):match("[{[(]") then
+			return
 		end
-	end
 
-	table.insert(newVirtText, { suffix, "DiagnosticHint" })
+		local symbols = { "{", "[", "(" }
+		local nextText = ""
+		local hl = nil
 
-	-- skip python
-	if vim.api.nvim_get_option_value("filetype", { buf = ctx.bufnr }) ~= "python" then
-		-- get last line
-		local endVirtText = ctx.get_fold_virt_text(endLnum)
-		for i, chunk in ipairs(endVirtText) do
-			local chunkText = chunk[1]
-			local hlGroup = chunk[2]
-			if i == 1 then
-				chunkText = chunkText:gsub("^%s+", "")
-			end
-			local chunkWidth = vim.fn.strdisplaywidth(chunkText)
-			if targetWidth > curWidth + chunkWidth then
-				table.insert(newVirtText, { chunkText, hlGroup })
-			else
-				chunkText = truncate(chunkText, targetWidth - curWidth)
-				table.insert(newVirtText, { chunkText, hlGroup })
-				chunkWidth = vim.fn.strdisplaywidth(chunkText)
-				-- str width returned from truncate() may less than 2nd argument, need padding
-				if curWidth + chunkWidth < targetWidth then
-					suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
-				end
+		for i = 1, math.min(2, #secondVirtText) do
+			local text = vim.trim(secondVirtText[i][1])
+			if text:len() > 0 and vim.tbl_contains(symbols, text:sub(1, 1)) then
+				nextText = text:sub(1, 1)
+				hl = secondVirtText[i][2]
 				break
 			end
-			curWidth = curWidth + chunkWidth
+		end
+
+		if nextText ~= "" and targetWidth - curWidth > 2 then
+			add_chunk(" " .. nextText, hl)
+		end
+	end
+	-- function cos early returns are nice
+	add_symbol()
+
+	-- add in diagnostic
+	add_chunk(suffix, "DiagnosticHint")
+
+	-- last line (still a little inaccurate)
+	local filetype = vim.api.nvim_get_option_value("filetype", { buf = ctx.bufnr })
+	if filetype ~= "python" then -- not python
+		local endVirtText = ctx.get_fold_virt_text(endLnum)
+		if endVirtText then
+			for i, chunk in ipairs(endVirtText) do
+				local text, hl = chunk[1], chunk[2]
+				if i == 1 then
+					text = text:gsub("^%s+", "")
+				end
+				local widthText = vim.fn.strdisplaywidth(text)
+				if curWidth + widthText < targetWidth then
+					add_chunk(text, hl)
+				else
+					add_truncated_chunk(text, hl)
+					break
+				end
+			end
 		end
 	end
 
