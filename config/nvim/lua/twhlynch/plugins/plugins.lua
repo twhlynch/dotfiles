@@ -76,6 +76,7 @@ return {
 			rgb = true,
 			ansi = true,
 			env = true,
+			css = true,
 			patterns = {
 				hex = "0?[#x]%x%x%x%x?%x?%x?%x?%x?%f[%W]", -- 3 - 8 length hex. # or 0x
 				rgb = "rgba?%(%d%d?%d?, ?%d%d?%d?, ?%d%d?%d?,? ?%d?%.?%d%)", -- rgb or rgba css color
