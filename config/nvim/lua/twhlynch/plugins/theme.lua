@@ -17,6 +17,7 @@ return {
 				highlights["@lsp.typemod.function"].fg = "#c48282"
 				highlights["@lsp.type.function"].fg = "#c48282"
 				highlights["@function.call"].fg = "#c48282"
+				highlights["@function.method.call"].fg = "#c48282"
 			end,
 		})
 		vim.cmd("colorscheme vague")
