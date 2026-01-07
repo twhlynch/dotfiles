@@ -65,6 +65,7 @@ return {
 				},
 			})
 		end,
+		vim.treesitter.language.register("asm", "gasm"),
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
