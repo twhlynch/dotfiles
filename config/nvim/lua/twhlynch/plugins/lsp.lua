@@ -36,6 +36,8 @@ local lsp_list = {
 	"mdx_analyzer",
 	-- configs
 	"yamlls",
+	-- zig
+	"zls",
 }
 
 local formatters = {
@@ -60,6 +62,7 @@ local formatters = {
 	astro = { "prettier" },
 	vue = { "prettier" },
 	svg = { "prettier" },
+	markdown = { "prettier" },
 }
 
 local mason_tools = {
