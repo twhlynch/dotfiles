@@ -28,8 +28,8 @@ return {
 		".clangd",
 		".clang-tidy",
 		".clang-format",
-	},
-	init_options = {
-		fallbackFlags = { "-std=c++17" },
+		"compile_flags.txt",
+		"configure.ac",
+		".git",
 	},
 }
