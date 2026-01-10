@@ -59,6 +59,17 @@ zle -N zle-keymap-select
 _bar_cursor # bar cursor on startup
 precmd_functions+=(_bar_cursor) # bar cursor on new prompt
 
+# runs after cd
+chpwd() {
+	if [[ -d .venv ]]; then
+		source .venv/bin/activate
+	fi
+
+	if [[ -f .nvmrc ]]; then
+		nvm use
+	fi
+}
+
 # History
 HISTSIZE=10000
 HISTFILE=~/.zsh_history
