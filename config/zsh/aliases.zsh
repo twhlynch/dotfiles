@@ -87,6 +87,11 @@ alias ghu='gh-url'
 # nice
 alias \$=""
 
+# redirects
+alias -g NE='2>/dev/null'
+alias -g NO='>/dev/null'
+alias -g NULL='>/dev/null 2>&1'
+
 # zmv
 alias zm='zmv -w'
 alias zcp='zmv -C'
