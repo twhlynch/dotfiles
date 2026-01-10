@@ -19,7 +19,6 @@ setopt AUTOCD
 # completions
 autoload -Uz compinit && compinit
 
-zinit cdreplay -q
 
 # oh-my-posh initialization
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
@@ -138,6 +137,9 @@ function fuck() {
 
 # fix new macos file default being fucked
 ulimit -n 2048
+
+# rerun cd hooks
+zinit cdreplay -q
 
 # auto open tmux in session or create session
 [ "$TERM_PROGRAM" = "ghostty" ] && [[ $(tput lines) > 15 ]] && (tmux a > /dev/null 2>&1 || tmux > /dev/null 2>&1)
