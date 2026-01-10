@@ -20,6 +20,11 @@ setopt AUTOCD
 autoload -Uz compinit && compinit
 
 
+# edit command
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X' edit-command-line
+
 # oh-my-posh initialization
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
 
