@@ -19,6 +19,8 @@ setopt AUTOCD
 # completions
 autoload -Uz compinit && compinit
 
+# zmv
+autoload -Uz zmv
 
 # edit command
 autoload -Uz edit-command-line

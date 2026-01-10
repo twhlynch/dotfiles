@@ -86,3 +86,8 @@ alias ghu='gh-url'
 
 # nice
 alias \$=""
+
+# zmv
+alias zm='zmv -w'
+alias zcp='zmv -C'
+alias zln='zmv -L'
