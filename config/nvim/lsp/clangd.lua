@@ -43,6 +43,12 @@ local load_source = function(bufnr)
 	-- load in background
 	local b = vim.fn.bufadd(source_file)
 	vim.fn.bufload(b)
+
+	-- properly init buffer?
+	vim.api.nvim_buf_call(b, function()
+		vim.cmd("filetype detect")
+		vim.api.nvim_exec_autocmds("BufReadPost", { buffer = b })
+	end)
 end
 
 ---@type vim.lsp.Config
