@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 local set = vim.keymap.set
 
 local function map(modes, lhs, rhs, desc)
-	vim.keymap.set(modes, lhs, rhs, { desc = desc })
+	set(modes, lhs, rhs, { desc = desc })
 end
 
 -- mistypes
