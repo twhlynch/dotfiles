@@ -31,7 +31,7 @@ return {
 				treesitter_highlighting = true,
 			},
 
-			ghost_text = { enabled = true },
+			ghost_text = { enabled = false },
 		},
 
 		sources = {
