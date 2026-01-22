@@ -52,13 +52,17 @@ map({ "n" }, "<leader>hl", function()
 end, "Toggle search highlight")
 -- next prevs
 map({ "n" }, "]e", function()
-	vim.diagnostic.goto_next({
+	vim.diagnostic.jump({
 		severity = vim.diagnostic.severity.ERROR,
+		wrap = true,
+		count = 1,
 	})
 end, "Jump to the next error in the current buffer")
 map({ "n" }, "[e", function()
-	vim.diagnostic.goto_prev({
+	vim.diagnostic.jump({
 		severity = vim.diagnostic.severity.ERROR,
+		wrap = true,
+		count = -1,
 	})
 end, "Jump to the previous error in the current buffer")
 -- macros
