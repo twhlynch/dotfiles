@@ -6,6 +6,7 @@ local function set_python_path(command)
 	})
 	for _, client in ipairs(clients) do
 		if client.settings then
+			---@diagnostic disable-next-line: param-type-mismatch
 			client.settings.python = vim.tbl_deep_extend("force", client.settings.python or {}, { pythonPath = path })
 		else
 			client.config.settings = vim.tbl_deep_extend("force", client.config.settings, { python = { pythonPath = path } })
@@ -46,6 +47,7 @@ return {
 				arguments = { vim.uri_from_bufnr(bufnr) },
 			}
 
+			---@diagnostic disable-next-line: param-type-mismatch
 			client.request("workspace/executeCommand", params, nil, bufnr)
 		end, {
 			desc = "Organize Imports",

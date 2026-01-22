@@ -164,7 +164,7 @@ return {
 		})
 
 		vim.keymap.set({ "n" }, "<leader>lf", function()
-			conform.format(nil, function(error, did_edit)
+			conform.format(nil, function(_, did_edit)
 				print((did_edit and "" or "Already ") .. "Formatted")
 			end)
 		end, { noremap = true, silent = true, desc = "Format current buffer" })

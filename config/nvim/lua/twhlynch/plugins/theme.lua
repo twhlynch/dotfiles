@@ -6,7 +6,7 @@ return {
 		end
 		require("vague").setup({
 			transparent = true,
-			on_highlights = function(highlights, colors)
+			on_highlights = function(highlights, _)
 				highlights.Visual.fg = nil
 				highlights.TreesitterContext = nil
 				highlights.TreesitterContextLineNumber.bg = nil

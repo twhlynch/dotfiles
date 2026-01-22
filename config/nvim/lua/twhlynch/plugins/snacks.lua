@@ -44,6 +44,7 @@ return {
 		{ "<leader>hh", function() Snacks.picker.help() end, desc = "Help Pages" },
 		{ "<leader>d", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
 		{ "<leader>bb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+		---@diagnostic disable-next-line: undefined-field
 		{ "<leader>t", function() Snacks.picker.todo_comments() end, desc = "Todo" },
 		{ "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
 		{ "<leader>gl", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },

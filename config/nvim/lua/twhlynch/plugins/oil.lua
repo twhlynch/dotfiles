@@ -54,6 +54,7 @@ return {
 				view_options = {
 					show_hidden = true,
 
+					---@diagnostic disable-next-line: unused-local
 					highlight_filename = function(entry, is_hidden, is_link_target, is_link_orphan)
 						if is_hidden then
 							return "Comment"

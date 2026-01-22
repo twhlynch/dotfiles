@@ -88,6 +88,7 @@ return {
 			-- width - 1 to keep scrollbar visible
 			local render = require("treesitter-context.render")
 			local old_open = render.open
+			---@diagnostic disable-next-line: duplicate-set-field
 			render.open = function(main_winid, ...)
 				old_open(main_winid, ...)
 

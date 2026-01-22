@@ -32,6 +32,7 @@ return {
 		-- reduce lag
 		local scrollbar = require("scrollbar")
 		local old_render = scrollbar.render
+		---@diagnostic disable-next-line: duplicate-set-field
 		scrollbar.render = function()
 			vim.schedule(old_render)
 		end

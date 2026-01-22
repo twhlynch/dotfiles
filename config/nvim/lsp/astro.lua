@@ -24,6 +24,7 @@ return {
 	},
 	before_init = function(_, config)
 		if not config.init_options.typescript.tsdk then
+			---@diagnostic disable-next-line: inject-field
 			config.init_options.typescript.tsdk = get_typescript_server_path(config.root_dir)
 		end
 	end,
