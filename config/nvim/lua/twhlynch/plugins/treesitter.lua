@@ -26,7 +26,7 @@ return {
 					enable = true,
 					disable = function(_, buf)
 						local max_filesize = 1 * 1024 * 1024 -- 1MB
-						local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+						local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
 						if ok and stats and stats.size > max_filesize then
 							-- stylua: ignore
 							vim.notify("File larger than 100KB treesitter disabled for performance", vim.log.levels.WARN, { title = "Treesitter" })

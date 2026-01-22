@@ -19,8 +19,7 @@ local load_source = function(bufnr)
 	local source_file = nil
 	local candidates = { base .. ".cpp", base .. ".c" }
 	for _, f in ipairs(candidates) do
-		---@diagnostic disable-next-line: undefined-field
-		if vim.loop.fs_stat(f) then
+		if vim.uv.fs_stat(f) then
 			source_file = vim.fn.fnamemodify(f, ":p")
 			break
 		end
