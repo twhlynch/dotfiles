@@ -71,3 +71,10 @@ map({ "n" }, "<leader>mx", ":!chmod +x %<CR><CR>", "chmod +x")
 map({ "n" }, "<leader>mc", "yygccp", "Duplicate and comment out line")
 map({ "x" }, "<leader>mr", ":<esc>:%s/\\%V[^A-Za-z0-9]/ /g<CR>", "Clean selection for type")
 map({ "n" }, "<leader>mm", ":lua vim.fn.setreg('q', table.concat(vim.fn.readfile(vim.fn.expand('%'), 'b'), '\n'))", "Load file into register q")
+
+-- reserved
+local function unset()
+	print("Unset")
+end
+map({ "n" }, "<leader>B", unset, "Unset")
+map({ "n" }, "<leader>?", unset, "Unset")
