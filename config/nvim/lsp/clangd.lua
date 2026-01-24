@@ -50,6 +50,31 @@ local load_source = function(bufnr)
 	end)
 end
 
+-- toggle indent fix for if namespace is indented
+local indent_enabled = true
+
+local function toggle_indent()
+	local query = vim.treesitter.query
+	local lang = "cpp"
+
+	if indent_enabled then
+		query.set("cpp", "indent", "")
+	else
+		local path = vim.fn.stdpath("config") .. "/queries/cpp/indents.scm"
+		local f = io.open(path, "r")
+		if not f then
+			print("Could not reload indents.scm")
+			return
+		end
+		local text = f:read("*a")
+		f:close()
+		query.set(lang, "indent", text)
+	end
+
+	indent_enabled = not indent_enabled
+	print("indent: " .. (indent_enabled and "ON" or "OFF"))
+end
+
 ---@type vim.lsp.Config
 return {
 	cmd = {
@@ -84,7 +109,10 @@ return {
 		"configure.ac",
 		".git",
 	},
-	on_attach = function(_, bufnr)
+	on_attach = function(_, bufnr) -- TODO: load when included by a file as well
 		load_source(bufnr)
+
+		-- will reset every time it attaches, but shouldnt matter
+		vim.keymap.set("n", "<leader>ci", toggle_indent, { desc = "Toggle C++ indent fix" })
 	end,
 }
