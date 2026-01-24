@@ -109,7 +109,7 @@ mkdir -p "$HOME/Library/Services"
 
 # symlink macos automations
 if [ -d "config/Services" ]; then
-	for name in 'nvim.workflow'; do
+	for name in 'nvim.workflow' 'nvim.app'; do
 		if [ -d "config/Services/$name" ]; then
 			symlink "$PWD/config/Services/$name" "$HOME/Library/Services/$name"
 		else
