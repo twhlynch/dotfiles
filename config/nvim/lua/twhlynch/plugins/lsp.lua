@@ -52,6 +52,7 @@ local formatters = {
 	zsh = { "beautysh" },
 	ocaml = { "ocamlformat" },
 	tex = { "bibtex-tidy" },
+	proto = { "buf" },
 	-- web
 	javascript = { "prettier" },
 	typescript = { "prettier" },
