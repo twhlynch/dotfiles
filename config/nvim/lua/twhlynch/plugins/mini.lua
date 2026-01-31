@@ -39,7 +39,7 @@ return {
 				local str_to_eval = table.concat(lines_copy, "\n")
 
 				local ft = vim.bo.filetype
-				if ft == "javascript" or ft == "typescript" then
+				if ft == "javascript" or ft == "typescript" or ft == "vue" then
 					-- js
 					local wrapper = "console.log((() => {\n" .. str_to_eval .. "\n})());"
 					return vim.fn.systemlist({ "node", "-e", wrapper })
