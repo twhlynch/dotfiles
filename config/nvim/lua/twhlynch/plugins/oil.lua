@@ -82,6 +82,15 @@ return {
 						end
 					end,
 				},
+				preview_win = {
+					disable_preview = function(filename)
+						if vim.fn.fnamemodify(filename, ":t") == ".env" then
+							return true
+						end
+
+						return false
+					end,
+				},
 			})
 
 			-- open preview automatically at size
