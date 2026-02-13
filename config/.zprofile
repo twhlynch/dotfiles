@@ -19,3 +19,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 # editor
 export EDITOR=nvim
+
+# android dev
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export NDK_HOME="$HOME/Library/Android/sdk/ndk/28.2.13676358"
