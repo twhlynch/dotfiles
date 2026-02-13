@@ -76,5 +76,7 @@ map({ "n" }, "<leader>mm", ":lua vim.fn.setreg('q', table.concat(vim.fn.readfile
 local function unset()
 	print("Unset")
 end
-map({ "n" }, "<leader>B", unset, "Unset")
-map({ "n" }, "<leader>?", unset, "Unset")
+map({ "n" }, "<leader>B", unset, "Build (Unset)")
+map({ "n" }, "<leader>G", unset, "Generate (Unset)")
+map({ "n" }, "<leader>?", unset, "Search (Unset)")
+map({ "n" }, "<leader>,", unset, "Config (Unset)")
