@@ -15,6 +15,7 @@ local lsp_list = {
 	-- c, cpp, etc
 	"clangd",
 	"cmake",
+	"arduino_language_server",
 	-- shaders
 	"glsl_analyzer",
 	-- java
@@ -47,6 +48,7 @@ local formatters = {
 	-- go = { "gofumpt" },
 	cpp = { "clang-format" },
 	c = { "clang-format" },
+	arduino = { "clang-format" },
 	cmake = { "gersemi" },
 	bash = { "shfmt" },
 	zsh = { "beautysh" },
