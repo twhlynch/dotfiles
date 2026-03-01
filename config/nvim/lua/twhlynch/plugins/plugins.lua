@@ -48,6 +48,7 @@ return {
 		reminder = {
 			enabled = true,
 			notify = print,
+			numbers = true,
 		},
 		scrollbar_marks = {
 			enabled = true,

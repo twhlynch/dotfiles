@@ -21,7 +21,7 @@ return {
 				-- stylua: ignore end
 				sync_install = false,
 				auto_install = true,
-				indent = { enable = true },
+				indent = { enable = false },
 				highlight = {
 					enable = true,
 					disable = function(_, buf)
