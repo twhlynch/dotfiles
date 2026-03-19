@@ -50,6 +50,10 @@ map({ "n" }, "<leader>hl", function()
 	vim.o.hlsearch = not vim.o.hlsearch
 	print("Search highlighting is " .. (vim.o.hlsearch and "ON" or "OFF"))
 end, "Toggle search highlight")
+map({ "n" }, "<leader>hi", function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+	print("Inlay Hints are " .. (vim.lsp.inlay_hint.is_enabled() and "ON" or "OFF"))
+end, "Toggle search highlight")
 -- next prevs
 map({ "n" }, "]e", function()
 	vim.diagnostic.jump({
