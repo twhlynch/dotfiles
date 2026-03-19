@@ -105,5 +105,6 @@ vim.filetype.add({
 		frag = "glsl",
 		vert = "glsl",
 		hlsl = "glsl",
+		pl = "prolog",
 	},
 })
