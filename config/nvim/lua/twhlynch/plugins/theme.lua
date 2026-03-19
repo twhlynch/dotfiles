@@ -19,6 +19,10 @@ return {
 				highlights["@function.call"].fg = "#c48282"
 				highlights["@function.method.call"].fg = "#c48282"
 				highlights["@lsp.type.macro"].fg = "#c48282"
+
+				highlights["@string.documentation.python"] = {
+					fg = "#606079",
+				}
 			end,
 		})
 		vim.cmd("colorscheme vague")
