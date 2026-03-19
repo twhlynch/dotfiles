@@ -43,6 +43,7 @@ return {
 		{ "<leader>g/", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
 		{ "<leader>hh", function() Snacks.picker.help() end, desc = "Help Pages" },
 		{ "<leader>d", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
+		{ "<leader>D", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
 		{ "<leader>bb", function() Snacks.picker.buffers() end, desc = "Buffers" },
 		---@diagnostic disable-next-line: undefined-field
 		{ "<leader>t", function() Snacks.picker.todo_comments() end, desc = "Todo" },
