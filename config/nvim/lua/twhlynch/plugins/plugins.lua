@@ -97,6 +97,9 @@ return {
 		breadcrumbs = {
 			enabled = true,
 		},
+		inlay = {
+			enabled = true,
+		},
 	},
 	keys = {
 	---@diagnostic disable: undefined-global
@@ -107,11 +110,12 @@ return {
 	{ "]r", function() Plugins.regions.goto_next_region() end, desc = "Next region", },
 	{ "[r", function() Plugins.regions.goto_prev_region() end, desc = "Previous region", },
 	{ "<leader>bf", function() Plugins.blame.show_blame() end, desc = "Show file blame", },
-	{ "<leader>i", function() Plugins.reminder.ignore_buffer() end, desc = "Toggle ignoring format reminder for buffer", },
-	{ "<leader>I", function() Plugins.reminder.toggle() end, desc = "Toggle format reminder", },
+	{ "<leader>ii", function() Plugins.reminder.ignore_buffer() end, desc = "Toggle ignoring format reminder for buffer", },
+	{ "<leader>iI", function() Plugins.reminder.toggle() end, desc = "Toggle format reminder", },
 	{ "<leader>LSP", function() Plugins.copy_lspconfig.copy_lsp() end, desc = "Copy lsp config", },
 	{ "<leader><leader>", function() Plugins.fff.fff() end, desc = "FFF", },
 	{ "<leader>Ro", function() Plugins.oil_git.update_git_status() end, desc = "Refresh Oil Git", },
+	{ "<leader>ih", mode = { "n", "x" }, function() Plugins.inlay.inject_inlay_hints() end, desc = "Inject inlay hints", },
 		-- stylua: ignore end
 	},
 }
