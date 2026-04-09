@@ -126,6 +126,11 @@ return {
 				image_output = " × %s",
 			},
 		},
+		tasks = {
+			enabled = true,
+			keybind = "<leader><CR>",
+			sign_icon = "",
+		},
 	},
 	keys = {
 	---@diagnostic disable: undefined-global
