@@ -44,6 +44,7 @@ local lsp_list = {
 local formatters = {
 	lua = { "stylua" },
 	python = { "black" },
+	jupyter = { "black" },
 	rust = { "rustfmt" },
 	-- go = { "gofumpt" },
 	cpp = { "clang-format" },
