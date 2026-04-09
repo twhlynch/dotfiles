@@ -106,5 +106,6 @@ vim.filetype.add({
 		vert = "glsl",
 		hlsl = "glsl",
 		pl = "prolog",
+		json = "jsonc",
 	},
 })
