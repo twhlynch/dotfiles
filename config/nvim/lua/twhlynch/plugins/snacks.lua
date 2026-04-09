@@ -15,8 +15,8 @@ return {
 			},
 		},
 		image = {
-			enabled = false,
-			math = { enabled = true },
+			enabled = true,
+			math = { enabled = false },
 			convert = {
 				notify = false,
 				magick = {
