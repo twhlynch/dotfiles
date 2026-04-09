@@ -43,5 +43,7 @@ nvm install 16
 nvm install 18
 nvm install 22
 nvm install 25
+# npm tools
+npm install -g wrangler
 # apps
 brew install --cask ngrok raycast stats ghostty vlc visual-studio-code android-studio
