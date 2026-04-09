@@ -7,22 +7,23 @@ return {
 		require("vague").setup({
 			transparent = true,
 			on_highlights = function(highlights, _)
+				-- no visual fg override
 				highlights.Visual.fg = nil
+				-- no treesitter context bg
 				highlights.TreesitterContext = nil
 				highlights.TreesitterContextLineNumber.bg = nil
 
-				highlights["@lsp.typemod.method.readonly.cpp"] = {
-					fg = "#bb7070",
-				}
+				-- darken readonly methods
+				highlights["@lsp.typemod.method.readonly.cpp"] = { fg = "#bb7070" }
+				-- color functions
 				highlights["@lsp.typemod.function"].fg = "#c48282"
 				highlights["@lsp.type.function"].fg = "#c48282"
 				highlights["@function.call"].fg = "#c48282"
 				highlights["@function.method.call"].fg = "#c48282"
+				-- color macros like functions
 				highlights["@lsp.type.macro"].fg = "#c48282"
-
-				highlights["@string.documentation.python"] = {
-					fg = "#606079",
-				}
+				-- python docs are comments
+				highlights["@string.documentation.python"] = { fg = "#606079" }
 				-- lua docs are darker
 				highlights["@keyword.return.luadoc"] = { fg = "#507796" }
 				highlights["@keyword.luadoc"] = { fg = "#507796" }
