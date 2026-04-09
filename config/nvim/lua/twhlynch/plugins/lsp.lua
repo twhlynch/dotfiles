@@ -109,7 +109,7 @@ return {
 		-- add formatters to tools list
 		for _, value in pairs(formatters) do
 			local name = value[1]
-			if name then
+			if name and name ~= "rustfmt" then
 				table.insert(mason_tools, name)
 			end
 		end
