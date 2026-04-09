@@ -23,6 +23,13 @@ return {
 				highlights["@string.documentation.python"] = {
 					fg = "#606079",
 				}
+				-- lua docs are darker
+				highlights["@keyword.return.luadoc"] = { fg = "#507796" }
+				highlights["@keyword.luadoc"] = { fg = "#507796" }
+				highlights["@lsp.typemod.keyword.documentation.lua"] = { fg = "#507796" }
+				-- lua macros are types
+				highlights["@lsp.type.macro.lua"] = { fg = "#9bb4bc" }
+				highlights["@function.macro.luadoc"] = { fg = "#9bb4bc" }
 			end,
 		})
 		vim.cmd("colorscheme vague")
