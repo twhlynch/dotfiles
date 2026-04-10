@@ -1,2 +1,2 @@
 require("twhlynch")
-vim.lsp.set_log_level("error")
+vim.lsp.log.set_level(vim.log.levels.ERROR)
