@@ -45,5 +45,7 @@ nvm install 22
 nvm install 25
 # npm tools
 npm install -g wrangler
+# cargo
+cargo install --locked tree-sitter-cli
 # apps
 brew install --cask ngrok raycast stats ghostty vlc visual-studio-code android-studio

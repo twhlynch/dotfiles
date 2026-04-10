@@ -1,75 +1,50 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
 		build = ":TSUpdate",
 		config = function()
-			require("nvim-treesitter.configs").setup({
-				-- stylua: ignore start
-				ensure_installed = {
-					"vimdoc", "javascript", "typescript",
-					"jsdoc", "tsx", "yaml", "html",
-					"css", "markdown", "markdown_inline", "graphql",
-					"bash", "vim", "dockerfile", "gitignore",
-					"query", "c", "rust", "java",
-					"go", "perl", "python", "ruby",
-					"lua", "php", "dart", "cpp",
-					"asm", "proto", "jsonc", "toml",
-					"git_config", "gitattributes", "vue", "regex",
-					"sql", "glsl", "c_sharp", "csv",
-					"diff",
-				},
-				-- stylua: ignore end
-				sync_install = false,
-				auto_install = true,
-				indent = { enable = false },
-				highlight = {
-					enable = true,
-					disable = function(_, buf)
-						local max_filesize = 1 * 1024 * 1024 -- 1MB
-						local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
-						if ok and stats and (stats.size > max_filesize and vim.bo.filetype ~= "python") then
-							-- stylua: ignore
-							vim.notify("File larger than 100KB treesitter disabled for performance", vim.log.levels.WARN, { title = "Treesitter" })
-							return true
-						end
-					end,
-					additional_vim_regex_highlighting = { "markdown" },
-				},
-				textobjects = {
-					move = {
-						enable = true,
-						set_jumps = true,
-						goto_next_start = {
-							["]m"] = "@function.outer",
-							["]o"] = "@loop.*",
-							["]s"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" },
-							["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
-						},
-						goto_next_end = {
-							["]M"] = "@function.outer",
-						},
-						goto_previous_start = {
-							["[m"] = "@function.outer",
-						},
-						goto_previous_end = {
-							["[M"] = "@function.outer",
-						},
-						goto_next = {
-							["]i"] = "@conditional.outer",
-							["]C"] = { query = "@class.outer", desc = "Next class" },
-						},
-						goto_previous = {
-							["[i"] = "@conditional.outer",
-						},
-					},
-				},
+			-- stylua: ignore
+			local parsers = {
+				"vimdoc", "javascript", "typescript", "jsdoc", "tsx", "yaml", "html", "css", "markdown", "markdown_inline",
+				"graphql", "bash", "vim", "dockerfile", "gitignore", "query", "c", "rust", "java", "go",
+				"perl", "python", "ruby", "lua", "php", "dart", "cpp", "asm", "proto", "toml",
+				"git_config", "gitattributes", "vue", "regex", "sql", "glsl", "c_sharp", "csv", "diff",
+			}
+
+			-- ensure parsers are installed
+			require("nvim-treesitter").install(parsers)
+
+			-- custom override register
+			vim.treesitter.language.register("asm", "gasm")
+			vim.treesitter.language.register("json", "jsonc")
+
+			vim.api.nvim_create_autocmd("FileType", {
+				group = vim.api.nvim_create_augroup("TreesitterSetup", { clear = true }),
+				callback = function(args)
+					local parser = vim.treesitter.get_parser(args.buf)
+
+					if not parser then
+						return
+					end
+
+					-- max file size check
+					local max_filesize = 1 * 1024 * 1024 -- 1MB
+					local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(args.buf))
+					if ok and stats and (stats.size > max_filesize and vim.bo[args.buf].filetype ~= "python") then
+						vim.notify("File larger than 1MB treesitter disabled for performance", vim.log.levels.WARN, { title = "Treesitter" })
+						return
+					end
+
+					-- Start native treesitter highlighting
+					vim.treesitter.start(args.buf)
+				end,
 			})
 		end,
-		vim.treesitter.language.register("asm", "gasm"),
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-		after = "nvim-treesitter",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
 			require("treesitter-context").setup({
 				enable = true,
@@ -105,23 +80,31 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		after = "nvim-treesitter",
+		branch = "main",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
-			vim.keymap.set({ "x", "o" }, "af", function()
-				require("nvim-treesitter.textobjects.select").select_textobject("@function.outer", "textobjects")
-			end)
-			vim.keymap.set({ "x", "o" }, "if", function()
-				require("nvim-treesitter.textobjects.select").select_textobject("@function.inner", "textobjects")
-			end)
-			vim.keymap.set({ "x", "o" }, "ac", function()
-				require("nvim-treesitter.textobjects.select").select_textobject("@class.outer", "textobjects")
-			end)
-			vim.keymap.set({ "x", "o" }, "ic", function()
-				require("nvim-treesitter.textobjects.select").select_textobject("@class.inner", "textobjects")
-			end)
-			vim.keymap.set({ "x", "o" }, "as", function()
-				require("nvim-treesitter.textobjects.select").select_textobject("@local.scope", "locals")
-			end)
+			local select = require("nvim-treesitter-textobjects.select")
+			local move = require("nvim-treesitter-textobjects.move")
+			-- stylua: ignore start
+			vim.keymap.set({ "x", "o" }, "af", function() select.select_textobject("@function.outer", "textobjects") end)
+			vim.keymap.set({ "x", "o" }, "if", function() select.select_textobject("@function.inner", "textobjects") end)
+			vim.keymap.set({ "x", "o" }, "ac", function() select.select_textobject("@class.outer", "textobjects") end)
+			vim.keymap.set({ "x", "o" }, "ic", function() select.select_textobject("@class.inner", "textobjects") end)
+			vim.keymap.set({ "x", "o" }, "as", function() select.select_textobject("@local.scope", "locals") end)
+
+			vim.keymap.set({ "n", "x", "o" }, "]m", function() move.goto_next_start("@function.outer", "textobjects") end)
+			vim.keymap.set({ "n", "x", "o" }, "]o", function() move.goto_next_start("@loop.*", "textobjects") end)
+			vim.keymap.set({ "n", "x", "o" }, "]s", function() move.goto_next_start("@local.scope", "locals") end, { desc = "Next scope" })
+			vim.keymap.set({ "n", "x", "o" }, "]z", function() move.goto_next_start("@fold", "folds") end, { desc = "Next fold" })
+
+			vim.keymap.set({ "n", "x", "o" }, "]M", function() move.goto_next_end("@function.outer", "textobjects") end)
+			vim.keymap.set({ "n", "x", "o" }, "[m", function() move.goto_previous_start("@function.outer", "textobjects") end)
+			vim.keymap.set({ "n", "x", "o" }, "[M", function() move.goto_previous_end("@function.outer", "textobjects") end)
+
+			vim.keymap.set({ "n", "x", "o" }, "]i", function() move.goto_next("@conditional.outer", "textobjects") end)
+			vim.keymap.set({ "n", "x", "o" }, "]C", function() move.goto_next("@class.outer", "textobjects") end, { desc = "Next class" })
+			vim.keymap.set({ "n", "x", "o" }, "[i", function() move.goto_previous("@conditional.outer", "textobjects") end)
+			-- stylua: ignore end
 		end,
 	},
 }
