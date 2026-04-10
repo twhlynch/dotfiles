@@ -177,10 +177,10 @@ return {
 		autocmd("LspAttach", {
 			callback = function(e)
 				-- stylua: ignore start
-				vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = "rounded", }) end, { buffer = e.buf, desc = "Hover" })
-				vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = e.buf, desc = "Code action" })
-				vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = e.buf, desc = "Rename symbol" })
-				vim.keymap.set("n", "<leader>lk", vim.diagnostic.open_float, { buffer = e.buf, desc = "Open float" })
+				vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = "rounded", }) end, { buf = e.buf, desc = "Hover" })
+				vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { buf = e.buf, desc = "Code action" })
+				vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buf = e.buf, desc = "Rename symbol" })
+				vim.keymap.set("n", "<leader>lk", vim.diagnostic.open_float, { buf = e.buf, desc = "Open float" })
 				-- stylua: ignore end
 			end,
 		})
