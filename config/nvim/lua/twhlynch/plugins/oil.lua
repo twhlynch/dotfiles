@@ -91,6 +91,9 @@ return {
 						return false
 					end,
 				},
+				win_options = {
+					signcolumn = "auto:2",
+				},
 			})
 
 			-- open preview automatically at size
@@ -116,10 +119,35 @@ return {
 		opts = {
 			show_file_highlights = true,
 			show_directory_highlights = true,
-			show_file_symbols = false,
-			show_directory_symbols = false,
 			show_ignored_files = true,
 			show_ignored_directories = false,
+
+			show_file_symbols = true,
+			show_directory_symbols = true,
+			symbol_position = "signcolumn",
+
+			symbols = {
+				file = {
+					added = "┃",
+					modified = "┃",
+					renamed = "┆",
+					deleted = "┆",
+					copied = "┆",
+					conflict = "⦚",
+					untracked = "",
+					ignored = "",
+				},
+				directory = {
+					added = "┃",
+					modified = "┃",
+					renamed = "┆",
+					deleted = "┆",
+					copied = "┆",
+					conflict = "⦚",
+					untracked = "",
+					ignored = "",
+				},
+			},
 
 			highlight = {
 				-- in ./theme.lua
