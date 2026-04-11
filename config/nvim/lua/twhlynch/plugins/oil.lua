@@ -110,4 +110,20 @@ return {
 			end, { noremap = true, silent = true, desc = "Open File Explorer" })
 		end,
 	},
+	{
+		"malewicz1337/oil-git.nvim",
+		dependencies = { "stevearc/oil.nvim" },
+		opts = {
+			show_file_highlights = true,
+			show_directory_highlights = true,
+			show_file_symbols = false,
+			show_directory_symbols = false,
+			show_ignored_files = true,
+			show_ignored_directories = false,
+
+			highlight = {
+				-- in ./theme.lua
+			},
+		},
+	},
 }

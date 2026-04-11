@@ -21,7 +21,7 @@ return {
 			enabled = true,
 		},
 		oil_git = {
-			enabled = true,
+			enabled = false,
 			highlight = {
 				OilGitAdded = { fg = "#7fa563" },
 				OilGitModified = { fg = "#f3be7c" },

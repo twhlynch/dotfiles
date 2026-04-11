@@ -50,6 +50,16 @@ return {
 				highlights.BlinkCmpMenuBorder = { link = "FloatBorder" } -- border
 				highlights.BlinkCmpKind = { fg = "#AEAED1" } -- item icon
 
+				-- oil git
+				highlights.OilGitModifiedStaged = { fg = "#f3be7c" }
+				highlights.OilGitModifiedUnstaged = { fg = "#e0a363" }
+				highlights.OilGitRenamed = { fg = "#7e98e8" }
+				highlights.OilGitDeleted = { fg = "#d8647e" }
+				highlights.OilGitCopied = { fg = "#7e98e8" }
+				highlights.OilGitConflict = { fg = "#faa387" }
+				highlights.OilGitUntracked = { fg = "#7fa563" }
+				highlights.OilGitIgnored = { fg = "#606079" }
+
 				-- darken readonly methods
 				highlights["@lsp.typemod.method.readonly.cpp"] = { fg = "#bb7070" }
 				-- color functions
