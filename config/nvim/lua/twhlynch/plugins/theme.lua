@@ -49,6 +49,9 @@ return {
 				highlights.BlinkCmpLabelMatch = { fg = "#f3be7c" } -- matching text
 				highlights.BlinkCmpMenuBorder = { link = "FloatBorder" } -- border
 				highlights.BlinkCmpKind = { fg = "#AEAED1" } -- item icon
+				-- errors
+				highlights.Error = { fg = "#d8647e" }
+				highlights.NvimInternalError = { fg = "#f3be7c", bg = "#ff0000" }
 
 				-- oil git
 				highlights.OilGitModifiedStaged = { fg = "#f3be7c" }
