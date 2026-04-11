@@ -61,6 +61,7 @@ return {
 				highlights.OilGitCopied = { fg = "#7e98e8" }
 				highlights.OilGitConflict = { fg = "#faa387" }
 				highlights.OilGitUntracked = { fg = "#7fa563" }
+				highlights.OilGitAdded = { fg = "#7fa563" }
 				highlights.OilGitIgnored = { fg = "#606079" }
 
 				-- darken readonly methods
