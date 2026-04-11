@@ -131,6 +131,16 @@ return {
 			keybind = "<leader><CR>",
 			sign_icon = "",
 		},
+		auto_commit = {
+			enabled = true,
+			keymap = "<leader>commit",
+		},
+		elk = {
+			enabled = true,
+			binary = "elk",
+			debounce = 400,
+			filetypes = { "asm" },
+		},
 	},
 	keys = {
 	---@diagnostic disable: undefined-global
