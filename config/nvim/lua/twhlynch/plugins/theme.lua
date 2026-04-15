@@ -72,6 +72,10 @@ return {
 				highlights.OilGitAdded = { fg = c.plus }
 				highlights.OilGitIgnored = { fg = c.comment }
 
+				-- delimiters as operators
+				highlights["Delimiter"] = { link = "Operator" }
+				-- variable
+				highlights["@variable"] = { link = "Constant" }
 				-- darken readonly methods
 				highlights["@lsp.typemod.method.readonly.cpp"] = { fg = c.func_darker }
 				-- color functions
