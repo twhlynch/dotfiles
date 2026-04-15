@@ -107,5 +107,6 @@ vim.filetype.add({
 		hlsl = "glsl",
 		pl = "prolog",
 		json = "jsonc",
+		lp = "clingo",
 	},
 })
