@@ -54,6 +54,14 @@ map({ "n" }, "<leader>hi", function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 	print("Inlay Hints are " .. (vim.lsp.inlay_hint.is_enabled() and "ON" or "OFF"))
 end, "Toggle search highlight")
+-- document color
+vim.lsp.document_color.enable(false)
+vim.keymap.set("n", "<leader>cd", function()
+	vim.lsp.document_color.enable(not vim.lsp.document_color.is_enabled(), nil, {
+		style = "virtual",
+	})
+	print("Document Color is " .. (vim.lsp.document_color.is_enabled() and "ON" or "OFF"))
+end, { desc = "Toggle document color" })
 -- next prevs
 map({ "n" }, "]e", function()
 	vim.diagnostic.jump({
