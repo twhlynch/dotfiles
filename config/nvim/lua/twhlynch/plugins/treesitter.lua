@@ -9,10 +9,30 @@ return {
 				"vimdoc", "javascript", "typescript", "jsdoc", "tsx", "yaml", "html", "css", "markdown", "markdown_inline",
 				"graphql", "bash", "vim", "dockerfile", "gitignore", "query", "c", "rust", "java", "go",
 				"perl", "python", "ruby", "lua", "php", "dart", "cpp", "asm", "proto", "toml",
-				"git_config", "gitattributes", "vue", "regex", "sql", "glsl", "c_sharp", "csv", "diff",
+				"git_config", "gitattributes", "vue", "regex", "sql", "glsl", "c_sharp", "csv", "diff", "clingo"
 			}
 
-			-- ensure parsers are installed
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "clingo",
+				callback = function()
+					vim.bo.commentstring = "% %s"
+					vim.bo.comments = ":%"
+				end,
+			})
+
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "TSUpdate",
+				callback = function()
+					-- custom parsers go here
+					require("nvim-treesitter.parsers").clingo = {
+						install_info = {
+							url = "https://github.com/potassco/tree-sitter-clingo",
+							queries = "queries",
+						},
+					}
+				end,
+			})
+
 			require("nvim-treesitter").install(parsers)
 
 			-- custom override register
