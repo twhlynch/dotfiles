@@ -1,7 +1,7 @@
 return {
 	{
 		"stevearc/oil.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = { "nvim-mini/mini.icons" },
 		config = function()
 			-- helper function to parse output
 			local function parse_output(proc)

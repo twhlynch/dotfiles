@@ -3,7 +3,7 @@ return {
 	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"nvim-tree/nvim-web-devicons",
+		"nvim-mini/mini.icons",
 		"MunifTanjim/nui.nvim",
 	},
 	opts = {
