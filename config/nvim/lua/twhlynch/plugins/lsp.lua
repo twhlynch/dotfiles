@@ -92,8 +92,8 @@ return {
 		local lspconfig = require("mason-lspconfig")
 		local conform = require("conform")
 
-		mason.setup()
-		lspconfig.setup(opts)
+		-- mason.setup()
+		-- lspconfig.setup(opts)
 
 		local installed = {}
 		local mapping = lspconfig.get_mappings()
