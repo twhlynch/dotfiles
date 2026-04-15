@@ -103,6 +103,9 @@ return {
 			enabled = true,
 			filetypes = { "asm" },
 		},
+		comments = {
+			enabled = true,
+		},
 	},
 	keys = {
 	---@diagnostic disable: undefined-global
