@@ -97,16 +97,3 @@ global.tex_flavor = "latex"
 -- opt in to .nvim.lua with prompt
 vim.o.exrc = true
 vim.o.secure = true
-
--- filetype overrides
-vim.filetype.add({
-	extension = {
-		mdx = "markdown",
-		frag = "glsl",
-		vert = "glsl",
-		hlsl = "glsl",
-		pl = "prolog",
-		json = "jsonc",
-		lp = "clingo",
-	},
-})

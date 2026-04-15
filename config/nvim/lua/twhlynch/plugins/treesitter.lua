@@ -12,14 +12,6 @@ return {
 				"git_config", "gitattributes", "vue", "regex", "sql", "glsl", "c_sharp", "csv", "diff", "clingo"
 			}
 
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = "clingo",
-				callback = function()
-					vim.bo.commentstring = "% %s"
-					vim.bo.comments = ":%"
-				end,
-			})
-
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "TSUpdate",
 				callback = function()
