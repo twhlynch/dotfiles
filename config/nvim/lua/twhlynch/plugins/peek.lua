@@ -2,7 +2,10 @@ return {
 	"toppair/peek.nvim",
 	event = { "VeryLazy" },
 	build = "deno task --quiet build:fast",
-	opts = {},
+	opts = {
+		auto_load = false,
+		app = "browser",
+	},
 	keys = {
 		-- stylua: ignore start
 		{ "<leader>po", function() require("peek").open() end, desc = "Open Peek preview" },
