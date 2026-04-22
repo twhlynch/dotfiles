@@ -69,27 +69,6 @@ return {
 		inlay = {
 			enabled = true,
 		},
-		notebook = {
-			enabled = true,
-			-- stylua: ignore
-			custom_theme_colors = {
-				"#c48282", "#7e98e8", "#e0a363", "#7fa563", "#d8647e", "#6e94b2",
-				"#4878CF", "#6ACC65", "#D65F5F", "#B47CC7", "#C4AD66", "#77BEDB",
-			},
-
-			keybind_prefix = "<leader>c",
-			max_output_lines = 10,
-			custom_plot_theme = true,
-
-			strings = {
-				output_border = "┃   ",
-				cell_border = "─",
-				cell_executed = " ",
-				cell_running = " ",
-				truncated_output = "%s more lines",
-				image_output = " × %s",
-			},
-		},
 		tasks = {
 			enabled = true,
 			keybind = "<leader><CR>",
