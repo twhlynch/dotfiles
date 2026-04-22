@@ -80,7 +80,7 @@ return {
 		},
 		elk = {
 			enabled = true,
-			filetypes = { "asm" },
+			filetypes = { "lc3" },
 		},
 		comments = {
 			enabled = true,
