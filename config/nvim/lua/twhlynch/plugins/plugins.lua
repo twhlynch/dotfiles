@@ -82,9 +82,6 @@ return {
 			enabled = true,
 			filetypes = { "lc3" },
 		},
-		comments = {
-			enabled = true,
-		},
 	},
 	keys = {
 	---@diagnostic disable: undefined-global
