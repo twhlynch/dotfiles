@@ -9,6 +9,7 @@ vim.filetype.add({
 		json = "jsonc",
 		lp = "clingo",
 		asm = "lc3",
+		lc3 = "lc3",
 	},
 })
 

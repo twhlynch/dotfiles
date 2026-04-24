@@ -78,10 +78,6 @@ return {
 			enabled = false,
 			keymap = "<leader>commit",
 		},
-		elk = {
-			enabled = true,
-			filetypes = { "lc3" },
-		},
 	},
 	keys = {
 	---@diagnostic disable: undefined-global

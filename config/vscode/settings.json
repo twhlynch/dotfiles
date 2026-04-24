@@ -128,5 +128,6 @@
     "[python]": {
         "editor.formatOnType": true,
     },
-    "python.languageServer": "Default"
+    "python.languageServer": "Default",
+    "lc3-elk-diagnostics.traps": "elci"
 }

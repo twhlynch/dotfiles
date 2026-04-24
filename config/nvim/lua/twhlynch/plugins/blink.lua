@@ -35,13 +35,14 @@ return {
 		},
 
 		sources = {
-			default = { "lsp", "path", "snippets", "lazydev", "buffer" },
+			default = { "lsp", "path", "snippets", "lazydev", "buffer", "elk" },
 			providers = {
 				lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
 				buffer = {
 					min_keyword_length = 5,
 					max_items = 5,
 				},
+				elk = { module = "elk.cmp" },
 			},
 		},
 
