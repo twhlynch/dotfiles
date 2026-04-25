@@ -164,6 +164,14 @@ return {
 				beautysh = {
 					append_args = { "--tab" },
 				},
+				prettier = {
+					prepend_args = function(_, ctx)
+						if ctx.filename:match("%.svg$") then
+							return { "--parser", "html" }
+						end
+						return {}
+					end,
+				},
 			},
 		})
 
