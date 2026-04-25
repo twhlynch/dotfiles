@@ -6,7 +6,7 @@ return {
 		debounce = 50,
 		filetypes = { "lc3" },
 		level = "info",
-		permit = "",
+		permit = "extension.stack_instructions",
 		-- stylua: ignore
 		trap_aliases = {
 			-- base LC-3
