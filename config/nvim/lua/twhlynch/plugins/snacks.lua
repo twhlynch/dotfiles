@@ -69,6 +69,16 @@ return {
 		opts = function()
 			Snacks.toggle.profiler():map("<leader>Pp")
 			Snacks.toggle.profiler_highlights():map("<leader>Ph")
+
+			local doc = require("snacks.image.doc")
+			local attach = doc.attach
+			doc.attach = function(buf)
+				local ignore = { "html", "css" }
+				if vim.tbl_contains(ignore, vim.bo[buf].ft) then
+					return
+				end
+				attach(buf)
+			end
 		end,
 	},
 }
