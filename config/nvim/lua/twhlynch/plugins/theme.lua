@@ -157,6 +157,8 @@ return {
 			-- mini checks case
 			files["README.md"] = vim.deepcopy(files["readme.md"])
 			files[".DS_Store"] = vim.deepcopy(files[".ds_store"])
+			-- jupyter logo icon does not expand
+			extensions["ipynb"].glyph = "󰠮"
 
 			require("mini.icons").setup({
 				style = "glyph",
