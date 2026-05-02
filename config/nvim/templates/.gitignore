@@ -1,0 +1,8 @@
+# editor configs
+/.vscode
+/.zed
+/.nvim.lua
+
+# OS specific
+.DS_Store
+*:Zone.Identifier
