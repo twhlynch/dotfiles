@@ -55,6 +55,8 @@ return {
 		suggestion.toggle_auto_trigger = function()
 			old_toggle_auto_trigger()
 			auto_trigger = not auto_trigger
+			require("lualine").refresh()
+
 			vim.print("Auto trigger is " .. (auto_trigger and "ON" or "OFF"))
 		end
 

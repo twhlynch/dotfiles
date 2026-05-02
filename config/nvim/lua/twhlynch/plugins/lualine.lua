@@ -16,7 +16,12 @@ return {
 				lualine_a = { "mode" },
 				lualine_b = { "branch", "diff", "diagnostics" },
 				lualine_c = { "filename" },
-				lualine_x = { "location" },
+				lualine_x = {
+					function()
+						return vim.b.copilot_suggestion_auto_trigger and "󱙺" or ""
+					end,
+					"location",
+				},
 				lualine_y = { "filetype" },
 				lualine_z = {},
 			},
