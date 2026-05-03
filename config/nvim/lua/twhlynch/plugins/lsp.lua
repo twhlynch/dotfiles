@@ -23,7 +23,6 @@ local lsp_list = {
 	-- latex
 	"ltex_plus",
 	"texlab",
-	"tinymist",
 	-- ocaml
 	"ocamllsp",
 	-- web
@@ -137,7 +136,7 @@ return {
 		end
 
 		vim.lsp.enable(lsp_list)
-		vim.lsp.enable({ "swipl", "asp_lsp" })
+		vim.lsp.enable({ "swipl", "asp_lsp", "tinymist" })
 		-- idk what im doing wrong. manually set /lsp configs
 		local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
 		package.path = package.path .. ";" .. lsp_dir .. "/?.lua"
