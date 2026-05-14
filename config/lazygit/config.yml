@@ -36,3 +36,9 @@ git:
 
 os:
   editPreset: 'nvim'
+
+customCommands:
+  - key: '<c-p>'
+    command: 'git pull --rebase'
+    context: 'global'
+    description: 'Pull with rebase'
