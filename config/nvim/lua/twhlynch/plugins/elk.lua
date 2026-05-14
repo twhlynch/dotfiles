@@ -6,7 +6,7 @@ return {
 		debounce = 50,
 		filetypes = { "lc3" },
 		level = "info",
-		permit = "extension.stack_instructions",
+		permit = "extension.stack_instructions,style.missing_operand_commas",
 		-- stylua: ignore
 		trap_aliases = {
 			-- base LC-3
