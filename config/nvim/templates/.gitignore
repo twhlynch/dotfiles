@@ -1,7 +1,7 @@
 # editor configs
 /.vscode
 /.zed
-/.nvim.lua
+.nvim.lua
 
 # OS specific
 .DS_Store
