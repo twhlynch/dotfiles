@@ -126,7 +126,7 @@ function gh-create() {
 	if [ ! -d ".git" ]; then
 		git init
 		git add .
-		git commit -m "Initial Commit"
+		git commit -m "chore: Initial Commit"
 	fi
 
 	name="$1"
@@ -135,6 +135,9 @@ function gh-create() {
 	gh repo create "$name" --private --source=. --remote=upstream
 
 	git push --set-upstream upstream HEAD:main
+
+	echo "Reminder: watch"
+	open "https://github.com/$GH_MAIN/$name"
 }
 function commit() {
 	git add .
