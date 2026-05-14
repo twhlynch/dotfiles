@@ -171,6 +171,11 @@ return {
 						return {}
 					end,
 				},
+				black = {
+					command = "black",
+					args = { "--quiet", "-" },
+					stdin = true,
+				},
 			},
 		})
 
