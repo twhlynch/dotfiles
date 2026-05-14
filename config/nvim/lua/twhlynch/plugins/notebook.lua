@@ -22,6 +22,7 @@ return {
 
 			cell_executed = " ",
 			cell_running = " ",
+			cell_pending = " ",
 			truncated_output = "%s more lines",
 			image_output = " × %s",
 		},

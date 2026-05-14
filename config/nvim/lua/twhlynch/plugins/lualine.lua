@@ -20,6 +20,7 @@ return {
 					function()
 						return vim.b.copilot_suggestion_auto_trigger and "󱙺" or ""
 					end,
+					"notebook",
 					"location",
 				},
 				lualine_y = { "filetype" },
