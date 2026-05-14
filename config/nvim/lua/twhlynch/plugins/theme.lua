@@ -106,6 +106,8 @@ return {
 					-- lua macros are types
 					highlights["@lsp.type.macro.lua"] = { fg = c.type }
 					highlights["@function.macro.luadoc"] = { fg = c.type }
+					-- adjust diagnostics
+					highlights.DiagnosticUnderlineWarn.bold = nil
 				end,
 			})
 			vim.cmd("colorscheme vague")
@@ -158,6 +160,7 @@ return {
 			files["README.md"] = vim.deepcopy(files["readme.md"])
 			files[".DS_Store"] = vim.deepcopy(files[".ds_store"])
 			files["CMakeLists.txt"] = vim.deepcopy(files["cmakelists.txt"])
+			files["VERSION"] = { glyph = "󰓹" }
 			-- jupyter logo icon does not expand
 			extensions["ipynb"].glyph = "󰠮"
 
