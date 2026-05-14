@@ -20,6 +20,7 @@
 	new = "!NEW_ALIAS_FUNC() { git checkout -b $3 $1; git push -u $2 $3; }; NEW_ALIAS_FUNC"
 [core]
 	pager = delta
+	attributesfile = ~/.config/git/attributes
 [interactive]
 	diffFilter = delta --color-only
 [delta]
