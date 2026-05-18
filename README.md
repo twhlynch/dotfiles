@@ -1,8 +1,8 @@
 # MacOS dotfiles
 
-Run `config.sh` to setup symlinks and macos defaults.
+Run `sudo config.sh` to setup symlinks and macos defaults.
 
-Run `installs.sh` to install brew and **many** packages and tools.
+Run `sudo installs.sh` to install brew and **many** packages and tools.
 
 > NOTE: some config requires this repo is `~/dotfiles`.
 
