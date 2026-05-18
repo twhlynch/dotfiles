@@ -313,3 +313,24 @@ function install() {
 		echo "Nothing selected."
 	fi
 }
+
+function worklog() {
+	git log \
+		--author="$(git config user.name)" \
+		--date=format:'%Y-%m-%d|%H:%M' \
+		--pretty=format:'%ad|%s' |
+	awk -F'|' '
+	{
+		date = $1
+		time = $2
+		msg  = $3
+
+		if (date != last) {
+			if (NR > 1) print ""
+			print "## " date
+			last = date
+		}
+
+		print "- [" time "] " msg
+	}'
+}
