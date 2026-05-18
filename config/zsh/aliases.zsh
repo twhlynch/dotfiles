@@ -84,6 +84,9 @@ alias lg='lazygit'
 alias gcl='git-clone-cd'
 alias ghu='gh-url'
 
+# webview
+alias wv='deno eval '\''import { Webview } from "jsr:@webview/webview"; const wv = new Webview(); wv.navigate(Deno.args[0]); wv.run();'\'''
+
 # nice
 alias \$=""
 
