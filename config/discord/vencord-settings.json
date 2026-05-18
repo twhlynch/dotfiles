@@ -168,9 +168,6 @@
             "DontRoundMyTimestamps": {
                 "enabled": false
             },
-            "EmoteCloner": {
-                "enabled": true
-            },
             "Experiments": {
                 "enabled": true,
                 "toolbarDevMenu": true
@@ -205,7 +202,8 @@
             },
             "GameActivityToggle": {
                 "enabled": true,
-                "oldIcon": false
+                "oldIcon": false,
+                "location": "PANEL"
             },
             "GifPaste": {
                 "enabled": true
@@ -249,7 +247,8 @@
             "MemberCount": {
                 "enabled": true,
                 "memberList": true,
-                "toolTip": true
+                "toolTip": true,
+                "voiceActivity": true
             },
             "MentionAvatars": {
                 "enabled": true,
@@ -262,7 +261,8 @@
                 "enabled": true,
                 "latency": 2,
                 "detectDiscordKotlin": true,
-                "showMillis": false
+                "showMillis": false,
+                "ignoreSelf": false
             },
             "MessageLinkEmbeds": {
                 "enabled": true,
@@ -282,10 +282,6 @@
                 "logEdits": true,
                 "logDeletes": true,
                 "inlineEdits": true
-            },
-            "MessageTags": {
-                "enabled": false,
-                "clyde": true
             },
             "MoreCommands": {
                 "enabled": false
@@ -459,7 +455,9 @@
                             "channels": [
                                 "1022495240696909874",
                                 "651638141693853717",
-                                "673455475957956610"
+                                "673455475957956610",
+                                "1013804697649434706",
+                                "1375326085126033471"
                             ]
                         },
                         {
@@ -471,7 +469,6 @@
                                 "1083266291223244800",
                                 "1041921552805011527",
                                 "1132016141733208185",
-                                "1013804697649434706",
                                 "1218037726658428979",
                                 "1232468180228636682",
                                 "1020937261027696651",
@@ -485,9 +482,11 @@
                                 "1221857193461153834",
                                 "1038925481669578823",
                                 "1350990489574440991",
-                                "1375326085126033471",
-                                "1351338611458572372",
-                                "1361925532450553947"
+                                "1361925532450553947",
+                                "1352606208858652702",
+                                "1018365659148726272",
+                                "1472745537697746954",
+                                "1373223833850347571"
                             ]
                         }
                     ],
@@ -545,7 +544,8 @@
             },
             "ReviewDB": {
                 "enabled": true,
-                "notifyReviews": true
+                "notifyReviews": true,
+                "showWarning": true
             },
             "RoleColorEverywhere": {
                 "enabled": true,
@@ -599,7 +599,8 @@
                 "enabled": true,
                 "displayNames": false,
                 "mode": "user-nick",
-                "inReplies": false
+                "inReplies": false,
+                "friendNicknames": "dms"
             },
             "ShowTimeoutDuration": {
                 "enabled": true,
@@ -712,7 +713,8 @@
                 "enabled": true
             },
             "WebScreenShareFixes": {
-                "enabled": true
+                "enabled": true,
+                "experimentalAV1Support": false
             },
             "WhoReacted": {
                 "enabled": true
@@ -781,6 +783,25 @@
             },
             "DisableDeepLinks": {
                 "enabled": true
+            },
+            "ExpressionCloner": {
+                "enabled": true
+            },
+            "CopyStickerLinks": {
+                "enabled": false
+            },
+            "ImageFilename": {
+                "enabled": false
+            },
+            "MoreQuickReactions": {
+                "enabled": false
+            },
+            "CustomCommands": {
+                "enabled": false,
+                "clyde": true
+            },
+            "CharacterCounter": {
+                "enabled": false
             }
         },
         "notifications": {
@@ -793,9 +814,13 @@
             "authenticated": false,
             "url": "https://api.vencord.dev/",
             "settingsSync": false,
-            "settingsSyncVersion": 1748614713606
+            "settingsSyncVersion": 1777604215661
         },
-        "eagerPatches": false
+        "eagerPatches": false,
+        "uiElements": {
+            "chatBarButtons": {},
+            "messagePopoverButtons": {}
+        }
     },
     "quickCss": ""
 }
