@@ -21,29 +21,17 @@ function symlink() {
 # ensure .config exists
 mkdir -p "$HOME/.config"
 
-# symlink simple configs
+# symlink simple configs to ~ and ~/.config
 if [ -d "config" ]; then
-	for name in .hushlogin .zshrc .zprofile .tmux.conf .gitconfig alacritty nvim ohmyposh ghostty neofetch lazygit bat fastfetch nushell git opencode/themes; do
-		if [ -d "config/$name" ]; then
-			symlink "$PWD/config/$name" "$HOME/.config/$name"
-		elif [ -f "config/$name" ]; then
-			symlink "$PWD/config/$name" "$HOME/$name"
-		else
+	for name in .hushlogin .zshrc .zprofile .tmux.conf .gitconfig nvim ohmyposh ghostty lazygit bat fastfetch git opencode/themes opencode/AGENTS.md; do
+		if [ ! -e "config/$name" ]; then
 			echo "-----> $name not found"
 		fi
-	done
-fi
 
-# ensure zed folder exists
-mkdir -p "$HOME/.config/zed"
-
-# symlink specific sub-files
-if [ -d "config/zed" ]; then
-	for name in zed/keymap.json zed/settings.json; do
-		if [ -f "config/$name" ]; then
-			symlink "$PWD/config/$name" "$HOME/.config/$name"
+		if [[ "$name" == .* ]]; then
+			symlink "$PWD/config/$name" "$HOME/$name"
 		else
-			echo "-----> $name not found"
+			symlink "$PWD/config/$name" "$HOME/.config/$name"
 		fi
 	done
 fi

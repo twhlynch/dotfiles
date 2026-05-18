@@ -1,67 +1,46 @@
 # MacOS dotfiles
 
-Run `config.sh` to setup config symlinks.
-Run `installs.sh` to install brew and many packages.
+Run `config.sh` to setup symlinks and macos defaults.
 
-> `chmod +x FILE.sh`
+Run `installs.sh` to install brew and **many** packages and tools.
 
-> vscode custom css and bg are not symlinked, just referenced, so make sure to clone `dotfiles` into `~`.
+> NOTE: some config requires this repo is `~/dotfiles`.
 
-**configs**
+### Main workflow
+
+- MacOS
+- Ghostty
 - zsh
-- tmux
-- ghostty
-- ohmyposh
-- gitconfig & git lfs
-- neovim
-- lazygit
-- neofetch
-- bat
-- alacritty
-- zed
-- vscode
-- xcode
-- MacOS Dock, WindowManager
-- MacOS Key Remapping
-- Arc browser icon
+- Tmux
+- Neovim
+- LazyGit
+- git
 
-**other**
-- discord Vencord config and custom css
-- arc boost / userscript custom css
+### Extras
 
-**installs**
-- xcode-select, xcpretty
-- homebrew
-- 3 nerd fonts (hack, jetbrains mono, meslo lg)
-- git, git-lfs, gh, git-filter-repo, lazygit
-- neovim, tmux
-- zoxide, fzf, bat, eza, btop
-- coreutils
-- terminal-notifier
-- node js 16 & 18, nvm
-- ghostty
-- raycast
-- android studio
-- vscode
-- temurin (java)
-- wine-stable
-- ffmpeg
-- ninja
-- zig
-- python3 (.9, .10, .12, .13)
-- oh-my-posh
-- ripgrep
-- deno
-- doxygen
-- docker
-- pnpm
-- maven
-- cargo
-- shfmt, stylua, clang-format, clang-tidy
-- patchelf, automake, autoconf-archive, gcc, ncurses
-- neofetch
-- tldr, thefuck
-- opam
-- rlwrap
-- imagemagick, texlive, ghostscript, pdflatex, basictex, texlive-latex-extra
-- a bunch of tlmgr latex packages
+- Arc browser userscripts
+- Discord vencord settings
+
+## Config
+
+```sh
+config
+├── bat           # bat config (modern cat replacement)
+├── fastfetch     # fastfetch config (neofetch alternative)
+├── ghostty       # ghostty config (terminal)
+├── git           # git config (you know what git is)
+├── lazygit       # lazygit config (tui git client)
+├── nvim          # neovim config (amazing IDE)
+├── ohmyposh      # ohmyposh config (zsh bloat)
+├── opencode      # opencode config (AI)
+├── vscode        # vscode config (lame IDE)
+├── xcode         # xcode theme
+├── zsh           # zsh aliases and functions
+├── LaunchAgents  # macos specific: remaps right option to F13
+├── LaunchDaemons # macos specific: fixes 'Too many open files' from clangd on large codebases
+├── Services      # macos specific: open with nvim quick action
+├── .gitconfig    # git config
+├── .hushlogin    # hide annoying macos tty message
+├── .tmux.conf    # tmux config
+├── .zprofile     # zsh profile file
+└── .zshrc        # zsh config (bash alternative)
