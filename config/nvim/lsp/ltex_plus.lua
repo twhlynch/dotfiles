@@ -6,7 +6,6 @@ return {
 		"plaintex",
 		"rst",
 		"tex",
-		"typst",
 	},
 	root_markers = { ".git" },
 	get_language_id = function(_, filetype)
@@ -25,7 +24,6 @@ return {
 				"rst",
 				"tex",
 				"latex",
-				"typst",
 			},
 		},
 	},
