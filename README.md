@@ -16,31 +16,26 @@ Run `sudo installs.sh` to install brew and **many** packages and tools.
 - LazyGit
 - git
 
-### Extras
-
-- Arc browser userscripts
-- Discord vencord settings
-
 ## Config
 
 ```sh
 config
-├── bat           # bat config (modern cat replacement)
-├── fastfetch     # fastfetch config (neofetch alternative)
-├── ghostty       # ghostty config (terminal)
-├── git           # git config (you know what git is)
-├── lazygit       # lazygit config (tui git client)
-├── nvim          # neovim config (amazing IDE)
-├── ohmyposh      # ohmyposh config (zsh bloat)
-├── opencode      # opencode config (AI)
-├── vscode        # vscode config (lame IDE)
-├── xcode         # xcode theme
-├── zsh           # zsh aliases and functions
-├── LaunchAgents  # macos specific: remaps right option to F13
-├── LaunchDaemons # macos specific: fixes 'Too many open files' from clangd on large codebases
-├── Services      # macos specific: open with nvim quick action
-├── .gitconfig    # git config
-├── .hushlogin    # hide annoying macos tty message
-├── .tmux.conf    # tmux config
-├── .zprofile     # zsh profile file
-└── .zshrc        # zsh config (bash alternative)
+├── arc         # arc browser userscripts
+├── bat         # modern cat replacement
+├── discord     # discord vencord settings
+├── fastfetch   # neofetch alternative
+├── ghostty     # ghostty terminal
+├── git         # git attributes file
+├── lazygit     # tui git client
+├── macos       # macos specific (keymaps, quick actions, fixes, xcode)
+├── nvim        # neovim config
+├── ohmyposh    # zsh prompt bloat
+├── opencode    # slop printer
+├── vscode      # vscode config + extensions
+├── zsh         # zsh aliases and functions
+├── .gitconfig  # git config
+├── .hushlogin  # hide annoying macos tty message
+├── .tmux.conf  # tmux config
+├── .zprofile   # zsh profile file
+└── .zshrc      # zsh shell config
+```
