@@ -94,8 +94,9 @@ label "Setup macos defaults"
 
 # reloading
 
-# reload Dock
+# reload macos
 killall Dock
+killall WindowManager
 
 # reload bat theme
 bat cache --build > /dev/null
