@@ -27,6 +27,8 @@ opt.wrap = false
 opt.linebreak = true
 -- indent wrapped lines to match
 vim.o.breakindent = true
+-- 80 width for gq
+vim.o.textwidth = 80
 
 -- default dont highlight search term
 opt.hlsearch = false
