@@ -5,7 +5,7 @@
         "useQuickCss": true,
         "themeLinks": [
             "https://raw.githubusercontent.com/KillYoy/DiscordNight/master/DiscordNight.css",
-            "https://raw.githubusercontent.com/twhlynch/dotfiles/master/other/discord/discord.css"
+            "https://raw.githubusercontent.com/twhlynch/dotfiles/master/config/discord/discord.css"
         ],
         "enabledThemes": [],
         "enableReactDevtools": false,
