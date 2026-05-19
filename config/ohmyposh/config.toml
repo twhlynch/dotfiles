@@ -18,6 +18,13 @@ final_space = true
   newline = true
 
   [[blocks.segments]]
+    type = 'python'
+    style = 'plain'
+    foreground = 'cyan'
+    background = 'transparent'
+    template = '{{ if .Venv }}({{ .Venv }}){{ end }}'
+
+  [[blocks.segments]]
     template = ' {{ .Path }}'
     foreground = 'blue'
     background = 'transparent'
