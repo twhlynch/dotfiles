@@ -51,25 +51,6 @@ function ..() {
 	cd "${cmd[@]}"
 }
 
-# python
-function py() {
-	if command -v python &>/dev/null; then # try current venv
-		python $@
-	elif [[ -d "./.venv/" ]]; then # try activate .venv
-		source ./.venv/bin/activate
-		if command -v python &>/dev/null; then
-			python $@
-		else
-			echo "Could not find python"
-			return
-		fi
-	elif command -v python3 &>/dev/null; then # try python3
-		python3 $@
-	else
-		echo "Could not find python"
-	fi
-}
-
 # mkdir and cd
 function mk() {
 	mkdir -p $1 && cd $1
@@ -333,4 +314,20 @@ function worklog() {
 
 		print "- [" time "] " msg
 	}'
+}
+
+function pyvenv() {
+	if [ -n "$1" ]; then
+		python"$1" -m venv .venv
+	fi
+
+	cwd=$PWD
+
+	while ! [ "$cwd" = '/' ]; do
+		if [ -d "$cwd/.venv" ]; then
+			source "$cwd/.venv/bin/activate"
+			break
+		fi
+		cwd="$(realpath "$cwd/..")"
+	done
 }

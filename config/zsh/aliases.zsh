@@ -74,7 +74,6 @@ alias ...........='cd ../../../../../../../../../..'
 alias path='echo -e ${PATH//:/\\n}'
 
 # python
-alias pyvenv='python3 -m venv .venv'
 alias pyserver='python3 -m http.server'
 
 # lazygit
