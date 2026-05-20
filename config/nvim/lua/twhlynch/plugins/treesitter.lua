@@ -6,10 +6,15 @@ return {
 		config = function()
 			-- stylua: ignore
 			local parsers = {
-				"vimdoc", "javascript", "typescript", "jsdoc", "tsx", "yaml", "html", "css", "markdown", "markdown_inline",
-				"graphql", "bash", "vim", "dockerfile", "gitignore", "query", "c", "rust", "java", "go",
-				"perl", "python", "ruby", "lua", "php", "dart", "cpp", "asm", "proto", "toml",
-				"git_config", "gitattributes", "vue", "regex", "sql", "glsl", "c_sharp", "csv", "diff", "clingo", "lc3"
+				"arduino", "asm", "astro", "awk", "bash", "c", "c_sharp", "cmake", "cpp", "css",
+				"csv", "cuda", "dart", "diff", "dockerfile", "editorconfig", "elixir", "git_config", "git_rebase", "gitattributes",
+				"gitcommit", "gitignore", "glsl", "go", "graphql", "hlsl", "html", "ini", "java", "javascript",
+				"jq", "jsdoc", "json", "kotlin", "latex", "lua", "make", "markdown", "markdown_inline", "nix",
+				"objc", "objdump", "ocaml", "odin", "perl", "php", "powershell", "proto", "python", "query",
+				"regex", "ruby", "rust", "scss", "sql", "svelte", "swift", "tmux", "toml", "tsx",
+				"typescript", "typst", "vim", "vimdoc", "vue", "xml", "yaml", "zig", "zsh",
+				-- custom
+				"clingo", "lc3",
 			}
 
 			vim.api.nvim_create_autocmd("User", {
