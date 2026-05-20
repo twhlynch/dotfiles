@@ -24,41 +24,56 @@ return {
 		"nvim-mini/mini.operators",
 		version = false,
 		config = function()
-			local inspect_objects = function(...)
-				local objects = {}
-				for i = 1, select("#", ...) do
-					local v = select(i, ...)
-					table.insert(objects, vim.inspect(v))
+			local inject_return = function(lines)
+				if not lines[#lines]:find("^%s*return%s+") then
+					lines[#lines] = "return " .. lines[#lines]
+				end
+			end
+
+			local eval_lines = function(lines)
+				local ft = vim.bo.filetype
+
+				if lines[1]:sub(1, 2) == "! " then
+					lines[1] = lines[1]:sub(2)
+					ft = "zsh"
 				end
 
-				return vim.split(table.concat(objects, "\n"), "\n")
-			end
-			local eval_lines = function(lines)
-				local lines_copy, n = vim.deepcopy(lines), #lines
-				lines_copy[n] = (lines_copy[n]:find("^%s*return%s+") == nil and "return " or "") .. lines_copy[n]
-				local str_to_eval = table.concat(lines_copy, "\n")
-
-				local ft = vim.bo.filetype
-				if ft == "javascript" or ft == "typescript" or ft == "vue" then
-					-- js
-					local wrapper = "console.log((() => {\n" .. str_to_eval .. "\n})());"
+				-- js
+				if ft == "javascript" or ft == "typescript" or ft == "vue" or ft == "astro" then
+					inject_return(lines)
+					local wrapper = "console.log((() => {\n" .. table.concat(lines, "\n") .. "\n})());"
 					return vim.fn.systemlist({ "node", "-e", wrapper })
+
+				-- shell
 				elseif ft == "bash" or ft == "sh" or ft == "zsh" then
-					-- shell
-					return vim.fn.systemlist({ "bash", "-c", str_to_eval })
+					return vim.fn.systemlist({ ft, "-c", table.concat(lines, "\n") })
+
+				-- python
 				elseif ft == "python" then
-					-- python
+					inject_return(lines)
 					local wrapper = "def _():\n" .. table.concat(
 						vim.tbl_map(function(l)
 							return "    " .. l
-						end, lines_copy),
+						end, lines),
 						"\n"
 					) .. "\nprint(_())"
 					return vim.fn.systemlist({ "python3", "-c", wrapper })
-				end
 
-				-- lua as fallback
-				return inspect_objects(assert(loadstring(str_to_eval))())
+				-- lua fallback
+				else
+					local inspect_objects = function(...)
+						local objects = {}
+						for i = 1, select("#", ...) do
+							local v = select(i, ...)
+							table.insert(objects, vim.inspect(v))
+						end
+
+						return vim.split(table.concat(objects, "\n"), "\n")
+					end
+
+					inject_return(lines)
+					return inspect_objects(assert(loadstring(table.concat(lines, "\n")))())
+				end
 			end
 
 			local function evaluate(content)
