@@ -1,0 +1,33 @@
+[flavor]
+dark = "vague"
+
+[mgr]
+marker_symbol = "│"
+
+[tabs]
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
+[indicator]
+padding = { open = "", close = "" }
+
+[status]
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+[confirm]
+border = { fg = "#7e98e8" }
+title  = { fg = "#7e98e8" }
+
+[notify]
+icon_info  = ""
+icon_warn  = "󰀪"
+icon_error = "󰅚"
+
+[icon]
+prepend_files = [
+	{ name = ".nvim.lua", text = "", fg = "#7FA563" },
+]
+prepend_exts = [
+	{ name = "lc3", text = "", fg = "#0091bd" },
+]

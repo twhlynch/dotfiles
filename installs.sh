@@ -35,6 +35,9 @@ sudo tlmgr install amsmath amssymb amsfonts amscd mathtools preview standalone v
 # wine
 brew install --cask wine-stable
 brew install winetricks
+# yazi
+brew install yazi ffmpeg-full sevenzip jq poppler fd ripgrep fzf zoxide resvg imagemagick-full font-symbols-only-nerd-font
+brew link ffmpeg-full imagemagick-full -f --overwrite
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
