@@ -1,54 +1,159 @@
-# install brew
-if ! command -v brew &>/dev/null; then
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
+#!/usr/bin/env bash
+set -euo pipefail
+
+# MARK: xcode
 
 if ! xcode-select -p &>/dev/null; then
 	xcode-select --install
 fi
 
-# git
-brew install git git-delta git-filter-repo git-lfs gh
-# libraries & build tools
-brew install zlib glib openssl@3 autoconf autoconf-archive patchelf pkgconf automake ccache libraw libtool ncurses
-brew install cmake ninja gcc make doxygen harfbuzz lld llvm xcode-build-server docker
-sudo gem install xcpretty
-# cli utils
-brew install coreutils grep jq ripgrep ffmpeg tree unzip
-brew install zoxide tmux bat eza fzf btop lazygit neovim fastfetch
-brew install apktool rlwrap terminal-notifier oh-my-posh thefuck tldr yt-dlp cloc
-# languages
-brew install python@3.8 python@3.9 python@3.10 python@3.11 python@3.12 python@3.13 python-tk@3.9 python-tk@3.13 pipx
-brew install lua zig go php nasm cargo
-brew install clang-format shfmt stylua clang-tidy
-# node
-brew install node npm pnpm deno
-# jvm
-brew install openjdk maven
+# MARK: homebrew
+
+if ! command -v brew &>/dev/null; then
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+brew update
+
+# MARK: git
+
+brew install git git-lfs \
+	git-delta git-filter-repo gh
+
+# MARK: build tools
+
+brew install \
+	make cmake ninja \
+	autoconf autoconf-archive automake pkgconf \
+	ccache libraw libtool patchelf \
+	harfbuzz \
+	lld llvm gcc \
+	glib \
+	doxygen \
+	ncurses \
+	openssl@3 \
+	zlib
+
+brew install xcpretty xcode-build-server bear docker
+
+# MARK: CLI tools
+
+brew install \
+	neovim tmux fzf lazygit yazi \
+	coreutils \
+	bat eza grep ripgrep jq btop zoxide \
+	fastfetch \
+	opencode \
+	unzip sevenzip \
+	fd poppler resvg \
+	cloc \
+	yt-dlp \
+	thefuck \
+	tldr \
+	exiftool \
+	cowsay \
+	libqalculate \
+	parallel \
+	apktool \
+	oh-my-posh \
+	rlwrap \
+	terminal-notifier
+
+brew install ffmpeg-full imagemagick-full
+brew link ffmpeg-full imagemagick-full -f --overwrite
+
+# MARK: languages & toolchains
+
+brew install \
+	lua luarocks \
+	openjdk maven \
+	rust \
+	zig \
+	go \
+	php \
+	nasm \
+	opam \
+	clingo \
+	swi-prolog
+
+brew install \
+	pipx \
+	python@3.8 python@3.9 python@3.10 python@3.11 python@3.12 python@3.13 python-tk@3.14
+
+brew install \
+	clang-format \
+	clang-tidy \
+	shfmt \
+	stylua \
+	tinymist \
+	asp-lsp \
+	tauri-cli
+
 brew install --cask temurin
-# fonts
-brew install --cask font-hack-nerd-font font-jetbrains-mono-nerd-font font-meslo-lg-nerd-font
-# latex
+
+# MARK: node
+
+brew install npm pnpm deno
+
+if [ ! -d "$HOME/.nvm" ]; then
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+fi
+
+export NVM_DIR="$HOME/.nvm"
+
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+
+nvm install --lts
+nvm install 22
+nvm install 18
+nvm install 25
+
+npm install -g wrangler
+npm install -g vsce
+npm install -g ovsx
+
+# MARK: fonts
+
+brew install --cask \
+	font-hack-nerd-font \
+	font-jetbrains-mono-nerd-font \
+	font-meslo-lg-nerd-font \
+	font-symbols-only-nerd-font
+
+# MARK: LaTeX
+
+brew install typst
+
+brew install texlive texlive-latex-extra ghostscript
 brew install --cask basictex
-brew install texlive texlive-latex-extra ghostscript pdflatex imagemagick
-sudo tlmgr install amsmath amssymb amsfonts amscd mathtools preview standalone varwidth needspace mdframed lipsum
-# wine
+
+sudo tlmgr update --self
+
+sudo tlmgr install \
+	amsfonts amscd amsmath amssymb \
+	mathtools mdframed needspace preview standalone varwidth lipsum
+
+# MARK: Wine
+
 brew install --cask wine-stable
 brew install winetricks
-# yazi
-brew install yazi ffmpeg-full sevenzip jq poppler fd ripgrep fzf zoxide resvg imagemagick-full font-symbols-only-nerd-font
-brew link ffmpeg-full imagemagick-full -f --overwrite
-# nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-export NVM_DIR="$HOME/.nvm"
-source "$NVM_DIR/nvm.sh"
-nvm install 16
-nvm install 18
-nvm install 22
-nvm install 25
-# npm tools
-npm install -g wrangler
-# cargo
+
+# MARK: cargo
+
 cargo install --locked tree-sitter-cli
-# apps
-brew install --cask ngrok raycast stats ghostty vlc visual-studio-code android-studio
+
+# MARK: apps
+
+brew install --cask \
+	ghostty \
+	raycast \
+	android-studio \
+	stats \
+	visual-studio-code \
+	vlc
+
+# MARK: cleanup
+
+brew cleanup
+echo "Installed"
