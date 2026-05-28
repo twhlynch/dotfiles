@@ -84,8 +84,14 @@ return {
 					highlights.MiniIconsRed = { fg = c.func }
 					highlights.MiniIconsYellow = { fg = c.delta }
 
+					-- diff
+					highlights.GitSignsDeleteInline = { bg = "#7E1F34" }
+					highlights.GitSignsAddInline = { bg = "#3F5330" }
+					highlights.GitSignsChangeInline = { bg = "#3F5330" }
+
 					-- delimiters as operators
 					highlights["Delimiter"] = { link = "Operator" }
+					highlights["@lsp.type.operator.cpp"] = {} -- let treesitter handle new/delete
 					-- variable
 					highlights["@variable"] = { link = "Constant" }
 					-- darken readonly methods
@@ -97,6 +103,7 @@ return {
 					highlights["@function.method.call"].fg = c.func
 					-- color macros like functions
 					highlights["@lsp.type.macro"].fg = c.func
+					highlights.Macro.fg = c.func
 					-- python docs are comments
 					highlights["@string.documentation.python"] = { fg = c.comment }
 					-- lua docs are darker
