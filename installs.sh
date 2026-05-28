@@ -52,7 +52,6 @@ brew install \
 	thefuck \
 	tldr \
 	exiftool \
-	cowsay \
 	libqalculate \
 	parallel \
 	apktool \
@@ -72,6 +71,7 @@ brew install \
 	zig \
 	go \
 	php \
+	typst \
 	nasm \
 	opam \
 	clingo \
@@ -79,7 +79,7 @@ brew install \
 
 brew install \
 	pipx \
-	python@3.8 python@3.9 python@3.10 python@3.11 python@3.12 python@3.13 python-tk@3.14
+	python@3.8 python@3.9 python@3.10 python@3.11 python@3.12 python@3.13
 
 brew install \
 	clang-format \
@@ -87,8 +87,7 @@ brew install \
 	shfmt \
 	stylua \
 	tinymist \
-	asp-lsp \
-	tauri-cli
+	asp-lsp
 
 brew install --cask temurin
 
@@ -105,9 +104,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
 nvm install --lts
-nvm install 22
-nvm install 18
-nvm install 25
 
 npm install -g wrangler
 npm install -g vsce
@@ -123,16 +119,21 @@ brew install --cask \
 
 # MARK: LaTeX
 
-brew install typst
+brew install texlive ghostscript
 
-brew install texlive texlive-latex-extra ghostscript
-brew install --cask basictex
-
-sudo tlmgr update --self
+sudo tlmgr update --self --all
 
 sudo tlmgr install \
-	amsfonts amscd amsmath amssymb \
-	mathtools mdframed needspace preview standalone varwidth lipsum
+	collection-latexrecommended \
+	collection-latexextra \
+	collection-fontsrecommended \
+	collection-fontsextra \
+	latexmk \
+	biber \
+	pgf \
+	standalone \
+	preview \
+	varwidth
 
 # MARK: Wine
 
@@ -145,11 +146,13 @@ cargo install --locked tree-sitter-cli
 
 # MARK: apps
 
+brew install swiftbar
+brew install narugit/tap/smctemp
+
 brew install --cask \
 	ghostty \
 	raycast \
 	android-studio \
-	stats \
 	visual-studio-code \
 	vlc
 
