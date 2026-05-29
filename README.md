@@ -1,3 +1,4 @@
+test
 # MacOS dotfiles
 
 Run `sudo config.sh` to setup symlinks and macos defaults.
