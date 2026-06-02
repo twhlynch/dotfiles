@@ -75,7 +75,8 @@ brew install \
 	nasm \
 	opam \
 	clingo \
-	swi-prolog
+	swi-prolog \
+	dxrcy/elk/elk
 
 brew install \
 	pipx \
