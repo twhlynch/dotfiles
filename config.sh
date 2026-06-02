@@ -31,6 +31,20 @@ function symlink() {
 	fi
 }
 
+function copy() {
+	file="$PWD/$1"
+	dest="$2"
+
+	if [ ! -e "$file" ]; then
+		label "$file not found"
+	else
+		mkdir -p "$(dirname "$dest")"
+		backup "$dest"
+		cp "$file" "$dest"
+		label "Copied $dest"
+	fi
+}
+
 # ~ configs
 for name in .hushlogin .zshrc .zprofile .tmux.conf .gitconfig; do
 	symlink "config/$name" "$HOME/$name"
@@ -61,7 +75,7 @@ done
 
 # macos file limit override
 for name in limit.maxfiles.plist; do
-	symlink "config/macos/LaunchDaemons/$name" "/Library/LaunchDaemons/$name"
+	copy "config/macos/LaunchDaemons/$name" "/Library/LaunchDaemons/$name"
 done
 
 # macos automations
