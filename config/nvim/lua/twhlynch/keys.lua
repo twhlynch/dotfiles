@@ -8,6 +8,7 @@ end
 
 -- mistypes
 vim.cmd([[cabbrev W w]])
+vim.cmd([[cabbrev E e]])
 vim.cmd([[cabbrev Q q]])
 vim.cmd([[cabbrev Wq wq]])
 vim.cmd([[cabbrev WQ wq]])
