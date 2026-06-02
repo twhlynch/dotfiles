@@ -63,7 +63,6 @@ return {
 					if vim.wo.diff then
 						vim.cmd.normal({ "]h", bang = true })
 					else
-						---@diagnostic disable-next-line: param-type-mismatch
 						gitsigns.nav_hunk("next")
 					end
 				end, { desc = "Next hunk", noremap = true })
@@ -72,10 +71,25 @@ return {
 					if vim.wo.diff then
 						vim.cmd.normal({ "[h", bang = true })
 					else
-						---@diagnostic disable-next-line: param-type-mismatch
 						gitsigns.nav_hunk("prev")
 					end
 				end, { desc = "Previous hunk", noremap = true })
+
+				map("n", "]H", function()
+					if vim.wo.diff then
+						vim.cmd.normal({ "]H", bang = true })
+					else
+						gitsigns.nav_hunk("next", { target = "all" })
+					end
+				end, { desc = "Next hunk (all)", noremap = true })
+
+				map("n", "[H", function()
+					if vim.wo.diff then
+						vim.cmd.normal({ "[H", bang = true })
+					else
+						gitsigns.nav_hunk("prev", { target = "all" })
+					end
+				end, { desc = "Previous hunk (all)", noremap = true })
 
 				-- Actions
 				map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "Stage hunk", noremap = true })
