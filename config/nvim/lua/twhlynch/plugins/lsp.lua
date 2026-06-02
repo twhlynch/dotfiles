@@ -76,7 +76,13 @@ return {
 	"mason-org/mason-lspconfig.nvim",
 	dependencies = {
 		{ "mason-org/mason.nvim", opts = {} }, -- tools
-		"neovim/nvim-lspconfig", -- lsp config data
+		{
+			"neovim/nvim-lspconfig",
+			init = function()
+				local lsp_path = require("lazy.core.config").options.root .. "/nvim-lspconfig"
+				vim.opt.runtimepath:prepend(lsp_path)
+			end,
+		}, -- lsp config data
 		"stevearc/conform.nvim", -- formatter
 	},
 
@@ -137,21 +143,6 @@ return {
 
 		vim.lsp.enable(lsp_list)
 		vim.lsp.enable({ "swipl", "asp_lsp", "tinymist" })
-		-- idk what im doing wrong. manually set /lsp configs
-		local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
-		package.path = package.path .. ";" .. lsp_dir .. "/?.lua"
-		for _, file in ipairs(vim.fn.readdir(lsp_dir)) do
-			-- remove .lua
-			local name = file:match("^(.*)%.lua$")
-			if name then
-				local ok, config = pcall(require, name)
-				if ok then
-					vim.lsp.config(name, config)
-				else
-					vim.notify("Failed to load LSP config: " .. name .. "\n" .. config, vim.log.levels.ERROR)
-				end
-			end
-		end
 
 		-- formatting
 		conform.setup({
