@@ -73,7 +73,7 @@ return {
 			local doc = require("snacks.image.doc")
 			local attach = doc.attach
 			doc.attach = function(buf)
-				local ignore = { "html", "css", "vue", "astro" }
+				local ignore = { "html", "css", "vue", "astro", "typst" }
 				if vim.tbl_contains(ignore, vim.bo[buf].ft) then
 					return
 				end
