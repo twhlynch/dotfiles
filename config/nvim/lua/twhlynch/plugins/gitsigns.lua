@@ -115,4 +115,68 @@ return {
 		})
 		require("scrollbar.handlers.gitsigns").setup()
 	end,
+	init = function()
+		-- remove the + and - diff prefixes from each line
+		-- based on gitsigns popup.lua partition_linesspec
+		local function remove_diff_prefix(lines_spec)
+			for _, section in ipairs(lines_spec) do
+				for _, part in ipairs(section) do
+					local text, hls = part[1], part[2]
+
+					-- remove first character
+					if string.match(text, "^[+-]") then
+						part[1] = text:sub(2)
+
+						-- update hls
+						if type(hls) ~= "string" then
+							for _, h in ipairs(hls) do
+								h.start_col = math.max(h.start_col - 1, 0)
+								h.end_col = math.max(h.end_col - 1, 0)
+							end
+						end
+					end
+				end
+			end
+		end
+
+		-- removes the first line which is always 'Hunk N of M'
+		-- assumes theres always content
+		local function remove_first(lines_spec)
+			local first_line = lines_spec[1][1][1]
+			table.remove(lines_spec, 1)
+			return first_line
+		end
+
+		-- fix default opts and add title
+		local function set_win_opts(winid, title)
+			vim.api.nvim_win_set_config(winid, {
+				title = title,
+				title_pos = "left",
+			})
+			vim.wo[winid].list = vim.wo[0].list
+			vim.wo[winid].listchars = vim.wo[0].listchars
+		end
+
+		-- override create and update for hunk preview popups
+		local popup = require("gitsigns.popup")
+
+		local old_create = popup.create
+		---@diagnostic disable-next-line: duplicate-set-field
+		popup.create = function(lines_spec, opts, id)
+			local first_line = remove_first(lines_spec)
+			remove_diff_prefix(lines_spec)
+			local winid, bufnr = old_create(lines_spec, opts, id)
+			set_win_opts(winid, first_line)
+			return winid, bufnr
+		end
+
+		local old_update = popup.update
+		---@diagnostic disable-next-line: duplicate-set-field
+		popup.update = function(winid, bufnr, lines_spec, opts)
+			local first_line = remove_first(lines_spec)
+			remove_diff_prefix(lines_spec)
+			old_update(winid, bufnr, lines_spec, opts)
+			set_win_opts(winid, first_line)
+		end
+	end,
 }
