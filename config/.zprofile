@@ -5,6 +5,7 @@ fi
 
 # update path
 PATH="${HOME}/bin:${PATH}"
+PATH="${HOME}/.local/bin:${PATH}"
 PATH="/Applications/CMake.app/Contents/bin:${PATH}"
 PATH="/Applications/Blender.app/Contents/MacOS:${PATH}"
 PATH="${HOME}/Library/Android/sdk/platform-tools:${PATH}"
