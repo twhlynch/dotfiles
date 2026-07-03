@@ -7,6 +7,7 @@ vim.filetype.add({
 		hlsl = "glsl",
 		pl = "prolog",
 		json = "jsonc",
+		gltf = "jsonc",
 		lp = "clingo",
 		asm = "lc3",
 		lc3 = "lc3",
