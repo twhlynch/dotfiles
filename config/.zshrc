@@ -164,5 +164,5 @@ zinit cdreplay -q
 
 # cd hooks on tmux window creation
 if [ -n "$TMUX" ]; then
-    chpwd
+	chpwd
 fi
