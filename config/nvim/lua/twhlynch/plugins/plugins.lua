@@ -25,8 +25,22 @@ return {
 		},
 		pear = {
 			enabled = true,
-			source_exts = { "c", "cpp", "frag", "html" },
-			header_exts = { "h", "hpp", "vert", "js", "css" },
+			pairs = {
+				{
+					source_dirs = { "src", "source", "sources" },
+					header_dirs = { "include", "includes" },
+					source_exts = { "cpp", "c", "cc", "cxx" },
+					header_exts = { "hpp", "h", "hxx" },
+				},
+				{
+					source_exts = { "frag", "fs" },
+					header_exts = { "vert", "vs" },
+				},
+				{
+					source_exts = { "html" },
+					header_exts = { "js", "css" },
+				},
+			},
 		},
 		regions = {
 			enabled = true,
