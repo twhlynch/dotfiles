@@ -160,7 +160,7 @@ ulimit -n 2048
 zinit cdreplay -q
 
 # auto open tmux in session or create session
-[ "$TERM_PROGRAM" = "ghostty" ] && [[ $(tput lines) > 15 ]] && (tmux a > /dev/null 2>&1 || tmux > /dev/null 2>&1)
+[ "$TERM_PROGRAM" = "ghostty" ] && (tmux a > /dev/null 2>&1 || tmux > /dev/null 2>&1)
 
 # cd hooks on tmux window creation
 if [ -n "$TMUX" ]; then
