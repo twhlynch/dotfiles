@@ -64,9 +64,10 @@ FORMATTED=$(
 		--arg important_icon "$IMPORTANT_ICON" '
 			$all
 			| map(
-				.important = (
+				. as $pr
+				| .important = (
 					$important
-					| any(.url == .url)
+					| any(.url == $pr.url)
 				)
 			)
 			| map(
