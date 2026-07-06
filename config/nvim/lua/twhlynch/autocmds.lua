@@ -43,7 +43,7 @@ autocmd("TextYankPost", {
 -- textwidth only for 'writing'
 autocmd({ "FileType" }, {
 	group = augroup,
-	pattern = { "txt", "md", "typ", "tex", "mdx" },
+	pattern = { "text", "markdown", "typst", "tex" },
 	callback = function()
 		vim.opt_local.textwidth = 80
 	end,
