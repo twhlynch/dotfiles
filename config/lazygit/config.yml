@@ -29,6 +29,8 @@ gui:
       - "bold"
 
 git:
+  overrideGpg: true
+
   paging:
     pager: delta --dark --paging=never --tabs 4
 
