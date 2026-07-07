@@ -92,11 +92,6 @@ return {
 		inlay = {
 			enabled = true,
 		},
-		tasks = {
-			enabled = true,
-			keybind = "<leader><CR>",
-			sign_icon = "",
-		},
 		auto_commit = {
 			enabled = false,
 			keymap = "<leader>commit",
