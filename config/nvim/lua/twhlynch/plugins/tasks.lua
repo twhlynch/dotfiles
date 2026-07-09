@@ -8,5 +8,13 @@ return {
 		sign_hl = "DiagnosticFloatingOk",
 		providers = { "vscode", "npm" },
 		ignore = { "%.git/", "[vV]endor/", "third[-_]party/" },
+		runner = function(cmd)
+			vim.fn.system({
+				"tmux",
+				"new-window",
+				"-d",
+				"$SHELL -i -c " .. vim.fn.shellescape(cmd .. "; echo; read"),
+			})
+		end,
 	},
 }
