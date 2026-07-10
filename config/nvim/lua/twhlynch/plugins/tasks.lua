@@ -7,11 +7,23 @@ return {
 		keybind_picker = "<leader>B",
 		sign_hl = "DiagnosticFloatingOk",
 		providers = { "vscode", "npm" },
-		ignore = { "%.git/", "[vV]endor/", "third[-_]party/" },
 		runner = function(cmd)
+			-- first word only alpha
+			local name = ((cmd:match("^[^%s]+") or ""):gsub("[^%a]", ""))
+
+			vim.fn.system({
+				"tmux",
+				"kill-window",
+				"-t",
+				name,
+				"2>/dev/null",
+			})
+
 			vim.fn.system({
 				"tmux",
 				"new-window",
+				"-n",
+				name,
 				"-d",
 				"$SHELL -i -c " .. vim.fn.shellescape(cmd .. "; echo; read"),
 			})
