@@ -103,6 +103,9 @@ defaults write com.apple.dock magnification -int 0
 defaults write com.apple.WindowManager EnableTiledWindowMargins -int 0
 # arc browser icon
 defaults write company.thebrowser.Browser currentAppIconName hologram
+# Window appearance
+defaults write -g NSSplitViewItemSidebarDefaultsToFloatingAppearance -bool false
+defaults write -g NSConvolutionOverride1 -float 15
 
 label "Setup macos defaults"
 
@@ -111,6 +114,7 @@ label "Setup macos defaults"
 # reload macos
 killall Dock
 killall WindowManager
+killall Finder
 
 # reload bat theme
 bat cache --build > /dev/null
