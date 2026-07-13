@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "grab-tools": {
+      "type": "local",
+      "enabled": false,
+      "command": ["npx", "tsx", "/Users/twhlynch/Documents/GRAB/grab-tools-mcp/src/index.ts"]
+    }
+  }
+}
