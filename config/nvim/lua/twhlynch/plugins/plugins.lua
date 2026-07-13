@@ -97,6 +97,7 @@ return {
 			keymap = "<leader>commit",
 		},
 		templates = { enabled = true },
+		toggle = { enabled = true },
 	},
 	keys = {
 	---@diagnostic disable: undefined-global
