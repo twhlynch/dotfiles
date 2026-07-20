@@ -1,6 +1,6 @@
 return {
 	{
-		"stevearc/oil.nvim",
+		"barrettruth/canola.nvim",
 		dependencies = { "nvim-mini/mini.icons" },
 		config = function()
 			-- helper function to parse output
@@ -99,23 +99,64 @@ return {
 			-- open preview automatically at size
 			vim.keymap.set({ "n", "v", "x" }, "<leader>e", function()
 				local oil = require("oil")
+				local util = require("oil.util")
+
 				if string.sub(vim.api.nvim_buf_get_name(0), 1, 3) == "oil" then
-					-- pcall(vim.api.nvim_command, "bprevious")
 					oil.close()
 					return
 				end
+
+				local percent = 0.4
+
 				oil.open(nil, nil, function()
-					local width = vim.api.nvim_win_get_width(0)
+					local oil_win = vim.api.nvim_get_current_win()
+					local width = vim.api.nvim_win_get_width(oil_win)
+					local height = vim.api.nvim_win_get_height(oil_win)
+
 					oil.open_preview(nil, function()
-						vim.api.nvim_command("vertical resize" .. width * 0.7)
+						local preview_win = util.get_preview_win({ include_not_owned = true })
+						if preview_win then
+							vim.api.nvim_win_set_config(preview_win, {
+								focusable = false,
+								border = "none",
+								width = math.floor(width * percent),
+								relative = "win",
+								win = oil_win,
+								col = width - math.floor(width * percent),
+								row = 0,
+								height = height,
+							})
+
+							local group = vim.api.nvim_create_augroup("OilPreviewResize", { clear = true })
+							vim.api.nvim_create_autocmd({ "WinResized", "VimResized" }, {
+								group = group,
+								callback = function()
+									if not vim.api.nvim_win_is_valid(oil_win) or not vim.api.nvim_win_is_valid(preview_win) then
+										return
+									end
+									local new_width = vim.api.nvim_win_get_width(oil_win)
+									local new_height = vim.api.nvim_win_get_height(oil_win)
+
+									vim.api.nvim_win_set_config(preview_win, {
+										relative = "win",
+										win = oil_win,
+										width = math.floor(new_width * percent),
+										col = new_width - math.floor(new_width * percent),
+										row = 0,
+										height = new_height,
+									})
+								end,
+							})
+						end
 					end)
 				end)
 			end, { noremap = true, silent = true, desc = "Open File Explorer" })
 		end,
 	},
 	{
-		"malewicz1337/oil-git.nvim",
-		dependencies = { "stevearc/oil.nvim" },
+		"twhlynch/oil-git.nvim",
+		branch = "fix/status-spam", -- ill pr eventually im lazy
+		dependencies = { "barrettruth/canola.nvim" },
 		opts = {
 			show_file_highlights = true,
 			show_directory_highlights = true,

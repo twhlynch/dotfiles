@@ -3,7 +3,6 @@ return {
 	dir = "~/Documents/Personal/nvim-plugins",
 	dependencies = {
 		"nvim-mini/mini.hipatterns", -- for hipatterns
-		"stevearc/oil.nvim", -- for oil_git
 		"petertriho/nvim-scrollbar", -- for regions, scrollbar_marks, and scrollbar_todo
 		"neovim/nvim-lspconfig", -- for copy_lspconfig
 		"stevearc/conform.nvim", -- for reminder
@@ -110,7 +109,6 @@ return {
 	{ "<leader>iI", function() Plugins.reminder.toggle() end, desc = "Toggle format reminder", },
 	{ "<leader>LSP", function() Plugins.copy_lspconfig.copy_lsp() end, desc = "Copy lsp config", },
 	{ "<leader><leader>", function() Plugins.fff.fff() end, desc = "FFF", },
-	{ "<leader>Ro", function() Plugins.oil_git.update_git_status() end, desc = "Refresh Oil Git", },
 	{ "<leader>ih", mode = { "n", "x" }, function() Plugins.inlay.inject_inlay_hints() end, desc = "Inject inlay hints", },
 		-- stylua: ignore end
 	},
