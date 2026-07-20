@@ -6,7 +6,7 @@ return {
 		keybind = "<leader><CR>",
 		keybind_picker = "<leader>B",
 		sign_hl = "DiagnosticFloatingOk",
-		providers = { "vscode", "npm" },
+		providers = { "vscode", "npm", "make" },
 		runner = function(cmd)
 			-- first word only alpha
 			local name = ((cmd:match("^[^%s]+") or ""):gsub("[^%a]", ""))
