@@ -19,12 +19,15 @@ return {
 		marks = {
 			GitAdd = {
 				highlight = "Added",
+				priority = 9,
 			},
 			GitChange = {
 				highlight = "Changed",
+				priority = 7,
 			},
 			GitDelete = {
 				highlight = "Removed",
+				priority = 8,
 			},
 		},
 	},
