@@ -142,7 +142,7 @@ return {
 		end
 
 		vim.lsp.enable(lsp_list)
-		vim.lsp.enable({ "swipl", "asp_lsp", "tinymist" })
+		vim.lsp.enable({ "swipl", "asp_lsp", "tinymist", "sourcekit" })
 
 		-- formatting
 		conform.setup({
