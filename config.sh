@@ -52,7 +52,7 @@ done
 
 # ~/.config configs
 
-for name in nvim ohmyposh ghostty lazygit bat fastfetch git yazi opencode/themes opencode/AGENTS.md opencode/opencode.jsonc; do
+for name in nvim ohmyposh ghostty lazygit bat fastfetch git gh yazi opencode/themes opencode/AGENTS.md opencode/opencode.jsonc; do
 	symlink "config/$name" "$HOME/.config/$name"
 done
 

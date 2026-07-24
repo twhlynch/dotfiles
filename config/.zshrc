@@ -70,6 +70,10 @@ chpwd() {
 	if [[ -f .nvmrc ]]; then
 		nvm use
 	fi
+
+	if [[ "$PWD" == "$HOME/Documents/RMIT/gitdir"/* ]]; then
+		gh-uni
+	fi
 }
 
 # History

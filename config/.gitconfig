@@ -47,3 +47,6 @@
 	format = ssh
 [commit]
 	gpgsign = true
+
+[includeIf "gitdir:~/Documents/RMIT/gitdir/"]
+	path = .config/git/github-rmit

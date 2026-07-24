@@ -292,3 +292,7 @@ function pyvenv() {
 		cwd="$(realpath "$cwd/..")"
 	done
 }
+
+function gh-uni() {
+	export GH_CONFIG_DIR="$HOME/.config/gh/rmit"
+}
