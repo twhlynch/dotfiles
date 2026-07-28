@@ -48,3 +48,40 @@ autocmd({ "FileType" }, {
 		vim.opt_local.textwidth = 80
 	end,
 })
+
+-- chmod +x for shell files on creation
+local shell_pattern = "*/{*.sh,*.zsh}"
+
+autocmd("BufNewFile", {
+	group = augroup,
+	pattern = shell_pattern,
+	callback = function(args)
+		vim.b[args.buf]._chmod_x = true
+	end,
+})
+
+autocmd("BufWritePost", {
+	group = augroup,
+	pattern = shell_pattern,
+	callback = function(args)
+		if vim.b[args.buf]._chmod_x then
+			vim.b[args.buf]._chmod_x = nil
+			vim.fn.system("chmod +x " .. vim.fn.shellescape(args.match))
+		end
+	end,
+})
+
+autocmd("User", {
+	group = augroup,
+	pattern = "OilActionsPost",
+	callback = function(args)
+		for _, action in ipairs(args.data.actions) do
+			if action.entry_type == "file" and action.type == "create" then
+				local path = action.url:gsub("^oil://", "")
+				if path:match("%.z?sh$") then
+					vim.fn.system("chmod +x " .. vim.fn.shellescape(path))
+				end
+			end
+		end
+	end,
+})
