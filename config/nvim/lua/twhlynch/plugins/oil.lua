@@ -51,6 +51,27 @@ return {
 			end
 
 			require("oil").setup({
+				keymaps = {
+					["gx"] = function()
+						local oil = require("oil")
+						local entry = oil.get_cursor_entry()
+						local dir = oil.get_current_dir()
+
+						if not entry or not dir then
+							return
+						end
+
+						local filepath = dir .. entry.name
+
+						if entry.name:match("%.zip$") then
+							vim.fn.jobstart({ "unzip", filepath }, { detach = true })
+							require("oil.actions").refresh.callback()
+
+						else
+							oil.open_external(filepath)
+						end
+					end,
+				},
 				view_options = {
 					show_hidden = true,
 
