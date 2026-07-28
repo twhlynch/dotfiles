@@ -55,6 +55,7 @@ local formatters = {
 	ocaml = { "ocamlformat" },
 	tex = { "bibtex-tidy" },
 	proto = { "buf" },
+	java = { "palantir-java-format" },
 	-- web
 	javascript = { "prettier" },
 	typescript = { "prettier" },
