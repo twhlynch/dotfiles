@@ -3,6 +3,7 @@ return {
 	opts = {
 		max_lines = 10000,
 		throttle_ms = 0,
+		-- folds = 0,
 		excluded_buftypes = {
 			"terminal",
 			"nowrite",
@@ -31,13 +32,23 @@ return {
 			},
 		},
 	},
-	init = function()
-		-- reduce lag
-		local scrollbar = require("scrollbar")
-		local old_render = scrollbar.render
-		---@diagnostic disable-next-line: duplicate-set-field
-		scrollbar.render = function()
-			vim.schedule(old_render)
-		end
-	end,
+	-- init = function()
+	-- 	-- reduce lag
+	-- 	local scrollbar = require("scrollbar")
+	-- 	local old_render = scrollbar.render
+	-- 	local timer = vim.uv.new_timer()
+	--
+	-- 	scrollbar.render = function(...)
+	-- 		local args = { ... }
+	--
+	-- 		---@diagnostic disable-next-line: need-check-nil
+	-- 		timer:stop()
+	-- 		---@diagnostic disable-next-line: need-check-nil
+	-- 		timer:start(16, 0, function() -- ~60fps
+	-- 			vim.schedule(function()
+	-- 				old_render(unpack(args))
+	-- 			end)
+	-- 		end)
+	-- 	end
+	-- end,
 }
