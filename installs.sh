@@ -49,7 +49,6 @@ brew install \
 	fd poppler resvg \
 	cloc \
 	yt-dlp \
-	thefuck \
 	tldr \
 	exiftool \
 	libqalculate \
