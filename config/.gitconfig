@@ -48,5 +48,5 @@
 [commit]
 	gpgsign = true
 
-[includeIf "gitdir:~/Documents/RMIT/gitdir/"]
+[includeIf "gitdir:~/Documents/RMIT/"]
 	path = .config/git/github-rmit

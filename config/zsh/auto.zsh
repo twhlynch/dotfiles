@@ -9,7 +9,7 @@ chpwd() {
 		nvm use
 	fi
 
-	if [[  $OSTYPE == darwin* && "$PWD" == "$HOME/Documents/RMIT/gitdir"/* ]]; then
+	if [[  $OSTYPE == darwin* && "$PWD" == "$HOME/Documents/RMIT"/* ]]; then
 		gh-uni
 	fi
 }
