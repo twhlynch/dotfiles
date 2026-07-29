@@ -1,7 +1,7 @@
 [user]
 	name = Tom Lynch
 	email = twhlynch@gmail.com
-	signingkey = /Users/twhlynch/.ssh/id_ed25519.pub
+	signingkey = ~/.ssh/id_ed25519.pub
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
@@ -21,7 +21,6 @@
 	new = "!NEW_ALIAS_FUNC() { git checkout -b $3 $1; git push -u $2 $3; }; NEW_ALIAS_FUNC"
 [core]
 	pager = delta
-	attributesfile = ~/.config/git/attributes
 [interactive]
 	diffFilter = delta --color-only
 [delta]

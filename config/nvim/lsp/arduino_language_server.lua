@@ -10,7 +10,7 @@ return {
 	cmd = {
 		"arduino-language-server",
 		"-cli-config",
-		"/Users/twhlynch/Library/Arduino15/arduino-cli.yaml",
+		os.getenv("HOME") .. "/Library/Arduino15/arduino-cli.yaml",
 		"--fqbn",
 		"arduino:avr:uno",
 	},

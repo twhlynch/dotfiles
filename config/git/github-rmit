@@ -1,3 +1,3 @@
 [user]
 	email = s4008739@student.rmit.edu.au
-	signingkey = /Users/twhlynch/.ssh/rmit_id_ed25519.pub
+	signingkey = ~/.ssh/rmit_id_ed25519.pub
