@@ -75,6 +75,18 @@ function configure-fzf() {
 }
 configure-fzf
 
+# man page colors
+export LESS_TERMCAP_md=$(tput bold; tput setaf 4) # begin bold
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 1) # begin bold blinking
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 6) # begin underline
+export LESS_TERMCAP_so=$(tput bold; tput setab 3; tput setaf 8) # start standout (search)
+export LESS_TERMCAP_me=$(tput sgr0) # end special
+export LESS_TERMCAP_se=$(tput sgr0) # end standout
+export LESS_TERMCAP_ue=$(tput sgr0) # end underline
+export LESS_TERMCAP_mr=$(tput rev) # begin reverse
+export LESS_TERMCAP_mh=$(tput dim) # begin dim
+export MANPAGER='less'
+
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
