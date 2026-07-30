@@ -45,6 +45,7 @@ brew install \
 	bat eza grep ripgrep jq btop zoxide \
 	fastfetch \
 	opencode \
+	ollama \
 	unzip sevenzip \
 	fd poppler resvg \
 	cloc \
