@@ -66,9 +66,8 @@ return {
 						if entry.name:match("%.zip$") then
 							vim.fn.jobstart({ "unzip", filepath }, { detach = true })
 							require("oil.actions").refresh.callback()
-
 						else
-							oil.open_external(filepath)
+							require("oil.actions").open_external.callback(filepath)
 						end
 					end,
 				},
