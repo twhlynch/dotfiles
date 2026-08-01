@@ -188,16 +188,47 @@ function nvm() {
 
 # setup java project
 function mvn-init() {
-	if [[ -z $1 ]]; then
-		echo "mvn-init projectName"
+	if [[ -z $2 ]]; then
+		echo "$0 com.example.project project-name"
 		return
 	fi
 
 	mvn archetype:generate \
-		-DgroupId=com.twhlynch.$1 \
-		-DartifactId=$1 \
+		-DgroupId=$1 \
+		-DartifactId=$2 \
 		-DarchetypeArtifactId=maven-archetype-quickstart \
 		-DinteractiveMode=false
+}
+function spring-init() {
+	if [[ -z $3 ]]; then
+		echo "$0 com.example.project project-name lombok,web,thymeleaf,flyway,h2,devtools"
+		return
+	fi
+
+	local project_identifier=$1
+	local project_name=$2
+	local project_deps=$3
+
+	local project_group=${project_identifier%.*}
+	local project_id=${project_identifier##*.}
+
+	local baseDir="$project_name"
+	local groupId="$project_group"
+	local artifactId="$project_name"
+	local packageName="$project_identifier"
+	local dependencies="$project_deps"
+
+	local javaVersion="25"
+	local type="maven-project"
+	local language="java"
+	local bootVersion="4.1.0"
+	local packaging="jar"
+	local configurationFileFormat="properties"
+
+	local url='https://start.spring.io/starter.zip'
+	curl -sSL \
+		"$url?type=$type&language=$language&bootVersion=$bootVersion&baseDir=$baseDir&groupId=$groupId&artifactId=$artifactId&packageName=$packageName&packaging=$packaging&javaVersion=$javaVersion&configurationFileFormat=$configurationFileFormat&dependencies=$dependencies" \
+		| bsdtar -xvf- -C .
 }
 
 # java home
