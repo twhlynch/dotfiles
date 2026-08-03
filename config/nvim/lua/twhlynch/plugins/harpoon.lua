@@ -25,13 +25,6 @@ return {
 			harpoon:list():select(5)
 		end, { desc = "Harpoon 5" })
 
-		-- vim.keymap.set("n", "<leader>P", function()
-		-- 	harpoon:list():prev()
-		-- end, { desc = "Previous Harpoon" })
-		-- vim.keymap.set("n", "<leader>N", function()
-		-- 	harpoon:list():next()
-		-- end, { desc = "Next Harpoon" })
-
 		local normalize_list = function(t)
 			local normalized = {}
 			for _, v in pairs(t) do

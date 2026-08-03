@@ -13,13 +13,6 @@ return {
 			require("mini.cursorword").setup()
 		end,
 	},
-	-- {
-	-- 	"nvim-mini/mini.comment",
-	-- 	version = false,
-	-- 	config = function()
-	-- 		require("mini.comment").setup()
-	-- 	end,
-	-- },
 	{
 		"nvim-mini/mini.operators",
 		version = false,
