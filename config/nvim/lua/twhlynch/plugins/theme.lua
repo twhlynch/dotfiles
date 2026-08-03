@@ -84,6 +84,12 @@ return {
 					highlights.MiniIconsRed = { fg = c.func }
 					highlights.MiniIconsYellow = { fg = c.delta }
 
+					-- pairs
+					highlights.BlinkPairsOrange = { fg = c.operator }
+					highlights.BlinkPairsPurple = { fg = c.keyword }
+					highlights.BlinkPairsBlue = { fg = c.keyword_darker }
+					highlights.BlinkPairsUnmatched = { fg = c.error }
+
 					-- diff
 					highlights.GitSignsDeleteInline = { bg = "#7E1F34" }
 					highlights.GitSignsAddInline = { bg = "#3F5330" }
