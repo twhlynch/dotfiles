@@ -75,6 +75,24 @@ local function toggle_indent()
 	print("indent: " .. (indent_enabled and "ON" or "OFF"))
 end
 
+--- dont override on_attach
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		local bufnr = args.buf
+
+		if not bufnr or not client or client.name ~= "clangd" then
+			return
+		end
+
+		load_source(bufnr)
+
+		-- will reset every time it attaches, but shouldnt matter
+		vim.keymap.set("n", "<leader>ci", toggle_indent, { desc = "Toggle C++ indent fix" })
+		-- Your extra setup
+	end,
+})
+
 ---@type vim.lsp.Config
 return {
 	cmd = {
@@ -109,10 +127,4 @@ return {
 		"configure.ac",
 		".git",
 	},
-	on_attach = function(_, bufnr) -- TODO: load when included by a file as well
-		load_source(bufnr)
-
-		-- will reset every time it attaches, but shouldnt matter
-		vim.keymap.set("n", "<leader>ci", toggle_indent, { desc = "Toggle C++ indent fix" })
-	end,
 }

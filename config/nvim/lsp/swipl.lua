@@ -10,10 +10,6 @@ return {
 		"--",
 		"stdio",
 	},
-	filetypes = {
-		"prolog",
-	},
-	root_markers = {
-		"*.pl",
-	},
+	filetypes = { "prolog" },
+	root_markers = { "*.pl" },
 }
