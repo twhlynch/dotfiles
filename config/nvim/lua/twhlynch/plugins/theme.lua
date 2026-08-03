@@ -73,6 +73,9 @@ return {
 					highlights.OilGitAdded = { fg = c.plus }
 					highlights.OilGitIgnored = { fg = c.comment }
 
+					-- oil
+					highlights.OilExecutable = { link = "OilFile" }
+
 					-- icons
 					highlights.MiniIconsAzure = { fg = c.keyword }
 					highlights.MiniIconsBlue = { fg = c.hint }
