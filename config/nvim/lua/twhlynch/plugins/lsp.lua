@@ -58,6 +58,7 @@ local formatters = {
 	proto = { "buf" },
 	java = { "palantir-java-format" },
 	-- web
+	typescriptreact = { "prettier" },
 	javascript = { "prettier" },
 	typescript = { "prettier" },
 	json = { "prettier" },
