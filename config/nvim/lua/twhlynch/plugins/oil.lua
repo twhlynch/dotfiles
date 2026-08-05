@@ -80,6 +80,66 @@ return {
 
 						vim.ui.open(dir)
 					end,
+					["zip"] = function()
+						local oil = require("oil")
+						local dir = oil.get_current_dir()
+
+						if not dir then
+							return
+						end
+
+						-- get visual selection
+						if vim.fn.mode() ~= "V" then
+							return
+						end
+
+						-- escape visual then get selection marks
+						vim.cmd("normal! \27")
+						local start_line = vim.fn.line("'<")
+						local end_line = vim.fn.line("'>")
+
+						if start_line > end_line then
+							start_line, end_line = end_line, start_line
+						end
+
+						-- get selected files
+						local entries = {}
+
+						for lnum = start_line, end_line do
+							local entry = oil.get_entry_on_line(0, lnum)
+							if entry then
+								entries[#entries + 1] = entry
+							end
+						end
+
+						if #entries == 0 then
+							return
+						end
+
+						-- zip all those files into a zip `archive(_N).zip`
+						local archive_name = "archive.zip"
+
+						local i = 1
+						while vim.fn.filereadable(dir .. archive_name) == 1 do
+							archive_name = "archive_" .. i .. ".zip"
+							i = i + 1
+						end
+
+						local files = {}
+						for _, entry in ipairs(entries) do
+							files[#files + 1] = entry.name
+						end
+
+						vim.fn.jobstart({ "zip", "-r", archive_name, unpack(files) }, {
+							cwd = dir,
+							on_exit = function(_, code, _)
+								require("oil.actions").refresh.callback()
+								if code ~= 0 then
+									vim.notify("Failed to create " .. archive_name, vim.log.levels.ERROR)
+								end
+							end,
+						})
+					end,
 				},
 				view_options = {
 					show_hidden = true,
