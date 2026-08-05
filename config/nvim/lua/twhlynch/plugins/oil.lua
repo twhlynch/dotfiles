@@ -70,6 +70,16 @@ return {
 							vim.ui.open(filepath)
 						end
 					end,
+					["gX"] = function()
+						local oil = require("oil")
+						local dir = oil.get_current_dir()
+
+						if not dir then
+							return
+						end
+
+						vim.ui.open(dir)
+					end,
 				},
 				view_options = {
 					show_hidden = true,
