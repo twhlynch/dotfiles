@@ -1,3 +1,44 @@
+-- lualine usage string
+local function update_copilot_usage()
+	local creds = require("copilot.auth").get_creds()
+	if not creds then
+		return
+	end
+
+	local token
+	for key, entry in pairs(creds) do
+		if key:match("^github.com") then
+			token = entry.oauth_token
+			break
+		end
+	end
+	if not token then
+		return
+	end
+
+	vim.system({ "curl", "-s", "-H", "Authorization: Bearer " .. token, "https://api.github.com/copilot_internal/user" }, { text = true }, function(data)
+		if data.code ~= 0 then
+			return
+		end
+
+		local ok, json = pcall(vim.json.decode, data.stdout)
+
+		if not ok or not json then
+			return
+		end
+
+		vim.schedule(function()
+			local completions = json.quota_snapshots.completions
+			local percent_remaining = completions.percent_remaining
+
+			local percentage_used = 100 - percent_remaining
+			local usage_string = string.format("%.0f%% ", percentage_used)
+
+			vim.g.copilot_suggestion_usage_string = usage_string:gsub("%%", "%%%%")
+		end)
+	end)
+end
+
 return {
 	"zbirenbaum/copilot.lua",
 	cmd = "Copilot",
@@ -58,6 +99,9 @@ return {
 			require("lualine").refresh()
 
 			vim.print("Auto trigger is " .. (auto_trigger and "ON" or "OFF"))
+			if auto_trigger then
+				update_copilot_usage()
+			end
 		end
 
 		-- print once when API limited

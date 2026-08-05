@@ -18,7 +18,7 @@ return {
 				lualine_c = { "filename" },
 				lualine_x = {
 					function()
-						return vim.b.copilot_suggestion_auto_trigger and "󱙺" or ""
+						return vim.b.copilot_suggestion_auto_trigger and ((vim.g.copilot_suggestion_usage_string or "") .. "󱙺") or ""
 					end,
 					"notebook",
 					"location",
