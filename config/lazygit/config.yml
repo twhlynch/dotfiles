@@ -23,24 +23,29 @@ gui:
       - "#d8647e"
     defaultFgColor:
       - "#cdcdcd"
-
     searchingActiveBorderColor:
       - "#cdcdcd"
       - "bold"
+#gui:
+
+  # line by line staging
+  useHunkModeInStagingView: false
 
 git:
+  # dont ask for gpg password
   overrideGpg: true
-
-  paging:
-    pager: delta --dark --paging=never --tabs 4
-
+  # use delta as pager
+  diffRenderers:
+    - command: delta --dark --paging=never --tabs 4
+  # disable force pushing
   disableForcePushing: true
 
 os:
+  # nvim as editor
   editPreset: 'nvim'
 
 customCommands:
-  - key: '<c-p>'
+  - key: '<alt-p>'
     command: 'git pull --rebase'
     context: 'global'
     description: 'Pull with rebase'
