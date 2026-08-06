@@ -1,4 +1,4 @@
-name: Workflow
+name: {{f(":t:r")}}
 
 on:
   workflow_dispatch:
