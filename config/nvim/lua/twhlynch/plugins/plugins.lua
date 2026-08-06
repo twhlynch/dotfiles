@@ -12,18 +12,22 @@ return {
 	opts = {
 		blame = {
 			enabled = true,
+			key = "<leader>bf",
 		},
 		copy_lspconfig = {
 			enabled = true,
+			key = "<leader>LSP",
 		},
 		fff = {
 			enabled = true,
+			key = "<leader><leader>",
 		},
 		origami = {
 			enabled = true,
 		},
 		pear = {
 			enabled = true,
+			key = "<leader>jp",
 			pairs = {
 				{
 					source_dirs = { "src", "source", "sources" },
@@ -58,6 +62,8 @@ return {
 			},
 		},
 		reminder = {
+			ignore_key = "<leader>ii",
+			toggle_key = "<leader>iI",
 			enabled = true,
 			notify = print,
 			numbers = true,
@@ -90,6 +96,7 @@ return {
 		},
 		inlay = {
 			enabled = true,
+			key = "<leader>ih",
 		},
 		auto_commit = {
 			enabled = false,
@@ -97,19 +104,6 @@ return {
 		},
 		templates = { enabled = true },
 		toggle = { enabled = true },
-	},
-	keys = {
-	---@diagnostic disable: undefined-global
-	-- stylua: ignore start
-	{ "h", function() Plugins.origami.h() end, desc = "Origami h", },
-	{ "l", function() Plugins.origami.l() end, desc = "Origami l", },
-	{ "<leader>jp", function() Plugins.pear.jump_pair() end, desc = "Jump file pair", },
-	{ "<leader>bf", function() Plugins.blame.show_blame() end, desc = "Show file blame", },
-	{ "<leader>ii", function() Plugins.reminder.ignore_buffer() end, desc = "Toggle ignoring format reminder for buffer", },
-	{ "<leader>iI", function() Plugins.reminder.toggle() end, desc = "Toggle format reminder", },
-	{ "<leader>LSP", function() Plugins.copy_lspconfig.copy_lsp() end, desc = "Copy lsp config", },
-	{ "<leader><leader>", function() Plugins.fff.fff() end, desc = "FFF", },
-	{ "<leader>ih", mode = { "n", "x" }, function() Plugins.inlay.inject_inlay_hints() end, desc = "Inject inlay hints", },
-		-- stylua: ignore end
+		typst_preview = { enabled = true },
 	},
 }
