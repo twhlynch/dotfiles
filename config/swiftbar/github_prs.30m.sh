@@ -11,6 +11,8 @@ fetch_data() {
 	local tmpdir
 	tmpdir=$(mktemp -d)
 
+	export GH_TOKEN=$(gh auth token --user $GH_USER)
+
 	gh search prs \
 		--author "@me" --state open --limit 50 \
 		--json title,repository,url,createdAt \
