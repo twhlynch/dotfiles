@@ -64,7 +64,7 @@ return {
 						local filepath = dir .. entry.name
 
 						if entry.name:match("%.zip$") then
-							vim.fn.jobstart({ "unzip", filepath }, { detach = true })
+							vim.fn.jobstart({ "unzip", filepath, "-d", dir }, { detach = true })
 							require("oil.actions").refresh.callback()
 						else
 							vim.ui.open(filepath)
