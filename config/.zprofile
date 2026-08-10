@@ -25,3 +25,5 @@ export NDK_HOME="$HOME/Library/Android/sdk/ndk/28.2.13676358"
 
 # github cli
 export GH_CONFIG_DIR="$HOME/.config/gh/personal"
+export GH_USER="twhlynch"
+export GH_USER_ALT="twhlynch-rmit"
