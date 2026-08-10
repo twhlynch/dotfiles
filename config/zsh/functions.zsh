@@ -322,3 +322,9 @@ function pyvenv() {
 		cwd="$(realpath "$cwd/..")"
 	done
 }
+
+function is_in_uni_dir() {
+	[ -n "$1" ] && DIR="$1" || DIR="$PWD"
+	[[ $DIR == "$HOME/Documents/RMIT"/* ]] && return 0
+	return 1
+}
