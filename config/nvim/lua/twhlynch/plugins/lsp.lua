@@ -173,7 +173,7 @@ return {
 			},
 		})
 
-		vim.keymap.set({ "n" }, "<leader>lf", function()
+		vim.keymap.set({ "n", "v" }, "<leader>lf", function()
 			conform.format(nil, function(_, did_edit)
 				print((did_edit and "" or "Already ") .. "Formatted")
 			end)
