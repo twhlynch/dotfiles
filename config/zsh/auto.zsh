@@ -10,7 +10,11 @@ chpwd() {
 	fi
 
 	if [[  $OSTYPE == darwin* && "$PWD" == "$HOME/Documents/RMIT"/* ]]; then
-		gh-uni
+		export GH_CONFIG_DIR="$HOME/.config/gh/rmit"
+		export GH_TOKEN=$(gh auth token --user "$GH_USER_ALT")
+	else
+		export GH_CONFIG_DIR="$HOME/.config/gh/personal"
+		export GH_TOKEN=$(gh auth token --user "$GH_USER")
 	fi
 }
 

@@ -77,8 +77,7 @@ function super-reload() {
 
 # github
 GH='https://github.com'
-GH_MAIN='twhlynch'
-GHU="$GH/$GH_MAIN"
+GHU="$GH/$GH_USER"
 
 function gh-url() {
 	url="$1"
@@ -118,7 +117,7 @@ function gh-create() {
 	git push --set-upstream upstream HEAD:main
 
 	echo "Reminder: watch"
-	open "https://github.com/$GH_MAIN/$name"
+	open "https://github.com/$GH_USER/$name"
 }
 function commit() {
 	git add .
@@ -322,8 +321,4 @@ function pyvenv() {
 		fi
 		cwd="$(realpath "$cwd/..")"
 	done
-}
-
-function gh-uni() {
-	export GH_CONFIG_DIR="$HOME/.config/gh/rmit"
 }
