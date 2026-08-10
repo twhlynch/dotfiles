@@ -9,12 +9,14 @@ chpwd() {
 		nvm use
 	fi
 
-	if [[  $OSTYPE == darwin* && "$PWD" == "$HOME/Documents/RMIT"/* ]]; then
-		export GH_CONFIG_DIR="$HOME/.config/gh/rmit"
-		export GH_TOKEN=$(gh auth token --user "$GH_USER_ALT")
-	else
-		export GH_CONFIG_DIR="$HOME/.config/gh/personal"
-		export GH_TOKEN=$(gh auth token --user "$GH_USER")
+	if [[  $OSTYPE == darwin* ]]; then
+		if is_in_uni_dir; then
+			export GH_CONFIG_DIR="$HOME/.config/gh/rmit"
+			export GH_TOKEN=$(gh auth token --user "$GH_USER_ALT")
+		else
+			export GH_CONFIG_DIR="$HOME/.config/gh/personal"
+			export GH_TOKEN=$(gh auth token --user "$GH_USER")
+		fi
 	fi
 }
 
