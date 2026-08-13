@@ -20,6 +20,7 @@ return {
 			sources = { { source = "filesystem" } },
 		},
 		filesystem = {
+			group_empty_dirs = true,
 			filtered_items = {
 				hide_dotfiles = false,
 				hide_gitignored = false,
