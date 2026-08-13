@@ -124,6 +124,8 @@ return {
 					highlights["@function.macro.luadoc"] = { fg = c.type }
 					-- adjust diagnostics
 					highlights.DiagnosticUnderlineWarn.bold = nil
+					-- not a comment! this is disabled code from preprocessors
+					highlights["@lsp.type.comment.cpp"] = { dim = true }
 				end,
 			})
 			vim.cmd("colorscheme vague")
