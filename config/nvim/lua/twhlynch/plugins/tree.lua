@@ -8,7 +8,13 @@ return {
 	},
 	opts = {
 		close_if_last_window = true,
-		window = { width = 32 },
+		window = {
+			width = 32,
+			mappings = {
+				["z"] = "close_all_subnodes",
+				["Z"] = "expand_all_subnodes",
+			},
+		},
 		source_selector = {
 			winbar = true,
 			sources = { { source = "filesystem" } },
