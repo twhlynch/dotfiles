@@ -25,6 +25,7 @@ return {
 				hide_dotfiles = false,
 				hide_gitignored = false,
 				hide_hidden = false,
+				hide_ignored = false,
 				hide_by_name = {},
 			},
 			follow_current_file = {
