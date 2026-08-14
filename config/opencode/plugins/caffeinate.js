@@ -5,7 +5,7 @@ export const Caffeinate = async ({ $ }) => {
 		if (enable) {
 			if (process) return;
 
-			process = Bun.spawn(["caffeinate"]);
+			process = Bun.spawn(["caffeinate", "-udim"]);
 
 			return;
 		}
