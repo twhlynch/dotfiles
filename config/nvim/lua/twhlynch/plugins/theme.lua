@@ -125,7 +125,9 @@ return {
 					-- adjust diagnostics
 					highlights.DiagnosticUnderlineWarn.bold = nil
 					-- not a comment! this is disabled code from preprocessors
-					highlights["@lsp.type.comment.cpp"] = { dim = true }
+					highlights["@lsp.type.comment.cpp"] = { link = "DiagnosticUnnecessary" }
+					highlights["@lsp.type.comment.c"] = { link = "DiagnosticUnnecessary" }
+					highlights["DiagnosticUnnecessary"] = { dim = true }
 				end,
 			})
 			vim.cmd("colorscheme vague")
