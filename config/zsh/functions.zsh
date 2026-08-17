@@ -127,13 +127,63 @@ function commit() {
 
 # copy recent downloads
 function dl() {
-	local count=$1
-	[[ -z $count ]] && count=1
+	local filter=""
+	local print_only=false
+	local slice=""
 
-	eza ~/Downloads -1 -s newest --absolute=on | tail -n $count | tr -d "'" |
-	while IFS= read -r file; do
-		echo "$file"
-		cp "$file" .
+	while [[ $# -gt 0 ]]; do
+		case $1 in
+			-g)
+				filter=$2
+				shift 2
+				;;
+			-p)
+				print_only=true
+				shift
+				;;
+			-*)
+				echo "${0}: unknown option: $1" >&2
+				return 1
+				;;
+			*)
+				slice=$1
+				shift
+				;;
+		esac
+	done
+
+	# parse slice 'skip:count'
+	[[ -z $slice ]] && slice="0:1"
+
+	local skip count
+
+	if [[ $slice =~ '^([0-9]+)$' ]]; then
+		skip=0
+		count=$slice
+	elif [[ $slice =~ '^([0-9]+):([0-9]+)$' ]]; then
+		skip=${match[1]}
+		count=${match[2]}
+	else
+		echo "${0}: invalid slice: $slice" >&2
+		return 1
+	fi
+
+	# list with newest first
+	local -a files
+	files=("${(@f)$(eza ~/Downloads -1 -s oldest --absolute=on | tr -d "'")}")
+
+	# filter files if filter is set
+	if [[ -n $filter ]]; then
+		files=("${(@M)files:#*${filter}*}")
+	fi
+
+	local i
+	for (( i = skip; i < skip + count && i < ${#files[@]}; i++ )); do
+		# +1 because first line is blank
+		echo "${files[i+1]}"
+		if [[ $print_only != true ]]; then
+			cp -r "${files[i+1]}" .
+		fi
 	done
 }
 
