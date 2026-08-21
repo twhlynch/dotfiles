@@ -105,5 +105,9 @@ return {
 		templates = { enabled = true },
 		toggle = { enabled = true },
 		typst_preview = { enabled = true },
+		badchars = {
+			enabled = true,
+			add = { [[\u2014]] },
+		},
 	},
 }
