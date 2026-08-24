@@ -10,10 +10,12 @@
       "models": {
         // https://www.canirun.ai
         // https://ollama.com/search
-        "qwen2.5:0.5b":         { "name": "Qwen 2.5 0.5B"       }, //  0.4 GB
+        "muse-glimmer:30b":     { "name": "Muse Glimmer 30B"    }, // 18.0 GB
+        "qwen2.5:0.5b":         { "name": "Qwen 2.5 0.5B"       }, //  0.4
         "qwen3.5:0.8b":         { "name": "Qwen 3.5 0.8B"       }, //  1.0
         "qwen3.5:2b":           { "name": "Qwen 3.5 2B"         }, //  2.7
         "qwen3.6:27b":          { "name": "Qwen 3.6 27B"        }, // 17.0
+        "qwen3.8:27b":          { "name": "Qwen 3.8 27B"        }, // 18.0
         "qwen3-coder:30b":      { "name": "Qwen 3 Coder 30B"    }, // 19.0
         "qwen2.5-coder:1.5b":   { "name": "Qwen 2.5 Coder 1.5B" }, //  1.0
         "glm-4.7-flash:q4_K_M": { "name": "GLM 4.7 Flash"       }, // 19.0
