@@ -32,23 +32,23 @@ return {
 			},
 		},
 	},
-	-- init = function()
-	-- 	-- reduce lag
-	-- 	local scrollbar = require("scrollbar")
-	-- 	local old_render = scrollbar.render
-	-- 	local timer = vim.uv.new_timer()
-	--
-	-- 	scrollbar.render = function(...)
-	-- 		local args = { ... }
-	--
-	-- 		---@diagnostic disable-next-line: need-check-nil
-	-- 		timer:stop()
-	-- 		---@diagnostic disable-next-line: need-check-nil
-	-- 		timer:start(16, 0, function() -- ~60fps
-	-- 			vim.schedule(function()
-	-- 				old_render(unpack(args))
-	-- 			end)
-	-- 		end)
-	-- 	end
-	-- end,
+	init = function()
+		-- reduce lag
+		local scrollbar = require("scrollbar")
+		local old_render = scrollbar.render
+		local timer = vim.uv.new_timer()
+
+		scrollbar.render = function(...)
+			local args = { ... }
+
+			---@diagnostic disable-next-line: need-check-nil
+			timer:stop()
+			---@diagnostic disable-next-line: need-check-nil
+			timer:start(16, 0, function() -- ~60fps
+				vim.schedule(function()
+					old_render(unpack(args))
+				end)
+			end)
+		end
+	end,
 }
