@@ -8,4 +8,6 @@ When the project is a large compiled project, do not start builds to verify chan
 Never run git commands that modify files or staged state.
 
 Never read or modify a .env file.
+
+If the user ever sends " " or "continue" it means your harness lost connection. Just continue as if nothing happened.
 </important>
