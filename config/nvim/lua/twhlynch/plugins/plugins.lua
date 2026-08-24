@@ -107,7 +107,13 @@ return {
 		typst_preview = { enabled = true },
 		badchars = {
 			enabled = true,
-			add = { [[\u2014]] },
+			add = {
+				[[\u2013-\u2014]], -- – — en and em dash
+				-- [[\u2192]], -- → right arrow
+				-- [[\u2026]], -- … elipses
+				[[\u201C-\u201D]], -- “ ” double smart quotes
+				[[\u2018-\u2019]], -- ‘ ’ single smart quotes
+			},
 		},
 	},
 }
