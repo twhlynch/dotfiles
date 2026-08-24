@@ -103,21 +103,13 @@ function git-clone-cd() {
 	cd "./$target"
 }
 function gh-create() {
-	if [ ! -d ".git" ]; then
-		git init
-		git add .
-		git commit -m "chore: Initial Commit"
+	if [[ -z $1 ]]; then
+		echo "$0 name"
+		return
 	fi
 
-	name="$1"
-	[[ -z $name ]] && name=$(basename "$PWD")
-
-	gh repo create "$name" --private --source=. --remote=upstream
-
-	git push --set-upstream upstream HEAD:main
-
+	gh repo create "$1" --private --source=. --remote=upstream
 	echo "Reminder: watch"
-	open "https://github.com/$GH_USER/$name"
 }
 function commit() {
 	git add .
