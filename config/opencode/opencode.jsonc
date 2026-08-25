@@ -10,6 +10,7 @@
       "models": {
         // https://www.canirun.ai
         // https://ollama.com/search
+        "hf.co/unsloth/gpt-oss-20b-GGUF:Q4_K_M": { "name": "GPT OSS 20B (Q4_K_M)" },
         "muse-glimmer:30b":     { "name": "Muse Glimmer 30B"    }, // 18.0 GB
         "qwen2.5:0.5b":         { "name": "Qwen 2.5 0.5B"       }, //  0.4
         "qwen3.5:0.8b":         { "name": "Qwen 3.5 0.8B"       }, //  1.0
