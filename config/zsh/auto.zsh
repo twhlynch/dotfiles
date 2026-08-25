@@ -9,6 +9,11 @@ chpwd() {
 		nvm use
 	fi
 
+	if [[ -f .java-version ]]; then
+		export JAVA_HOME="$(/usr/libexec/java_home -v "$(cat .java-version | tr -d '\n')")"
+		echo "Using $JAVA_HOME"
+	fi
+
 	if [[  $OSTYPE == darwin* ]]; then
 		if is_in_uni_dir; then
 			export GH_CONFIG_DIR="$HOME/.config/gh/rmit"
