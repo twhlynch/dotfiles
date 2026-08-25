@@ -10,5 +10,8 @@ if vim.env.PROF then
 	})
 end
 
+---@diagnostic disable-next-line: duplicate-set-field
+vim.deprecate = function() end
+
 require("twhlynch")
 vim.lsp.log.set_level(vim.log.levels.ERROR)
