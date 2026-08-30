@@ -191,7 +191,7 @@ return {
 				local oil = require("oil")
 				local util = require("oil.util")
 
-				if string.sub(vim.api.nvim_buf_get_name(0), 1, 3) == "oil" then
+				if util.is_oil_bufnr(0) then
 					oil.close()
 					return
 				end
