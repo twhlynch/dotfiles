@@ -57,6 +57,7 @@ local formatters = {
 	tex = { "bibtex-tidy" },
 	proto = { "buf" },
 	java = { "palantir-java-format" },
+	yaml = { "prettier" },
 	-- web
 	typescriptreact = { "prettier" },
 	javascript = { "prettier" },
