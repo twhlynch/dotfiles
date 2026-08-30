@@ -45,9 +45,32 @@ return {
 		},
 	},
 	keys = {
-		{ "<leader>pv", ":Neotree toggle<CR>", desc = "File tree" },
 		{ "<leader>pp", ":Neotree close<CR>", desc = "Close tree" },
-		{ "<leader>pb", ":Neotree toggle buffers<CR>", desc = "Buffer tree" },
-		{ "<leader>pm", ":Neotree toggle git_status<CR>", desc = "Diff tree" },
 	},
+	init = function()
+		local function toggle(source)
+			local command = require("neo-tree.command")
+			local oil = require("oil")
+			local oil_util = require("oil.util")
+
+			local is_oil = oil_util.is_oil_bufnr(0)
+			command.execute({
+				source = source,
+				toggle = true,
+				dir = is_oil and vim.fn.getcwd() or nil,
+				reveal = true,
+				reveal_file = is_oil and oil.get_current_dir() or nil,
+			})
+		end
+
+		vim.keymap.set({ "n", "v", "x" }, "<leader>pv", function()
+			toggle()
+		end, { desc = "File tree" })
+		vim.keymap.set({ "n", "v", "x" }, "<leader>pb", function()
+			toggle("buffers")
+		end, { desc = "Buffer tree" })
+		vim.keymap.set({ "n", "v", "x" }, "<leader>pm", function()
+			toggle("git_status")
+		end, { desc = "Diff tree" })
+	end,
 }
