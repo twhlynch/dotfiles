@@ -13,6 +13,7 @@ vim.cmd([[cabbrev Q q]])
 vim.cmd([[cabbrev Wq wq]])
 vim.cmd([[cabbrev WQ wq]])
 vim.cmd([[cabbrev wQ wq]])
+map("n", "q:", ":q<CR>")
 
 -- useful
 map({ "n", "v", "x" }, "<leader>y", '"+y', "Yank to system clipboard")
