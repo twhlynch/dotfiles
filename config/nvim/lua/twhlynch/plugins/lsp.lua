@@ -29,7 +29,7 @@ local lsp_list = {
 	"eslint",
 	"cssls",
 	"html",
-	"superhtml",
+	-- "superhtml",
 	"emmet_language_server",
 	"vtsls",
 	"vue_ls",
