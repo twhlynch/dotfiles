@@ -76,6 +76,13 @@ return {
 					-- oil
 					highlights.OilExecutable = { link = "OilFile" }
 
+					-- dap
+					highlights.DapBreakpoint = { fg = c.error }
+					highlights.DapBreakpointCondition = { fg = c.delta }
+					highlights.DapBreakpointRejected = { fg = c.floatBorder }
+					highlights.DapStopped = { fg = c.plus }
+					highlights.DapStoppedLine = { bg = c.inactiveBg }
+
 					-- icons
 					highlights.MiniIconsAzure = { fg = c.keyword }
 					highlights.MiniIconsBlue = { fg = c.hint }
