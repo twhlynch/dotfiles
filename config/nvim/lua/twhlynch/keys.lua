@@ -17,7 +17,6 @@ map("n", "q:", ":q<CR>")
 
 -- useful
 map({ "n", "v", "x" }, "<leader>y", '"+y', "Yank to system clipboard")
-map({ "n", "v", "x" }, "<leader>d", '"+d', "Delete to system clipboard")
 map({ "n", "v", "x" }, "<A-p>", '"0p', "Paste last yanked register")
 map({ "n", "v", "x" }, "<leader>w", "<C-w>", "Window commands")
 map({ "n" }, "<leader>A", "ggVG", "Select all")
