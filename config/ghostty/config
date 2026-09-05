@@ -7,9 +7,9 @@ font-feature = -liga
 
 # selection-background = 303030
 # selection-foreground = 050505
-background-opacity = 0.50
+background-opacity = 0.80
 # background-blur-radius = 8
-background-blur-radius = 100
+background-blur-radius = 8
 
 macos-titlebar-style = transparent
 window-decoration = false
@@ -57,8 +57,8 @@ palette = 13=#c9b1ca
 palette = 14=#bebeda
 palette = 15=#d7d7d7
 
-# background = #141415
-background = #050505
+background = #141415
+# background = #050505
 foreground = #cdcdcd
 cursor-color = #cdcdcd
 selection-background = #252530
