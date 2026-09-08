@@ -141,9 +141,18 @@ return {
 			dap.configurations.c = cpp_config
 			dap.configurations.cpp = cpp_config
 
-			dap.listeners.after.event_initialized["dapui_config"] = dapui.open
-			dap.listeners.before.event_terminated["dapui_config"] = dapui.close
-			dap.listeners.before.event_exited["dapui_config"] = dapui.close
+			dap.listeners.after.event_initialized["dapui_config"] = function()
+				dapui.open()
+				dap.repl.open({ height = 10 })
+			end
+			dap.listeners.before.event_terminated["dapui_config"] = function()
+				dapui.close()
+				dap.repl.close()
+			end
+			dap.listeners.before.event_exited["dapui_config"] = function()
+				dapui.close()
+				dap.repl.close()
+			end
 
 			vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapBreakpoint" })
 			vim.fn.sign_define("DapBreakpointCondition", { text = "◆", texthl = "DapBreakpointCondition" })
@@ -187,6 +196,7 @@ return {
 		keys = {
 			-- stylua: ignore start
 			{ "<leader>du", function() require("dapui").toggle() end, desc = "DAP UI toggle", },
+			{ "<leader>dR", ":DapToggleRepl<CR>", desc = "DAP Repl toggle", },
 			{ "<leader>dw", function() require("dapui").elements.watches.add(vim.fn.input("Watch expression: ")) end, desc = "DapUI add watch" },
 			{ "<leader>dW", function() require("dapui").elements.watches.remove() end, desc = "DapUI remove watch" },
 			{ "<leader>dC", function() require("dapui").elements.watches.clear() end, desc = "DapUI clear watches" },
