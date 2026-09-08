@@ -33,7 +33,7 @@ opt.hlsearch = false
 opt.incsearch = true
 
 -- use already opened buffers
-vim.o.switchbuf = "usetab"
+vim.o.switchbuf = "usetab,uselast,split"
 
 -- no swapfile
 opt.swapfile = false
