@@ -1,5 +1,6 @@
 return {
 	dir = "~/Documents/Personal/rayne.nvim",
+	event = { "BufReadPost", "BufNewFile" },
 	opts = {
 		lldb_server_path = "/opt/homebrew/opt/llvm/bin/lldb-server",
 		android = {
