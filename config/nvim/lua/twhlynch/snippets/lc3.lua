@@ -14,7 +14,7 @@ return {
 
 <>
 
-HALT
+halt
 
 .END]],
 			{ i(1) }
