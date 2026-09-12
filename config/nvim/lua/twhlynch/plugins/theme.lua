@@ -135,6 +135,8 @@ return {
 					highlights["@lsp.type.comment.cpp"] = { link = "DiagnosticUnnecessary" }
 					highlights["@lsp.type.comment.c"] = { link = "DiagnosticUnnecessary" }
 					highlights["DiagnosticUnnecessary"] = { dim = true }
+					-- java
+					highlights["@lsp.type.modifier.java"] = { link = "Keyword" }
 				end,
 			})
 			vim.cmd("colorscheme vague")
