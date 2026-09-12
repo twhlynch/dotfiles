@@ -171,6 +171,10 @@ return {
 							return git_status[dir].ignored[name]
 						end
 					end,
+
+					is_always_hidden = function(name, _)
+						return name == ".."
+					end,
 				},
 				preview_win = {
 					disable_preview = function(filename)
