@@ -191,7 +191,7 @@ return {
 			})
 
 			-- open preview automatically at size
-			vim.keymap.set({ "n", "v", "x" }, "<leader>e", function()
+			local open_explorer = function()
 				local oil = require("oil")
 				local util = require("oil.util")
 
@@ -244,7 +244,10 @@ return {
 						end
 					end)
 				end)
-			end, { noremap = true, silent = true, desc = "Open File Explorer" })
+			end
+
+			vim.keymap.set({ "n", "v", "x" }, "<leader>e", open_explorer, { noremap = true, silent = true, desc = "Open File Explorer" })
+			vim.keymap.set({ "n", "v", "x" }, "-", open_explorer, { noremap = true, silent = true, desc = "Open File Explorer" })
 		end,
 	},
 	{
