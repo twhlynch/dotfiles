@@ -37,6 +37,7 @@ local lsp_list = {
 	"mdx_analyzer",
 	-- configs
 	"yamlls",
+	"jsonls",
 	-- zig
 	"zls",
 }
