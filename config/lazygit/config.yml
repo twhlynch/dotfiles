@@ -27,6 +27,7 @@ gui:
       - "#cdcdcd"
       - "bold"
 #gui:
+  nerdFontsVersion: "3"
 
   # line by line staging
   useHunkModeInStagingView: false
