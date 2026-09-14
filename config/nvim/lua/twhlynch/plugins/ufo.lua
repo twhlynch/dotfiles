@@ -22,6 +22,9 @@ return {
 				jumpBot = "]",
 			},
 		},
+		close_fold_kinds_for_ft = {
+			java = { "import_declaration" },
+		},
 	},
 	keys = {
 		-- stylua: ignore start
