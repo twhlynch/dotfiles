@@ -32,16 +32,22 @@ return {
 				{
 					source_dirs = { "src", "source", "sources" },
 					header_dirs = { "include", "includes" },
-					source_exts = { "cpp", "c", "cc", "cxx" },
-					header_exts = { "hpp", "h", "hxx" },
+					source_exts = { ".cpp", ".c", ".cc", ".cxx" },
+					header_exts = { ".hpp", ".h", ".hxx" },
 				},
 				{
-					source_exts = { "frag", "fs" },
-					header_exts = { "vert", "vs" },
+					source_exts = { ".frag", ".fs" },
+					header_exts = { ".vert", ".vs" },
 				},
 				{
-					source_exts = { "html" },
-					header_exts = { "js", "css" },
+					source_exts = { ".html" },
+					header_exts = { ".js", ".css" },
+				},
+				{
+					source_dirs = { "main" },
+					header_dirs = { "test" },
+					source_exts = { ".java" },
+					header_exts = { "Tests.java", "Test.java" },
 				},
 			},
 		},
