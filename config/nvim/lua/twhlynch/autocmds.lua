@@ -85,3 +85,19 @@ autocmd("User", {
 		end
 	end,
 })
+
+-- temp highlights
+-- local matched_windows = {}
+-- vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter" }, {
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		local win = vim.api.nvim_get_current_win()
+--
+-- 		if matched_windows[win] then
+-- 			return
+-- 		end
+-- 		matched_windows[win] = true
+--
+-- 		vim.fn.matchadd("NvimInternalError", "CTF{[^}]\\+}\\c")
+-- 	end,
+-- })
