@@ -1,6 +1,9 @@
 gui:
   authorColors:
-    "*": "#f3be7c"
+    "*": "#aeaed1"
+    "darcy": "yellow"
+    "Tom Lynch": "blue"
+    ".index": "blue"
   theme:
     activeBorderColor:
       - "#cdcdcd" # - "#aeaed1"
