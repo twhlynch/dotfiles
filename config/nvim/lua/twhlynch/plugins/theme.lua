@@ -137,6 +137,8 @@ return {
 					highlights["DiagnosticUnnecessary"] = { dim = true }
 					-- java
 					highlights["@lsp.type.modifier.java"] = { link = "Keyword" }
+					-- cmake darken builtins
+					highlights["@function.builtin.cmake"] = { fg = c.func_darker }
 				end,
 			})
 			vim.cmd("colorscheme vague")
