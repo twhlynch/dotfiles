@@ -370,3 +370,19 @@ function is_in_uni_dir() {
 	[[ $DIR == "$HOME/Documents/RMIT"/* ]] && return 0
 	return 1
 }
+
+function ses() {
+	local session
+
+	session="$(
+		opencode session list --format json |
+		jq -r '.[] | "\(.id)\t\(.updated | tonumber / 1000 | strflocaltime("%Y-%m-%d %H:%M"))\t\(.title)"' |
+		fzf \
+			--delimiter='\t' \
+			--with-nth=2.. \
+			--reverse |
+		cut -f1
+	)"
+
+	[[ -n "$session" ]] && opencode -s "$session"
+}
