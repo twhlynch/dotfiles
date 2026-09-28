@@ -4,6 +4,7 @@ gui:
     "darcy": "yellow"
     "Tom Lynch": "blue"
     ".index": "blue"
+    "Nils Daumann": "red"
   theme:
     activeBorderColor:
       - "#cdcdcd" # - "#aeaed1"
