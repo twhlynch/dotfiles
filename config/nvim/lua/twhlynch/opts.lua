@@ -51,6 +51,9 @@ opt.termguicolors = true
 -- scroll within 6 lines
 opt.scrolloff = 6
 
+-- scroll wrapped lines less jumpy
+opt.smoothscroll = true
+
 -- keep sign column on
 opt.signcolumn = "yes"
 
