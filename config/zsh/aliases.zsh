@@ -34,6 +34,8 @@ alias .d='cd ~/dotfiles && nvim .'
 alias v='nvim'
 alias v.='nvim .'
 alias .v='nvim .'
+alias b.='nvim .'
+alias v,='nvim .'
 
 # ls
 alias ls='eza --group-directories-first'
