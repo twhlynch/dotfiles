@@ -54,3 +54,8 @@ customCommands:
     command: 'git pull --rebase'
     context: 'global'
     description: 'Pull with rebase'
+
+  - key: '<alt-f>'
+    command: 'git fetch --all --prune'
+    context: 'global'
+    description: 'Fetch all and prune'
