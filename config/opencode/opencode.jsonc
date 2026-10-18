@@ -1,48 +1,56 @@
 {
-  "$schema": "https://opencode.ai/config.json",
-  "permission": {
-    "external_directory": {
-      "/tmp/**": "allow"
-    },
-    "read": {
-      "/tmp/**": "allow"
-    },
-    "edit": {
-      "/tmp/**": "allow"
-    },
-  },
-  "provider": {
-    "ollama": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "Ollama",
-      "options": {
-        "baseURL": "http://localhost:11434/v1"
-      },
-      "models": {
-        // https://www.canirun.ai
-        // https://ollama.com/search
-        "hf.co/unsloth/gpt-oss-20b-GGUF:Q4_K_M": { "name": "GPT OSS 20B (Q4_K_M)" },
-        "muse-glimmer:30b":     { "name": "Muse Glimmer 30B"    }, // 18.0 GB
-        "qwen2.5:0.5b":         { "name": "Qwen 2.5 0.5B"       }, //  0.4
-        "qwen3.5:0.8b":         { "name": "Qwen 3.5 0.8B"       }, //  1.0
-        "qwen3.5:2b":           { "name": "Qwen 3.5 2B"         }, //  2.7
-        "qwen3.6:27b":          { "name": "Qwen 3.6 27B"        }, // 17.0
-        "qwen3.8:27b":          { "name": "Qwen 3.8 27B"        }, // 18.0
-        "qwen3-coder:30b":      { "name": "Qwen 3 Coder 30B"    }, // 19.0
-        "qwen2.5-coder:1.5b":   { "name": "Qwen 2.5 Coder 1.5B" }, //  1.0
-        "glm-4.7-flash:q4_K_M": { "name": "GLM 4.7 Flash"       }, // 19.0
-        "llama3.1:8b":          { "name": "Llama 3.1 8B"        }, //  4.9
-        "llama3.2:1b":          { "name": "Llama 3.2 1B"        }, //  1.3
-        "llama3.2:3b":          { "name": "Llama 3.2 2B"        }, //  2.0
-        "gpt-oss:20b":          { "name": "GPT OSS 20B"         }, // 14.0
-      }
-    }
-  },
-  "mcp": {
-    "grab-tools": {
-      "type": "local",
-      "enabled": false,
-      "command": ["npx", "tsx", "/Users/twhlynch/Documents/GRAB/grab-tools-mcp/src/index.ts"]
-    }
-  }
+	"$schema": "https://opencode.ai/config.json",
+	"permissions": [
+		{
+			"action": "external_directory",
+			"resource": "/tmp/**",
+			"effect": "allow",
+		},
+		{
+			"action": "read",
+			"resource": "/tmp/**",
+			"effect": "allow",
+		},
+		{
+			"action": "edit",
+			"resource": "/tmp/**",
+			"effect": "allow",
+		},
+	],
+	"providers": {
+		"ollama": {
+			"package": "@ai-sdk/openai-compatible",
+			"name": "Ollama",
+			"settings": {
+				"baseURL": "http://localhost:11434/v1",
+			},
+			"models": {
+				// https://www.canirun.ai
+				// https://ollama.com/search
+				// "hf.co/unsloth/gpt-oss-20b-GGUF:Q4_K_M": { "name": "GPT OSS 20B (Q4_K_M)" },
+				// "muse-glimmer:30b": { "name": "Muse Glimmer 30B" }, // 18.0 GB
+				// "qwen2.5:0.5b": { "name": "Qwen 2.5 0.5B" }, //  0.4
+				// "qwen3.5:0.8b": { "name": "Qwen 3.5 0.8B" }, //  1.0
+				// "qwen3.5:2b": { "name": "Qwen 3.5 2B" }, //  2.7
+				// "qwen3.6:27b": { "name": "Qwen 3.6 27B" }, // 17.0
+				// "qwen3.8:27b": { "name": "Qwen 3.8 27B" }, // 18.0
+				// "qwen3-coder:30b": { "name": "Qwen 3 Coder 30B" }, // 19.0
+				// "qwen2.5-coder:1.5b": { "name": "Qwen 2.5 Coder 1.5B" }, //  1.0
+				// "glm-4.7-flash:q4_K_M": { "name": "GLM 4.7 Flash" }, // 19.0
+				// "llama3.1:8b": { "name": "Llama 3.1 8B" }, //  4.9
+				// "llama3.2:1b": { "name": "Llama 3.2 1B" }, //  1.3
+				// "llama3.2:3b": { "name": "Llama 3.2 2B" }, //  2.0
+				// "gpt-oss:20b": { "name": "GPT OSS 20B" }, // 14.0
+			},
+		},
+	},
+	"mcp": {
+		"servers": {
+			"grab-tools": {
+				"type": "local",
+				"disabled": true,
+				"command": ["npx", "tsx", "/Users/twhlynch/Documents/GRAB/grab-tools-mcp/src/index.ts"],
+			},
+		},
+	},
 }
