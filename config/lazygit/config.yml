@@ -4,6 +4,10 @@ gui:
     "darcy": "yellow"
     "Tom Lynch": "blue"
     ".index": "blue"
+    "Artemis Rosman": "#f786ce"
+    "artemis": "#f786ce"
+    "Rajeev Athreya Jawaji": "red"
+    "Rajeev Jawaji": "red"
     "Nils Daumann": "red"
   theme:
     activeBorderColor:
