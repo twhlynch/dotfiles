@@ -1,0 +1,29 @@
+/* google adds this to images in emails */
+img[data-bit="iit"]
+{
+  /* all images */
+  visibility: unset !important;
+  display: unset !important;
+  /*outline: 1px solid green !important;*/
+
+  /* attributes */
+  &[width="1"],
+  &[width="0"],
+  &[height="1"],
+  &[height="0"],
+  /* style */
+  &[style*="height:1px"],
+  &[style*="height: 1px"],
+  &[style*="width:1px"],
+  &[style*="width: 1px"],
+  &[style*="height:0"],
+  &[style*="height: 0"],
+  &[style*="width:0"],
+  &[style*="width: 0"]
+  {
+    border: 1px solid red !important;
+    outline: 1px solid red !important;
+    box-shadow: 0 0 0 1px red !important;
+    margin: 1px !important;
+  }
+}
