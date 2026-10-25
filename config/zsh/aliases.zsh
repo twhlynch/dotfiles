@@ -101,3 +101,5 @@ alias -g NULL='>/dev/null 2>&1'
 alias zm='zmv -w'
 alias zcp='zmv -C'
 alias zln='zmv -L'
+
+alias ldd='otool -L box'
