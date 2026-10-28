@@ -190,6 +190,19 @@ return {
 				vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buf = e.buf, desc = "Rename symbol" })
 				vim.keymap.set("n", "<leader>lk", vim.diagnostic.open_float, { buf = e.buf, desc = "Open float" })
 				-- stylua: ignore end
+
+				-- override hover float to keep markdown syntax hidded when entering the window
+				local orig_open = vim.lsp.util.open_floating_preview
+				---@diagnostic disable-next-line: redefined-local, duplicate-set-field
+				vim.lsp.util.open_floating_preview = function(contents, syntax, opts)
+					local bufnr, winid = orig_open(contents, syntax, opts)
+					if syntax == "markdown" and vim.api.nvim_win_is_valid(winid) then
+						vim.wo[winid].concealcursor = "nv"
+						vim.wo[winid].conceallevel = 2
+						vim.wo[winid].scrolloff = 0
+					end
+					return bufnr, winid
+				end
 			end,
 		})
 	end,
