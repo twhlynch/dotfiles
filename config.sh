@@ -103,6 +103,8 @@ defaults write com.apple.dock magnification -int 0
 defaults write com.apple.WindowManager EnableTiledWindowMargins -int 0
 # arc browser icon
 defaults write company.thebrowser.Browser currentAppIconName hologram
+# disable double space for '.'
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 # Window appearance
 defaults write -g NSSplitViewItemSidebarDefaultsToFloatingAppearance -bool false
 defaults write -g NSConvolutionOverride1 -float 15
