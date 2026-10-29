@@ -25,6 +25,12 @@ gui:
       - "#cdcdcd"
       - "bold"
 
+    branchColorPatterns:
+      '^docs/': 'blue'
+      '^fix/': 'red'
+      '^feature/': 'green'
+      'main|master': 'yellow'
+
     authorColors:
       "*": "#aeaed1"
       "darcy": "yellow"
