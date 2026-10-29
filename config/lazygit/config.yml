@@ -25,6 +25,8 @@ gui:
       - "#cdcdcd"
       - "bold"
 
+    # TODO: selection in diff view only colors 2ch margins
+
     branchColorPatterns:
       '^docs/': 'blue'
       '^fix/': 'red'
