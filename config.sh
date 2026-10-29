@@ -101,6 +101,8 @@ defaults write com.apple.dock mineffect -string scale
 defaults write com.apple.dock magnification -int 0
 # WindowManager
 defaults write com.apple.WindowManager EnableTiledWindowMargins -int 0
+# screenshot shadow and margin
+defaults write com.apple.screencapture "disable-shadow" -bool "true"
 # arc browser icon
 defaults write company.thebrowser.Browser currentAppIconName hologram
 # disable double space for '.'
