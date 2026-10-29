@@ -99,7 +99,9 @@ defaults write com.apple.dock show-recents -int 0
 defaults write com.apple.dock orientation -string bottom
 defaults write com.apple.dock mineffect -string scale
 defaults write com.apple.dock magnification -int 0
+defaults write com.apple.dock expose-animation-duration 0
 # WindowManager
+defaults write com.apple.WindowManager AnimationSpeed -float 5.0
 defaults write com.apple.WindowManager EnableTiledWindowMargins -int 0
 # screenshot shadow and margin
 defaults write com.apple.screencapture "disable-shadow" -bool "true"
