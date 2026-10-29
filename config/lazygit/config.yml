@@ -1,14 +1,4 @@
 gui:
-  authorColors:
-    "*": "#aeaed1"
-    "darcy": "yellow"
-    "Tom Lynch": "blue"
-    ".index": "blue"
-    "Artemis Rosman": "#f786ce"
-    "artemis": "#f786ce"
-    "Rajeev Athreya Jawaji": "red"
-    "Rajeev Jawaji": "red"
-    "Nils Daumann": "red"
   theme:
     activeBorderColor:
       - "#cdcdcd" # - "#aeaed1"
@@ -34,11 +24,23 @@ gui:
     searchingActiveBorderColor:
       - "#cdcdcd"
       - "bold"
+
+    authorColors:
+      "*": "#aeaed1"
+      "darcy": "yellow"
+      "Tom Lynch": "blue"
+      ".index": "blue"
+      "Artemis Rosman": "#f786ce"
+      "artemis": "#f786ce"
+      "Rajeev Athreya Jawaji": "red"
+      "Rajeev Jawaji": "red"
+      "Nils Daumann": "red"
+
 #gui:
   nerdFontsVersion: "3"
 
   # line by line staging
-  useHunkModeInStagingView: false
+  useHunkModeInDiffView: false
 
 git:
   # dont ask for gpg password
