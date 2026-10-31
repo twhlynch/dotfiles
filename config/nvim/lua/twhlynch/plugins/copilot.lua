@@ -1,17 +1,6 @@
 -- lualine usage string
 local function update_copilot_usage()
-	local creds = require("copilot.auth").get_creds()
-	if not creds then
-		return
-	end
-
-	local token
-	for key, entry in pairs(creds) do
-		if key:match("^github.com") then
-			token = entry.oauth_token
-			break
-		end
-	end
+	local token = vim.env.GH_TOKEN
 	if not token then
 		return
 	end
@@ -23,18 +12,15 @@ local function update_copilot_usage()
 
 		local ok, json = pcall(vim.json.decode, data.stdout)
 
-		if not ok or not json then
+		if not (ok and json and json.quota_snapshots and json.quota_snapshots.completions and json.quota_snapshots.completions.percent_remaining) then
 			return
 		end
 
+		local percentage_used = 100 - json.quota_snapshots.completions.percent_remaining
+		local usage_string = string.format("%.0f%% ", percentage_used):gsub("%%", "%%%%")
+
 		vim.schedule(function()
-			local completions = json.quota_snapshots.completions
-			local percent_remaining = completions.percent_remaining
-
-			local percentage_used = 100 - percent_remaining
-			local usage_string = string.format("%.0f%% ", percentage_used)
-
-			vim.g.copilot_suggestion_usage_string = usage_string:gsub("%%", "%%%%")
+			vim.g.copilot_suggestion_usage_string = usage_string
 		end)
 	end)
 end
