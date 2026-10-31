@@ -31,6 +31,7 @@ return {
 			Warn = { text = { "-", "=" }, priority = 3 },
 			Info = { text = { "-", "=" }, priority = 4 },
 			Hint = { text = { "-", "=" }, priority = 5 },
+			Search = { text = { "⠒", "⠭" }, priority = 1 },
 			Mark = { text = {}, priority = 1 },
 			GitAdd = { text = { "┆" }, priority = 9 },
 			GitChange = { text = { "┆" }, priority = 7 },
