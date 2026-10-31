@@ -119,7 +119,8 @@ return {
 					highlights["@function.method.call"].fg = c.func
 					-- color macros like functions
 					highlights["@lsp.type.macro"].fg = c.func
-					highlights.Macro.fg = c.func
+					highlights.Macro = { fg = c.func }
+					highlights.PreProc = { fg = c.func }
 					-- python docs are comments
 					highlights["@string.documentation.python"] = { fg = c.comment }
 					-- lua docs are darker
@@ -139,6 +140,8 @@ return {
 					highlights["@lsp.type.modifier.java"] = { link = "Keyword" }
 					-- cmake darken builtins
 					highlights["@function.builtin.cmake"] = { fg = c.func_darker }
+
+					highlights.Whitespace.fg = c.line
 				end,
 			})
 			vim.cmd("colorscheme vague")
