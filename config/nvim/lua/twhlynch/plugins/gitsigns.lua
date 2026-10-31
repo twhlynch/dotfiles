@@ -113,7 +113,6 @@ return {
 				end, { desc = "Toggle Diff Highlight", noremap = true })
 			end,
 		})
-		require("scrollbar.handlers.gitsigns").setup()
 	end,
 	init = function()
 		-- remove the + and - diff prefixes from each line

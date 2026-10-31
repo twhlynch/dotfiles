@@ -1,54 +1,40 @@
 return {
 	"petertriho/nvim-scrollbar",
+	branch = "refactor/v2",
 	opts = {
-		max_lines = 10000,
-		throttle_ms = 0,
-		-- folds = 0,
-		excluded_buftypes = {
-			"terminal",
-			"nowrite",
-			"nofile",
-			"prompt",
+		exclude = {
+			buftypes = {
+				terminal = true,
+				nowrite = true,
+				nofile = true,
+				prompt = true,
+			},
 		},
-		handlers = {
+		providers = {
 			cursor = true,
 			diagnostic = true,
 			gitsigns = true,
-			handle = true,
-			-- search = true,
+			search = true,
+			marks = true,
+		},
+		scrollbar = {
+			max_lines = 10000,
+			placement = { zindex = 50 },
+			layout = {
+				columns = {
+					{ "thumb", "marks" }, -- no track
+				},
+			},
 		},
 		marks = {
-			GitAdd = {
-				highlight = "Added",
-				priority = 9,
-			},
-			GitChange = {
-				highlight = "Changed",
-				priority = 7,
-			},
-			GitDelete = {
-				highlight = "Removed",
-				priority = 8,
-			},
+			Error = { text = { "-", "=" }, priority = 2 },
+			Warn = { text = { "-", "=" }, priority = 3 },
+			Info = { text = { "-", "=" }, priority = 4 },
+			Hint = { text = { "-", "=" }, priority = 5 },
+			Mark = { text = {}, priority = 1 },
+			GitAdd = { text = { "┆" }, priority = 9 },
+			GitChange = { text = { "┆" }, priority = 7 },
+			GitDelete = { text = { "▁" }, priority = 8 },
 		},
 	},
-	init = function()
-		-- reduce lag
-		local scrollbar = require("scrollbar")
-		local old_render = scrollbar.render
-		local timer = vim.uv.new_timer()
-
-		scrollbar.render = function(...)
-			local args = { ... }
-
-			---@diagnostic disable-next-line: need-check-nil
-			timer:stop()
-			---@diagnostic disable-next-line: need-check-nil
-			timer:start(16, 0, function() -- ~60fps
-				vim.schedule(function()
-					old_render(unpack(args))
-				end)
-			end)
-		end
-	end,
 }

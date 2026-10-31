@@ -142,6 +142,11 @@ return {
 					highlights["@function.builtin.cmake"] = { fg = c.func_darker }
 
 					highlights.Whitespace.fg = c.line
+
+					highlights.ScrollbarThumb = { bg = c.inactiveBg }
+					highlights.ScrollbarThumbPressed = { bg = c.visual }
+					highlights.ScrollbarMark = { fg = c.constant }
+					highlights.ScrollbarSearch = { fg = c.delta }
 				end,
 			})
 			vim.cmd("colorscheme vague")

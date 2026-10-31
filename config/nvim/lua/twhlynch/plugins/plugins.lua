@@ -74,9 +74,6 @@ return {
 			notify = print,
 			numbers = true,
 		},
-		scrollbar_marks = {
-			enabled = true,
-		},
 		surround = {
 			enabled = true,
 			prefix = "s",
