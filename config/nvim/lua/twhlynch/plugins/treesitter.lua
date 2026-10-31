@@ -11,10 +11,11 @@ return {
 				"gitcommit", "gitignore", "glsl", "go", "graphql", "hlsl", "html", "ini", "java", "javascript",
 				"jq", "jsdoc", "json", "kotlin", "latex", "lua", "make", "markdown", "markdown_inline", "nix",
 				"objc", "objdump", "ocaml", "odin", "perl", "php", "powershell", "proto", "python", "query",
-				"regex", "ruby", "rust", "scss", "sql", "svelte", "swift", "tmux", "toml", "tsx",
+				"regex", "ruby", "rust", "scss", "sql", "svelte", "swift", "toml", "tsx",
 				"typescript", "typst", "vim", "vimdoc", "vue", "xml", "yaml", "zig", "zsh",
 				-- custom
 				"clingo", "lc3",
+				-- "tmux", -- wtf
 			}
 
 			vim.api.nvim_create_autocmd("User", {
@@ -35,6 +36,13 @@ return {
 							branch = "master",
 						},
 					}
+					-- parsers_map.tmux = {
+					-- 	install_info = {
+					-- 		url = "https://github.com/Freed-Wu/tree-sitter-tmux",
+					-- 		queries = "queries",
+					-- 		branch = "master",
+					-- 	},
+					-- }
 				end,
 			})
 
