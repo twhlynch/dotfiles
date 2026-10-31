@@ -15,7 +15,6 @@ return {
 				"typescript", "typst", "vim", "vimdoc", "vue", "xml", "yaml", "zig", "zsh",
 				-- custom
 				"clingo", "lc3",
-				-- "tmux", -- wtf
 			}
 
 			vim.api.nvim_create_autocmd("User", {
@@ -36,13 +35,6 @@ return {
 							branch = "master",
 						},
 					}
-					-- parsers_map.tmux = {
-					-- 	install_info = {
-					-- 		url = "https://github.com/Freed-Wu/tree-sitter-tmux",
-					-- 		queries = "queries",
-					-- 		branch = "master",
-					-- 	},
-					-- }
 				end,
 			})
 

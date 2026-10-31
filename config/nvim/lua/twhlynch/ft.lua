@@ -21,3 +21,12 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.bo.comments = ":%"
 	end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "tmux",
+	callback = function()
+		vim.schedule(function()
+			vim.bo.syntax = "tmux"
+		end)
+	end,
+})
