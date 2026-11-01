@@ -31,7 +31,7 @@ gui:
       '^docs/': 'blue'
       '^fix/': 'red'
       '^feature/': 'green'
-      'main|master': 'yellow'
+      'main|master|develop|staging': 'yellow'
 
     authorColors:
       "*": "#aeaed1"
