@@ -7,7 +7,7 @@ return {
 
 			dap.adapters.lldb = {
 				type = "executable",
-				command = "/opt/homebrew/opt/llvm/bin/lldb-dap", -- "lldb-dap",
+				command = "lldb-dap",
 			}
 
 			local function prompt_args()

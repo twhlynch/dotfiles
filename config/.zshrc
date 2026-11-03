@@ -5,3 +5,6 @@ source "$HOME/dotfiles/config/zsh/functions.zsh"
 source "$HOME/dotfiles/config/zsh/aliases.zsh"
 source "$HOME/dotfiles/config/zsh/mac.zsh"
 source "$HOME/dotfiles/config/zsh/auto.zsh"
+
+export PATH="$PATH:$(brew --prefix llvm)/bin"
+export PATH="$PATH:$(brew --prefix lldb)/bin"

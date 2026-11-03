@@ -2,7 +2,7 @@ return {
 	dir = "~/Documents/Personal/rayne.nvim",
 	event = { "BufReadPost", "BufNewFile" },
 	opts = {
-		lldb_server_path = "/opt/homebrew/opt/llvm/bin/lldb-server",
+		lldb_server_path = "lldb-server",
 	},
 	init = function()
 		local wk = require("which-key")
