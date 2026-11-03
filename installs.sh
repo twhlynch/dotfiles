@@ -28,7 +28,7 @@ brew install \
 	autoconf autoconf-archive automake pkgconf \
 	ccache libraw libtool patchelf \
 	harfbuzz \
-	lld llvm gcc \
+	lld llvm lldb gcc \
 	glib \
 	doxygen \
 	ncurses \
