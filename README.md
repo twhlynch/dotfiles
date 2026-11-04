@@ -1,15 +1,17 @@
-# MacOS dotfiles
+# dotfiles
 
-Run `sudo config.sh` to setup symlinks and macos defaults.
+My configs for MacOS and Ubuntu. Run scripts at your own risk.
 
-Run `sudo installs.sh` to install brew and **many** packages and tools.
+Run `sudo config.sh` to setup symlinks and sync configs.
 
-> note that some config requires this repo is `~/dotfiles`.
+Run `sudo installs.sh` to install packages and tools.
+
+> note that some config requires this repo is at `~/dotfiles`.
 
 ### Main workflow
 
 ```sh
-macOS > Ghostty > Zsh > tmux > Neovim > Lazygit > git
+Ghostty > Zsh > tmux > Neovim > Lazygit > git
 ```
 
 ## Config
@@ -20,18 +22,22 @@ macOS > Ghostty > Zsh > tmux > Neovim > Lazygit > git
 > bat         # modern cat replacement
 > discord     # discord vencord settings
 > fastfetch   # neofetch alternative
+> gh          # github cli
 > ghostty     # ghostty terminal
-> git         # git attributes file
+> git         # other git config
 > lazygit     # tui git client
 > macos       # macos specific (keymaps, quick actions, fixes, xcode)
 > nvim        # neovim config
 > ohmyposh    # zsh prompt bloat
 > opencode    # slop printer
+> swiftbar    # custom menu bar utils (macos)
 > vscode      # vscode config + extensions
+> tmux        # tmux config
+> yazi        # yazi file explorer
 > zsh         # zsh aliases and functions
 > .gitconfig  # git config
 > .hushlogin  # hide annoying macos tty message
-> .tmux.conf  # tmux config
+> .tmux.conf  # tmux config entry
 > .zprofile   # zsh profile file
 > .zshrc      # zsh shell config
 ```
