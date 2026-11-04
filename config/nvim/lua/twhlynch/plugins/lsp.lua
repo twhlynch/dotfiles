@@ -120,7 +120,7 @@ return {
 		-- add formatters to tools list
 		for _, value in pairs(formatters) do
 			local name = value[1]
-			if name and name ~= "rustfmt" then
+			if name and name ~= "rustfmt" and name ~= "nixfmt" then
 				table.insert(mason_tools, name)
 			end
 		end
