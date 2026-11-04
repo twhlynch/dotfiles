@@ -68,7 +68,9 @@ function crun() {
 # reload all
 function super-reload() {
 	# reload ghostty config
-	osascript "$HOME/.config/ghostty/reload_ghostty_config.scpt" &>/dev/null
+	if [[ "$(uname)" == "Darwin" ]]; then
+		osascript "$HOME/.config/ghostty/reload_ghostty_config.scpt" &>/dev/null
+	fi
 	# reload tmux config
 	tmux source-file ~/.tmux.conf
 	# reload zsh config
