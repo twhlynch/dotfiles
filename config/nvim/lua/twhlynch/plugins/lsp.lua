@@ -71,6 +71,7 @@ local formatters = {
 	vue = { "prettier" },
 	svg = { "prettier" },
 	markdown = { "prettier" },
+	nix = { "nixfmt" },
 }
 
 local mason_tools = {
