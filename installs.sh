@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
+
 set -euo pipefail
+
+if [[ "$(uname)" == "Linux" ]]; then
+	# annoying to use with nix
+	snap install --classic ghostty node rustup
+
+	# everything else is in a nix flake
+	exit 1
+fi
 
 # MARK: xcode
 
