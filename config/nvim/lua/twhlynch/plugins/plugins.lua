@@ -94,16 +94,9 @@ return {
 			enabled = true,
 			key = "gcs",
 		},
-		breadcrumbs = {
-			enabled = true,
-		},
 		inlay = {
 			enabled = true,
 			key = "<leader>ih",
-		},
-		auto_commit = {
-			enabled = false,
-			keymap = "<leader>commit",
 		},
 		templates = { enabled = true },
 		toggle = { enabled = true },
