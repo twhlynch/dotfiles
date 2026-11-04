@@ -1,5 +1,6 @@
 return {
-	dir = "~/Documents/Personal/rayne.nvim",
+	"twhlynch/rayne.nvim",
+	dev = true,
 	event = { "BufReadPost", "BufNewFile" },
 	opts = {
 		lldb_server_path = "lldb-server",

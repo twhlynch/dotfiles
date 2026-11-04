@@ -21,4 +21,8 @@ require("lazy").setup({
 	change_detection = {
 		enabled = false,
 	},
+	dev = {
+		path = "~/Documents/Personal",
+		fallback = true,
+	},
 })

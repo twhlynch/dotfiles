@@ -1,6 +1,6 @@
 return {
-	-- "twhlynch/tasks.nvim",
-	dir = "~/Documents/Personal/tasks.nvim",
+	"twhlynch/tasks.nvim",
+	dev = true,
 	opts = {
 		sign_icon = "",
 		keybind = "<leader><CR>",

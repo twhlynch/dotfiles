@@ -1,6 +1,6 @@
 return {
-	-- "twhlynch/notebook.nvim",
-	dir = "~/Documents/Personal/notebook.nvim",
+	"twhlynch/notebook.nvim",
+	dev = true,
 	opts = {
 		-- stylua: ignore
 		custom_theme_colors = {

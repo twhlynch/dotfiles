@@ -1,6 +1,6 @@
 return {
-	-- "twhlynch/elk.nvim",
-	dir = "~/Documents/Personal/elk.nvim",
+	"twhlynch/elk.nvim",
+	dev = true,
 	opts = {
 		binary = "elk",
 		debounce = 50,

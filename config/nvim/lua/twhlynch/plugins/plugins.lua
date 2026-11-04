@@ -1,6 +1,6 @@
 return {
-	-- "twhlynch/nvim-plugins",
-	dir = "~/Documents/Personal/nvim-plugins",
+	"twhlynch/nvim-plugins",
+	dev = true,
 	dependencies = {
 		"nvim-mini/mini.hipatterns", -- for hipatterns
 		"petertriho/nvim-scrollbar", -- for regions, scrollbar_marks, and scrollbar_todo
