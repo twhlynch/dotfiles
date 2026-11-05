@@ -83,6 +83,28 @@ map({ "n" }, "<leader>mM", "<cmd>%s/\\r//<cr>", "Remove trailing ^M")
 map({ "n" }, "<leader>mx", ":!chmod +x %<CR><CR>", "chmod +x")
 map({ "x" }, "<leader>mr", ":<esc>:%s/\\%V[^A-Za-z0-9]/ /g<CR>", "Clean selection for type")
 
+-- :lua print(vim.fn.keytrans(vim.fn.getcharstr()))
+-- cmd/ctrl + arrow keys or backspace is full line movement
+map({ "i" }, "<C-Left>", "<C-o>^", "Move to beginning of line")
+map({ "i" }, "<C-A>", "<C-o>^", "Move to beginning of line")
+map({ "i" }, "<C-Right>", "<C-o>$", "Move to end of line")
+map({ "i" }, "<C-E>", "<C-o>$", "Move to end of line")
+map({ "n", "x" }, "<C-Left>", "^", "Move to beginning of line")
+map({ "n", "x" }, "<C-A>", "^", "Move to beginning of line")
+map({ "n", "x" }, "<C-Right>", "$", "Move to end of line")
+map({ "n", "x" }, "<C-E>", "$", "Move to end of line")
+map({ "i" }, "<C-U>", "<C-o>d^", "Delete to beginning of line")
+map({ "i" }, "<C-H>", "<C-o>d^", "Delete to beginning of line")
+map({ "n" }, "<C-U>", "d^", "Delete to beginning of line")
+map({ "n" }, "<C-H>", "d^", "Delete to beginning of line")
+-- alt + arrow keys or backspace is word movement
+map({ "i" }, "<M-b>", "<C-o>b", "Move to beginning of word")
+map({ "i" }, "<M-f>", "<C-o>w", "Move to end of word")
+map({ "n", "x" }, "<M-b>", "b", "Move to beginning of word")
+map({ "n", "x" }, "<M-f>", "w", "Move to end of word")
+map({ "i" }, "<M-Backspace>", "<C-o>db", "Delete to beginning of word")
+map({ "n" }, "<M-Backspace>", "db", "Delete to beginning of word")
+
 -- reserved
 local function unset()
 	print("Unset")
