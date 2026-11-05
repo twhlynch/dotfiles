@@ -85,19 +85,19 @@ return {
 					func = evaluate,
 				},
 				exchange = {
-					prefix = "Gox",
+					prefix = "gox",
 					reindent_linewise = true,
 				},
 				multiply = {
-					prefix = "Gom",
+					prefix = "gom",
 					func = nil,
 				},
 				replace = {
-					prefix = "Gor",
+					prefix = "gor",
 					reindent_linewise = true,
 				},
 				sort = {
-					prefix = "Gos",
+					prefix = "gos",
 					func = nil,
 				},
 			})
