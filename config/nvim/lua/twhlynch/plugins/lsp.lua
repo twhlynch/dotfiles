@@ -23,8 +23,6 @@ local lsp_list = {
 	-- latex
 	"ltex_plus",
 	"texlab",
-	-- ocaml
-	"ocamllsp",
 	-- web
 	"eslint",
 	"cssls",
@@ -54,7 +52,6 @@ local formatters = {
 	cmake = { "gersemi" },
 	bash = { "shfmt" },
 	zsh = { "beautysh" },
-	ocaml = { "ocamlformat" },
 	tex = { "bibtex-tidy" },
 	proto = { "buf" },
 	java = { "palantir-java-format" },

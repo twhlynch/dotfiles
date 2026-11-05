@@ -82,7 +82,6 @@ brew install \
 	php \
 	typst \
 	nasm \
-	opam \
 	clingo \
 	swi-prolog \
 	dxrcy/elk/elk
