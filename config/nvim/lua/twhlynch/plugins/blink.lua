@@ -35,7 +35,7 @@ return {
 		},
 
 		sources = {
-			default = { "lsp", "path", "snippets", "lazydev", "buffer", "elk" },
+			default = { "lsp", "path", "snippets", "lazydev", "buffer", unpack((pcall(require, "elk.cmp")) and { "elk" } or {}) },
 			providers = {
 				lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
 				buffer = {

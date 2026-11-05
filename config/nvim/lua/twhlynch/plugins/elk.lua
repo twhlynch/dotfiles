@@ -1,4 +1,4 @@
-return {
+return vim.fn.executable("elk") ~= 1 and {} or {
 	"twhlynch/elk.nvim",
 	dev = true,
 	opts = {
