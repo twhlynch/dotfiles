@@ -15,6 +15,11 @@ bindkey -v '^?' backward-delete-char # Fix backspace
 # Alt+Backspace delete word
 bindkey -M viins '\e\x7F' backward-kill-word
 bindkey -M vicmd '\e\x7F' backward-kill-word
+# Cmd/Ctrl+Backspace delete line
+bindkey -M viins '^H' backward-kill-line
+bindkey -M vicmd '^H' backward-kill-line
+bindkey -M viins '\x15' backward-kill-line
+bindkey -M vicmd '\x15' backward-kill-line
 
 # Alt+Left/Right to jump words in insert mode
 bindkey -M viins '^[b' backward-word
@@ -22,9 +27,14 @@ bindkey -M viins '^[f' forward-word
 bindkey -M vicmd '^[b' backward-word
 bindkey -M vicmd '^[f' forward-word
 
-# Cmd+Left/Right to jump to start or end of line
+# Cmd/Ctrl+Left/Right to jump to start or end of line
 bindkey -M viins '^A' beginning-of-line
 bindkey -M viins '^E' end-of-line
+bindkey -M viins '^[[1;5D' beginning-of-line
+bindkey -M viins '^[[1;5C' end-of-line
+bindkey -M vicmd '^[[1;5D' beginning-of-line
+bindkey -M vicmd '^[[1;5C' end-of-line
+
 bindkey -s -M vicmd '^A' '^'
 bindkey -s -M vicmd '^E' '$'
 
