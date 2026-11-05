@@ -104,12 +104,3 @@ map({ "n", "x" }, "<M-b>", "b", "Move to beginning of word")
 map({ "n", "x" }, "<M-f>", "w", "Move to end of word")
 map({ "i" }, "<M-Backspace>", "<C-o>db", "Delete to beginning of word")
 map({ "n" }, "<M-Backspace>", "db", "Delete to beginning of word")
-
--- reserved
-local function unset()
-	print("Unset")
-end
-map({ "n" }, "<leader>B", unset, "Build (Unset)")
-map({ "n" }, "<leader>G", unset, "Generate (Unset)")
-map({ "n" }, "<leader>?", unset, "Search (Unset)")
-map({ "n" }, "<leader>,", unset, "Config (Unset)")
