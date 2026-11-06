@@ -102,4 +102,6 @@ alias zm='zmv -w'
 alias zcp='zmv -C'
 alias zln='zmv -L'
 
-alias ldd='otool -L box'
+if [[ "$(uname)" == "Darwin" ]]; then
+	alias ldd='otool -L'
+fi
