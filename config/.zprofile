@@ -27,3 +27,7 @@ export NDK_HOME="$HOME/Library/Android/sdk/ndk/28.2.13676358"
 export GH_CONFIG_DIR="$HOME/.config/gh/personal"
 export GH_USER="twhlynch"
 export GH_USER_ALT="twhlynch-rmit"
+
+if [[ -f "$HOME/dotfiles/config/.env" ]]; then
+	set -a && source "$HOME/dotfiles/config/.env" && set +a
+fi
