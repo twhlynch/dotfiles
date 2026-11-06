@@ -43,9 +43,7 @@ bind({ root.mod, "SHIFT", "I" }, hl.dsp.window.move({ direction = "down" }))
 bind({ root.mod, "SHIFT", "O" }, hl.dsp.window.move({ direction = "up" }))
 
 -- For focusing floating windows
-bind({ root.mod, "space" }, function()
-	hl.exec_cmd("wofi --show drun")
-end)
+bind({ root.mod, "space" }, actions.open_runner())
 
 bind({ root.mod, "tab" }, hl.dsp.focus({ workspace = "previous" }))
 

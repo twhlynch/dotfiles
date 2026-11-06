@@ -1,5 +1,3 @@
-local root = require("src")
-
 hl.config({
 	general = {
 		border_size = 1,
@@ -7,7 +5,7 @@ hl.config({
 		gaps_out = 4,
 
 		col = {
-			inactive_border = "#342d01",
+			inactive_border = "#1C1C24",
 			active_border = "#c48282",
 		},
 
