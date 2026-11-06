@@ -7,6 +7,8 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[lfs]
+	locksverify = true
 [http]
 	postBuffer = 157286400
 [credential "https://github.com"]
@@ -15,6 +17,8 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !gh auth git-credential
+[credential]
+	helper = store
 [alias]
 	change-commits = "!CHANGE_COMMITS_ALIAS_FUNC() { VAR_OLD=$1; OLD=$2; VAR_NEW=$3; NEW=$4; shift 4; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR_OLD`\\\" = '$OLD' ]]; then export $VAR_NEW='$NEW'; fi\" $@; }; CHANGE_COMMITS_ALIAS_FUNC"
 	undo = "!UNDO_ALIAS_FUNC() { git reset HEAD~; }; UNDO_ALIAS_FUNC"
