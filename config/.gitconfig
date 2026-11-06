@@ -54,5 +54,8 @@
 [includeIf "gitdir:~/Documents/RMIT/"]
 	path = .config/git/github-rmit
 
+[includeIf "gitdir:/home/tomlynch/"]
+	path = .config/git/git-work
+
 [includeIf "gitdir:~/dotfiles/"]
 	path = .config/git/git-personal
