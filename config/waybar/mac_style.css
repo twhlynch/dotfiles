@@ -1,0 +1,140 @@
+* {
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+	font-family: "SF Pro Text", "Inter", "Helvetica Neue", "Symbols Nerd Font", "JetBrainsMono Nerd Font", sans-serif;
+	font-size: 13px;
+	font-weight: 500;
+	color: #f2f2f7;
+}
+
+window#waybar {
+	background-color: rgba(30, 30, 32, 0.55);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+	margin: 0 6px;
+}
+
+/* every text module gets the macOS hover highlight */
+#custom-power,
+#custom-lock,
+#temperature,
+#mpris,
+#bluetooth,
+#battery,
+#network,
+#clock {
+	padding: 2px 9px;
+	margin: 3px 1px;
+	border-radius: 5px;
+	background-color: transparent;
+	transition: background-color 0.15s ease;
+}
+
+#custom-power:hover,
+#custom-lock:hover,
+#temperature:hover,
+#mpris:hover,
+#bluetooth:hover,
+#battery:hover,
+#network:hover,
+#clock:hover {
+	background-color: rgba(255, 255, 255, 0.16);
+}
+
+#custom-power {
+	font-size: 15px;
+	padding: 2px 12px;
+}
+#clock.date {
+	margin-right: 0;
+}
+#clock.time {
+	font-weight: 600;
+}
+
+/* workspaces as dots */
+#workspaces {
+	margin: 0;
+	padding: 0;
+}
+#workspaces button {
+	padding: 0 5px;
+	margin: 0 1px;
+	font-size: 10px;
+	color: rgba(255, 255, 255, 0.35);
+	background: none;
+	box-shadow: none;
+	text-shadow: none;
+}
+#workspaces button.active {
+	color: #ffffff;
+}
+#workspaces button:hover {
+	color: rgba(255, 255, 255, 0.75);
+	background: none;
+}
+
+/* states */
+#battery.charging {
+	color: #30d158;
+}
+#battery.warning:not(.charging) {
+	color: #ffd60a;
+}
+#battery.critical:not(.charging) {
+	color: #ff453a;
+}
+#network.disconnected {
+	opacity: 0.45;
+}
+#bluetooth.off,
+#bluetooth.disabled {
+	opacity: 0.45;
+}
+#mpris.paused {
+	opacity: 0.6;
+}
+#temperature.critical {
+	color: #ff453a;
+}
+
+/* tooltips and menus */
+tooltip {
+	padding: 6px 8px;
+	background-color: rgba(40, 40, 44, 0.92);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 10px;
+}
+tooltip label {
+	font-size: 12px;
+	font-weight: normal;
+}
+
+menu {
+	padding: 5px;
+	background-color: rgba(40, 40, 44, 0.95);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 10px;
+}
+menuitem {
+	min-height: 18px;
+	padding: 4px 14px;
+	border-radius: 5px;
+	background-color: transparent;
+}
+menuitem:hover {
+	background-color: #0a84ff;
+}
+menuitem label {
+	font-weight: 500;
+}
+menu separator {
+	min-height: 1px;
+	margin: 4px 8px;
+	background-color: rgba(255, 255, 255, 0.15);
+}

@@ -1,0 +1,95 @@
+{
+	"layer": "top",
+	"position": "top",
+	"height": 28,
+	"spacing": 0,
+	"exclusive": true,
+	"reload_style_on_change": true,
+
+	"modules-left": ["custom/power", "custom/lock"],
+	"modules-center": ["hyprland/workspaces"],
+	"modules-right": ["temperature", "mpris", "bluetooth", "battery", "network", "clock#date", "clock#time"],
+
+	"custom/power": {
+		"format": "\uf179",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml",
+		"menu-actions": {
+			"shutdown": "shutdown now",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate",
+		},
+	},
+
+	"custom/lock": {
+		"format": "\uf023",
+		"tooltip": false,
+		"on-click": "hyprlock",
+	},
+
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"format-icons": { "active": "●", "default": "○" },
+		"persistent-workspaces": { "*": 5 },
+		"on-click": "activate",
+		"on-scroll-up": "hyprctl dispatch workspace e+1",
+		"on-scroll-down": "hyprctl dispatch workspace e-1",
+	},
+
+	"temperature": {
+		"critical-threshold": 90,
+		"format": "{icon} {temperatureC}°",
+		"format-icons": ["\uf2cb", "\uf2c9", "\uf2c7"],
+		"tooltip": false,
+	},
+
+	"mpris": {
+		"format": "{player_icon} {title} – {artist}",
+		"format-paused": "{status_icon} {title} – {artist}",
+		"player-icons": { "default": "\uf001" },
+		"status-icons": { "paused": "\uf04c" },
+		"max-length": 40,
+		"tooltip": false,
+	},
+
+	"bluetooth": {
+		"format": "\uf293",
+		"format-connected": "\uf293 {device_alias}",
+		"format-disabled": "\uf293",
+		"tooltip-format-connected": "{device_enumerate}",
+		"on-click": "blueman-manager",
+	},
+
+	"battery": {
+		"states": { "warning": 30, "critical": 15 },
+		"format": "{capacity}% {icon}",
+		"format-charging": "{capacity}% \uf0e7",
+		"format-plugged": "{capacity}% \uf1e6",
+		"format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
+		"tooltip-format": "{timeTo}",
+	},
+
+	"network": {
+		"format-wifi": "\uf1eb",
+		"format-ethernet": "\uf796",
+		"format-disconnected": "\uf1eb",
+		"tooltip-format-wifi": "{essid} ({signalStrength}%)",
+		"tooltip-format-ethernet": "{ifname}: {ipaddr}",
+		"tooltip-format-disconnected": "Disconnected",
+		"on-click": "nm-connection-editor",
+	},
+
+	"clock#date": {
+		"timezone": "Australia/Melbourne",
+		"format": "{:%a %d %b}",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+	},
+
+	"clock#time": {
+		"timezone": "Australia/Melbourne",
+		"format": "{:%H:%M}",
+		"tooltip": false,
+	},
+}
