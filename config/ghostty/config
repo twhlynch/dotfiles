@@ -29,6 +29,7 @@ copy-on-select = both
 
 macos-option-as-alt = left
 keybind = cmd+backspace=text:\x15
+keybind = ctrl+backspace=text:\x15
 
 confirm-close-surface = false
 quit-after-last-window-closed = true
