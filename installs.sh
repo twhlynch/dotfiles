@@ -6,7 +6,15 @@ if [[ "$(uname)" == "Linux" ]]; then
 	# annoying to use with nix
 	snap install --classic ghostty node rustup
 
+	# pi agent
+	curl -fsSL https://pi.dev/install.sh | sh
+
 	# everything else is in a nix flake
+	nix profile add ~/dotfiles/config/nix#default
+	nix profile install nixpkgs#hyprland
+	nix profile install github:nix-community/nixGL --impure
+
+	nix profile upgrade --all --impure --show-trace
 	exit 1
 fi
 
