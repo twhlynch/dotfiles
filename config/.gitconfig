@@ -1,7 +1,3 @@
-[user]
-	name = Tom Lynch
-	email = twhlynch@gmail.com
-	signingkey = ~/.ssh/id_ed25519.pub
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
@@ -52,5 +48,11 @@
 [commit]
 	gpgsign = true
 
+[include]
+	path = .config/git/git-personal
+
 [includeIf "gitdir:~/Documents/RMIT/"]
 	path = .config/git/github-rmit
+
+[includeIf "gitdir:~/dotfiles/"]
+	path = .config/git/git-personal
