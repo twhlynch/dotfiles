@@ -10,3 +10,12 @@ if [[ "$(uname)" == "Darwin" ]]; then
 	export PATH="$PATH:$(brew --prefix llvm)/bin"
 	export PATH="$PATH:$(brew --prefix lldb)/bin"
 fi
+
+zsh-start-desktop() {
+	[ -z "$DISPLAY" ] || [ "$TTY" = "$DESKTOP_TTY" ] || return
+	read -r _
+	start-hyprland
+}
+if [[ "$(uname)" == "Linux" ]]; then
+	zsh-start-desktop
+fi
