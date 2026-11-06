@@ -105,3 +105,5 @@ alias zln='zmv -L'
 if [[ "$(uname)" == "Darwin" ]]; then
 	alias ldd='otool -L'
 fi
+
+alias nr='nix profile upgrade --all --impure --show-trace'
