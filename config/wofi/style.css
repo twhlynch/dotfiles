@@ -3,8 +3,8 @@
 @define-color dim #8e8e93;
 
 window {
-	background-color: @bg;
-	border: 1px solid rgba(255, 255, 255, 0.1);
+	background-color: rgba(28, 28, 31, 0.78);
+	border: 1px solid rgba(255, 255, 255, 0.12);
 	border-radius: 14px;
 	font-family: "Inter", "SF Pro Text", sans-serif;
 	font-size: 14px;
