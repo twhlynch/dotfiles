@@ -26,6 +26,10 @@ bindkey -M viins '^[b' backward-word
 bindkey -M viins '^[f' forward-word
 bindkey -M vicmd '^[b' backward-word
 bindkey -M vicmd '^[f' forward-word
+bindkey -M viins '^[[1;3D' backward-word
+bindkey -M viins '^[[1;3C' forward-word
+bindkey -M vicmd '^[[1;3D' backward-word
+bindkey -M vicmd '^[[1;3C' forward-word
 
 # Cmd/Ctrl+Left/Right to jump to start or end of line
 bindkey -M viins '^A' beginning-of-line
