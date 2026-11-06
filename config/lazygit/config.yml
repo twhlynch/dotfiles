@@ -36,7 +36,9 @@ gui:
     authorColors:
       "*": "#aeaed1"
       "darcy": "yellow"
+      "Darcy Burke (AU)": "yellow"
       "Tom Lynch": "blue"
+      "Tom Lynch (AU)": "blue"
       ".index": "blue"
       "Artemis Rosman": "#f786ce"
       "artemis": "#f786ce"
