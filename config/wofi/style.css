@@ -1,44 +1,67 @@
+@define-color bg #1c1c1f;
+@define-color fg #f2f2f3;
+@define-color dim #8e8e93;
+
 window {
-	background-color: rgba(30, 30, 30, 0.95);
-	border: 1px solid #c48282;
-	margin: 0px;
-}
-
-#input {
-	margin: 5px;
-	border: none;
-	color: #ffffff;
-	background-color: rgba(30, 30, 30, 0.95);
-}
-
-#input image {
-	color: #c48282;
-}
-
-#inner-box {
-	margin: 5px;
-	border: none;
-	background-color: rgba(40, 40, 40, 1);
+	background-color: @bg;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 14px;
+	font-family: "Inter", "SF Pro Text", sans-serif;
+	font-size: 14px;
 }
 
 #outer-box {
-	margin: 5px;
-	border: none;
-	background-color: rgba(40, 40, 40, 1);
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
 }
 
-#text {
-	margin: 5px;
+#input {
+	margin: 0;
+	padding: 18px 20px;
+	background-color: transparent;
+	color: @fg;
+	font-size: 17px;
 	border: none;
-	color: #ffffff;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 0;
+	box-shadow: none;
+	outline: none;
+}
+
+#input:focus {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	box-shadow: none;
+}
+
+#scroll {
+	margin: 8px;
+}
+#inner-box {
+	margin: 0;
+	background-color: transparent;
+}
+
+#entry {
+	padding: 8px 10px;
+	margin: 1px 0;
+	border-radius: 9px;
+	background-color: transparent;
+	border: none;
 }
 
 #entry:selected {
-	background-color: #c48282;
-	color: #ffffff;
+	background-color: rgba(255, 255, 255, 0.09);
 }
 
-list {
-	background-color: #2a2a2a;
+#img {
+	margin-right: 12px;
+}
+
+#text {
+	color: @fg;
+	margin-left: 2px;
+}
+#entry:selected #text {
 	color: #ffffff;
 }
