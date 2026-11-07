@@ -42,6 +42,18 @@ bindkey -M vicmd '^[[1;5C' end-of-line
 bindkey -s -M vicmd '^A' '^'
 bindkey -s -M vicmd '^E' '$'
 
+# ^V as paste in insert mode
+paste-clipboard() {
+	if (( $+commands[pbpaste] )); then
+		LBUFFER+=$(pbpaste)
+	elif (( $+commands[wl-paste] )); then
+		LBUFFER+=$(wl-paste --no-newline)
+	fi
+}
+zle -N paste-clipboard
+bindkey -M viins '^V' paste-clipboard
+bindkey -M vicmd '^V' visual-mode
+
 # use bar cursor for insert mode, block cursor for normal mode
 _bar_cursor() { echo -ne "\e[5 q" }
 _block_cursor() { echo -ne "\e[1 q" }

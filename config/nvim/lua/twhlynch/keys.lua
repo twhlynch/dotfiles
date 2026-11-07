@@ -21,6 +21,7 @@ map({ "n", "v", "x" }, "<A-p>", '"0p', "Paste last yanked register")
 map({ "n", "v", "x" }, "<leader>w", "<C-w>", "Window commands")
 map({ "n" }, "<leader>A", "ggVG", "Select all")
 map({ "x" }, "/", "<esc>/\\%V", "Search in selection")
+map({ "i" }, "<C-V>", "<C-r>+", "Paste from system clipboard")
 -- big move
 map({ "n" }, "H", "^")
 map({ "n" }, "L", "$")
