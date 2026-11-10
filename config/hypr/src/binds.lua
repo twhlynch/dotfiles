@@ -55,6 +55,16 @@ bind({ root.mod, "Return" }, actions.open_terminal())
 bind({ root.mod, "mouse:272" }, hl.dsp.window.drag())
 bind({ root.mod, "mouse:273" }, hl.dsp.window.resize())
 
+bind({ root.mod, "SHIFT", "S" }, function()
+	hl.exec_cmd("hyprshot -m region")
+end)
+bind({ root.mod, "Print" }, function()
+	hl.exec_cmd("hyprshot -m window")
+end)
+bind({ "Print" }, function()
+	hl.exec_cmd("hyprshot -m output")
+end)
+
 bind({ "XF86PowerOff" }, hl.dsp.exec_cmd("hyprlock"))
 
 bind({ "XF86AudioMute" }, hl.dsp.exec_cmd("volume-brightness.nu mute toggle"))

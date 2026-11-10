@@ -111,6 +111,7 @@
           hyprlock
           hypridle
           hyprpaper
+          hyprshot
           waybar
           wl-clipboard
 
