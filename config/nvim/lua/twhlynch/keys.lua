@@ -14,6 +14,7 @@ vim.cmd([[cabbrev Wq wq]])
 vim.cmd([[cabbrev WQ wq]])
 vim.cmd([[cabbrev wQ wq]])
 map("n", "q:", ":q<CR>")
+vim.keymap.set({ "i", "n" }, "<F1>", "<Nop>", { noremap = true, silent = true })
 
 -- useful
 map({ "n", "v", "x" }, "<leader>y", '"+y', "Yank to system clipboard")
