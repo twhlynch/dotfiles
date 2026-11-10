@@ -108,6 +108,7 @@
           yazi
           zsh
           wofi
+          dunst
           hyprlock
           hypridle
           hyprpaper

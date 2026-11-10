@@ -4,6 +4,7 @@ return function(first)
 	hl.exec_cmd("killall hypridle; hypridle")
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("waybar")
+	hl.exec_cmd("dunst")
 
 	if first then
 		hl.exec_cmd(root.browser, { workspace = "1 silent" })
