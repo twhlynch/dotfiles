@@ -68,6 +68,9 @@ end)
 
 bind({ root.mod, "V" }, hl.dsp.exec_cmd("vicinae vicinae://launch/clipboard/history"))
 
+bind({ root.mod, "SHIFT", "escape" }, hl.dsp.exec_cmd("hyprlock & sleep 2; systemctl suspend"))
+bind({ root.mod, "escape" }, hl.dsp.exec_cmd("hyprlock"))
+
 bind({ "XF86PowerOff" }, hl.dsp.exec_cmd("hyprlock"))
 
 bind({ "XF86AudioMute" }, hl.dsp.exec_cmd("volume-brightness.nu mute toggle"))
