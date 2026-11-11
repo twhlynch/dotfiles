@@ -24,7 +24,7 @@ return {
 		},
 		scrollbar = {
 			max_lines = 10000,
-			placement = { zindex = 50 },
+			placement = { zindex = 30 },
 			layout = {
 				columns = {
 					{ "thumb", "marks" }, -- no track
