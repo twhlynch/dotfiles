@@ -77,12 +77,12 @@ local mason_tools = {
 return {
 	"mason-org/mason-lspconfig.nvim",
 	dependencies = {
-		{ "mason-org/mason.nvim", opts = {} }, -- tools
+		{ "mason-org/mason.nvim", opts = { PATH = "append" } },
 		{
 			"neovim/nvim-lspconfig",
 			init = function()
 				local lsp_path = require("lazy.core.config").options.root .. "/nvim-lspconfig"
-				vim.opt.runtimepath:prepend(lsp_path)
+				vim.opt.runtimepath:append(lsp_path)
 			end,
 		}, -- lsp config data
 		"stevearc/conform.nvim", -- formatter
