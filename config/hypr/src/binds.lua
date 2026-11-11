@@ -66,6 +66,7 @@ bind({ "Print" }, function()
 	hl.exec_cmd("hyprshot -m output")
 end)
 
+-- hl.bind("SUPER + V", hl.dsp.exec_cmd([[cliphist list | wofi --dmenu --pre-display-cmd "echo '%s' | cut -f 2" | cliphist decode | wl-copy]]))
 bind({ root.mod, "V" }, hl.dsp.exec_cmd("vicinae vicinae://launch/clipboard/history"))
 
 bind({ root.mod, "SHIFT", "escape" }, hl.dsp.exec_cmd("hyprlock & sleep 2; systemctl suspend"))
