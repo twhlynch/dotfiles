@@ -84,9 +84,6 @@ local no_install = {
 	["clangd"] = true,
 	["arduino-language-server"] = true,
 }
-local mason_tools = {
-	-- lsp, dap, linter, formatter
-}
 
 return {
 	"mason-org/mason-lspconfig.nvim",
@@ -117,6 +114,7 @@ return {
 		-- lspconfig.setup(opts)
 
 		local installed = {}
+		local mason_tools = {}
 		local mapping = lspconfig.get_mappings()
 
 		-- add lsps to tools list
