@@ -1,20 +1,24 @@
 
 # runs after cd
 chpwd() {
+	# python
 	if [[ -d .venv ]]; then
 		source .venv/bin/activate
 	fi
 
+	# nvm
 	if [[ -f .nvmrc ]]; then
 		nvm use
 	fi
 
+	# java
 	if [[ -f .java-version ]]; then
 		export JAVA_HOME="$(/usr/libexec/java_home -v "$(cat .java-version | tr -d '\n')")"
 		echo "Using $JAVA_HOME"
 	fi
 
-	if [[  $OSTYPE == darwin* ]]; then
+	# gh
+	if [[ $OSTYPE == darwin* ]]; then
 		if is_in_uni_dir; then
 			export GH_CONFIG_DIR="$HOME/.config/gh/rmit"
 			export GH_TOKEN=$(gh auth token --user "$GH_USER_ALT")
