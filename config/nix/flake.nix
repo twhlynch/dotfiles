@@ -47,7 +47,7 @@
       combinedPython = pkgs.symlinkJoin {
         name = "combined-python-envs";
         paths = [ python11Env python12Env python13Env python14Env ];
-        pathsToLink = [ "/bin" ];
+        pathsToLink = [ "/bin" "/share" ];
       };
       /*nixfmt:enable*/
     in
@@ -115,6 +115,7 @@
           hyprshot
           waybar
           wl-clipboard
+          cliphist
 
           lua
           luarocks
@@ -122,6 +123,7 @@
 
           nerd-fonts.hack
           nerd-fonts.symbols-only
+          inter
         ];
       };
     };

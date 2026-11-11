@@ -13,6 +13,7 @@ if [[ "$(uname)" == "Linux" ]]; then
 	nix profile add ~/dotfiles/config/nix#default
 	nix profile install nixpkgs#hyprland
 	nix profile install github:nix-community/nixGL --impure
+	nix profile add github:vicinaehq/vicinae
 
 	nix profile upgrade --all --impure --show-trace
 	exit 1

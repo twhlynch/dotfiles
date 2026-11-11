@@ -52,7 +52,7 @@ done
 
 # ~/.config configs
 
-for name in hypr wofi dunst waybar nvim ohmyposh ghostty lazygit bat fastfetch git gh yazi nix opencode/themes opencode/AGENTS.md opencode/opencode.jsonc opencode/cli.json opencode/plugins; do
+for name in fontconfig vicinae hypr wofi dunst waybar nvim ohmyposh ghostty lazygit bat fastfetch git gh yazi nix opencode/themes opencode/AGENTS.md opencode/opencode.jsonc opencode/cli.json opencode/plugins; do
 	symlink "config/$name" "$HOME/.config/$name"
 done
 

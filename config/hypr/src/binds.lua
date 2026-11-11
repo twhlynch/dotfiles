@@ -43,7 +43,8 @@ bind({ root.mod, "SHIFT", "I" }, hl.dsp.window.move({ direction = "down" }))
 bind({ root.mod, "SHIFT", "O" }, hl.dsp.window.move({ direction = "up" }))
 
 -- For focusing floating windows
-bind({ root.mod, "space" }, actions.open_runner())
+-- bind({ root.mod, "space" }, actions.open_runner())
+bind({ root.mod, "space" }, hl.dsp.exec_cmd("vicinae toggle"))
 
 bind({ root.mod, "tab" }, hl.dsp.focus({ workspace = "previous" }))
 
@@ -64,6 +65,8 @@ end)
 bind({ "Print" }, function()
 	hl.exec_cmd("hyprshot -m output")
 end)
+
+bind({ root.mod, "V" }, hl.dsp.exec_cmd("vicinae vicinae://launch/clipboard/history"))
 
 bind({ "XF86PowerOff" }, hl.dsp.exec_cmd("hyprlock"))
 
