@@ -6,7 +6,7 @@ return {
 		config = function()
 			-- stylua: ignore
 			local parsers = {
-				"arduino", "asm", "astro", "awk", "bash", "c", "c_sharp", "cmake", "cpp", "css",
+				"arduino", "asm", "astro", "awk", "bash", "c", "c_sharp", "cmake", "cpp", "css", "doxygen",
 				"csv", "cuda", "dart", "diff", "dockerfile", "editorconfig", "elixir", "git_config", "git_rebase", "gitattributes",
 				"gitcommit", "gitignore", "glsl", "go", "graphql", "hlsl", "html", "ini", "java", "javascript",
 				"jq", "jsdoc", "json", "kotlin", "latex", "lua", "make", "markdown", "markdown_inline", "nix",
