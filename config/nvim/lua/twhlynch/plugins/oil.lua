@@ -50,6 +50,36 @@ return {
 				orig_refresh(...)
 			end
 
+			local function get_selected_files()
+				local oil = require("oil")
+
+				-- get visual selection
+				if not vim.fn.mode():match("^[vV\22]") then
+					return {}
+				end
+
+				-- escape visual then get selection marks
+				vim.cmd("normal! \27")
+				local start_line = vim.fn.line("'<")
+				local end_line = vim.fn.line("'>")
+
+				if start_line > end_line then
+					start_line, end_line = end_line, start_line
+				end
+
+				-- get selected files
+				local files = {}
+
+				for lnum = start_line, end_line do
+					local entry = oil.get_entry_on_line(0, lnum)
+					if entry then
+						files[#files + 1] = entry.name
+					end
+				end
+
+				return files
+			end
+
 			require("oil").setup({
 				keymaps = {
 					["gx"] = function()
@@ -88,31 +118,9 @@ return {
 							return
 						end
 
-						-- get visual selection
-						if vim.fn.mode() ~= "V" then
-							return
-						end
+						local files = get_selected_files()
 
-						-- escape visual then get selection marks
-						vim.cmd("normal! \27")
-						local start_line = vim.fn.line("'<")
-						local end_line = vim.fn.line("'>")
-
-						if start_line > end_line then
-							start_line, end_line = end_line, start_line
-						end
-
-						-- get selected files
-						local entries = {}
-
-						for lnum = start_line, end_line do
-							local entry = oil.get_entry_on_line(0, lnum)
-							if entry then
-								entries[#entries + 1] = entry
-							end
-						end
-
-						if #entries == 0 then
+						if #files == 0 then
 							return
 						end
 
@@ -123,11 +131,6 @@ return {
 						while vim.fn.filereadable(dir .. archive_name) == 1 do
 							archive_name = "archive_" .. i .. ".zip"
 							i = i + 1
-						end
-
-						local files = {}
-						for _, entry in ipairs(entries) do
-							files[#files + 1] = entry.name
 						end
 
 						vim.fn.jobstart({ "zip", "-r", archive_name, unpack(files) }, {
