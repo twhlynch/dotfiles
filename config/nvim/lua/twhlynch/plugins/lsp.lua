@@ -179,6 +179,32 @@ return {
 			end)
 		end, { noremap = true, silent = true, desc = "Format current buffer" })
 
+		local doxygen_ns = vim.api.nvim_create_namespace("doxygen_conceal")
+		local function conceal_doxygen(bufnr)
+			vim.api.nvim_buf_clear_namespace(bufnr, doxygen_ns, 0, -1)
+
+			for lnum, line in ipairs(vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)) do
+				local start_col, end_col, word = line:find("@%*?(%w+)%*?")
+
+				while start_col do
+					vim.api.nvim_buf_set_extmark(bufnr, doxygen_ns, lnum - 1, start_col - 1, {
+						end_col = end_col,
+						conceal = "",
+						virt_text = {
+							{
+								word:sub(1, 1):upper() .. word:sub(2),
+								"Keyword",
+							},
+						},
+						virt_text_pos = "inline",
+						hl_mode = "replace",
+					})
+
+					start_col, end_col, word = line:find("@%*?(%w+)%*?", end_col + 1)
+				end
+			end
+		end
+
 		local autocmd = vim.api.nvim_create_autocmd
 		autocmd("LspAttach", {
 			callback = function(e)
@@ -198,6 +224,7 @@ return {
 						vim.wo[winid].concealcursor = "nv"
 						vim.wo[winid].conceallevel = 2
 						vim.wo[winid].scrolloff = 0
+						conceal_doxygen(bufnr)
 					end
 					return bufnr, winid
 				end
