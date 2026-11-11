@@ -11,6 +11,22 @@ chpwd() {
 		nvm use
 	fi
 
+	# node
+	if [[ -n "$PROJECT_NODE_BIN" ]]; then
+		path=("${(@)path:#${(b)PROJECT_NODE_BIN}}")
+	fi
+	export PROJECT_NODE_BIN=""
+
+	local dir="$PWD"
+	while [[ "$dir" != "/" ]]; do
+		if [[ -d "$dir/node_modules/.bin" ]]; then
+			export PROJECT_NODE_BIN="$dir/node_modules/.bin"
+			path=($path "$PROJECT_NODE_BIN")
+			break
+		fi
+		dir="${dir:h}"
+	done
+
 	# java
 	if [[ -f .java-version ]]; then
 		export JAVA_HOME="$(/usr/libexec/java_home -v "$(cat .java-version | tr -d '\n')")"
