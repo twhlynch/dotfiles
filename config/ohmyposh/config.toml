@@ -25,6 +25,13 @@ final_space = true
     template = '{{ if .Venv }}({{ .Venv }}){{ end }}'
 
   [[blocks.segments]]
+    type = 'text'
+    style = 'plain'
+    foreground = 'green'
+    background = 'transparent'
+    template = '{{ if .Env.PROJECT_NODE_BIN }}({{ base (dir (dir .Env.PROJECT_NODE_BIN) ) }}){{ end }}'
+
+  [[blocks.segments]]
     template = ' {{ .Path }}'
     foreground = 'blue'
     background = 'transparent'
