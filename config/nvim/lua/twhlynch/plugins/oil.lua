@@ -143,6 +143,60 @@ return {
 							end,
 						})
 					end,
+					["<leader>Y"] = function()
+						local oil = require("oil")
+						local dir = oil.get_current_dir()
+
+						if not dir then
+							return
+						end
+
+						local files = get_selected_files()
+						files = vim.tbl_map(function(file)
+							return vim.fs.joinpath(dir, file)
+						end, files)
+
+						if #files == 0 then
+							return
+						end
+
+						local system = vim.uv.os_uname().sysname
+						local cmd, stdin = nil, nil
+
+						if system == "Darwin" then
+							-- FIXME: could only figure out one file at a time on macos
+							cmd = {
+								"osascript",
+								"-e",
+								'set the clipboard to (POSIX file "' .. files[1] .. '")',
+							}
+						elseif system == "Linux" then
+							local uris = vim.tbl_map(vim.uri_from_fname, files)
+
+							stdin = "copy\n" .. table.concat(uris, "\n") .. "\n"
+
+							if vim.env.WAYLAND_DISPLAY then
+								cmd = { "wl-copy", "--type", "x-special/gnome-copied-files" }
+							else
+								cmd = {
+									"xclip",
+									"-selection",
+									"clipboard",
+									"-in",
+									"-t",
+									"x-special/gnome-copied-files",
+								}
+							end
+						else
+							return
+						end
+
+						vim.system(cmd, { stdin = stdin }, function(result)
+							if result.code ~= 0 then
+								vim.notify("Failed to copy files", vim.log.levels.ERROR)
+							end
+						end)
+					end,
 				},
 				view_options = {
 					show_hidden = true,
