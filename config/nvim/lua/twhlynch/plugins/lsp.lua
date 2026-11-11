@@ -70,6 +70,20 @@ local formatters = {
 	nix = { "nixfmt" },
 }
 
+-- skip auto install
+local no_install = {
+	-- deprecated from mason registry
+	["rustfmt"] = true,
+	-- install with rust
+	["rust_analyzer"] = true,
+	-- install with nix
+	["nixfmt"] = true,
+	-- use system install
+	["clang-format"] = true,
+	["clang-tidy"] = true,
+	["clangd"] = true,
+	["arduino-language-server"] = true,
+}
 local mason_tools = {
 	-- lsp, dap, linter, formatter
 }
@@ -116,7 +130,7 @@ return {
 		-- add formatters to tools list
 		for _, value in pairs(formatters) do
 			local name = value[1]
-			if name and name ~= "rustfmt" and name ~= "nixfmt" and name ~= "clang-format" then
+			if name and not no_install[name] then
 				table.insert(mason_tools, name)
 			end
 		end
