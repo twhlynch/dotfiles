@@ -247,6 +247,98 @@ return {
 				},
 			})
 
+			-- drop files
+
+			local function split_paths(str)
+				local paths = {}
+				local current = ""
+				local escaped = false
+
+				for i = 1, #str do
+					local char = str:sub(i, i)
+
+					if escaped then
+						current = current .. char
+						escaped = false
+					elseif char == "\\" then
+						escaped = true
+					elseif char:match("%s") then
+						if current ~= "" then
+							table.insert(paths, current)
+							current = ""
+						end
+					else
+						current = current .. char
+					end
+				end
+
+				if escaped then
+					current = current .. "\\"
+				end
+
+				if current ~= "" then
+					table.insert(paths, current)
+				end
+
+				return paths
+			end
+
+			local paste_chunks = {}
+			local original_paste = vim.paste
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.paste = function(lines, phase)
+				if not require("oil.util").is_oil_bufnr(0) then
+					paste_chunks = {}
+					return original_paste(lines, phase)
+				end
+
+				if phase == -1 or phase == 1 then
+					paste_chunks = {}
+				end
+
+				table.insert(paste_chunks, table.concat(lines, "\n"))
+
+				if phase ~= -1 and phase ~= 3 then
+					return true
+				end
+
+				local pasted = table.concat(paste_chunks)
+				paste_chunks = {}
+
+				if pasted:find("\n", 1, true) then
+					return original_paste(vim.split(pasted, "\n", { plain = true }), -1)
+				end
+
+				local paths = split_paths(pasted)
+
+				if #paths == 0 then
+					return original_paste({ pasted }, -1)
+				end
+
+				for _, path in ipairs(paths) do
+					if not vim.startswith(path, "/") or (vim.fn.filereadable(path) ~= 1 and vim.fn.isdirectory(path) ~= 1) then
+						return original_paste({ pasted }, -1)
+					end
+				end
+
+				local dir = require("oil").get_current_dir()
+				if not dir then
+					return original_paste({ pasted }, -1)
+				end
+
+				for _, path in ipairs(paths) do
+					vim.fn.system({ "cp", "-R", path, dir })
+
+					if vim.v.shell_error ~= 0 then
+						return original_paste({ pasted }, -1)
+					else
+						require("oil.actions").refresh.callback()
+					end
+				end
+
+				return true
+			end
+
 			-- open preview automatically at size
 			local open_explorer = function()
 				local oil = require("oil")
