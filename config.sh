@@ -6,6 +6,33 @@ function label() {
 	echo "---> $@"
 }
 
+function privileged() {
+	local target="$1"
+	shift
+
+	if [[ -w "$target" ]]; then
+		command "$@"
+	else
+		sudo "$@"
+	fi
+}
+
+function mv() {
+	privileged "$2" mv "$@"
+}
+
+function cp() {
+	privileged "$2" cp "$@"
+}
+
+function mkdir() {
+	privileged "$2" mkdir "$@"
+}
+
+function rm() {
+	privileged "$2" rm "$@"
+}
+
 function backup() {
 	target="$1"
 

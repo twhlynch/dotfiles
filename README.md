@@ -2,7 +2,7 @@
 
 My configs for MacOS and Ubuntu. Run scripts at your own risk.
 
-Run `sudo config.sh` to setup symlinks and sync configs.
+Run `config.sh` to setup symlinks and sync configs.
 
 Run `sudo installs.sh` to install packages and tools.
 
