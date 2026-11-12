@@ -9,6 +9,9 @@ if [[ "$(uname)" == "Linux" ]]; then
 	# pi agent
 	curl -fsSL https://pi.dev/install.sh | sh
 
+	# zen
+	curl -fsSL https://github.com/zen-browser/updates-server/raw/refs/heads/main/install.sh | $SHELL
+
 	# everything else is in a nix flake
 	nix profile add ~/dotfiles/config/nix#default
 	nix profile install nixpkgs#hyprland
