@@ -1,6 +1,6 @@
 # dotfiles
 
-My configs for MacOS and Ubuntu. Run scripts at your own risk.
+My configs for MacOS, and Ubuntu with Nix. Use at your own risk.
 
 Run `config.sh` to setup symlinks and sync configs.
 
@@ -18,26 +18,35 @@ Ghostty > Zsh > tmux > Neovim > Lazygit > git
 
 ```sh
 ./config
-> arc         # arc browser userscripts
-> bat         # modern cat replacement
-> discord     # discord vencord settings
-> fastfetch   # neofetch alternative
-> gh          # github cli
-> ghostty     # ghostty terminal
-> git         # other git config
-> lazygit     # tui git client
-> macos       # macos specific (keymaps, quick actions, fixes, xcode)
-> nvim        # neovim config
-> ohmyposh    # zsh prompt bloat
-> opencode    # slop printer
-> swiftbar    # custom menu bar utils (macos)
-> vscode      # vscode config + extensions
-> tmux        # tmux config
-> yazi        # yazi file explorer
-> zsh         # zsh aliases and functions
-> .gitconfig  # git config
-> .hushlogin  # hide annoying macos tty message
-> .tmux.conf  # tmux config entry
-> .zprofile   # zsh profile file
-> .zshrc      # zsh shell config
+> .pi           # pi ai agent
+> arc           # arc browser userscripts
+> bat           # modern cat replacement
+> discord       # discord vencord settings
+> dunst         # linux notification daemon
+> fastfetch     # neofetch alternative
+> fontconfig    # nix fonts support
+> gh            # github cli
+> ghostty       # ghostty terminal
+> git           # other git config
+> hypr          # hypr{land,paper,idle,lock} configs
+> lazygit       # tui git client
+> macos         # macos specific (keymaps, quick actions, fixes, xcode)
+> nix           # nix profile flake
+> nvim          # neovim config
+> ohmyposh      # zsh prompt bloat
+> opencode      # slop printer
+> swiftbar      # custom menu bar utils (macos)
+> tmux          # tmux config
+> vicinae       # raycast alternative
+> vscode        # vscode config + extensions
+> waybar        # status bar for linux
+> wofi          # minimal launcher/dmenu
+> yazi          # yazi file explorer
+> zsh           # zsh aliases and functions
+> .gitconfig    # git config
+> .hushlogin    # hide annoying macos tty message
+> .tmux.conf    # tmux config entry
+> .zprofile     # zsh profile file
+> .zshrc        # zsh shell config
+> wallpaper.png # mah background
 ```
