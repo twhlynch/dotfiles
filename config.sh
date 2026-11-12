@@ -46,7 +46,7 @@ function copy() {
 }
 
 # ~ configs
-for name in .hushlogin .zshrc .zprofile .tmux.conf .gitconfig .pi/agent/extensions .pi/agent/models.json; do
+for name in .hushlogin .zshrc .zprofile .tmux.conf .gitconfig .pi/agent/extensions .pi/agent/models.json .pi/agent/settings.json .pi/agent/sandbox.json; do
 	symlink "config/$name" "$HOME/$name"
 done
 

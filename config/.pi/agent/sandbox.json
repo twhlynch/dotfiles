@@ -1,0 +1,11 @@
+{
+	"enabled": true,
+	"sandboxUserShell": true,
+	"allowSystemTemp": true,
+	"filesystem": {
+		"allowRead": ["."],
+		"allowWrite": ["."],
+		"denyRead": [],
+		"denyWrite": []
+	}
+}
