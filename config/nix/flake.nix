@@ -120,6 +120,7 @@
           lua
           luarocks
           combinedPython
+          chromium
 
           nerd-fonts.hack
           nerd-fonts.symbols-only
