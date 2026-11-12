@@ -83,6 +83,15 @@ local no_install = {
 	["clang-tidy"] = true,
 	["clangd"] = true,
 	["arduino-language-server"] = true,
+	-- might noit want
+	["palantir-java-format"] = true,
+	["jdtls"] = true,
+	["ltex_plus"] = true,
+	["zls"] = true,
+	["vtsls"] = true,
+	["vue_ls"] = true,
+	["astro"] = true,
+	["mdx_analyzer"] = true,
 }
 
 return {
