@@ -245,6 +245,10 @@ return {
 						vim.wo[winid].conceallevel = 2
 						vim.wo[winid].scrolloff = 0
 						conceal_doxygen(bufnr)
+						if vim.w[winid].badchars_matchid then
+							-- idk why this errors, whole things weird
+							pcall(vim.fn.matchdelete, vim.w[winid].badchars_matchid, winid)
+						end
 					end
 					return bufnr, winid
 				end
