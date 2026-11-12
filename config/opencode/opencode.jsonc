@@ -3,6 +3,11 @@
 	"permissions": [
 		{
 			"action": "external_directory",
+			"resource": "*",
+			"effect": "deny",
+		},
+		{
+			"action": "external_directory",
 			"resource": "/tmp/**",
 			"effect": "allow",
 		},
