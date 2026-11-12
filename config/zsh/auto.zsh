@@ -21,7 +21,7 @@ chpwd() {
 	while [[ "$dir" != "/" ]]; do
 		if [[ -d "$dir/node_modules/.bin" ]]; then
 			export PROJECT_NODE_BIN="$dir/node_modules/.bin"
-			path=($path "$PROJECT_NODE_BIN")
+			path=("$PROJECT_NODE_BIN" $path)
 			break
 		fi
 		dir="${dir:h}"
