@@ -111,5 +111,10 @@ return {
 				[[\u2018-\u2019]], -- ‘ ’ single smart quotes
 			},
 		},
+		simple_todo = {
+			enabled = true,
+			keymap = "<leader><Tab>",
+			filepath = "~/TODO.md",
+		},
 	},
 }
