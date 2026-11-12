@@ -53,7 +53,7 @@ alias hl='rg --passthru'
 
 # annoying
 alias mkdir='mkdir -p'
-alias cp='cp -r'
+alias cp='cp -R'
 
 # kill
 alias ka='killall'
