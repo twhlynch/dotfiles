@@ -102,7 +102,7 @@ return {
 			"neovim/nvim-lspconfig",
 			init = function()
 				local lsp_path = require("lazy.core.config").options.root .. "/nvim-lspconfig"
-				vim.opt.runtimepath:append(lsp_path)
+				vim.opt.runtimepath:prepend(lsp_path)
 			end,
 		}, -- lsp config data
 		"stevearc/conform.nvim", -- formatter
