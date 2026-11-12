@@ -88,16 +88,10 @@ map({ "x" }, "<leader>mr", ":<esc>:%s/\\%V[^A-Za-z0-9]/ /g<CR>", "Clean selectio
 -- :lua print(vim.fn.keytrans(vim.fn.getcharstr()))
 -- cmd/ctrl + arrow keys or backspace is full line movement
 map({ "i" }, "<C-Left>", "<C-o>^", "Move to beginning of line")
--- map({ "i" }, "<C-A>", "<C-o>^", "Move to beginning of line")
 map({ "i" }, "<C-Right>", "<C-o>$", "Move to end of line")
--- map({ "i" }, "<C-E>", "<C-o>$", "Move to end of line")
 map({ "n", "x" }, "<C-Left>", "^", "Move to beginning of line")
--- map({ "n", "x" }, "<C-A>", "^", "Move to beginning of line")
 map({ "n", "x" }, "<C-Right>", "$", "Move to end of line")
--- map({ "n", "x" }, "<C-E>", "$", "Move to end of line")
--- map({ "i" }, "<C-U>", "<C-o>d^", "Delete to beginning of line")
 map({ "i" }, "<C-H>", "<C-o>d^", "Delete to beginning of line")
--- map({ "n" }, "<C-U>", "d^", "Delete to beginning of line")
 map({ "n" }, "<C-H>", "d^", "Delete to beginning of line")
 -- alt + arrow keys or backspace is word movement
 map({ "i" }, "<M-b>", "<C-o>b", "Move to beginning of word")
