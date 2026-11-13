@@ -127,6 +127,8 @@ return {
 					highlights["@keyword.return.luadoc"] = { fg = c.keyword_darker }
 					highlights["@keyword.luadoc"] = { fg = c.keyword_darker }
 					highlights["@lsp.typemod.keyword.documentation.lua"] = { fg = c.keyword_darker }
+					highlights["@lsp.type.type"] = { fg = c.type }
+					highlights["@lsp.type.keyword"] = { fg = c.keyword }
 					-- lua macros are types
 					highlights["@lsp.type.macro.lua"] = { fg = c.type }
 					highlights["@function.macro.luadoc"] = { fg = c.type }
