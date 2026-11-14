@@ -11,13 +11,55 @@ local function update_copilot_usage()
 		end
 
 		local ok, json = pcall(vim.json.decode, data.stdout)
+		-- quota_reset_date = "2026-12-01",
+		-- quota_reset_date_utc = "2026-12-01T00:00:00.000Z",
+		-- quota_snapshots = {
+		--   completions = {
+		--     credits_used = 2000,
+		--     entitlement = 2000,
+		--     percent_remaining = 0,
+		--     quota_remaining = 0,
+		--     remaining = 0,
 
 		if not (ok and json and json.quota_snapshots and json.quota_snapshots.completions and json.quota_snapshots.completions.percent_remaining) then
 			return
 		end
 
 		local percentage_used = 100 - json.quota_snapshots.completions.percent_remaining
-		local usage_string = string.format("%.0f%% ", percentage_used):gsub("%%", "%%%%")
+		local quota_remaining = json.quota_snapshots.completions.quota_remaining or 0
+		local usage_string = "!"
+
+		if percentage_used == 100 and quota_remaining == 0 then
+			if json.quota_reset_date_utc then
+				local function utc_timestamp(year, month, day, hour, min, sec)
+					local local_time = os.time({
+						year = year,
+						month = month,
+						day = day,
+						hour = hour,
+						min = min,
+						sec = sec,
+					})
+
+					---@diagnostic disable-next-line: param-type-mismatch
+					local utc = os.time(os.date("!*t", local_time))
+					return local_time + os.difftime(local_time, utc)
+				end
+
+				local y, m, d, h, min, s = json.quota_reset_date_utc:match("(%d+)-(%d+)-(%d+)T(%d+):(%d+):(%d+)")
+
+				local reset = utc_timestamp(tonumber(y), tonumber(m), tonumber(d), tonumber(h), tonumber(min), tonumber(s))
+
+				local remaining = reset - os.time()
+
+				local days = math.floor(remaining / 86400)
+				local hours = math.floor((remaining % 86400) / 3600)
+
+				usage_string = string.format("%dd %dh ", days, hours)
+			end
+		else
+			usage_string = string.format("%.0f%% ", percentage_used):gsub("%%", "%%%%")
+		end
 
 		vim.schedule(function()
 			vim.g.copilot_suggestion_usage_string = usage_string
