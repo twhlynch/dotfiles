@@ -78,7 +78,8 @@ brew install \
 	apktool \
 	oh-my-posh \
 	rlwrap \
-	terminal-notifier
+	terminal-notifier \
+	mo
 
 brew install ffmpeg-full imagemagick-full
 brew link ffmpeg-full imagemagick-full -f --overwrite
