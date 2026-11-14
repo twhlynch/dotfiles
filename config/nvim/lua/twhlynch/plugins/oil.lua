@@ -96,6 +96,9 @@ return {
 						if entry.name:match("%.zip$") then
 							vim.fn.jobstart({ "unzip", filepath, "-d", dir }, { detach = true })
 							require("oil.actions").refresh.callback()
+						elseif entry.name:match("%.tar$") or entry.name:match("%.tar%.[a-z]+$") then
+							vim.fn.jobstart({ "tar", "-xf", filepath, "-C", dir }, { detach = true })
+							require("oil.actions").refresh.callback()
 						else
 							vim.ui.open(filepath)
 						end
