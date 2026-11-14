@@ -19,7 +19,7 @@ return {
 			key = "<leader>LSP",
 		},
 		fff = {
-			enabled = true,
+			enabled = false,
 			key = "<leader><leader>",
 		},
 		origami = {

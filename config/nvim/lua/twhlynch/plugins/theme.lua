@@ -149,6 +149,8 @@ return {
 					highlights.ScrollbarThumbPressed = { bg = c.visual }
 					highlights.ScrollbarMark = { fg = c.constant }
 					highlights.ScrollbarSearch = { fg = c.delta }
+
+					highlights.IncSearch = { fg = c.delta, bold = true }
 				end,
 			})
 			vim.cmd("colorscheme vague")
