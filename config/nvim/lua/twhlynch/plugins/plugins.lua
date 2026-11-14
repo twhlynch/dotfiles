@@ -11,7 +11,7 @@ return {
 	lazy = false,
 	opts = {
 		blame = {
-			enabled = true,
+			enabled = false,
 			key = "<leader>bf",
 		},
 		copy_lspconfig = {

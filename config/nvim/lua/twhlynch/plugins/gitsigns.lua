@@ -111,6 +111,8 @@ return {
 					local state = gitsigns.toggle_numhl()
 					print("gitsigns hl: " .. (state and "on" or "off"))
 				end, { desc = "Toggle Diff Highlight", noremap = true })
+
+				map("n", "<leader>bf", gitsigns.blame, { desc = "Blame file", noremap = true })
 			end,
 		})
 	end,
