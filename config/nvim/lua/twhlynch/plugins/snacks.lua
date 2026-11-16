@@ -40,7 +40,7 @@ return {
 			{ "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
 			{ "<leader>u", function() Snacks.picker.undo() end, desc = "Undo History" },
 			{ "<leader>f", function() Snacks.picker.files() end, desc = "Find Files" },
-			{ "<leader>s", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+			-- { "<leader>s", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
 			{ "<leader>r", function() Snacks.picker.recent() end, desc = "Recent" },
 			{ "<leader>g/", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
 			{ "<leader>hh", function() Snacks.picker.help() end, desc = "Help Pages" },
@@ -61,6 +61,56 @@ return {
 			{ "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
 			{ "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
 			-- stylua: ignore end
+			{
+				"<space>s",
+				function()
+					Snacks.picker.pick({
+						format = "file",
+						notify = false, -- Also prevents error when searching with additional arguments
+						show_empty = true,
+						live = true,
+						supports_live = true,
+						-- hidden = true,
+						-- ignored = true,
+						---@param opts snacks.picker.grep.Config
+						finder = function(opts, ctx)
+							local cmd = "ast-grep"
+							local args = { "run", "--color=never", "--json=stream" }
+							if vim.fn.has("win32") == 1 then
+								cmd = "sg"
+							end
+							if opts.hidden then
+								table.insert(args, "--no-ignore=hidden")
+							end
+							if opts.ignored then
+								table.insert(args, "--no-ignore=vcs")
+							end
+							local pattern, pargs = Snacks.picker.util.parse(ctx.filter.search)
+							table.insert(args, string.format("--pattern=%s", pattern))
+							vim.list_extend(args, pargs)
+							return require("snacks.picker.source.proc").proc(
+								ctx:opts({
+									cmd = cmd,
+									args = args,
+									transform = function(item)
+										local entry = vim.json.decode(item.text)
+										if vim.tbl_isempty(entry) then
+											return false
+										else
+											local start = entry.range.start
+											item.cwd = svim.fs.normalize(opts and opts.cwd or vim.uv.cwd() or ".") or nil
+											item.file = entry.file
+											item.line = entry.text
+											item.pos = { tonumber(start.line) + 1, tonumber(start.column) }
+										end
+									end,
+								}),
+								ctx
+							)
+						end,
+					})
+				end,
+			},
 		},
 	},
 	{

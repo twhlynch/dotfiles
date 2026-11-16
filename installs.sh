@@ -79,7 +79,8 @@ brew install \
 	oh-my-posh \
 	rlwrap \
 	terminal-notifier \
-	mo
+	mo \
+	ast-grep
 
 brew install ffmpeg-full imagemagick-full
 brew link ffmpeg-full imagemagick-full -f --overwrite
