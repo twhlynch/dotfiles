@@ -20,6 +20,8 @@
 	undo = "!UNDO_ALIAS_FUNC() { git reset HEAD~; }; UNDO_ALIAS_FUNC"
 	new = "!NEW_ALIAS_FUNC() { git checkout -b $3 $1; git push -u $2 $3; }; NEW_ALIAS_FUNC"
 	graph = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	forget = update-index --skip-worktree
+	remember = update-index --no-skip-worktree
 [core]
 	pager = delta
 [interactive]
