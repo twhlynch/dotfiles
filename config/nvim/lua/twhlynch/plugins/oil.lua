@@ -176,10 +176,10 @@ return {
 						elseif system == "Linux" then
 							local uris = vim.tbl_map(vim.uri_from_fname, files)
 
-							stdin = "copy\n" .. table.concat(uris, "\n") .. "\n"
+							stdin = table.concat(uris, "\n") .. "\n"
 
 							if vim.env.WAYLAND_DISPLAY then
-								cmd = { "wl-copy", "--type", "x-special/gnome-copied-files" }
+								cmd = { "wl-copy", "--type", "text/uri-list" }
 							else
 								cmd = {
 									"xclip",
@@ -187,7 +187,7 @@ return {
 									"clipboard",
 									"-in",
 									"-t",
-									"x-special/gnome-copied-files",
+									"text/uri-list",
 								}
 							end
 						else
