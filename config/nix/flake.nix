@@ -7,6 +7,10 @@
       url = "github:Cu3PO42/pam_shim/next";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    helium = {
+      url = "github:schembriaiden/helium-browser-nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -14,6 +18,7 @@
       self,
       nixpkgs,
       pam-shim,
+      helium,
     }:
     let
       system = "x86_64-linux";
@@ -121,6 +126,7 @@
           luarocks
           combinedPython
           chromium
+          helium.packages.${system}.default
 
           nerd-fonts.hack
           nerd-fonts.symbols-only

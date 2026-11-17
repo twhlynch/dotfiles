@@ -4,7 +4,7 @@ local M = {
 
 	terminal = "ghostty",
 	shell = "zsh",
-	browser = "/usr/bin/microsoft-edge-stable",
+	browser = "helium",
 	player = "spotify",
 
 	scripts = "~/.config/hypr/scripts/",

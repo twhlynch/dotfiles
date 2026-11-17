@@ -33,6 +33,10 @@ function rm() {
 	privileged "$2" rm "$@"
 }
 
+function ln() {
+	privileged "$2" ln "$@"
+}
+
 function backup() {
 	target="$1"
 
@@ -82,6 +86,26 @@ done
 for name in fontconfig vicinae hypr wofi dunst waybar nvim ohmyposh ghostty lazygit bat fastfetch git gh yazi nix opencode/themes opencode/AGENTS.md opencode/opencode.jsonc opencode/cli.json opencode/plugins; do
 	symlink "config/$name" "$HOME/.config/$name"
 done
+
+# alternate location configs (linux only)
+
+if [[ "$(uname)" == "Linux" ]]; then
+	# nix system config
+	LINE="include $HOME/.config/nix/nix.conf"
+	grep -qxF "$LINE" /etc/nix/nix.conf || printf '\n%s\n' "$LINE" | sudo tee -a /etc/nix/nix.conf > /dev/null
+
+	# helium apparmor permission
+	HELIUM_BIN="$(readlink -f "$(find "$(dirname "$(readlink -f "$(command -v helium)")")/.." -path '*/opt/helium/helium' -type f -print -quit)")"
+	sudo tee /etc/apparmor.d/helium >/dev/null <<-EOF
+	abi <abi/4.0>,
+	include <tunables/global>
+	profile helium ${HELIUM_BIN} flags=(unconfined) {
+		userns,
+	}
+	EOF
+	sudo apparmor_parser -r /etc/apparmor.d/helium
+
+fi
 
 # alternate location configs (macos only)
 
@@ -155,6 +179,12 @@ if [[ "$(uname)" == "Darwin" ]]; then
 	killall WindowManager
 	killall Finder
 
+fi
+
+# reload nix
+
+if [[ "$(uname)" == "Linux" ]]; then
+	sudo systemctl restart nix-daemon.service
 fi
 
 # reload bat theme
