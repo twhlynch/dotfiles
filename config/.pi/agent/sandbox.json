@@ -2,10 +2,30 @@
 	"enabled": true,
 	"sandboxUserShell": true,
 	"allowSystemTemp": true,
+	"enableAccessRequestTool": true,
 	"filesystem": {
-		"allowRead": ["."],
-		"allowWrite": ["."],
+		"allowRead": [".", "/tmp"],
+		"allowWrite": [".", "/tmp"],
 		"denyRead": [],
 		"denyWrite": []
+	},
+	"network": {
+		"allowAllUnixSockets": true,
+		"allowedDomains": [
+			//
+			"center2.conan.io",
+			"cache.nixos.org",
+			"github.com",
+			"*.github.com",
+			"raw.githubusercontent.com",
+			"objects.githubusercontent.com",
+			"release-assets.githubusercontent.com",
+			"npmjs.org",
+			"*.npmjs.org",
+			"registry.npmjs.org",
+			"registry.yarnpkg.com",
+			"pypi.org",
+			"*.pypi.org"
+		]
 	}
 }
