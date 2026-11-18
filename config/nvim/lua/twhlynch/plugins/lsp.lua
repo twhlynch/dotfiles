@@ -37,6 +37,8 @@ local lsp_list = {
 	"jsonls",
 	-- zig
 	"zls",
+	-- other
+	"ast_grep",
 }
 
 local formatters = {
