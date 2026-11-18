@@ -107,3 +107,4 @@ if [[ "$(uname)" == "Darwin" ]]; then
 fi
 
 alias nr='nix profile upgrade --all --impure --show-trace'
+alias dev="nix develop -c $SHELL"
