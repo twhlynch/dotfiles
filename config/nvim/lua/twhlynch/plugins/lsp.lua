@@ -43,7 +43,7 @@ local lsp_list = {
 
 local formatters = {
 	lua = { "stylua" },
-	python = { "black" },
+	python = { "ruff" },
 	jupyter = { "black" },
 	rust = { "rustfmt" },
 	-- go = { "gofumpt" },

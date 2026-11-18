@@ -125,6 +125,7 @@
           lua
           luarocks
           combinedPython
+          ruff
           ast-grep
           chromium
           helium.packages.${system}.default
