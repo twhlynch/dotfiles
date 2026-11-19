@@ -4,8 +4,8 @@
 	"allowSystemTemp": true,
 	"enableAccessRequestTool": true,
 	"filesystem": {
-		"allowRead": [".", "/tmp"],
-		"allowWrite": [".", "/tmp"],
+		"allowRead": [".", "/tmp", "~/.agents"],
+		"allowWrite": [".", "/tmp", "~/.agents"],
 		"denyRead": [],
 		"denyWrite": []
 	},
