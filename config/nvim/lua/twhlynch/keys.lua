@@ -104,3 +104,15 @@ map({ "n", "x" }, "<M-f>", "w", "Move to end of word")
 map({ "n", "x" }, "<M-Right>", "w", "Move to end of word")
 map({ "i" }, "<M-Backspace>", "<C-o>db", "Delete to beginning of word")
 map({ "n" }, "<M-Backspace>", "db", "Delete to beginning of word")
+
+vim.keymap.set("n", "<leader>q", function()
+	vim.fn.setqflist({
+		{
+			bufnr = vim.api.nvim_get_current_buf(),
+			lnum = vim.fn.line("."),
+			col = vim.fn.col("."),
+			text = vim.fn.getline("."),
+		},
+	}, "a")
+	print("Added location to quickfix list")
+end, { desc = "Add current location to quickfix list" })
