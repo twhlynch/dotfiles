@@ -52,6 +52,7 @@ bind({ root.mod, "T" }, actions.insert_empty_workspace())
 bind({ root.mod, "G" }, actions.remove_empty_workspaces())
 
 bind({ root.mod, "Return" }, actions.open_terminal())
+bind({ root.mod, "ALT", "Return" }, hl.dsp.exec_cmd(root.browser))
 
 bind({ root.mod, "mouse:272" }, hl.dsp.window.drag())
 bind({ root.mod, "mouse:273" }, hl.dsp.window.resize())
