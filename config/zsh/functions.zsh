@@ -388,3 +388,32 @@ function ses() {
 
 	[[ -n "$session" ]] && opencode -s "$session"
 }
+
+function extract-subrepo() {
+	if [[ -z "$1" || -z "$2" ]]; then
+		echo "Usage: $0 <from_target_subrepo> <to_new_repo_dir>"
+		return 1
+	fi
+
+	local target_subrepo="$1"
+	local new_repo_dir="$2"
+
+	local temp_branch="temp-subtree-split-branch"
+
+	local monorepo="$(git rev-parse --show-toplevel)"
+
+	mkdir -p "$new_repo"
+	local new_repo="$(realpath "$new_repo_dir")"
+
+	if git show-ref --verify --quiet "refs/heads/$temp_branch"; then
+		echo "'$temp_branch' must not already exist. Remove it with git branch -D $temp_branch"
+		return 1
+	fi
+
+	git -C "$monorepo" subtree split "--prefix=$target_subrepo" -b "$temp_branch"
+
+	git -C "$new_repo" init
+	git -C "$new_repo" pull "$monorepo" "$temp_branch"
+
+	git -C "$monorepo" branch -D "$temp_branch"
+}
