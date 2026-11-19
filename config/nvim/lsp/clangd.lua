@@ -102,6 +102,7 @@ return {
 		"--completion-style=detailed",
 		"--header-insertion=iwyu",
 		"--header-insertion-decorators",
+		"--query-driver=" .. vim.env.HOME .. "/.nix-profile/bin/c++,/nix/store/*/bin/*",
 	},
 	filetypes = {
 		"c",
