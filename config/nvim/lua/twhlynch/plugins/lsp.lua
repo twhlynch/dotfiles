@@ -201,6 +201,10 @@ return {
 			end)
 		end, { noremap = true, silent = true, desc = "Format current buffer" })
 
+		vim.api.nvim_create_user_command("Format", function()
+			conform.format({ async = false })
+		end, { bar = true })
+
 		local doxygen_ns = vim.api.nvim_create_namespace("doxygen_conceal")
 		local function conceal_doxygen(bufnr)
 			vim.api.nvim_buf_clear_namespace(bufnr, doxygen_ns, 0, -1)
