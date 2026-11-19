@@ -18,6 +18,13 @@ final_space = true
   newline = true
 
   [[blocks.segments]]
+    type = 'text'
+    style = 'plain'
+    foreground = 'cyan'
+    background = 'transparent'
+    template = '{{ if .Env.IN_NIX_SHELL }} {{ end }}'
+
+  [[blocks.segments]]
     type = 'python'
     style = 'plain'
     foreground = 'cyan'
