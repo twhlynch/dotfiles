@@ -1,6 +1,6 @@
 return {
 	"petertriho/nvim-scrollbar",
-	branch = "refactor/v2",
+	branch = "main",
 	opts = {
 		exclude = {
 			buftypes = {
@@ -19,6 +19,7 @@ return {
 			gitsigns = { minimap = false },
 			search = { minimap = false },
 			marks = { minimap = false },
+			qflist = { minimap = false },
 			treesitter = true,
 			lsp_semantic_tokens = true,
 		},
@@ -38,6 +39,7 @@ return {
 			blend = 50,
 		},
 		marks = {
+			Qflist = { highlight = { fg = "#6e94b2" } },
 			Error = { text = { "-", "=" }, priority = 2 },
 			Warn = { text = { "-", "=" }, priority = 3 },
 			Info = { text = { "-", "=" }, priority = 4 },
