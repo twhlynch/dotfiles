@@ -28,6 +28,11 @@ if [[ -d "$ANDROID_HOME/ndk" ]]; then
 	export NDK_HOME="$ANDROID_HOME/ndk/$(ls "$ANDROID_HOME/ndk" | sort -V | tail -n 1)"
 fi
 
+# use ccache
+export CMAKE_C_COMPILER_LAUNCHER="ccache"
+export CMAKE_CXX_COMPILER_LAUNCHER="ccache"
+export CMAKE_CUDA_COMPILER_LAUNCHER="ccache"
+
 # github cli
 export GH_CONFIG_DIR="$HOME/.config/gh/personal"
 export GH_USER="twhlynch"
