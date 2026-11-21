@@ -21,7 +21,7 @@ export EDITOR=nvim
 
 # android dev
 export ANDROID_HOME="$HOME/Library/Android/sdk"
-export NDK_HOME="$HOME/Library/Android/sdk/ndk/28.2.13676358"
+export NDK_HOME="$ANDROID_HOME/ndk/$(ls "$ANDROID_HOME/ndk" | sort -V | tail -n 1)"
 
 # github cli
 export GH_CONFIG_DIR="$HOME/.config/gh/personal"
