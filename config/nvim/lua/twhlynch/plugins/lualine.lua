@@ -41,7 +41,7 @@ return {
 						end,
 					},
 				}),
-				extension("NvimTree", {
+				extension("neo-tree", {
 					lualine_c = {
 						function()
 							return vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
