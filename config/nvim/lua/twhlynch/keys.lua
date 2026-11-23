@@ -116,3 +116,36 @@ vim.keymap.set("n", "<leader>q", function()
 	}, "a")
 	print("Added location to quickfix list")
 end, { desc = "Add current location to quickfix list" })
+
+vim.keymap.set("n", "<C-w>O", function()
+	local current_win = vim.api.nvim_get_current_win()
+
+	local keep_filetypes = {
+		["qf"] = true,
+		["neo-tree"] = true,
+		["scrollbar"] = true,
+		["dapui_watches"] = true,
+		["dapui_stacks"] = true,
+		["dapui_breakpoints"] = true,
+		["dapui_scopes"] = true,
+	}
+	local keep_buftypes = {
+		["quickfix"] = true,
+		["prompt"] = true,
+	}
+
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		if win ~= current_win then
+			local buf = vim.api.nvim_win_get_buf(win)
+			local ft = vim.bo[buf].filetype
+			local bt = vim.bo[buf].buftype
+
+			-- ignore floating windows
+			local is_floating = vim.api.nvim_win_get_config(win).relative ~= ""
+
+			if not is_floating and not keep_filetypes[ft] and not keep_buftypes[bt] then
+				pcall(vim.api.nvim_win_close, win, false)
+			end
+		end
+	end
+end, { desc = "Close other main windows" })
