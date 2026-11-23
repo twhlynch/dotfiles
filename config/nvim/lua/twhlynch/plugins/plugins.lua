@@ -116,5 +116,10 @@ return {
 			keymap = "<leader><Tab>",
 			filepath = "~/TODO.md",
 		},
+		update_actions = {
+			enabled = true,
+			ttl_days = 7,
+			severity = vim.diagnostic.severity.HINT,
+		},
 	},
 }
