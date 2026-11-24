@@ -9,6 +9,9 @@ return {
 		search = {
 			pattern = [[\b(KEYWORDS)(\([^:]*\))?:]],
 		},
+		keywords = {
+			TEST = { icon = "󰔛 " }, -- 󰙨
+		},
 	},
 	keys = {
 		-- stylua: ignore start
