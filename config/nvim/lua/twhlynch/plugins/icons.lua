@@ -45,6 +45,7 @@ return {
 			files[".DS_Store"] = vim.deepcopy(files[".ds_store"])
 			files["CMakeLists.txt"] = vim.deepcopy(files["cmakelists.txt"])
 			files["VERSION"] = { glyph = "󰓹" }
+			files[".gersemirc"] = vim.deepcopy(files["CMakeLists.txt"])
 			-- jupyter logo icon does not expand
 			extensions["ipynb"].glyph = "󰠮"
 
