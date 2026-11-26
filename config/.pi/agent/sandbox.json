@@ -25,7 +25,8 @@
 			"registry.npmjs.org",
 			"registry.yarnpkg.com",
 			"pypi.org",
-			"*.pypi.org"
+			"*.pypi.org",
+			"127.0.0.1"
 		]
 	}
 }
