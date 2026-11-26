@@ -30,9 +30,10 @@ return {
 					}
 					parsers_map.lc3 = {
 						install_info = {
-							url = "https://github.com/dxrcy/tree-sitter-lc3",
+							url = "https://github.com/twhlynch/tree-sitter-lc3",
 							queries = "queries",
-							branch = "master",
+							-- path = vim.fn.expand("~/Documents/Personal/tree-sitter-lc3"),
+							-- generate = true,
 						},
 					}
 				end,
