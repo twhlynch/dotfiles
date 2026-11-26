@@ -118,7 +118,8 @@ vim.keymap.set("n", "<leader>q", function()
 	}, "a")
 	print("Added location to quickfix list")
 end, { desc = "Add current location to quickfix list" })
-
+map("n", "<leader>co", "<Cmd>copen<CR>", "Open quickfix list")
+map("n", "<leader>cc", "<Cmd>cclose<CR>", "Close quickfix list")
 vim.keymap.set("n", "<leader>wO", function()
 	local current_win = vim.api.nvim_get_current_win()
 
