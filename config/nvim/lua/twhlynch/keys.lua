@@ -119,7 +119,7 @@ vim.keymap.set("n", "<leader>q", function()
 	print("Added location to quickfix list")
 end, { desc = "Add current location to quickfix list" })
 
-vim.keymap.set("n", "<C-w>O", function()
+vim.keymap.set("n", "<leader>wO", function()
 	local current_win = vim.api.nvim_get_current_win()
 
 	local keep_filetypes = {
