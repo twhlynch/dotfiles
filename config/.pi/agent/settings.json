@@ -1,4 +1,5 @@
 {
+	"defaultThinkingLevel": "medium",
 	"showHardwareCursor": true,
 	"lastChangelogVersion": "1.5.2",
 	"packages": ["npm:pi-sandbox", "npm:@ff-labs/pi-fff"]
