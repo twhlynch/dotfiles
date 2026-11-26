@@ -138,7 +138,7 @@ vim.keymap.set("n", "<leader>wO", function()
 	}
 
 	for _, win in ipairs(vim.api.nvim_list_wins()) do
-		if win ~= current_win then
+		if win ~= current_win and vim.api.nvim_win_is_valid(win) then
 			local buf = vim.api.nvim_win_get_buf(win)
 			local ft = vim.bo[buf].filetype
 			local bt = vim.bo[buf].buftype
