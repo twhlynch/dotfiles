@@ -105,6 +105,8 @@ map({ "n", "x" }, "<M-Right>", "w", "Move to end of word")
 map({ "i" }, "<M-Backspace>", "<C-o>db", "Delete to beginning of word")
 map({ "n" }, "<M-Backspace>", "db", "Delete to beginning of word")
 
+map({ "n" }, "<C-l>", vim.cmd.edit, "Reload buffer")
+
 vim.keymap.set("n", "<leader>q", function()
 	vim.fn.setqflist({
 		{
