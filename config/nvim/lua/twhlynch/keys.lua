@@ -21,7 +21,7 @@ map({ "n", "v", "x" }, "<leader>y", '"+y', "Yank to system clipboard")
 map({ "n", "v", "x" }, "<A-p>", '"0p', "Paste last yanked register")
 map({ "n", "v", "x" }, "<leader>w", "<C-w>", "Window commands")
 map({ "n" }, "<leader>A", "ggVG", "Select all")
-map({ "x" }, "/", "<esc>/\\%V", "Search in selection")
+map({ "x" }, "/", "<Esc>/\\%V", "Search in selection")
 map({ "i" }, "<C-V>", "<C-r>+", "Paste from system clipboard")
 -- big move
 map({ "n" }, "H", "^")
@@ -43,7 +43,7 @@ map({ "n", "v" }, "<A-N>", "Nzz", "Center previous match")
 map({ "v" }, "<", "<gv", "Unindent and stay in visual")
 map({ "v" }, ">", ">gv", "Indent and stay in visual")
 -- jumping
-map({ "n" }, "<leader>jo", "<cmd>b#<CR>", "Jump to last buffer")
+map({ "n" }, "<leader>jo", "<Cmd>b#<CR>", "Jump to last buffer")
 -- toggles
 map({ "n" }, "<leader>z", function()
 	vim.wo.wrap = not vim.wo.wrap
@@ -81,8 +81,8 @@ map({ "n" }, "[e", function()
 	})
 end, "Jump to the previous error in the current buffer")
 -- macros
-map({ "n" }, "<leader>mM", "<cmd>%s/\\r//<cr>", "Remove trailing ^M")
-map({ "x" }, "<leader>mr", ":<esc>:%s/\\%V[^A-Za-z0-9]/ /g<CR>", "Clean selection for type")
+map({ "n" }, "<leader>mM", "<Cmd>%s/\\r//<CR>", "Remove trailing ^M")
+map({ "x" }, "<leader>mr", ":<Esc>:%s/\\%V[^A-Za-z0-9]/ /g<CR>", "Clean selection for type")
 map({ "n" }, "<leader>mx", "<Cmd>!chmod +x %<CR><CR>", "chmod +x")
 
 -- :lua print(vim.fn.keytrans(vim.fn.getcharstr()))
