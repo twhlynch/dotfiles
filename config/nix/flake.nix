@@ -125,6 +125,7 @@
           lua
           luarocks
           combinedPython
+          basedpyright
           ruff
           ast-grep
           chromium
