@@ -13,7 +13,7 @@ vim.cmd([[cabbrev Q q]])
 vim.cmd([[cabbrev Wq wq]])
 vim.cmd([[cabbrev WQ wq]])
 vim.cmd([[cabbrev wQ wq]])
-map("n", "q:", ":q<CR>")
+map("n", "q:", "<Cmd>q<CR>")
 vim.keymap.set({ "i", "n" }, "<F1>", "<Nop>", { noremap = true, silent = true })
 
 -- useful
@@ -30,10 +30,10 @@ map({ "n" }, "L", "$")
 map({ "n" }, "[p", '<Cmd>exe "put! " . v:register<CR>', "Paste Above")
 map({ "n" }, "]p", '<Cmd>exe "put "  . v:register<CR>', "Paste Below")
 -- moving lines
-map({ "i" }, "<A-j>", "<Esc>:m .+1<cr>==gi", "Move line down")
-map({ "i" }, "<A-k>", "<Esc>:m .-2<cr>==gi", "Move line up")
-map({ "n" }, "<A-j>", ":m .+1<cr>==", "Move line down")
-map({ "n" }, "<A-k>", ":m .-2<cr>==", "Move line up")
+map({ "i" }, "<A-j>", "<Esc><Cmd>m .+1<CR>==gi", "Move line down")
+map({ "i" }, "<A-k>", "<Esc><Cmd>m .-2<CR>==gi", "Move line up")
+map({ "n" }, "<A-j>", "<Cmd>m .+1<CR>==", "Move line down")
+map({ "n" }, "<A-k>", "<Cmd>m .-2<CR>==", "Move line up")
 map({ "x" }, "<A-j>", ":m '>+1<CR>gv=gv", "Move lines down")
 map({ "x" }, "<A-k>", ":m '<-2<CR>gv=gv", "Move lines up")
 -- center search
@@ -82,8 +82,8 @@ map({ "n" }, "[e", function()
 end, "Jump to the previous error in the current buffer")
 -- macros
 map({ "n" }, "<leader>mM", "<cmd>%s/\\r//<cr>", "Remove trailing ^M")
-map({ "n" }, "<leader>mx", ":!chmod +x %<CR><CR>", "chmod +x")
 map({ "x" }, "<leader>mr", ":<esc>:%s/\\%V[^A-Za-z0-9]/ /g<CR>", "Clean selection for type")
+map({ "n" }, "<leader>mx", "<Cmd>!chmod +x %<CR><CR>", "chmod +x")
 
 -- :lua print(vim.fn.keytrans(vim.fn.getcharstr()))
 -- cmd/ctrl + arrow keys or backspace is full line movement
