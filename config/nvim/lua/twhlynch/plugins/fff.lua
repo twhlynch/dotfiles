@@ -31,7 +31,7 @@ return {
 			desc = "FFFind files",
 		},
 		{
-			"<leader>?",
+			"<leader>/",
 			function()
 				require("fff").live_grep({
 					grep = { modes = { "regex", "fuzzy", "plain", "definition_only" } },
@@ -40,7 +40,7 @@ return {
 			desc = "LiFFFe grep",
 		},
 		{
-			"<leader>g?",
+			"<leader>g/",
 			function()
 				require("fff").live_grep_under_cursor({
 					grep = { modes = { "regex", "fuzzy", "plain", "definition_only" } },
